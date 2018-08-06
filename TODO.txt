@@ -1,0 +1,5 @@
+(A) 2018-08-06 Look at more complex elbow layouts. Also build a thick horizontal, thin vertical variant like used on many control surfaces
+(C) 2018-08-06 Rewrite to SASS, add adaptive classes. Document use of classes/containers, like e.g. bootstrap. Parameterize sizes, spaces, paddings etc.
+(E) 2018-08-06 Make compatible with bootstrap, and for use with docutils documents
+(D) 2018-08-06 Build reusable components, based on SASS/script, maybe see about webelements at some point
+(F) 2018-08-06 Add scripting to synchronize multiple windows over websocket, and for live updates from pub/sub server routes

@@ -1,0 +1,32 @@
+{
+  "name": "ok-lcars-sdk",
+  "version": "0.0.1-dev",
+  "description": "Generate HTML/CSS LCARS diagrams",
+  "main": "null",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvberkum/ok-lcars-sdk.git"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "LCARS",
+    "okudagrams"
+  ],
+  "author": "B. van Berkum <dev@dotmpe.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bvberkum/ok-lcars-sdk/issues"
+  },
+  "homepage": "https://github.com/bvberkum/ok-lcars-sdk#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "pug": "^2.0.0-beta6",
+    "node-sass": "^4.0.0",
+  },
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,138 @@
+
+body
+  padding: 15px
+
+body > .wrapper.row
+  height: 100%
+
+.wrapper.spacer
+  margin: 0
+
+
+p.capital
+  text-transform: uppercase
+
+p
+  text-align: justify
+  text-justify: inter-word
+
+.button-wrap
+  flex-wrap: wrap
+  margin-top: 0
+  padding-top: 5px
+  width: 100%
+
+  .button
+    margin-bottom: 5px
+    margin-left: 5px
+
+#main.form-3 > .header
+  height: 220px
+
+  .title
+    text-align: right
+
+  .button-wrap
+    width: 320px
+    right: 0px
+    bottom: 35px
+    position: absolute
+
+  pre
+    font-size: 24px
+
+#main.form-4
+
+  > .content
+    height: 100%
+    height: 300px
+    overflow: hidden
+
+    .bar.vertical
+      margin-top: 75px
+      margin-bottom: 45px
+
+  > .header,
+  > .footer
+    height: 220px
+  
+
+/*
+  XXX: I'd overlap this with the .bar class but bar sizes differently from button nodes
+
+.nobutton
+  min-width: 150px
+  min-height: 60px
+  cursor: default
+
+.nobutton[data-label]:before
+  content: attr(data-label)
+
+.nobutton:before
+  font-size: 20px
+  display: block
+  position: absolute
+  left: 0px
+  bottom: 0px
+  right: 0px
+  padding: 4px 8px
+  letter-spacing: -1px
+  line-height: 1.25
+  overflow: hidden
+  max-height: 100%
+
+
+/*
+  XXX: Define top/bottom just like left/right/pill, also apply to bar not just
+    button?
+
+.bar.top,
+.button.top,
+.nobutton.top
+  border-top-left-radius: 30px
+  border-top-right-radius: 30px
+
+.bar.bottom,
+.nobutton.bottom,
+.button.bottom
+  border-bottom-left-radius: 30px
+  border-bottom-right-radius: 30px
+
+.bar,
+.nobutton,
+.button
+
+  &.top:before,
+  &.bottom:before,
+  &.top:after,
+  &.bottom:after
+
+    left: 25px
+    right: 25px
+
+
+
+/* Some helpers for FORM-1
+
+#columnA > .column.dialog.wrapper,
+#columnB > .column.dialog.wrapper
+  width: 100%
+  height: 100%
+
+#columnA > .wrapper > .content.flexcv,
+#columnB > .wrapper > .content.flexcv
+  overflow: hidden
+
+  height: 100%
+
+#columnA > .wrapper > .content.flexcv > .content,
+#columnB > .wrapper > .content.flexcv > .content
+  overflow: auto
+
+  width: 100%
+  height: 100%
+
+
+
+@import ./theme.sass
+

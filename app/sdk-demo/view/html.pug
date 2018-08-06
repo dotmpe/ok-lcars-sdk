@@ -1,0 +1,55 @@
+
+mixin html-meta(key, value, scheme)
+  //- Scheme is deprecated in HTML5. There does not seem to be any predescribed
+  //- way to use/interpret meta[name,content] in any particular profile context.
+  if scheme
+    meta(name=key, content=value, scheme=scheme)
+  else
+    meta(name=key, content=value)
+
+mixin std-html-stylesheets()
+  each href in stylesheets
+    - if ('string' == typeof(href))
+        link(rel="stylesheet", type="text/css", href=href)
+    - else if ('object' == typeof(href))
+        link(rel="stylesheet", type="text/css" href=href.url)&attributes(href)
+
+mixin std-html-scripts()
+  each scr in scripts
+    - if ('string' == typeof(scr))
+        script(type="text/javascript", src=scr)
+    - else if ('object' == typeof(scr))
+        script(src=scr.url)&attributes(scr)
+
+mixin std-html-meta()
+  if meta
+    each it in meta
+      if ('object' == typeof(it))
+        each value, key in it
+          meta(name=key, content=value)
+
+mixin std-html-links()
+  if links
+    each link in links
+      - if ('string' == typeof(link))
+          link(href=link)
+      - else if ('object' == typeof(link))
+          link(href=link.url)&attributes(link)
+
+mixin std-html-head(title)
+
+  if context.config['use-sf-title']
+    - title_ = eval(context.config.title)
+    title= title_
+  else
+    title= title
+
+  if context
+    +html-meta("application-name", "Sitefile/"+context.version)
+    +html-meta("sitefile", context.version)
+
+  +std-html-stylesheets()
+  +std-html-scripts()
+  +std-html-links()
+  +std-html-meta()
+

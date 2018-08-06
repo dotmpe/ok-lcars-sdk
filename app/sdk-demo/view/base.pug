@@ -1,0 +1,27 @@
+doctype html
+include html
+
+if !profile
+- profile = context.config.default_profile
+
+html(profile=profile)
+  head
+    block head
+      +std-html-client("Sitefile LCARS Default Client")
+    block head-extra
+
+  body
+    block prologue
+    .header.container
+      block header
+        p Template header
+        hr
+    block main
+    .document.container
+      block document
+        p Template document
+    .footer.container
+      block footer
+        hr
+        p Template footer
+    block epilogue

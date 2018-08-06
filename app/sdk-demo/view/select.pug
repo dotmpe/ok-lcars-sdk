@@ -1,0 +1,77 @@
+extends base
+
+
+mixin lcars-sdk-demo-select()
+
+  .wrapper.row
+    //.column.flexv.flexch(style="max-width:10%")
+    .column.flexv.flexch
+    //  .button.bg-grey-4.top(data-label="1.1")
+    //  .bar.bg-cat-1-1.flexcv(data-label="1.2")
+    //  .button.bg-grey-4.bottom(data-label="1.3")
+
+    .column.flexv.flexch(style="min-width:50%")
+      .nobutton.bg-grey-4.top(data-label="Main")
+      .column(style="overflow:hidden")
+        .column
+          .row
+            .button.left.bg-cat-1-1(data-label="MI OKU",align="right")
+            .title.flexch.text-2-3 AN
+            .button.flexch.bg-cat-2-1(data-label="AN PRO",align="right")
+          .row
+            .button.left.bg-cat-1-1(data-label="DE OKU",align="right")
+            .title.flexch.text-5-3 LCARS
+            .button.flexch.bg-cat-2-1(data-label="DC FON",align="right")
+          .row
+            .button.left.bg-cat-1-1(data-label="GE ROD",align="right")
+            .title.text-2-3 SDK
+            .oval.small.bg-cat-1-2
+            .button.flexch.bg-cat-2-1(data-label="1987",align="right")
+          .row
+            .button.left.bg-cat-1-1(data-label="DO DRE",align="right")
+            .title.flexch.text-2-3 DEMO
+            .button.flexch.bg-cat-2-1(data-label="32-2018",align="right")
+          .row
+            .nobutton.flexch.bg-cat-2-3(data-label="Original")
+            a.button.bg-cat-5-1(data-label="1", style="min-width:60px", title="TNG Film Layout", href="interfaces/hardcode/index.html")
+            a.button.bg-cat-5-1(data-label="2", style="min-width:60px", title="Dynamic Color Scheme", href="interfaces/color-generator/index.html")
+            a.button.bg-cat-5-3(data-label="3", style="min-width:60px", title="Complete Visual Guide", href="interfaces/visual-guide/index.html")
+          .row
+            .nobutton.flexch.bg-cat-2-2(data-label="Base Form")
+            a.button.bg-cat-5-1(data-label="1.1", style="min-width:60px", href="base-form-1")
+            a.button.bg-cat-5-2(data-label="1.2", style="min-width:60px", href="base-form-2")
+            a.button.bg-cat-5-3(data-label="1.3", style="min-width:60px", href="base-form-3")
+            a.button.bg-cat-5-1(data-label="2.1", style="min-width:60px", href="base-form-4")
+          .row
+            a.button.flexch.bg-grey-6.left(data-label="SRC", style="min-width:70px", href="https://github.com/bvberkum/ok-lcars-sdk")
+            .title.flexch.text-grey-4.semver 0.0.1-dev
+            a.button.bg-grey-2(data-label="VIA", style="min-width:60px", href="https://github.com/Aricwithana/LCARS-SDK")
+              .oval.small.bg-black(style="margin:5px; float:right")
+          .row
+            .nobutton.flexch.bg-cat-4-2
+              .bar.small.bg-black(style="margin:5px; width:20px")
+            a.button.bg-cat-4-1(data-label="WEB-1", style="min-width:60px", href="http://www.lcarssdk.org/")
+            a.button.bg-cat-4-1(data-label="WEB-2", style="min-width:60px", href="https://bvberkum.github.io/ok-lcars-sdk")
+      .nobutton.bg-grey-5.bottom
+
+    .column.flexv.flexch
+    //  .button.bg-grey-4.top(data-label="3.1")
+    //  .row.flexv
+    //    .complexButton.flexcv
+    //      .button.bg-cat-2-1(data-label="3.2.1.1")
+    //      .text.text-2-3 err
+    //      .button.right.bg-cat-1-1(data-label="3.2.1.3")
+    //  .bar.bg-cat-2-1.flexcv(data-label="3.2.2")
+    //  .button.bg-grey-4.bottom(data-label="3.3")
+
+
+block head
+  +std-html-head("Sitefile LCARS example Client")
+
+block main
+  +lcars-sdk-demo-select()
+
+block header
+block footer
+
+block epilogue

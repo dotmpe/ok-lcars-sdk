@@ -1,0 +1,101 @@
+sitefile: 0.0.7-dev
+config: {}
+downstream: [] # Grant sitefile derefs to these remote sites
+upstream: [] # Grant CORS access (to local site) from these hosts
+paths: # Additional router include paths
+  routers_replace: false
+  routers:
+  - 'sitefile:app/sdk-demo/router'
+
+routes: # Simple router instances
+
+  '': redir:main
+  ReadMe: docutils.rst2html:ReadMe.rst
+  _doc: docutils.rst2html:doc/*.rst
+
+  main: redir:select
+  select: pug:app/sdk-demo/view/select.pug
+
+  base-form-1: pug:app/sdk-demo/view/base/form-1.pug
+  base-form-2: pug:app/sdk-demo/view/base/form-2.pug
+  base-form-3: pug:app/sdk-demo/view/base/form-3.pug
+  base-form-4: pug:app/sdk-demo/view/base/form-4.pug
+
+  lcarssdk-src/: static:lib/lcars-sdk/
+  lcarssdk/: static:lib/lcars-sdk/lcarssdk/
+  interfaces/: static:lib/lcars-sdk/interfaces/
+
+  base.css: sass:app/sdk-demo/style.sass
+
+  lcarssdk/addons/levelbar/levelbar.css: redir:lcarssdk/addons/levelBar/levelBar.css
+
+  vendor/:package.:format: http.vendor:cdn.json
+
+options:
+  local: {} # Custom settings per URL route
+  global: # Custom settings per router name
+    docutils:
+      $ref: '#/options/global/rst2html'
+    rst2html:
+      link_stylesheets: true
+      flags:
+      - "--no-toc-backlinks"
+      - '--field-name-limit=0'
+      scripts:
+        $ref: '#/defs/scripts/default'
+      stylesheets:
+        $ref: '#/defs/stylesheets/default'
+    pug:
+      merge:
+        meta:
+          $ref: '#/defs/app/base/meta'
+        scripts:
+          $ref: '#/defs/scripts/lcarssdk'
+        stylesheets:
+          $ref: '#/defs/stylesheets/lcarssdk'
+        clients:
+          $ref: '#/defs/app/base/clients'
+
+defs: # Storage for custom structures here
+  scripts:
+    default:
+      - /vendor/jquery.js
+      - /vendor/jquery-ui.js
+      - /vendor/jquery-terminal.js
+      - /vendor/jq-console.js
+      - /vendor/bootstrap.js
+      - /vendor/bootstrap-table.js
+      #- /vendor/coffee-script.js
+      #- /lcarssdk/js/jquery.js
+    lcarssdk:
+      - /lcarssdk/js/webviewinfo.js
+      - /lcarssdk/js/arrive.js
+      - /lcarssdk/js/lcarssdk.js
+      - /lcarssdk/addons/scrollbutton/scrollbutton.js
+      - /lcarssdk/addons/levelBar/levelBar.js
+      - /lcarssdk/templates/bracket/bracket.js
+      - /lcarssdk/templates/dialog/dialog.js
+      - /lcarssdk/templates/framing/framing.js
+      - /lcarssdk/templates/button/button.js
+  stylesheets:
+    default:
+      - url: /vendor/jquery-ui.css
+      - url: /vendor/jquery-terminal.css
+      - url: /vendor/bootstrap.css
+      - url: /vendor/bootstrap-theme.css
+      - url: /vendor/bootstrap-table.css
+    lcarssdk:
+      - url: "/lcarssdk/css/lcarssdk.css"
+      - url: "/lcarssdk/addons/scrollbutton/scrollbutton.css"
+      - url: "/lcarssdk/addons/levelBar/levelBar.css"
+      - url: "/lcarssdk/templates/bracket/bracket.css"
+      - url: "/lcarssdk/templates/dialog/dialog.css"
+      - url: "/lcarssdk/templates/framing/framing.css"
+      - url: "/lcarssdk/templates/button/button.css"
+      - url: "/lcarssdk/themes/theme_ussNotAffiliated.css"
+      - url: "/base.css"
+  app:
+    base:
+      meta:
+        - description: 'Sitefile LCARS SDK dev server'
+      clients: []

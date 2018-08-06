@@ -1,0 +1,7 @@
+
+# To skip builds use [ci ckip] in GIT commit-msg
+
+language: node_js
+node_js:
+  - "6.1"
+
