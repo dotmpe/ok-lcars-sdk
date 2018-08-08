@@ -1,7 +1,7 @@
 {
   "name": "ok-lcars-sdk",
-  "version": "0.0.1-dev",
-  "description": "Generate HTML/CSS LCARS diagrams",
+  "version": "0.0.1",
+  "description": "Generate HTML/CSS LCARS diagrams with LCARS SDK",
   "main": "null",
   "scripts": {
     "test": "grunt test"

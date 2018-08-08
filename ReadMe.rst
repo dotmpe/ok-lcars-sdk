@@ -1,6 +1,6 @@
 OK! LCARS SDK
 =============
-:version: 0.0.1-dev
+:version: 0.0.1
 
 An investigation and demonstration creating `okudagrams` for WebView (Android)
 and anything that can do modern HTML/CSS rendering.
