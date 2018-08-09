@@ -21,10 +21,5 @@
   "bugs": {
     "url": "https://github.com/bvberkum/ok-lcars-sdk/issues"
   },
-  "homepage": "https://github.com/bvberkum/ok-lcars-sdk#readme",
-  "dependencies": {
-    "express": "^4.14.1",
-    "pug": "^2.0.0-beta6",
-    "node-sass": "^4.0.0"
-  }
+  "homepage": "https://github.com/bvberkum/ok-lcars-sdk#readme"
 }
