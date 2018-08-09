@@ -1,6 +1,6 @@
 OK! LCARS SDK
 =============
-:version: 0.0.1
+:version: 0.0.2-dev
 
 An investigation and demonstration creating `okudagrams` for WebView (Android)
 and anything that can do modern HTML/CSS rendering.
@@ -21,13 +21,6 @@ advantages over other methods of LCARS generation.
 - runs on every? modern consumer OS. And by using modern web-technologies can
   be built into any kind of client/server, multi-screen, multi-user app as
   required.
-
-
-Quickstart
-----------
-My apologies in advance, but I've built this demo on another personal project
-`Sitefile`.
-
 
 
 See Also/More

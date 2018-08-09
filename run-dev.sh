@@ -3,7 +3,8 @@ set -e
 
 # dev mode (ro); mount local source, also use latest sitefile entry.sh iso. built-in
 
-script_dir=/opt/node-sitefile
+#script_dir=/opt/node-sitefile
+#  --volume $script_dir/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh:ro \
 
 sf_version=0.0.7-dev
 
@@ -18,11 +19,11 @@ hostname=$(hostname)
 
 set -x
 docker run \
-  -d --name sf-ok-lcars-sdk \
+  -d --name sf-ok-lcars-sdk-dev \
+  -e src_update=0 \
   -h $hostname -e SITEFILE_HOST=$hostname \
   -p 7011:7011 -e SITEFILE_PORT=7011 \
   -e src_update=$src_update \
-  --volume $script_dir/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh:ro \
   --volume $(realpath /etc/localtime):/etc/localtime:ro \
   --volume $(realpath $(pwd)):/src/$site_src:ro \
   bvberkum/node-sitefile:$sf_version \
