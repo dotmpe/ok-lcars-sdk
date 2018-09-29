@@ -12,18 +12,29 @@ sf_version=0.0.7-dev
 src_update=0
 
 site_src=github.com/bvberkum/ok-lcars-sdk
-#site_repo=http://$site_src
-site_ver=
+site_repo=git@$site_src.git
+site_ver=master
+
+gh_keyfile=~/.ssh/id_rsa
+kbn=id_rsa
 
 hostname=$(hostname)
 
+ssh-keyscan github.com > srv/known_hosts
+
+. lib.sh
+
+sf_sh_volumes
+volumes="$volumes --volume $(pwd -P)/srv/src:/src"
+volumes="$volumes --volume $(pwd -P)/srv/home:/home/treebox"
 set -x
 docker run \
   -d --name sf-ok-lcars-sdk-dev \
-  -e src_update=0 \
   -h $hostname -e SITEFILE_HOST=$hostname \
   -p 7011:7011 -e SITEFILE_PORT=7011 \
   -e src_update=$src_update \
+  --volume $(realpath $gh_keyfile):/home/treebox/.ssh/$kbn \
+  --volume $(realpath ./srv/known_hosts):/home/treebox/.ssh/known_hosts \
   --volume $(realpath /etc/localtime):/etc/localtime:ro \
   --volume $(realpath $(pwd)):/src/$site_src:ro \
   bvberkum/node-sitefile:$sf_version \

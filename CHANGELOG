@@ -1,0 +1,8 @@
+(0.0.2-dev)
+  - Added some metadata, updated project tooling. Switched to dev branch for 
+    keeping changes until release.
+
+0.0.1 [2018-08-09]
+  - Initial experiment with four layout forms based on original SDK.
+  - Three (can) work fairly well, one (multiple panes/adapter elbows) needs work.
+  - Making TODO and created static copy at <http://bvberkum.github.io/ok-lcars-sdk>

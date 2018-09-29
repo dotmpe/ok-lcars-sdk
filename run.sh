@@ -1,28 +1,33 @@
 #!/bin/sh
 set -e
 
-sf_version=0.0.7-dev
+# FIXME: setup submodules for non-dev? This won't be able to checkout project
+# submodules. Instead mount local checkout as read-only.
+#  --env src_submodules=0 \
+# See run-dev.sh for sitefile server.
 
-gh_keyfile=~/.ssh/id_rsa
-kbn=id_rsa
+sf_version=0.0.7-dev
 
 site_src=github.com/bvberkum/ok-lcars-sdk
 #site_repo=http://$site_src
-site_ver=
+site_ver=master
 
 hostname=$(hostname)
 
-ssh-keyscan github.com > known_hosts
+. lib.sh
 
+sf_sh_volumes
+volumes="$volumes --volume $(pwd -P):/src/$site_src:ro"
 set -x
 docker run \
   -d --name sf-ok-lcars-sdk \
+  --env src_update=0 \
   -h $hostname -e SITEFILE_HOST=$hostname \
   -p 7010:7010 -e SITEFILE_PORT=7010 \
-  -e src_update=$src_update \
-  --volume $(realpath $gh_keyfile):/home/treebox/.ssh/$kbn \
-  --volume $(realpath ./known_hosts):/home/treebox/.ssh/known_hosts \
-  --volume $(realpath /etc/localtime):/etc/localtime:ro \
+  $volumes \
   bvberkum/node-sitefile:$sf_version \
   \
   "$site_src" "$site_repo" "$site_ver"
+set +x
+wait_for_container sf-ok-lcars-sdk
+echo "Sitefile server running"

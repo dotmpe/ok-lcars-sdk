@@ -1,0 +1,33 @@
+# git-versioning main: script-mpe
+
+- type: application/vnd.org.wtwta.project
+  main: script-mpe
+  id: script-mpe
+  version: 0.0.4-dev # script-mpe
+  vendor: bvberkum
+  distribution: public
+  license: MIT
+
+  #env: scriptname=$script_out . ./tools/ci/env.sh
+  urls:
+    license-info: https://opensource.org/licenses/MIT
+
+  pd-meta:
+    tasks:
+      document: TODO.txt
+      done: .DONE.txt
+
+  scripts:
+    init:
+    - git submodule update --init
+    - vc regenerate
+    isntall:
+    - npm install
+    run: run.sh
+    run-dev: run-dev.sh
+    # Mirror static pages copy from running sitefile
+    mirror:
+    - hostname=$(hostname)
+    - httrack http://$hostname:7011 -O mirror "+*.$hostname/*"
+    - rsync -avzui --delete
+        ./mirror/${hostname}_7011/ ../bvberkum.github.io/ok-lcars-sdk
