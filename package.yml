@@ -1,14 +1,13 @@
-# git-versioning main: script-mpe
+# git-versioning main: ok-lcars-sdk
 
 - type: application/vnd.org.wtwta.project
-  main: script-mpe
-  id: script-mpe
-  version: 0.0.4-dev # script-mpe
+  main: ok-lcars-sdk
+  id: ok-lcars-sdk
+  version: 0.0.2-dev # ok-lcars-sdk
   vendor: bvberkum
   distribution: public
   license: MIT
 
-  #env: scriptname=$script_out . ./tools/ci/env.sh
   urls:
     license-info: https://opensource.org/licenses/MIT
 
@@ -20,8 +19,17 @@
   scripts:
     init:
     - git submodule update --init
+    - htd package update
     - vc regenerate
-    isntall:
+    - V_DOC_LIST=package-versioned.list verbosity=7 git-versioning check
+    check:
+    - V_DOC_LIST=package-versioned.list verbosity=7 git-versioning check
+    - htd vcflow summary
+    status:
+    - 'echo "OK! LCARS SDK: $(vc status) $(git describe --always)"'
+    - 'echo "LCARS SDK: $(vc status lib/lcars-sdk) $(cd lib/lcars-sdk/ && git describe --always)"'
+    - htd vcflow summary
+    install:
     - npm install
     run: run.sh
     run-dev: run-dev.sh

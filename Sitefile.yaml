@@ -10,12 +10,19 @@ paths: # Additional router include paths
 routes: # Simple router instances
 
   '': redir:main
-  ReadMe: docutils.rst2html:ReadMe.rst
-  _doc: docutils.rst2html:doc/*.rst
-
   main: redir:select
-  select: pug:app/sdk-demo/view/select.pug
+  index: redir:readme
 
+  # Serve documentation
+  ReadMe: docutils.rst2html:ReadMe.rst
+  ChangeLog: docutils.rst2html:CHANGELOG
+  Copying: docutils.rst2html:COPYING
+
+  _doc: docutils.rst2html:doc/*.rst
+  _doc_dev: docutils.rst2html:doc/dev/*.rst
+
+  # Setup okudagram views (sdk-demo "app"; no r.js only pain HTML+CSS links)
+  select: pug:app/sdk-demo/view/select.pug
   base-form-1: pug:app/sdk-demo/view/base/form-1.pug
   base-form-2: pug:app/sdk-demo/view/base/form-2.pug
   base-form-3: pug:app/sdk-demo/view/base/form-3.pug
@@ -25,10 +32,16 @@ routes: # Simple router instances
   lcarssdk/: static:lib/lcars-sdk/lcarssdk/
   interfaces/: static:lib/lcars-sdk/interfaces/
 
+  # extra styling for LCARS SDK okudagram views
   base.css: sass:app/sdk-demo/style.sass
 
+  # correct case for one lib
   lcarssdk/addons/levelbar/levelbar.css: redir:lcarssdk/addons/levelBar/levelBar.css
 
+  # Secondary resource with oku docs view... also based on sdk-demo PUG tpl
+  app/ok-docs/main: pug:app/ok-docs/view/main.pug
+
+  # include large set of package name - CDN version mappings from Sitefile
   vendor/:package.:format: http.vendor:cdn.json
 
 options:

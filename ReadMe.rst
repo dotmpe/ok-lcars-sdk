@@ -25,11 +25,11 @@ advantages over other methods of LCARS generation.
 
 See Also/More
 -------------
-- `Why?`__.
-- The original `LCARS SDK site`__ and `LCARS SDK wiki`__  docs by ~Aric as well
+- The online version of this project at `github pages`__.
+- More background in `Why?`__
+- The original `LCARS SDK site`__, and `LCARS SDK wiki`__  docs by ~Aric as well
   as the `LCARS SDK source`__.
-- Online docs for this project at `github pages`__.
-
+- `Dev notes`__
 
 .. __: http://www.lcarssdk.org/
 .. __: doc/why.rst
@@ -37,4 +37,4 @@ See Also/More
 .. __: https://github.com/Aricwithana/LCARS-SDK/wiki
 .. __: https://github.com/Aricwithana/LCARS-SDK
 .. __: https://bvberkum.github.io/ok-lcars-sdk
-
+.. __: doc/dev/main.rst

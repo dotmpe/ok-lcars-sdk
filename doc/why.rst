@@ -1,10 +1,12 @@
+.. include:: ../.default.rst
+
 `OK!` is an experimental, personal "table" rendering project. The name is an
 homage to Mike Okuda, the graphics designer responsible for the iconic Star Trek
 LCARS interface designs. The main `ok` project is not public, due to IP concerns.
 
 Tables, speadsheets, diagrams are a powerful way to organize datums |---| pieces
 of data that suggest relations by horizontal and vertical ranking. This model
-is a classic one that goes back to the earliest of computing history. It was in 
+is a classic one that goes back to the earliest of computing history. It was in
 1965 already when Ted Nelson already conceptualized an abstraction of a speadsheet
 where each unique datum could lay not just in two dimensions (x/y, one row, on
 column) but in an infinite space, with endless dimensions. And where all data

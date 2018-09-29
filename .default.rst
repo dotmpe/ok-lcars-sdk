@@ -1,0 +1,8 @@
+.. Defaults for Docutils/reStructuredText
+
+.. |---| unicode:: U+02014 .. em dash
+   :trim:
+.. |--| unicode:: U+02013 .. en dash
+   :trim:
+
+.. _visual guide: /interfaces/visual-guide/index.html
