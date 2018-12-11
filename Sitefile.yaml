@@ -1,7 +1,7 @@
 sitefile: 0.0.7-dev
 config: {}
 downstream: [] # Grant sitefile derefs to these remote sites
-upstream: [] # Grant CORS access (to local site) from these hosts
+upstream: [] # Grant CORS access from these hosts
 paths: # Additional router include paths
   routers_replace: false
   routers:
