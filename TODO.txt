@@ -1,11 +1,12 @@
-(A) 2018-08-06 1: Look at more complex elbow layouts. Also build a thick horizontal, thin vertical variant like used on many control surfaces
-(A) 2018-09-29 8: Documentation for CSS classes and usage; layout principles, SASS, adaptive pages, etc. @docs
-(A) 2018-09-29 9: Styling should be more confined to specific elements, not change page's html/body/div... @bugs ie. check archive.is, web.archive.org
-(B) 2018-09-29 7: Wrap documentation/app at sitefile into LCARS style as well
+(A) 2018-12-11 11: Fix simple top/bottom pillbar (form 1) for pad/mobile
+(A) 2018-08-06 1: Look at more complex elbow layouts. Also build a thick horizontal, thin vertical variant like used on many control surfaces (form 4 / layout 2.1)
+(B) 2018-09-29 9: Styling should be more confined to specific elements, not change page's html/body/div... @bugs ie. check archive.is, web.archive.org
+(B) 2018-09-29 7: Wrap documentation/app at Sitefile into LCARS style as well!
+(C) 2018-09-29 8: Documentation for CSS classes and usage; layout principles, SASS, adaptive pages, etc. @docs
 (C) 2018-08-06 2: Rewrite to SASS, add adaptive classes. Document use of classes/containers, like e.g. bootstrap. Parameterize sizes, spaces, paddings etc.
 (E) 2018-08-06 3: Make compatible with bootstrap, and for use with docutils documents
 (D) 2018-08-06 4: Build reusable components, based on SASS/script, maybe see about webelements at some point
 (F) 2018-08-06 5: Add scripting to synchronize multiple windows over websocket, and for live updates from pub/sub server routes
-(F) 2018-09-29 6: Cannot run repo with sitefile directly <run.sh> setup submodules for non-dev @bugs @DevOps
-(F) 2018-12-11 10: Travis build is empty, add npm/travis scripts as needed. Maybe start with some linters for Pug/SASS.
+(F) 2018-09-29 6: Cannot run repo with sitefile directly <run.sh> setup submodules for non-dev @bugs @DevOps <.gitmodules>
+x (F) 2018-12-11 10: Travis build is empty, add npm/travis scripts as needed. Maybe start with some linters for Pug/SASS.
 # vim:nowrap:

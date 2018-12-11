@@ -21,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/bvberkum/ok-lcars-sdk/issues"
   },
-  "homepage": "https://github.com/bvberkum/ok-lcars-sdk#readme"
+  "homepage": "https://github.com/bvberkum/ok-lcars-sdk#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-json-validate": "^0.1.1",
+    "grunt-puglint": "^1.0.0",
+    "grunt-sass-lint": "^0.2.4",
+    "package.json-schema": "^0.2.0"
+  }
 }
