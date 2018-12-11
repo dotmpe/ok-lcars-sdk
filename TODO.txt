@@ -7,4 +7,5 @@
 (D) 2018-08-06 4: Build reusable components, based on SASS/script, maybe see about webelements at some point
 (F) 2018-08-06 5: Add scripting to synchronize multiple windows over websocket, and for live updates from pub/sub server routes
 (F) 2018-09-29 6: Cannot run repo with sitefile directly <run.sh> setup submodules for non-dev @bugs @DevOps
+(F) 2018-12-11 10: Travis build is empty, add npm/travis scripts as needed. Maybe start with some linters for Pug/SASS.
 # vim:nowrap:
