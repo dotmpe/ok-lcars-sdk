@@ -1,4 +1,5 @@
 sitefile: 0.0.7-dev
+port: 4507
 config: {}
 downstream: [] # Grant sitefile derefs to these remote sites
 upstream: [] # Grant CORS access from these hosts
@@ -8,6 +9,8 @@ paths: # Additional router include paths
   - 'sitefile:app/sdk-demo/router'
 
 routes: # Simple router instances
+
+  favicon.ico: static:/srv/htdocs-local/media/image/icon/favicon-file-text-o-7986cb.ico
 
   '': redir:main
   main: redir:select
@@ -39,13 +42,55 @@ routes: # Simple router instances
   lcarssdk/addons/levelbar/levelbar.css: redir:lcarssdk/addons/levelBar/levelBar.css
 
   # Secondary resource with oku docs view... also based on sdk-demo PUG tpl
-  app/ok-docs/main: pug:app/ok-docs/view/main.pug
+  app/ok-docs/main: pug:app/ok-docs-v0/view/main.pug
+  ok-docs: pug:app/ok-docs-v0/view/main.pug
+
+  todo.json: todo.json:./TODO.txt
+  todo.txt: todo.txt:./TODO.txt
+  todo: todo:./TODO.txt
+
+  # FIXME:
+  file: file:TODO.txt
 
   # include large set of package name - CDN version mappings from Sitefile
   vendor/:package.:format: http.vendor:cdn.json
+ 
+  # Setup for require.js app
+  app: 'static:{app,sitefile:lib/sitefile/client}'
+  'r:app/(.*).sass.css': sass:sitefile-lib:client/
+  'r:app/(.*).pug.html': pug:sitefile-lib:client/
+
+  app/ok-docs-v0.json: rjs.config:paths=$ref:sitefile:cdn.json#/js/http/packages;shim=$ref:sitefile:cdn-deps.json#/shim;deps=["css","cs!ok-docs-v0/main"];baseUrl=/app;map=$ref:var/sitefile/cdn-deps.json#/map
+  #app/ok-docs-v0.json: rjs.config:paths=$ref:sitefile:cdn.json#/js/http/packages;baseUrl=/app;shim=$ref:sitefile:cdn-deps.json#/shim;deps=["css","text","cs!ok-docs-v0"];map=$ref:var/sitefile/cdn-deps.json#/map;hbars={"extension":".hbs"}
+  app/ok-docs-v0.js: rjs.main:app/ok-docs-v0.json
+  #app/ok-docs-v0.coffee: pug:app/ok-docs.pug
+  #app/ok-docs-v0: pug:app/ok-docs-v0.pug
+
+  app/ok-todo-v0.json: rjs.config:paths=$ref:sitefile:cdn.json#/js/http/packages;shim=$ref:sitefile:cdn-deps.json#/shim;deps=["css","cs!ok-todo-v0/main"];baseUrl=/app;map=$ref:var/sitefile/cdn-deps.json#/map
+  app/ok-todo-v0.js: rjs.main:app/ok-todo-v0.json
+
+  ok-0-a-1: pug:app/sdk-demo/layout/form-1.pug
+  ok-0-a-2: pug:app/sdk-demo/layout/form-2.pug
+  ok-0-a-3: pug:app/sdk-demo/layout/form-3.pug
+
+  #ok-0-a-1.yaml: @app/sdk-demo/layout/form-1.yaml#/forms/form-0-a-1-1
+  #
+  #ok-0-a-1.json: :app/sdk-demo/layout/form-1.yaml
+  #ok-0-a-1.json: static:var/sdk-demo/layout-form-1.json
 
 options:
-  local: {} # Custom settings per URL route
+  local: {} # FIXME: Custom settings per URL route
+  #  'todo':
+  #     pug:
+  #       merge:
+  #         clients:
+  #           $ref: '#/defs/app/todo/clients'
+  #  'ok-docs':
+  #     pug:
+  #       merge:
+  #         clients:
+  #           $ref: '#/defs/app/base/clients'
+
   global: # Custom settings per router name
     docutils:
       $ref: '#/options/global/rst2html'
@@ -75,12 +120,13 @@ defs: # Storage for custom structures here
       - /vendor/jquery.js
       - /vendor/jquery-ui.js
       - /vendor/jquery-terminal.js
+      - /vendor/coffee-script.js
       - /vendor/jq-console.js
       - /vendor/bootstrap.js
       - /vendor/bootstrap-table.js
-      #- /vendor/coffee-script.js
       #- /lcarssdk/js/jquery.js
     lcarssdk:
+      - /vendor/jquery.js
       - /lcarssdk/js/webviewinfo.js
       - /lcarssdk/js/arrive.js
       - /lcarssdk/js/lcarssdk.js
@@ -111,4 +157,21 @@ defs: # Storage for custom structures here
     base:
       meta:
         - description: 'Sitefile LCARS SDK dev server'
-      clients: []
+        - sitefile.main: 'ok-docs'
+        - sitefile-client-modules:
+          - 'cs!ok-docs/client-modules/page'
+          #- 'cs!sf-v0/tilda'
+        - sitefile-apps: 'cs!htd-v0/page-app.coffee'
+      stylesheets: []
+      #$ref: '#/defs/default/stylesheets'
+      scripts: []
+      # - /vendor/jquery.js
+      clients:
+        - type: require-js
+          href: /vendor/require.js
+          main: /app/ok-docs-v0.js
+    todo:
+      clients:
+        - type: require-js
+          href: /vendor/require.js
+          main: /app/ok-todo-v0.js

@@ -1,0 +1,12 @@
+{
+  "map": {
+    "*": {
+      "sitefile": "sf-v0",
+      "ok-docs": "ok-docs-v0",
+      "ok-todo": "ok-todo-v0",
+      "css": "require-css",
+      "cs": "require-cs",
+      "text": "require-text"
+    }
+  }
+}

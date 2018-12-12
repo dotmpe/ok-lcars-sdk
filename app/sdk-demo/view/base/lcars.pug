@@ -1,6 +1,8 @@
 
 mixin lcarssdk-hbar(bar)
 
+  // mixin b/l lcarssdk-hbar
+
   if !bar.class
     - bar.class = "bg-cat-1-1"
 
@@ -11,8 +13,12 @@ mixin lcarssdk-hbar(bar)
   else
     div&attributes({class:"bar flexch "+bar.class})
 
+  // EOM b/l lcarssdk-hbar
+
 
 mixin lcarssdk-titlebar(title, bar)
+
+  // mixin b/l lcarssdk-titlebar
 
   if title && title.align == 'left'
     div&attributes({class:"title text "+sizing+" "+title.class})= title.text
@@ -23,8 +29,12 @@ mixin lcarssdk-titlebar(title, bar)
     if title
       div&attributes({class:"title text "+sizing+" "+title.class})= title.text
 
+  // EOM b/l lcarssdk-titlebar
+
 
 mixin lcarssdk-pillbar(color, title, size='medium', lcap={}, rcap={}, bar={})
+
+  // mixin b/l lcarssdk-pillbar
 
   if !color
     - color = "1-1"
@@ -46,7 +56,7 @@ mixin lcarssdk-pillbar(color, title, size='medium', lcap={}, rcap={}, bar={})
   if size == 'medium'
     - sizing = 'half'
 
-  // Outbut caps, bar and title elements
+  //- Outbut caps, bar and title elements
 
   .row.flexh&attributes(attributes)
     if lcap
@@ -57,10 +67,14 @@ mixin lcarssdk-pillbar(color, title, size='medium', lcap={}, rcap={}, bar={})
     if rcap
       div&attributes({class:"cap "+size+" right "+rcap.class})
 
+  // EOM b/l lcarssdk-pillbar
+
 
 mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
 
-  // LCARS Monitor baseform1 with text body and leading/trailing pillbar
+  //- LCARS Monitor baseform1 with text body and leading/trailing pillbar
+
+  // mixin b/l lcarssdk-base-form-1
 
   if !color
     - color = "1-1"
@@ -91,6 +105,8 @@ mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
       if !footer.rcap && footer.rcap != null
         - footer.rcap = {}
       +lcarssdk-pillbar(color, footer.title, size, footer.lcap, footer.rcap, footer.bar)&attributes({class:'footer'})
+
+  // EOM b/l lcarssdk-base-form-1
 
 
 mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
@@ -124,7 +140,7 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
         // Body Content
         .wrapper.content.flexcv(style=" overflow:auto;")
 
-          //+lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
+          //- +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
 
       .wrapper.column.flexv(style="width:200px")
         .elbow.top-right.bg-cat-1-2.default.horizontal(data-label="36", align="right")
@@ -142,13 +158,13 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
             .block
           
       .wrapper.flexch.flexv
-        // Footer Content
+        //- Footer Content
         .wrapper.content.flexcv
           .title.text-1-1(align="right") LCARS BASIC FORM 1.2
           .wrapper.flexh.button-wrap
             p.text-1-1.text A frame enclosing a single content pane
             
-        // Header Bar Row
+        //- Header Bar Row
         .row.frame.flexh(style="padding-left: 204px; padding-right: 204px")
           .bar.large.bg-cat-2-2
           .bar.large.bg-cat-2-1.flexch
@@ -160,12 +176,14 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
           .bar(style="width: 209px; left: -204px")
             .block
 
+  // EOM b/l lcarssdk-base-form-2
+
 
 mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, title="Form 1.3")
 
-  // The iconic double-elbow split-view LCARS layout
+  //- The iconic double-elbow split-view LCARS layout
 
-  // TODO: parameterize
+  //- TODO: parameterize
   
   #main.form-3.wrapper.column.flexv.flexch&attributes(attributes)
 
@@ -230,3 +248,4 @@ mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, t
 
               +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
 
+  // EOM b/l lcarssdk-base-form-3

@@ -1,0 +1,30 @@
+include base
+
+
+block main
+  // TODO: pass through sitefile route userspec, resolve JSON server-side
+  -
+    pillbar = {
+        sizing: 'medium',
+        bar: { class: '' },
+        lcap: { class: '' },
+        rcap: { class: '' },
+        title: ''
+      }
+
+  - header = pillbar
+  - footer = pillbar
+
+  // block l/f-1 main
+  .wrapper.row.flexv
+
+    //- Two pillbars
+    +lcarssdk-base-form-1('1-2', 'medium', header, footer)&attributes({})
+        
+      h2.text-2-3 Laboris nisi ut Aliquip
+      +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
+      +lorem-ipsum-paragraph(2)&attributes({class:'text-1-1 capital'})
+      h3.text-2-3 Exercitation
+      +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
+
+  // EOF l/f-1 block main

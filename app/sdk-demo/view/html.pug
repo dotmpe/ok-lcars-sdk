@@ -36,6 +36,10 @@ mixin std-html-links()
       - else if ('object' == typeof(link))
           link(href=link.url)&attributes(link)
 
+mixin requirejs_main(client)
+  script(id=client.id, data-main=client.main, src=client.href)
+
+
 mixin std-html-head(title)
 
   if context.config['use-sf-title']
@@ -53,3 +57,12 @@ mixin std-html-head(title)
   +std-html-links()
   +std-html-meta()
 
+
+mixin std-html-client(title)
+  +std-html-head(title)
+  if clients
+    each client in clients
+      if client.type == "require-js"
+        +requirejs_main(client)
+      if !main
+        - main = client

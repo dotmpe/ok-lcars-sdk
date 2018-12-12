@@ -28,5 +28,8 @@
     "grunt-puglint": "^1.0.0",
     "grunt-sass-lint": "^0.2.4",
     "package.json-schema": "^0.2.0"
+  },
+  "dependencies": {
+    "todotxt-parser": "^1.0.1"
   }
 }

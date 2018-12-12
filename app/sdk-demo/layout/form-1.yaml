@@ -1,0 +1,116 @@
+# All default values
+
+defaults:
+- &color
+  color: '1-1'
+- &sizing
+  sizing: 'medium'
+- &class
+  class: ''
+
+#- &label
+#  label: ''
+#- &title
+#  title: ''
+
+elements:
+  element: &element
+    <<: *class
+
+  # A visible Okudagram block, usually filled color background but no label
+  oknode: &oknode
+    <<: *element
+    <<: *color
+    <<: *sizing
+
+  # A visible Okudagram block, usually filled color background with black label
+  okelement: &okelement
+    label: ''
+    <<: *oknode
+
+  nodes:
+    # A rounded end block, without label
+    cap: &cap
+      <<: *oknode
+      class: 'cap'
+
+
+    # A square filled background block with label and orientation
+    hbar: &hbar
+      <<: *okelement
+      class: 'horizontal-bar bar'
+
+    vbar: &vbar
+      <<: *okelement
+      class: 'vertical-bar bar'
+
+
+    # Variant on hbar with title element inserted at one end
+    titlebar: &titlebar
+      title: ''
+      <<: *hbar
+      class: 'title-bar horizontal-bar bar'
+
+
+  composites:
+    # A composite element of three nodes; a bar, and two caps
+    pillbar: &pillbar
+      <<: *element
+      class: 'pillbar composite'
+      bar:
+        <<: *hbar
+      lcap:
+        <<: *cap
+        class: 'left-cap cap'
+      rcap:
+        <<: *cap
+        class: 'right-cap cap'
+
+    stickbar: &stickbar
+      bar:
+        <<: *vbar
+      <<: *element
+      class: 'stickbar'
+      tcap:
+        <<: *cap
+        class: 'top-cap cap'
+      bcap:
+        <<: *cap
+        class: 'bottom-cap cap'
+
+
+    titlepillbar: &titlepillbar
+      title: ''
+      <<: *pillbar
+      class: 'titlepillbar pillbar composite'
+
+
+forms:
+  # Form 1 but without caps;
+  form-0-a-1-1:
+  
+    header: &header
+      <<: *titlebar
+      label: 'LCARS 0-a 1.1'
+    content:
+      <<: *element
+      # var/sdk-demo/content/forms.md
+      # var/sdk-demo/content/form-1.md
+    footer: &footer
+      <<: *hbar
+  
+  # Form 1; a composite of two pillbar composites bordering a content area
+  form-0-a-1-2:
+  
+    header: &header
+      <<: *titlepillbar
+      title: 'LCARS 0-A 1.2'
+    content:
+      <<: *element
+      # var/sdk-demo/content/form-1.md
+    footer: &footer
+      <<: *pillbar
+
+  form-0-a-2-1: {}
+  # LCARS 0-A 2.1
+

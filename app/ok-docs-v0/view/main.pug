@@ -1,0 +1,49 @@
+extends ../../sdk-demo/view/base
+include ../../sdk-demo/view/lorem-ipsum
+include ../../sdk-demo/view/base/lcars
+
+
+block head
+  +std-html-client("OK! LCARS SDK docs")
+
+block prologue
+block header
+block main
+  .wrapper.row.flexh
+
+    if main
+      // We have a client instance
+
+      +lcarssdk-base-form-3(null, null, null, null, null, null, "DOCS 0.0")
+        p.text-1-1.ok-lcars-doc Loading...
+
+        p.text-1-1 TODO: init rjs client
+
+        pre.text-1-3= JSON.stringify(main, null, 2)
+
+        p.preformatted.text-1-3= JSON.stringify(main, null, 2)
+
+    else
+
+      +lcarssdk-base-form-3(null, null, null, null, null, null, "DOCS 0.0")
+        p.text-1-1 Hardcoded docs
+        p.text-1-2
+          | Need to further modularize these baseform and parameterize. In PUG
+          | terms that | means mixin definitions and calls (positional arguments,
+          | one content-block), or build and extending base-templates (mutiple
+          | blocks).
+          | Ofcourse some metadata driven approach would be the ultimate prize. 
+        p.text-1-3
+          span.text-white Form 1.3
+          |
+          | should be split up into two content-panes, 
+          | one with a title and some button block floating right, the other for
+          | main content. And a minimal way to drive the two elbows; ie. two
+          | sequences of label/link/color and some other attributes.
+
+        a.button.left.right.bg-cat-4-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
+
+block document
+block footer
+
+block epilogue
