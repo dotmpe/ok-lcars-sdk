@@ -3,7 +3,12 @@ set -e
 
 hostname=$(hostname)
 
-httrack http://$hostname:7011 -O mirror "+*.$hostname/*"
+# dev
+port=7011
+# ht pm2 'sf-ok-lcars-sdk'
+port=4507
+
+httrack http://$hostname:$port -O mirror "+*.$hostname/*"
 
 rsync -avzui --delete \
-  ./mirror/${hostname}_7011/ ../bvberkum.github.io/ok-lcars-sdk
+  ./mirror/${hostname}_$port/ ../bvberkum.github.io/ok-lcars-sdk

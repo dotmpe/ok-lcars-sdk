@@ -1,6 +1,11 @@
-(0.0.2-dev)
-  - Added some metadata, updated project tooling. Switched to dev branch for 
-    keeping changes until release.
+(0.0.3-dev)
+
+0.0.2
+  - Added some metadata setups, tasks for further thought.
+	- Tested some animations.
+	- Updates on various forms, testing layouts with some new terminals (while not
+	  metadata-merge setup is working -- may build into doc/tutorial browser).
+	- Using flexbox model. Tested scrolling on ios as well.
 
 0.0.1 [2018-08-09]
   - Initial experiment with four layout forms based on original SDK.
