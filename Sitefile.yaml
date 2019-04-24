@@ -43,6 +43,9 @@ routes: # Simple router instances
 
   # Secondary resource with oku docs view... also based on sdk-demo PUG tpl
   app/ok-docs/main: pug:app/ok-docs-v0/view/main.pug
+  app/ok-docs/doc001: pug:app/ok-docs-v0/view/doc001.pug
+  app/ok-docs/doc002: pug:app/ok-docs-v0/view/doc002.pug
+  app/ok-docs/doc003: pug:app/ok-docs-v0/view/doc003.pug
   ok-docs: pug:app/ok-docs-v0/view/main.pug
 
   todo.json: todo.json:./TODO.txt
@@ -54,6 +57,7 @@ routes: # Simple router instances
 
   # include large set of package name - CDN version mappings from Sitefile
   vendor/:package.:format: http.vendor:cdn.json
+  npm/packages/: 'static:{,sitefile:}node_modules/'
  
   # Setup for require.js app
   app: 'static:{app,sitefile:lib/sitefile/client}'
@@ -69,6 +73,7 @@ routes: # Simple router instances
   app/ok-todo-v0.json: rjs.config:paths=$ref:sitefile:cdn.json#/js/http/packages;shim=$ref:sitefile:cdn-deps.json#/shim;deps=["css","cs!ok-todo-v0/main"];baseUrl=/app;map=$ref:var/sitefile/cdn-deps.json#/map
   app/ok-todo-v0.js: rjs.main:app/ok-todo-v0.json
 
+  # TODO-12: develop basic terminal forms into layouts templates merged with metadata
   ok-0-a-1: pug:app/sdk-demo/layout/form-1.pug
   ok-0-a-2: pug:app/sdk-demo/layout/form-2.pug
   ok-0-a-3: pug:app/sdk-demo/layout/form-3.pug
@@ -127,15 +132,16 @@ defs: # Storage for custom structures here
       #- /lcarssdk/js/jquery.js
     lcarssdk:
       - /vendor/jquery.js
-      - /lcarssdk/js/webviewinfo.js
-      - /lcarssdk/js/arrive.js
-      - /lcarssdk/js/lcarssdk.js
-      - /lcarssdk/addons/scrollbutton/scrollbutton.js
-      - /lcarssdk/addons/levelBar/levelBar.js
-      - /lcarssdk/templates/bracket/bracket.js
-      - /lcarssdk/templates/dialog/dialog.js
-      - /lcarssdk/templates/framing/framing.js
-      - /lcarssdk/templates/button/button.js
+      #- /lcarssdk/js/webviewinfo.js
+      #- /lcarssdk/js/arrive.js
+      #- /lcarssdk/js/lcarssdk.js
+      #- /lcarssdk/addons/scrollbutton/scrollbutton.js
+      #- /lcarssdk/addons/levelBar/levelBar.js
+      #- /lcarssdk/templates/bracket/bracket.js
+      #- /lcarssdk/templates/dialog/dialog.js
+      #- /lcarssdk/templates/framing/framing.js
+      #- /lcarssdk/templates/button/button.js
+      - /npm/packages/color-tween/dist/color-tween.min.js
   stylesheets:
     default:
       - url: /vendor/jquery-ui.css
@@ -162,6 +168,8 @@ defs: # Storage for custom structures here
           - 'cs!ok-docs/client-modules/page'
           #- 'cs!sf-v0/tilda'
         - sitefile-apps: 'cs!htd-v0/page-app.coffee'
+        - viewport: 'width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes'
+
       stylesheets: []
       #$ref: '#/defs/default/stylesheets'
       scripts: []

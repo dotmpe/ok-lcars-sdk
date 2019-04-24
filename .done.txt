@@ -1,0 +1,1 @@
+x (A) 2018-12-11 2019-04-24 11: Fix simple top/bottom pillbar (form 1) for pad/mobile. Removed scripts, problem was in some javascript which is not used, not needed for original LCARS SDK layouts. Disabled scripts for now.

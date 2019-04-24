@@ -5,12 +5,12 @@ Dev Docs
 
 Status
 ------
-- TODO-1: See how far HTML/CSS concept can be applied to okudagrams, before
+- `TODO-1 <doc/tasks/todo-1.rst>`__:
+  See how far HTML/CSS concept can be applied to okudagrams, before
   much of anything else. See `Form 2.1 (4) </base-form-4>`__.
 - TODO-7: minor progress at `app ok-docs </app/ok-docs/main>`__.
   Should get sitefile lib/code to fetch raw HTML and place into content panes.
 - TODO-8: only have `visual guide`_ now.
-
 
 Setup
 -----

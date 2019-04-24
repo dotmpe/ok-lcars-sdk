@@ -37,17 +37,17 @@ mixin lcarssdk-pillbar(color, title, size='medium', lcap={}, rcap={}, bar={})
   // mixin b/l lcarssdk-pillbar
 
   if !color
-    - color = "1-1"
+    - color = "cat-1-1"
 
   if !bar.class
-    - bar.class = "bg-cat-"+color
+    - bar.class = "bg-"+color
 
   if rcap != null
     if !rcap.class
-      - rcap.class = "bg-cat-"+color
+      - rcap.class = "bg-"+color
   if lcap != null
     if !lcap.class
-      - lcap.class = "bg-cat-"+color
+      - lcap.class = "bg-"+color
   if title
     if !title.class
       - title.class = "text-"+color
@@ -73,13 +73,12 @@ mixin lcarssdk-pillbar(color, title, size='medium', lcap={}, rcap={}, bar={})
 mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
 
   //- LCARS Monitor baseform1 with text body and leading/trailing pillbar
-
   // mixin b/l lcarssdk-base-form-1
 
   if !color
-    - color = "1-1"
+    - color = "cat-1-1"
 
-  .wrapper.sdk.dialog.typeA.flexv.column&attributes(attributes)
+  .wrapper.form-1-1.column.flexv.flexch&attributes(attributes)
 
     if header
       if !header.title
@@ -88,14 +87,14 @@ mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
         - header.lcap = {}
       if !header.rcap && header.rcap != null
         - header.rcap = {}
-      +lcarssdk-pillbar(color, header.title, size, header.lcap, header.rcap, header.bar)&attributes({class:'header'})
+      +lcarssdk-pillbar(color, header.title, size, header.lcap, header.rcap, header.bar)&attributes({class:'f11-1 header'})
 
-    .content.flexcv
-      .content
-        if block
-          block
-        else
-          p.no-data-placeholder&attributes({class:'bg-cat-'+color}) No Data
+    .f11-2.content.row.flexcv
+      if block
+        block
+      else
+        .flexcv
+          p.no-data-placeholder&attributes({class:'bg-'+color}) No Data
 
     if footer
       if !footer.title
@@ -104,7 +103,7 @@ mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
         - footer.lcap = {}
       if !footer.rcap && footer.rcap != null
         - footer.rcap = {}
-      +lcarssdk-pillbar(color, footer.title, size, footer.lcap, footer.rcap, footer.bar)&attributes({class:'footer'})
+      +lcarssdk-pillbar(color, footer.title, size, footer.lcap, footer.rcap, footer.bar)&attributes({class:'f11-3 footer'})
 
   // EOM b/l lcarssdk-base-form-1
 
@@ -115,13 +114,12 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
   // with broad vertical and thin horizontal frame
 
   if !color
-    - color = "1-1"
-
+    - color = "cat-1-1"
 
   .wrapper.column.flexv.flexch&attributes(attributes)
 
     // Body
-    .wrapper.main.flexh.flexcv
+    .wrapper.flexh.flexcv
 
       // Body Button Column
       .wrapper.column.flexv(style="width:200px")
@@ -138,7 +136,7 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
           .bar.bg-cat-1-3.flexch
 
         // Body Content
-        .wrapper.content.flexcv(style=" overflow:auto;")
+        .wrapper.content.flexcv
 
           //- +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
 
@@ -181,25 +179,25 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
 
 mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, title="Form 1.3")
 
-  //- The iconic double-elbow split-view LCARS layout
+  //- The iconic double-elbow split-view LCARS layout:
+  //- Two vertically stacked frames with the characteristic double okudagram
+  //- elbow. One vertical varying-width column bar, and two decorative horizontal
+  //- bars
+  .wrapper.form-1-3.column.flexv.flexch&attributes(attributes)
 
-  //- TODO: parameterize
-  
-  #main.form-3.wrapper.column.flexv.flexch&attributes(attributes)
-
-    // Header
-    .row.header.flexh
-      // Header Column
+    //- Header: the upper-section frame approx 1/4 or similar fraction
+    .f13-1.row.header.flexh(style="height:12%; min-height:13em")
+      //- Header Column
       .column.flexv(style="width:200px")
         .button.flexch.bg-cat-4-3(data-label="LCARS")
         .elbow.bottom-left.bg-cat-4-1.flexcv.default.horizontal
           .bar(style="width: 209px; right: -204px")
             .block
           
-      .wrapper.flexcv.flexv
+      .flexcv.flexv
         // Header Content
-        .wrapper.flexh.flexcv
-          .container.flexcv.flexh(style="width:300px; margin-left: 20px")
+        .flexh.flexcv
+          #ok-rndnum-scroll-folly.container.flexcv.flexh(style="width:300px; margin-left: 20px")
             .content.flexcv
               .text-1-1 678
               .text-1-2 987
@@ -219,57 +217,6 @@ mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, t
               .text-1-3 752713
               .text-1-2 2564234
               .text-1-1 454545
-            .content.flexcv
-              .text-5-1 178
-              .text-5-2 279
-              .text-5-3 380
-              .text-5-3 481
-              .text-5-3 480
-              .text-5-3 48
-              .text-5-3 4
-            .content.flexcv
-              .text-1-3 22783
-              .text-1-3 3278
-              .text-1-3 4279
-              .text-1-2 2980
-              .text-1-1 1281
-              .text-5-3 9871
-            .content.flexcv
-              .text-1-3 82783
-              .text-1-3 4279
-              .text-1-3 25980
-              .text-1-3 27281
-            .content.flexcv
-              .text-1-3 27278
-              .text-1-3 378279
-              .text-1-3 942380
-              .text-1-1 897281
-            .content.flexcv
-              .text-1-3 34534278
-              .text-1-3 2356279
-              .text-1-3 2325280
-              .text-1-3 6345252281
-            .content.flexcv
-              .text-1-3 278
-              .text-1-3 279
-              .text-1-2 280
-              .text-1-3 281
-              .text-0-0 123
-              .text-5-3 289
-            .content.flexcv
-              .text-2-2 178
-              .text-2-2 279
-              .text-2-3 380
-              .text-2-3 481
-              .text-2-3 480
-              .text-2-3 280
-            .content.flexcv
-              .text-1-2 516
-              .text-1-2 517
-              .text-1-2 518
-              .text-1-2 529
-              .text-1-3 530
-              .text-1-3 541
 
           .content.flexcv(style="width:300px")
             .title.text-1-1= title
@@ -278,38 +225,35 @@ mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, t
               .button.pill.bg-grey-4(data-label="198-2")
               .button.pill.bg-cat-1-2(data-label="11-47")
             
-        // Header Bar Row
+        // Header Bar Row: the cells right after the upper-section elbow
         .row.frame.flexh(style="padding-left: 204px")
           .bar.bg-cat-4-2
-          .bar.small.bg-grey-5(style="width:100%; max-width:200px")
+          .bar.small.bg-grey-5.flexch(style="width:100%; max-width:200px")
           .bar.bg-cat-4-3
           .bar.bg-grey-5.flexch
-        
-    // Body
-    .wrapper.main.flexh.flexcv
 
-      // Body Button Column
-      .wrapper.column.flexv(style="width:200px")
+    // Body: the lower-section frame around 3/4 or similar of the height
+    .f13-2.row.flexh.flexcv(style="overflow:hidden")
+      // Body Button Column: The lower-section elbow and cells beneath
+      .f13-2-1.wrapper.column.flexv(style="width:200px")
         .elbow.top-left.bg-grey-4.default.horizontal(data-label="36", align="right")
           .bar(style="width: 209px; right: -204px")
             .block
 
         .button.bg-cat-2-3(data-label="413", align="right")
-        .button.bg-grey-2.flexcv(data-Label="98-42712", align="right")
+        .button.bg-grey-2.flexcv(data-label="98-42712", align="right")
 
-      // Body Bar Row
-      .column.flexch.flexv
-        .row.frame.flexh(style="padding-left:209px")
+      .f13-2-2.wrapper.column.content.flexcv
+        // Body Bar Row: the cells right after the lower-section elbow
+        .row.frame(style="padding-left:204px")
           .bar.bg-cat-4-1
           .bar.small.bg-grey-5.flexch(style="width:100%; max-width:200px; margin-top:15px")
           .bar.bg-cat-4-1
           .bar.bg-grey-5.flexch
 
         // Body Content
-        .wrapper.content.flexcv(style=" overflow:auto;")
-
-          .container(style="margin-left: 30px; margin-top: 30px")
-
+        .f13-2-2-2.content(style="overflow-y:scroll; height:calc(100% - 1.5em);")
+          .wrapper(style="margin:1em 0 1em 1.5em;")
             if block
               block
               

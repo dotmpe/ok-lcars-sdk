@@ -13,15 +13,15 @@ define 'ok-docs-v0/main', [
 #  '/lcarssdk/templates/dialog/dialog.js'
 #  '/lcarssdk/templates/framing/framing.js'
 #  '/lcarssdk/templates/button/button.js'
-"css!/lcarssdk/css/lcarssdk.css"
-"css!/lcarssdk/addons/scrollbutton/scrollbutton.css"
-"css!/lcarssdk/addons/levelBar/levelBar.css"
-"css!/lcarssdk/templates/bracket/bracket.css"
-"css!/lcarssdk/templates/dialog/dialog.css"
-"css!/lcarssdk/templates/framing/framing.css"
-"css!/lcarssdk/templates/button/button.css"
-"css!/lcarssdk/themes/theme_ussNotAffiliated.css"
-"css!/base.css"
+  "css!/lcarssdk/css/lcarssdk.css"
+  "css!/lcarssdk/addons/scrollbutton/scrollbutton.css"
+  "css!/lcarssdk/addons/levelBar/levelBar.css"
+  "css!/lcarssdk/templates/bracket/bracket.css"
+  "css!/lcarssdk/templates/dialog/dialog.css"
+  "css!/lcarssdk/templates/framing/framing.css"
+  "css!/lcarssdk/templates/button/button.css"
+  "css!/lcarssdk/themes/theme_ussNotAffiliated.css"
+  "css!/base.css"
 
 ], ( App, app, ClientModules ) ->
 

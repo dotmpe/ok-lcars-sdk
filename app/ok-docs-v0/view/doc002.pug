@@ -1,0 +1,30 @@
+extends ../../sdk-demo/view/base
+include ../../sdk-demo/view/lorem-ipsum
+include ../../sdk-demo/view/base/lcars
+
+
+block head
+  +std-html-client("OK! v0.002: XXX")
+
+block prologue
+block header
+block main
+  #terminal-002.wrapper.row.flexv
+    .flexv.flexch
+
+      -
+         header = { }
+         header.title = { text:"LCARS OK-002", class:"text-grey-1", align:"right" }
+         header.lcap = { class:"bg-grey-4" }
+         header.bar = { class:"bg-grey-3" }
+
+         footer = { }
+         footer.title = { text:"2019-04-19v0.0.1:11:432a3bb", class:"text-grey-5", align:"right" }
+
+      +lcarssdk-base-form-1('grey-4', 'small', header, footer)
+        .column.flexcv
+          +lcarssdk-base-form-1('grey-4', 'small', header, footer)
+            +lcarssdk-base-form-1('grey-4', 'small', header, footer)
+            +lorem-ipsum-paragraph(2)&attributes({class:'text-1-1 capital'})
+          +lorem-ipsum-paragraph(2)&attributes({class:'text-1-1 capital'})
+

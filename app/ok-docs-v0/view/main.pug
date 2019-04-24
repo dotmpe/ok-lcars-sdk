@@ -13,15 +13,67 @@ block main
 
     if main
       // We have a client instance
-
       +lcarssdk-base-form-3(null, null, null, null, null, null, "DOCS 0.0")
-        p.text-1-1.ok-lcars-doc Loading...
 
-        p.text-1-1 TODO: init rjs client
+        #hnav.placeholder.text-1-1
+          - 
+            header = { title:{ text: "LCARS OFFLINE", align: "right" }, lcap: {} }
+            header.title.class = "text-grey-4"
+            header.lcap.class = "bg-grey-6"
+            footer = { title:{ text: "0000", align: "right" }, bar: {}, rcap: {}, lcap: {} }
+            footer.title.class = "text-grey-3"
+            footer.lcap.class = "bg-grey-6"
 
-        pre.text-1-3= JSON.stringify(main, null, 2)
+          +lcarssdk-base-form-1('grey-5', 'medium', header, footer)
 
-        p.preformatted.text-1-3= JSON.stringify(main, null, 2)
+            //.flexh
+            p.text-1-1.ok-lcars-doc Loading...
+
+            .flexcv.flexh
+              p.text-1-1 TODO: init rjs client
+
+              pre.text-1-3= JSON.stringify(main, null, 2)
+
+              p.preformatted.text-1-3= JSON.stringify(main, null, 2)
+
+            .flexcv
+              p.text-1-1 Colors mapped from tango palette:
+              .wrapper.flexh.button-wrap
+                a.pill.bg-cat-0-0.button(href=main['main'], data-label="Main script")
+                a.button.bg-grey-6.pill(data-label="6")
+                a.button.bg-grey-5.pill(data-label="5")
+                a.button.bg-grey-4.pill(data-label="4")
+                a.button.bg-grey-3.pill(data-label="3")
+                a.button.bg-grey-2.pill(data-label="2")
+                a.button.bg-grey-1.pill(data-label="1")
+              .wrapper.flexh.button-wrap
+                a.button.bg-cat-1-1.pill(data-label="1-1")
+                a.button.bg-cat-2-1.pill(data-label="2-1")
+                a.button.bg-cat-3-1.pill(data-label="3-1")
+                a.button.bg-cat-4-1.pill(data-label="4-1")
+                a.button.bg-cat-5-1.pill(data-label="5-1")
+                a.button.bg-cat-6-1.pill(data-label="6-1")
+                a.button.bg-red-3.pill(data-label="RED 3")
+              .wrapper.flexh.button-wrap
+                a.button.bg-cat-1-2.pill(data-label="1-2")
+                a.button.bg-cat-2-2.pill(data-label="2-2")
+                a.button.bg-cat-3-2.pill(data-label="3-2")
+                a.button.bg-cat-4-2.pill(data-label="4-2")
+                a.button.bg-cat-5-2.pill(data-label="5-2")
+                a.button.bg-cat-6-2.pill(data-label="6-2")
+                a.button.bg-red-2.pill(data-label="RED 2")
+              .wrapper.flexh.button-wrap
+                a.button.bg-cat-1-3.pill(data-label="1-3")
+                a.button.bg-cat-2-3.pill(data-label="2-3")
+                a.button.bg-cat-3-3.pill(data-label="3-3")
+                a.button.bg-cat-4-3.pill(data-label="4-3")
+                a.button.bg-cat-5-3.pill(data-label="5-3")
+                a.button.bg-cat-6-3.pill(data-label="6-3")
+                a.button.bg-red-1.pill(data-label="RED 1")
+              //.wrapper.flexh.button-wrap
+              //  a.button.bg-cat-1-1.pill(data-label="1-1")
+              //  a.button.bg-cat-1-1-10.pill(data-label="1-1-10")
+              //  a.button.bg-cat-1-1-20.pill(data-label="1-1-20")
 
     else
 
@@ -29,7 +81,7 @@ block main
         p.text-1-1 Hardcoded docs
         p.text-1-2
           | Need to further modularize these baseform and parameterize. In PUG
-          | terms that | means mixin definitions and calls (positional arguments,
+          | terms that means mixin definitions and calls (positional arguments,
           | one content-block), or build and extending base-templates (mutiple
           | blocks).
           | Ofcourse some metadata driven approach would be the ultimate prize. 
@@ -41,7 +93,7 @@ block main
           | main content. And a minimal way to drive the two elbows; ie. two
           | sequences of label/link/color and some other attributes.
 
-        a.button.left.right.bg-cat-4-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
+        a.button.pill.bg-cat-4-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
 
 block document
 block footer

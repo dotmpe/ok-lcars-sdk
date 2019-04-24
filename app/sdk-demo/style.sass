@@ -1,6 +1,6 @@
 
 body
-  padding: 15px
+  padding: 15pt
 
 body > .wrapper.row
   height: 100%
@@ -26,8 +26,35 @@ p
     margin-bottom: 5px
     margin-left: 5px
 
-#main.form-3 > .header
-  height: 220px
+.form-1-1 >
+  .content
+    margin: 11px auto 6px
+    padding: 0 35px
+
+#terminal-001
+
+#terminal-002
+  .wrapper.form-1-1
+    //border: 3px solid purple !important
+
+#terminal-003 >
+  .column-1,
+  .column-2,
+  .column > .wrapper
+    height: 100%
+
+    > .content.flexcv
+      height: 100%;
+      overflow-y: scroll;
+
+  .column-1
+    width: 78%
+  .column-2
+    width: 22%
+
+
+.form-1-3 > .header
+  //height: 220px
 
   .title
     text-align: right
@@ -41,7 +68,7 @@ p
   pre
     font-size: 24px
 
-#main.form-4
+.form-4
 
   > .content
     height: 100%
@@ -114,25 +141,33 @@ p
 
 /* Some helpers for FORM-1
 
-#columnA > .column.dialog.wrapper,
-#columnB > .column.dialog.wrapper
-  width: 100%
-  height: 100%
+#columnA,
+#columnB
+  overflow-y: scroll
+
+  > .wrapper
+    height: calc( 100vh - 30px )
 
 #columnA > .wrapper > .content.flexcv,
 #columnB > .wrapper > .content.flexcv
-  overflow: hidden
-
-  height: 100%
+  overflow-y: scroll
 
 #columnA > .wrapper > .content.flexcv > .content,
 #columnB > .wrapper > .content.flexcv > .content
-  overflow: auto
-
-  width: 100%
-  height: 100%
-
 
 
 @import ./theme.sass
 
+
+.content > .wrapper > #hnav
+  .title
+    color: $tango-butter-1
+
+  a.reference
+    color: $tango-plum-1
+    display: inline
+
+.content > .wrapper > #hnav
+  p cite
+    display: inline
+    margin: auto 7px;

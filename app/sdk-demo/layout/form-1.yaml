@@ -1,4 +1,5 @@
 # All default values
+# TODO-12: metadata for terminal layout templates
 
 defaults:
 - &color

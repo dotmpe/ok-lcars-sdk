@@ -1,0 +1,97 @@
+extends ../../sdk-demo/view/base
+include ../../sdk-demo/view/lorem-ipsum
+include ../../sdk-demo/view/base/lcars
+
+
+block head
+  +std-html-client("OK! v0.001: DOCS INTRO")
+
+block prologue
+block header
+block main
+  .wrapper.row.flexv
+    .row.flexcv.flexch
+      -
+         header = { }
+         header.title = { text:"LCARS OK-001", class:"text-grey-1", align:"right" }
+         header.lcap = { class:"bg-grey-4" }
+         header.bar = { class:"bg-grey-3" }
+
+         footer = { }
+         footer.title = { text:"2019-04-19v0.0.1:11:432a3bb", class:"text-grey-5", align:"right" }
+
+      +lcarssdk-base-form-1('grey-4', 'small', header, footer)
+        +lcarssdk-base-form-3(null, null, null, null, null, null, "OK DOCS INTRO")
+          p.text-2-2 Incoming message
+          p.text-2-3 From: Berend
+          p.text-2-3 To: Terminal OK-001
+          p.text-2-2 Message begins
+          p.text-1-1 Welcome!
+          p.text-2-2 Message ends
+
+          +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
+          h3.text-2-3 Exercitation
+          +lorem-ipsum-paragraph(3)&attributes({class:'text-1-1 capital'})
+          +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
+          h2.text-2-3 Laboris nisi ut Aliquip
+          +lorem-ipsum-paragraph(2)&attributes({class:'text-1-1 capital'})
+
+        //- 
+        //  header = { title:{ text: "LCARS OFFLINE", align: "right" }, lcap: {} }
+        //  header.title.class = "text-grey-4"
+        //  header.lcap.class = "bg-grey-6"
+        //  footer = { title:{ text: "0000", align: "right" }, bar: {}, rcap: {}, lcap: {} }
+        //  footer.title.class = "text-grey-3"
+        //  footer.lcap.class = "bg-grey-6"
+        //
+        //+lcarssdk-base-form-1('grey-5', 'medium', header, footer)
+        //
+        //  //.flexh
+        //  p.text-1-1.ok-lcars-doc Loading...
+        //
+        //  .flexcv.flexh
+        //    p.text-1-1 TODO: init rjs client
+        //
+        //  .flexcv
+        //    p.text-1-1 Colors mapped from tango palette:
+        //    .wrapper.flexh.button-wrap
+        //      a.button.bg-grey-6.pill(data-label="6")
+        //      a.button.bg-grey-5.pill(data-label="5")
+        //      a.button.bg-grey-4.pill(data-label="4")
+        //      a.button.bg-grey-3.pill(data-label="3")
+        //      a.button.bg-grey-2.pill(data-label="2")
+        //      a.button.bg-grey-1.pill(data-label="1")
+        //    .wrapper.flexh.button-wrap
+        //      a.button.bg-cat-1-1.pill(data-label="1-1")
+        //      a.button.bg-cat-2-1.pill(data-label="2-1")
+        //      a.button.bg-cat-3-1.pill(data-label="3-1")
+        //      a.button.bg-cat-4-1.pill(data-label="4-1")
+        //      a.button.bg-cat-5-1.pill(data-label="5-1")
+        //      a.button.bg-cat-6-1.pill(data-label="6-1")
+        //      a.button.bg-red-3.pill(data-label="RED 3")
+        //    .wrapper.flexh.button-wrap
+        //      a.button.bg-cat-1-2.pill(data-label="1-2")
+        //      a.button.bg-cat-2-2.pill(data-label="2-2")
+        //      a.button.bg-cat-3-2.pill(data-label="3-2")
+        //      a.button.bg-cat-4-2.pill(data-label="4-2")
+        //      a.button.bg-cat-5-2.pill(data-label="5-2")
+        //      a.button.bg-cat-6-2.pill(data-label="6-2")
+        //      a.button.bg-red-2.pill(data-label="RED 2")
+        //    .wrapper.flexh.button-wrap
+        //      a.button.bg-cat-1-3.pill(data-label="1-3")
+        //      a.button.bg-cat-2-3.pill(data-label="2-3")
+        //      a.button.bg-cat-3-3.pill(data-label="3-3")
+        //      a.button.bg-cat-4-3.pill(data-label="4-3")
+        //      a.button.bg-cat-5-3.pill(data-label="5-3")
+        //      a.button.bg-cat-6-3.pill(data-label="6-3")
+        //      a.button.bg-red-1.pill(data-label="RED 1")
+        //    //.wrapper.flexh.button-wrap
+        //    //  a.button.bg-cat-1-1.pill(data-label="1-1")
+        //    //  a.button.bg-cat-1-1-10.pill(data-label="1-1-10")
+        //    //  a.button.bg-cat-1-1-20.pill(data-label="1-1-20")
+
+block document
+block footer
+
+block epilogue
+
