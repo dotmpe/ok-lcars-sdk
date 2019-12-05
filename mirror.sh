@@ -11,4 +11,4 @@ port=4507
 httrack http://$hostname:$port -O mirror "+*.$hostname/*"
 
 rsync -avzui --delete \
-  ./mirror/${hostname}_$port/ ../bvberkum.github.io/ok-lcars-sdk
+  ./mirror/${hostname}_$port/ ../dotmpe.github.io/ok-lcars-sdk

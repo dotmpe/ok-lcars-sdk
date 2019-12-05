@@ -35,5 +35,5 @@ Directories
   lib            Third party
   └── lcars-sdk  Original webview LCARS SDK
 
-.. __: https://github.com/bvberkum/script-mpe/blob/dev/package.rst
-.. __: https://github.com/bvberkum/node-sitefile
+.. __: https://github.com/dotmpe/script-mpe/blob/dev/package.rst
+.. __: https://github.com/dotmpe/node-sitefile

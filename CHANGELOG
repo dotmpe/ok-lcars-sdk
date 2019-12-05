@@ -10,4 +10,4 @@
 0.0.1 [2018-08-09]
   - Initial experiment with four layout forms based on original SDK.
   - Three (can) work fairly well, one (multiple panes/adapter elbows) needs work.
-  - Making TODO and created static copy at <http://bvberkum.github.io/ok-lcars-sdk>
+  - Making TODO and created static copy at <http://dotmpe.github.io/ok-lcars-sdk>

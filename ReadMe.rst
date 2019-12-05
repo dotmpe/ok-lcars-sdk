@@ -32,7 +32,7 @@ See Also/More
 - `Dev notes`__
 
 .. __: http://www.lcarssdk.org/
-.. __: https://bvberkum.github.io/ok-lcars-sdk
+.. __: https://dotmpe.github.io/ok-lcars-sdk
 .. __: doc/why.rst
 .. __: http://www.aricwithana.me/lcars-sdk
 .. __: https://github.com/Aricwithana/LCARS-SDK/wiki
@@ -41,13 +41,13 @@ See Also/More
 
 .. |badges| replace:: |badge-ci| |badge-code-size| |badge-repo-size| |badge-activity|
 
-.. |badge-ci| image:: http://img.shields.io/travis/bvberkum/ok-lcars-sdk.svg
-   :target: https://travis-ci.org/bvberkum/ok-lcars-sdk
+.. |badge-ci| image:: http://img.shields.io/travis/dotmpe/ok-lcars-sdk.svg
+   :target: https://travis-ci.org/dotmpe/ok-lcars-sdk
    :alt: CI build status
-.. |badge-code-size| image:: https://img.shields.io/github/languages/code-size/bvberkum/ok-lcars-sdk.svg
+.. |badge-code-size| image:: https://img.shields.io/github/languages/code-size/dotmpe/ok-lcars-sdk.svg
    :alt: code size
-.. |badge-repo-size| image:: https://img.shields.io/github/repo-size/bvberkum/ok-lcars-sdk.svg
+.. |badge-repo-size| image:: https://img.shields.io/github/repo-size/dotmpe/ok-lcars-sdk.svg
    :alt: repo size
-.. |badge-activity| image:: https://img.shields.io/github/commit-activity/y/bvberkum/ok-lcars-sdk.svg
+.. |badge-activity| image:: https://img.shields.io/github/commit-activity/y/dotmpe/ok-lcars-sdk.svg
    :alt: commits per year
 

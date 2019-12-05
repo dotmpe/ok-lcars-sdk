@@ -1,4 +1,4 @@
 [submodule "lib/lcars-sdk"]
 	path = lib/lcars-sdk
-  # FIXME url = git@github.com:bvberkum/LCARS-SDK.git
-	url = http://github.com/bvberkum/LCARS-SDK.git
+  # FIXME url = git@github.com:dotmpe/LCARS-SDK.git
+	url = http://github.com/dotmpe/LCARS-SDK.git

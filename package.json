@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bvberkum/ok-lcars-sdk.git"
+    "url": "git+https://github.com/dotmpe/ok-lcars-sdk.git"
   },
   "keywords": [
     "HTML",
@@ -19,9 +19,9 @@
   "author": "B. van Berkum <dev@dotmpe.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bvberkum/ok-lcars-sdk/issues"
+    "url": "https://github.com/dotmpe/ok-lcars-sdk/issues"
   },
-  "homepage": "https://github.com/bvberkum/ok-lcars-sdk#readme",
+  "homepage": "https://github.com/dotmpe/ok-lcars-sdk#readme",
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-json-validate": "^0.1.1",
