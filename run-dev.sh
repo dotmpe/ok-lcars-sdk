@@ -7,13 +7,14 @@ set -e
 #  --volume $script_dir/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh:ro \
 
 sf_version=0.0.7-dev
+sf_version=0.0.7-test
 
 # r/o so don't touch git or npm
 src_update=0
 
-site_src=github.com/bvberkum/ok-lcars-sdk
+site_src=github.com/dotmpe/ok-lcars-sdk
 site_repo=git@$site_src.git
-site_ver=master
+site_ver=r0.0
 
 gh_keyfile=~/.ssh/id_rsa
 kbn=id_rsa
@@ -38,6 +39,8 @@ docker run \
   --volume $(realpath $gh_keyfile):/home/treebox/.ssh/$kbn \
   --volume $(realpath ./srv/known_hosts):/home/treebox/.ssh/known_hosts \
   --volume $(realpath $(pwd)):/src/$site_src:ro \
-  bvberkum/node-sitefile:$sf_version \
+  dotmpe/node-sitefile:$sf_version \
   \
-  "$site_src" "$site_repo" "$site_ver"
+  "$site_src"
+
+# "$site_repo" "$site_ver"

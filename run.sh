@@ -8,7 +8,7 @@ set -e
 
 sf_version=0.0.7-dev
 
-site_src=github.com/bvberkum/ok-lcars-sdk
+site_src=github.com/dotmpe/ok-lcars-sdk
 #site_repo=http://$site_src
 site_ver=master
 
@@ -25,7 +25,7 @@ docker run \
   -h $hostname -e SITEFILE_HOST=$hostname \
   -p 7010:7010 -e SITEFILE_PORT=7010 \
   $volumes \
-  bvberkum/node-sitefile:$sf_version \
+  dotmpe/node-sitefile:$sf_version \
   \
   "$site_src" "$site_repo" "$site_ver"
 set +x
