@@ -23,7 +23,7 @@ hostname=$(hostname)
 mkdir -p srv
 ssh-keyscan github.com > srv/known_hosts
 
-. lib.sh
+. ./lib.sh
 
 sf_sh_volumes
 #volumes="$volumes --volume $(pwd -P)/srv/src:/src"

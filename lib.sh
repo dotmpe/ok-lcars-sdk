@@ -4,10 +4,10 @@
 sf_sh_volumes()
 {
   volumes=
-  test -e /etc/localtime &&
+  test ! -e /etc/localtime ||
     volumes=" --volume $(realpath /etc/localtime):/etc/localtime:ro"
-  test -e /opt/node-sitefile/.git &&
-    volumes=" --volume /opt/node-sitefile/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh"
+  test ! -e /srv/project-local/node-sitefile/.git ||
+    volumes=" --volume /srv/project-local/node-sitefile/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh"
 }
 
 wait_for_container()
