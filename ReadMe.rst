@@ -31,7 +31,7 @@ See Also/More
   as the `LCARS SDK source`__.
 - `Dev notes`__
 
-.. __: http://www.lcarssdk.org/
+.. __: http://web.archive.org/web/20181120182819/http://lcarssdk.org/
 .. __: https://dotmpe.github.io/ok-lcars-sdk
 .. __: doc/why.rst
 .. __: http://www.aricwithana.me/lcars-sdk
