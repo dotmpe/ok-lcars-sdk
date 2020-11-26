@@ -5,4 +5,9 @@
 .. |--| unicode:: U+02013 .. en dash
    :trim:
 
+.. _`release notes`: CHANGELOG
+.. _CHANGELOG: CHANGELOG
+.. _`why?`: doc/why.rst
+.. _`dev docs`: doc/dev/main.rst
+
 .. _visual guide: /interfaces/visual-guide/index.html

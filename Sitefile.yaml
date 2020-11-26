@@ -1,6 +1,11 @@
 sitefile: 0.0.7-dev
+date: 2020-09-25
+datetime: 2020-09-25T02:12:40
+version: v0.0.1-20-g4faf200
+dateversion: 2020-09-25:v0.0.1:20:4faf200
 port: 4507
-config: {}
+config:
+  body-class: ok-diagram
 downstream: [] # Grant sitefile derefs to these remote sites
 upstream: [] # Grant CORS access from these hosts
 paths: # Additional router include paths
@@ -37,6 +42,8 @@ routes: # Simple router instances
 
   # extra styling for LCARS SDK okudagram views
   base.css: sass:app/sdk-demo/style.sass
+  lcarssdk-fonts.css: static:app/sdk-demo/lcarssdk-fonts.css
+  fonts: static:lib/lcars-sdk/lcarssdk/fonts
 
   # correct case for one lib
   lcarssdk/addons/levelbar/levelbar.css: redir:lcarssdk/addons/levelBar/levelBar.css
@@ -75,16 +82,18 @@ routes: # Simple router instances
 
   # TODO-12: develop basic terminal forms into layouts templates merged with metadata
   ok-0-a-1: pug:app/sdk-demo/layout/form-1.pug
-  ok-0-a-2: pug:app/sdk-demo/layout/form-2.pug
-  ok-0-a-3: pug:app/sdk-demo/layout/form-3.pug
 
   #ok-0-a-1.yaml: @app/sdk-demo/layout/form-1.yaml#/forms/form-0-a-1-1
-  #
   #ok-0-a-1.json: :app/sdk-demo/layout/form-1.yaml
-  #ok-0-a-1.json: static:var/sdk-demo/layout-form-1.json
+  ok-0-a-1.json: static:var/sdk-demo/layout-form-1.json
 
 options:
-  local: {} # FIXME: Custom settings per URL route
+  local:
+    ok-0-a-1:
+      route:
+        import-query: ['merge.formDataFile']
+      insert-local: ['require']
+  # FIXME: Custom settings per URL route
   #  'todo':
   #     pug:
   #       merge:
@@ -151,13 +160,13 @@ defs: # Storage for custom structures here
       - url: /vendor/bootstrap-table.css
     lcarssdk:
       - url: "/lcarssdk/css/lcarssdk.css"
-      - url: "/lcarssdk/addons/scrollbutton/scrollbutton.css"
-      - url: "/lcarssdk/addons/levelBar/levelBar.css"
-      - url: "/lcarssdk/templates/bracket/bracket.css"
-      - url: "/lcarssdk/templates/dialog/dialog.css"
-      - url: "/lcarssdk/templates/framing/framing.css"
-      - url: "/lcarssdk/templates/button/button.css"
-      - url: "/lcarssdk/themes/theme_ussNotAffiliated.css"
+      #- url: "/lcarssdk/addons/scrollbutton/scrollbutton.css"
+      #- url: "/lcarssdk/addons/levelBar/levelBar.css"
+      #- url: "/lcarssdk/templates/bracket/bracket.css"
+      #- url: "/lcarssdk/templates/dialog/dialog.css"
+      #- url: "/lcarssdk/templates/framing/framing.css"
+      #- url: "/lcarssdk/templates/button/button.css"
+      #- url: "/lcarssdk/themes/theme_ussNotAffiliated.css"
       - url: "/base.css"
   app:
     base:

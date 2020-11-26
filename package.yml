@@ -3,7 +3,7 @@
 - type: application/vnd.org.wtwta.project
   main: ok-lcars-sdk
   id: ok-lcars-sdk
-  version: 0.0.2 # ok-lcars-sdk
+  version: 0.0.3-dev # ok-lcars-sdk
   vendor: dotmpe
   distribution: public
   license: MIT
@@ -24,6 +24,7 @@
     init:
     - git submodule update --init
     - htd package update
+    - htd package remotes-reset
     - vc regenerate
     - V_DOC_LIST=package-versioned.list verbosity=7 git-versioning check
     check:

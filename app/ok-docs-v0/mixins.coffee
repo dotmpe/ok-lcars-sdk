@@ -11,7 +11,7 @@ define 'ok-docs-v0/mixins', [
   #{ DocutilsPage },
   #{ DocumentLastModified },
   { HNavDocument },
-  { OkudagramFollies }
+  { OkudagramFollies_1 }
 ) ->
 
   all: ( klass ) ->
@@ -19,4 +19,4 @@ define 'ok-docs-v0/mixins', [
     #klass.include DocumentLastModified
     #klass.include DocumentBreadcrumb
     klass.include HNavDocument
-    klass.include OkudagramFollies
+    klass.include OkudagramFollies_1

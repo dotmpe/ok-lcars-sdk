@@ -27,7 +27,7 @@ define 'ok-docs-v0/client-modules/page', [
     okdocs: ->
       # Clear loading indicator label
       $('.ok-lcars-doc').text('')
-      @init_hnav_router()
+      @init_router()
       console.log 'OkDocsPage ready'
 
 

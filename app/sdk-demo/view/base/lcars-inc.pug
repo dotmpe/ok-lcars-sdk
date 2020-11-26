@@ -1,4 +1,8 @@
 
+mixin lcarssdk-no-data(color, msg='No Data')
+  .flexcv
+    p.no-data-placeholder&attributes({class:'bg-'+color})= msg
+
 mixin lcarssdk-hbar(bar)
 
   // mixin b/l lcarssdk-hbar
@@ -78,6 +82,11 @@ mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
   if !color
     - color = "cat-1-1"
 
+  if 'class' in attributes
+    - attributes['class'] += ' '+size
+  else
+    - attributes['class'] = size
+
   .wrapper.form-1-1.column.flexv.flexch&attributes(attributes)
 
     if header
@@ -89,12 +98,11 @@ mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
         - header.rcap = {}
       +lcarssdk-pillbar(color, header.title, size, header.lcap, header.rcap, header.bar)&attributes({class:'f11-1 header'})
 
-    .f11-2.content.row.flexcv
+    .f11-2.content.row.flexcv(style="overflow-y:scroll;")
       if block
         block
       else
-        .flexcv
-          p.no-data-placeholder&attributes({class:'bg-'+color}) No Data
+        +lcarssdk-no-data(color)
 
     if footer
       if !footer.title
@@ -110,6 +118,8 @@ mixin lcarssdk-base-form-1(color, size='medium', header=null, footer=null)
 
 mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
 
+  - vbarw = 150.6
+
   // A simple contentpane bordered by a LCARS frame of bars and elbows, 
   // with broad vertical and thin horizontal frame
 
@@ -122,7 +132,7 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
     .wrapper.flexh.flexcv
 
       // Body Button Column
-      .wrapper.column.flexv(style="width:200px")
+      .wrapper.column.flexv(style=`width:${vbarw}pt`)
         .elbow.top-left.bg-cat-1-1.default.horizontal(data-label="36", align="right")
           .bar(style="width: 209px; right: -204px")
             .block
@@ -138,9 +148,12 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
         // Body Content
         .wrapper.content.flexcv
 
-          //- +lorem-ipsum-paragraph(1)&attributes({class:'text-1-1 capital'})
+          if block
+            block
+          else
+            +lcarssdk-no-data(color)
 
-      .wrapper.column.flexv(style="width:200px")
+      .wrapper.column.flexv(style=`width:${vbarw}pt`)
         .elbow.top-right.bg-cat-1-2.default.horizontal(data-label="36", align="right")
           .bar(style="width: 209px; left: -204px")
             .block
@@ -149,7 +162,7 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
         .button.bg-cat-2-1.flexcv(data-Label="98 12312", align="left")
 
     .row.header.flexh
-      .column.flexv(style="width:200px")
+      .column.flexv(style=`width:${vbarw}pt`)
         .button.bg-cat-5-3(data-label="LCARS")
         .elbow.bottom-left.bg-cat-5-3.flexcv.large.horizontal
           .bar.large(style="width: 209px; right: -204px")
@@ -168,7 +181,7 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
           .bar.large.bg-cat-2-1.flexch
           .bar.large.bg-cat-2-3
         
-      .column.flexv(style="width:200px")
+      .column.flexv(style=`width:${vbarw}pt`)
         .button.bg-cat-1-3(data-label="LCARS")
         .elbow.bottom-right.bg-cat-4-1.flexcv.large.horizontal
           .bar(style="width: 209px; left: -204px")
@@ -179,16 +192,22 @@ mixin lcarssdk-base-form-2(color, size='medium', lbar, rbar, tbar, bbar)
 
 mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, title="Form 1.3")
 
-  //- The iconic double-elbow split-view LCARS layout:
-  //- Two vertically stacked frames with the characteristic double okudagram
-  //- elbow. One vertical varying-width column bar, and two decorative horizontal
-  //- bars
-  .wrapper.form-1-3.column.flexv.flexch&attributes(attributes)
+  - vbarw = 150.6 // 200px
+  - arm = vbarw
+  - headerlw = 225.9 // 300px
+  - headerrw = headerlw
 
-    //- Header: the upper-section frame approx 1/4 or similar fraction
-    .f13-1.row.header.flexh(style="height:12%; min-height:13em")
-      //- Header Column
-      .column.flexv(style="width:200px")
+  // The iconic double-elbow split-view LCARS layout:
+  // Two vertically stacked frames with the characteristic double okudagram
+  // elbow. One vertical varying-width column bar, and two decorative horizontal
+  // bars
+  .wrapper.form-1-3.column.flexv.flexch&attributes(attributes)
+    // TODO: make split percentual
+
+    // Header: the upper-section frame is the smaller part
+    .f13-1.row.header.flexh
+      // Header Column
+      .column.flexv(style=`width:${vbarw}pt`)
         .button.flexch.bg-cat-4-3(data-label="LCARS")
         .elbow.bottom-left.bg-cat-4-1.flexcv.default.horizontal
           .bar(style="width: 209px; right: -204px")
@@ -197,28 +216,9 @@ mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, t
       .flexcv.flexv
         // Header Content
         .flexh.flexcv
-          #ok-rndnum-scroll-folly.container.flexcv.flexh(style="width:300px; margin-left: 20px")
-            .content.flexcv
-              .text-1-1 678
-              .text-1-2 987
-              .text-1-1 162
-              .text-1-2 987
-              .text-1-3 270
-              .text-0-0 123
-              .text-5-3 491
-            .content.flexcv
-              .text-1-3 272287
-              .text-1-3 2733476
-              .text-1-3 256743
-              .text-1-3 275349
-              .text-1-3 223476
-              .text-1-3 712351
-              .text-1-3 152771
-              .text-1-3 752713
-              .text-1-2 2564234
-              .text-1-1 454545
+          #ok-rndnum-scroll-folly.container.flexcv.flexh(style=`width:${headerlw}pt; margin-left: 1.5em`)
 
-          .content.flexcv(style="width:300px")
+          .content.flexcv(style=`width:${headerrw}pt`)
             .title.text-1-1= title
 
             .wrapper.flexh.button-wrap
@@ -228,14 +228,22 @@ mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, t
         // Header Bar Row: the cells right after the upper-section elbow
         .row.frame.flexh(style="padding-left: 204px")
           .bar.bg-cat-4-2
-          .bar.small.bg-grey-5.flexch(style="width:100%; max-width:200px")
+          .bar.alt.bg-grey-5.flexch(style=`width:100%; max-width:${vbarw}pt`)
           .bar.bg-cat-4-3
           .bar.bg-grey-5.flexch
 
+    .f13-2.row.split
+      .block.bg-cat-6-1(style=`min-height: 19pt; top: -7pt; left: calc( 209px + ${vbarw}pt + 25.8pt )`)
+      .block.bg-grey-6(style=`min-height: 19pt; top: -7pt; left: calc( 209px + ${vbarw}pt + 25.8pt )`)
+      .block.bg-cat-2-3(style=`min-height: 19pt; top: -7pt; left: calc( 209px + ${vbarw}pt + 25.8pt )`)
+      .block.bg-cat-6-3(style=`min-height: 19pt; top: -7pt; left: calc( 209px + ${vbarw}pt + 25.8pt )`)
+      .block.bg-grey-3(style=`min-height: 19pt; top: -7pt; left: calc( 209px + ${vbarw}pt + 25.8pt )`)
+      .block.bg-cat-5-1(style=`min-height: 19pt; top: -7pt; left: calc( 209px + ${vbarw}pt + 25.8pt )`)
+
     // Body: the lower-section frame around 3/4 or similar of the height
-    .f13-2.row.flexh.flexcv(style="overflow:hidden")
+    .f13-2.row.body.flexh.flexcv
       // Body Button Column: The lower-section elbow and cells beneath
-      .f13-2-1.wrapper.column.flexv(style="width:200px")
+      .f13-2-1.wrapper.column.flexv(style=`width:${vbarw}pt`)
         .elbow.top-left.bg-grey-4.default.horizontal(data-label="36", align="right")
           .bar(style="width: 209px; right: -204px")
             .block
@@ -247,16 +255,15 @@ mixin lcarssdk-base-form-3(color='1-1', size='medium', lbar, rbar, tbar, bbar, t
         // Body Bar Row: the cells right after the lower-section elbow
         .row.frame(style="padding-left:204px")
           .bar.bg-cat-4-1
-          .bar.small.bg-grey-5.flexch(style="width:100%; max-width:200px; margin-top:15px")
+          .bar.alt.bg-grey-5.flexch(style=`width:100%; max-width:${vbarw}pt`)
           .bar.bg-cat-4-1
           .bar.bg-grey-5.flexch
 
         // Body Content
-        .f13-2-2-2.content(style="overflow-y:scroll; height:calc(100% - 1.5em);")
-          .wrapper(style="margin:1em 0 1em 1.5em;")
+        .f13-2-2-2.content
+          .wrapper
             if block
               block
-              
             else
               h3.text.text-5-3 terminal
               p.text-2-3.text

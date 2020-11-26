@@ -1,8 +1,12 @@
 (0.0.3-dev)
+  - Almost working "scrolling numbers"-animation folly.
+  - Slowly moving LCARS SDK CSS to OK Sass style.
+  - Now reading struct data from JSON into Pug template,
+    so getting ready to start docs and OK style-reference.
 
-0.0.2
+0.0.2 [2019-04-24]
   - Added some metadata setups, tasks for further thought.
-	- Tested some animations.
+	- Experimented with some animations.
 	- Updates on various forms, testing layouts with some new terminals (while not
 	  metadata-merge setup is working -- may build into doc/tutorial browser).
 	- Using flexbox model. Tested scrolling on ios as well.
