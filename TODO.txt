@@ -5,8 +5,9 @@
 (C) 2018-09-29 9: Styling should be more confined to specific elements, not change page's html/body/div... @bugs ie. check archive.is, web.archive.org. Solve with [TODO-2].
 (C) 2018-08-06 2: Rewrite to Sass, add adaptive classes. [TODO-8] First get some documentation system going
 (E) 2018-08-06 3: Make compatible with bootstrap, and for use with docutils documents
+(E) 2020-11-27 13: Get latest (4.0.0) SDK version working with Sitefile, have another look at JS API
 (D) 2018-08-06 4: Build reusable components, based on Sass/script, maybe see about webelements at some point
 (F) 2018-08-06 5: Add scripting to synchronize multiple windows over websocket, and for live updates from pub/sub server routes
 (F) 2018-09-29 6: Cannot run repo with sitefile directly <run.sh> setup submodules for non-dev @bugs @DevOps <.gitmodules>
-x (F) 2018-12-11 10: Travis build is empty, add npm/travis scripts as needed. Maybe start with some linters for Pug/Sass.
+(F) 2020-11-27 14: See about YAML/JSON linter (``grunt test``) @DevOps
 # vim:nowrap:ft=todo.txt:
