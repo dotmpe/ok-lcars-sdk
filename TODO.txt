@@ -10,4 +10,5 @@
 (F) 2018-08-06 5: Add scripting to synchronize multiple windows over websocket, and for live updates from pub/sub server routes
 (F) 2018-09-29 6: Cannot run repo with sitefile directly <run.sh> setup submodules for non-dev @bugs @DevOps <.gitmodules>
 (F) 2020-11-27 14: See about YAML/JSON linter (``grunt test``) @DevOps
+(F) 2020-11-27 15: See about Sass sourceMap.
 # vim:nowrap:ft=todo.txt:

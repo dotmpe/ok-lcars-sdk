@@ -4,3 +4,5 @@
 language: node_js
 node_js:
   - lts/*
+
+# See Travis CI guide for Node.js <https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#specifying-nodejs-versions>
