@@ -55,9 +55,71 @@ mixin ok-element-items(content, color)
   for element in content
     +ok-tpl-item(element)&attributes({"color":color})
 
+mixin ok-proc-ref(element, doc)
+  //-
+    Lookup and combine part referenced by JSON path
+  -
+    let dataRef = element['$ref']
+    let sf = require('sitefile')
+    let p = dataRef.split('#')
+    // Load external data, or use current doc
+    let jsonf = p[0]
+    let c = null
+    if (jsonf != '') {
+      if (dataRef.startsWith('/')) {
+        dataFile = dataRef
+      } else {
+        dataFile = path.join(context.cwd, dataRef)
+      }
+      c = JSON.parse(fs.readFileSync(dataFile))
+    } else c = doc 
+    // Resolve simple JSON path reference
+    let spec = p[1]
+    p = spec.split('/')
+    if (p[0] == '') p.shift() // Skip empty root
+    let e = null
+    while (p.length) {
+      e = p.shift()
+      c = c[e]
+    }
+    // Merge referenced object into doc at element
+    lodash.merge(element, c)
+
+mixin ok-proc-include(element)
+  //-
+    Very simple JSON $include handler. Accepts bsolute paths or paths
+    relative to project root.
+  -
+    let dataFile = null
+    let path = require('path')
+    let dataRef = element['$include']
+
+    if (dataRef.startsWith('/')) {
+      dataFile = dataRef
+    } else {
+      dataFile = path.join(context.cwd, dataRef)
+    }
+    let include = JSON.parse(fs.readFileSync(dataFile))
+    lodash.merge(element, include)
+
+
+mixin ok-proc-import(element)
+  //-
+    Very simple JSON $import handler. Does not track source origin so
+    cannot do relative path resolving. 
+    TODO: Instead, pass basename in data-dir, or full path relative to project root.
+
+      //let name = path.basename(dataRef)
+
 mixin ok-tpl-item(element)
   - for( attr in element )
+    - if (attr.startsWith('$'))
+        +#{"ok-proc-"+attr.substr('1')}(element, formData)
+
+  - for( attr in element )
     -
+      if (attr.startsWith('_')) continue
+      if (attr.startsWith('$')) continue
       o = element[attr]
       if( o === null ) o = {"": []}
       else if( typeof o === "string" ) o = {"": o}

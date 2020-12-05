@@ -5,8 +5,7 @@ Dev Docs
 
 Status
 ------
-- TODO-1: See how far HTML/CSS concept can be applied to okudagrams, before
-  much of anything else. See `Form 2.1 (4) </base-form-4>`__.
+- tasks/todo-1.md
 - TODO-2: rewrite SDK CSS to Sass, deprecate
 - TODO-3, TODO-9: play together with bootstrap, archive.is, web.archive.org
 - TODO-4: reusable components; Sf+Pug/Sass JSON/YAML initially
@@ -14,9 +13,8 @@ Status
   Should get sitefile lib/code to fetch raw HTML and place into content panes.
 
   2020-11-26 Some success letting Pug read JSON [TODO-12]
-  Probably want something for Sass too.
-  Next should look for something like '$ref' handle in Pug JSON loader,
-  maybe parse markdown to JSON.
+  Probably want something for Sass too. Like insert globals or vars.
+  tasks/todo-12.md
 
 - 2018-12-12 @Draft var/ok-sdk/content/forms
   Draft for OK styleguide
@@ -34,6 +32,7 @@ Tooling
 - ``package.y*ml`` [1__] for all project metadata (but don't forget ``package.json`` scripts)
 - Sitefile [2__] to serve pages as site at HTTP (containerized)
 - httrack to mirror static copy for <pages.github.com> (see ``mirror.sh``)
+- A ``yaml2json`` processor.
 
 Directories
 -----------

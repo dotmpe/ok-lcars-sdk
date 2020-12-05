@@ -1,0 +1,6 @@
+_parts:
+  disable-lcarssdk-style: &disable-lcarssdk-style
+    a:
+        class: "button bg-cat-1-1"
+        data-label: "disable"
+        href: javascript:(function(){document.getElementById('lcarssdk').disabled=true;})()

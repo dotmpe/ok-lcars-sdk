@@ -130,7 +130,6 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
     --line-height-#{$name}: calc( var(--line-height) * #{$factor} )
 
   background-color: black
-  padding: 15pt
   font-family: 'LCARS'
   font-weight: inherit
   text-transform: inherit
@@ -194,7 +193,7 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
     @extend .ok_dia__bar //ok-dia__bar
 
     @each $name, $factor in $sizes
-      &__#{$name}
+      &__#{$name},
       &.#{$name}
         @extend .ok_dia__bar__#{$name}
 
@@ -373,6 +372,7 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
         border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
         border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
         padding-left: calc( var(--bar-radius) * #{$factor} )
+        max-width: var(--bar-radius)
     &__tiny,
     &.tiny
       @extend .ok_dia__blockbar__capleft__xxxsmall
@@ -386,6 +386,7 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
         border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
         border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
         padding-right: calc( var(--bar-radius) * #{$factor} )
+        max-width: var(--bar-radius)
     &__tiny,
     &.tiny
       @extend .ok_dia__blockbar__capright__xxxsmall
@@ -428,6 +429,7 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
     max-height: 0
 
     > .block
+      --empty: null
 
   > .row.body .row.frame
     overflow: hidden

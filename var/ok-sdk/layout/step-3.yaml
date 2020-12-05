@@ -1,3 +1,5 @@
+$include: "var/ok-sdk/_parts.json"
+
 +ok-sdk-base-form-1:
   title: Intro 003
   prev: layout/step-2
@@ -10,10 +12,7 @@
       class: bg-cat-1-1
 
   "":
-  - a:
-      class: "button bg-cat-1-1"
-      data-label: "disable"
-      href: javascript:document.getElementById('lcarssdk').disabled=true
+  - $ref: '#/_parts/disable-lcarssdk-style'
   - h1.title: Step 003
   - +lorem-ipsum-paragraph.text-1-1@num=3: null
 
