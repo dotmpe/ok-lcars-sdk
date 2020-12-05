@@ -15,8 +15,10 @@ Status
 
   2020-11-26 Some success letting Pug read JSON [TODO-12]
   Probably want something for Sass too.
+  Next should look for something like '$ref' handle in Pug JSON loader,
+  maybe parse markdown to JSON.
 
-- 2018-12-12 @Draft var/sdk-demo/content/forms
+- 2018-12-12 @Draft var/ok-sdk/content/forms
   Draft for OK styleguide
   [TODO-8] Docs: place for style reference
   only have `visual guide`_ now.

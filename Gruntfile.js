@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 				//formatter: 'junit',
 				//outputFile: 'report.xml'
 			},
-			target: ['app/sdk-demo/\*.scss', 'app/sdk-demo/\*/\*.scss']
+			target: ['app/ok-sdk/\*.sass', 'app/ok-sdk/\*/\*.sass']
 		}
 	});
 

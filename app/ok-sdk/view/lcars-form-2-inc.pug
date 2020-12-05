@@ -1,0 +1,74 @@
+mixin ok-sdk-base-form-2(o, color, size='medium', lbar, rbar, tbar, bbar)
+
+  - vbarw = 150.6
+
+  // A simple contentpane bordered by a LCARS frame of bars and elbows, 
+  // with broad vertical and thin horizontal frame
+
+  if !color
+    - color = "cat-1-1"
+
+  .wrapper.column.flexv.flexch&attributes(attributes)
+
+    // Body
+    .wrapper.flexh.flexcv
+
+      // Body Button Column
+      .wrapper.column.flexv(style=`width:${vbarw}pt`)
+        .elbow.top-left.bg-cat-1-1.default.horizontal(data-label="36", align="right")
+          .bar(style="width: 209px; right: -204px")
+            .block
+
+        .button.bg-grey-3(data-label="555-1", align="right")
+        .button.bg-cat-2-3.flexcv(data-Label="98 12312", align="right")
+
+      // Body Bar Row
+      .column.flexch.flexv
+        .row.frame.flexh(style="padding-left:209px; padding-right:209px")
+          .bar.bg-cat-1-3.flexch
+
+        // Body Content
+        .wrapper.content.flexcv
+          if o
+            +ok-prev-next-form(o, '/forms?merge.data=')
+            if o['']
+              +ok-element(o)
+          else
+            if block
+              block
+            else
+              +ok-sdk-no-data(color)
+
+      .wrapper.column.flexv(style=`width:${vbarw}pt`)
+        .elbow.top-right.bg-cat-1-2.default.horizontal(data-label="36", align="right")
+          .bar(style="width: 209px; left: -204px")
+            .block
+
+        .button.bg-cat-5-2(data-label="413", align="left")
+        .button.bg-cat-2-1.flexcv(data-Label="98 12312", align="left")
+
+    .row.header.flexh
+      .column.flexv(style=`width:${vbarw}pt`)
+        .button.bg-cat-5-3(data-label="LCARS")
+        .elbow.bottom-left.bg-cat-5-3.flexcv.large.horizontal
+          .bar.large(style="width: 209px; right: -204px")
+            .block
+          
+      .wrapper.flexch.flexv
+        //- Footer Content
+        .wrapper.content.flexcv
+          .title.text-1-1(align="right") LCARS BASIC FORM 1.2
+          .wrapper.flexh.button-wrap
+            p.text-1-1.text A frame enclosing a single content pane
+            
+        //- Header Bar Row
+        .row.frame.flexh(style="padding-left: 204px; padding-right: 204px")
+          .bar.large.bg-cat-2-2
+          .bar.large.bg-cat-2-1.flexch
+          .bar.large.bg-cat-2-3
+        
+      .column.flexv(style=`width:${vbarw}pt`)
+        .button.bg-cat-1-3(data-label="LCARS")
+        .elbow.bottom-right.bg-cat-4-1.flexcv.large.horizontal
+          .bar(style="width: 209px; left: -204px")
+            .block

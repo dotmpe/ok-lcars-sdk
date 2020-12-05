@@ -1,0 +1,588 @@
+@use "sass:map"
+
+/* Load fonts
+@import ./lcarssdk-fonts.css
+
+// Functions
+@function pow($number, $exponent)
+  $value: 1
+  @if $exponent > 0
+    @for $i from 1 through $exponent
+      $value: $value * $number
+  @return $value
+
+
+/* Variables
+
+$small-space:      3pt          //      =  4px
+$medium-space:  2* $small-space //  6pt =  8px
+$large-space:   3* $small-space //  9pt = 12px
+$xlarge-space:  4* $small-space // 12pt = 16px
+$xxlarge-space: 5* $small-space // 15pt = 20px
+
+$padding-small:        30pt             //
+$padding-medium:  1.5* $padding-small   // 45pt
+$padding-large:   1.5* $padding-medium  // 67.5pt
+$padding-xlarge:  1.5* $padding-large   // 101.25pt
+
+$unit-small: 11.3pt // 15px
+$unit-medium: 22.6pt // 30px
+$unit-large: 22.6pt // 30px
+
+$bar-inner-margin: 3.75pt // 5px
+
+$bar-min-v: $unit-medium
+$bar-min-h: $unit-medium
+
+$pill-cap-small-width: $unit-small
+$pill-cap-medium-width: $unit-medium
+
+//$f13-head-ratio: 0.25 // 1/4th of VH
+// TNG Canon: < 1/3th of VH
+//$f13-head-ratio: 0.32
+$f13-head-ratio: 0.31
+
+$sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2), "small": 0.8, "regular": 1.0, "large": 1/0.75, "xlarge": pow(1/0.75, 2), "xxlarge": pow(1/0.75, 3), "xxxlarge": pow(1/0.75, 4), "xxxxlarge": pow(1/0.75, 5), "xxxxxlarge": pow(1/0.75, 6))
+
+/* Background and text colors (as SASS variables and text/bg classes)
+@import ./theme.sass
+
+/* Flex v/h and pane
+@import style-layout.sass
+
+
+@mixin ok-dia__rootpane
+  // Regular font-size is 12pt/16px
+  --font-size: 20pt
+  --line-height: 24pt
+
+  font-size: var(--font-size)
+  line-height: var(--line-height)
+
+  --bar-radius:    11pt
+
+  @extend .pane
+
+@mixin ok-dia__bar
+  border: 0
+  padding: 1pt 5pt 0pt 2pt
+  margin: 3pt 2pt
+  color: black
+  vertical-align: 3pt
+  --font-factor: 0.6
+  font-size: calc( var(--font-size) * var(--font-factor) )
+  box-sizing: border-box
+  letter-spacing: normal
+  display: inline
+
+@mixin ok-dia__bar--size($name, $factor)
+      font-size: calc( var(--font-size-#{$name}) * var(--font-factor) )
+      line-height: calc( var(--line-height-#{$name}) * 0.75 )
+      vertical-align: calc( 3.4pt * #{$factor} )
+
+$bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt, "regular": 3pt, "large": 3pt, "xlarge": 3pt, "xxlarge": 3pt, "xxxlarge": 3pt, "xxxxlarge": 3pt, "xxxxxlarge": 9pt, )
+
+@mixin ok-dia__blockbar
+  /* Inline "block" bar
+  &:before
+    content: "\00a0\00a0"
+
+  --bar-height:    17.7pt
+  --bar-radius:    11pt
+  --bar-padding-h:  0.0pt
+  --bar-padding-v:  0.0pt
+  --bar-min-width:  2.8pt
+  --bar-margin-h:   3.0pt
+  --bar-margin-v:   3.0pt
+  //--bar-align-v:    3.5pt
+  @include ok-dia__bar
+  display: inline-block
+  align-items: flex-start
+  //height: var(--bar-height)
+  //min-width: var(--bar-min-width)
+  padding: var(--bar-padding-v) var(--bar-padding-h)
+  //margin: var(--bar-margin-v) var(--bar-margin-h)
+
+@mixin ok-dia__blockbar--size($name, $factor)
+      height: calc( var(--bar-height) * #{$factor} )
+      min-width: calc( var(--bar-min-width) * #{$factor} )
+      //padding-left: calc( var(--bar-padding) * #{$factor} )
+      margin: calc( var(--bar-margin-v) * #{$factor} ) calc( var(--bar-margin-h) * #{$factor} )
+      vertical-align: map.get($bar-align-v, $name)
+      //var(--bar-align-v) * #{$factor} )
+
+
+
+/* Make scrollbars disappear
+.ok-diagram,
+.ok-diagram *
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb
+    width: 0
+    height: 0
+
+.ok-diagram
+  @include ok-dia__rootpane
+
+  @each $name, $factor in $sizes
+    --font-size-#{$name}: calc( var(--font-size) * #{$factor} )
+    --line-height-#{$name}: calc( var(--line-height) * #{$factor} )
+
+  background-color: black
+  padding: 15pt
+  font-family: 'LCARS'
+  font-weight: inherit
+  text-transform: inherit
+  letter-spacing: -.8pt
+  vertical-align: baseline  
+  //white-space: nowrap 
+  border-style: none 
+  outline: none
+
+  *
+    text-transform: uppercase
+
+  .justified
+    text-align: justify
+    text-justify: inter-word
+
+  .capitalized
+    text-transform: uppercase
+    *
+      text-transform: uppercase
+
+  .regularcase
+    text-transform: initial
+
+  &__text,
+  .text
+    @each $name, $factor in $sizes
+      &__#{$name},
+      &.#{$name}
+        font-size: var(--font-size-#{$name})
+        line-height: var(--line-height-#{$name})
+
+    &.tiny
+      @extend .ok-diagram__text__xxxsmall
+
+    @extend .ok-diagram__text__regular
+
+  .title
+    text-transform: uppercase
+    color: white
+    margin: 3pt 2pt
+
+  .title.altcolor
+    color: $tango-butter-1
+
+  a:hover
+    text-decoration: none
+
+  button:hover,
+  .button:hover
+    filter: brightness(133%)
+
+  button:active,
+  .button:active
+    filter: brightness(150%)
+
+  .bar,
+  .button,
+  button,
+  input
+    @extend .ok_dia__bar //ok-dia__bar
+
+    @each $name, $factor in $sizes
+      &__#{$name}
+      &.#{$name}
+        @extend .ok_dia__bar__#{$name}
+
+    @extend .ok_dia__bar__regular
+
+  button,
+  input
+    font-family: inherit
+    font-size: inherit
+
+  // Base
+  //.button
+  //  min-height: 45.2pt
+  //  min-width: 112.9pt
+
+  .button.pill
+    border-radius: 22.6pt
+
+  .wrapper.spacer
+    margin: 0
+
+  .button-wrap
+    flex-wrap: wrap
+    margin-top: 0
+    padding-top: 3.8pt
+    width: 100%
+
+    .button
+      margin-bottom: 3.8pt
+      margin-left: 3.8pt
+
+  /*
+    XXX: I'd overlap this with the .bar class but bar sizes differently from button nodes
+
+  .nobutton
+    min-width: 150px
+    min-height: 60px
+    cursor: default
+
+  .nobutton[data-label]:before
+    content: attr(data-label)
+
+  .nobutton:before
+    //font-size: 20px
+    display: block
+    position: absolute
+    left: 0px
+    bottom: 0px
+    right: 0px
+    padding: $small-space $medium-space
+    letter-spacing: -1px
+    line-height: 1.25
+    overflow: hidden
+    max-height: 100%
+
+  .bar.row > *
+    margin-left: $bar-inner-margin
+
+  .bar.top,
+  .button.top,
+  .nobutton.top
+    border-top-left-radius: $unit-medium
+    border-top-right-radius: $unit-medium
+
+  .bar.bottom,
+  .nobutton.bottom,
+  .button.bottom
+    border-bottom-left-radius: $unit-medium
+    border-bottom-right-radius: $unit-medium
+
+  .bar,
+  .nobutton,
+  .button
+
+    &.top:before,
+    &.bottom:before,
+    &.top:after,
+    &.bottom:after
+
+      left: 25px
+      right: 25px
+
+
+.ok_dia__bar
+
+  @each $name, $factor in $sizes
+    &__#{$name},
+    &.#{$name}
+      @include ok-dia__bar
+      @include ok-dia__bar--size($name, $factor)
+
+  &__tiny,
+  &.tiny
+    @extend .ok_dia__bar__xxxsmall
+
+  @extend .ok_dia__bar__regular
+
+  &[data-label]:before
+    content: attr(data-label)
+    color: black
+
+  &[data-label]:after
+    content: attr(data-alt-label)
+    color: black
+
+  &__capleft
+    @each $name, $factor in $sizes
+      &.#{$name},
+      &__#{$name}
+        @extend .ok_dia__bar__#{$name}
+        border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-left: calc( var(--bar-radius) * #{$factor} )
+    &__tiny,
+    &.tiny
+      @extend .ok_dia__bar__capleft__xxxsmall
+    @extend .ok_dia__bar__capleft__regular
+
+  &__capright
+    @each $name, $factor in $sizes
+      &.#{$name},
+      &__#{$name}
+        @extend .ok_dia__bar__#{$name}
+        border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-right: calc( var(--bar-radius) * #{$factor} )
+    &__tiny,
+    &.tiny
+      @extend .ok_dia__bar__capright__xxxsmall
+    @extend .ok_dia__bar__capright__regular
+
+  &__pill
+    @each $name, $factor in $sizes
+      &.#{$name},
+      &__#{$name}
+        @extend .ok_dia__bar__capleft__#{$name}
+        @extend .ok_dia__bar__capright__#{$name}
+    &__tiny,
+    &.tiny
+      @extend .ok_dia__bar__pill__xxxsmall
+    @extend .ok_dia__bar__pill__regular
+
+
+.ok_dia__blockbar:before
+  content: "\00a0\00a0"
+
+.ok_dia__blockbar:after
+  content: ""
+
+.ok_dia__blockbar
+
+  @each $name, $factor in $sizes
+    &__#{$name},
+    &.#{$name}
+      @include ok-dia__blockbar
+      @include ok-dia__blockbar--size($name, $factor)
+  &__tiny,
+  &.tiny
+    @extend .ok_dia__blockbar__xxxsmall
+  @extend .ok_dia__blockbar__regular
+
+  &.em_bar
+    width: 1em
+  &.duo_em_bar
+    width: 2em
+  &.quad_em_bar
+    width: 4em
+  &.oct_em_bar
+    width: 8em
+
+  &__capleft
+    @each $name, $factor in $sizes
+      &.#{$name},
+      &__#{$name}
+        @extend .ok_dia__blockbar__#{$name}
+        border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-left: calc( var(--bar-radius) * #{$factor} )
+    &__tiny,
+    &.tiny
+      @extend .ok_dia__blockbar__capleft__xxxsmall
+    @extend .ok_dia__blockbar__capleft__regular
+
+  &__capright
+    @each $name, $factor in $sizes
+      &.#{$name},
+      &__#{$name}
+        @extend .ok_dia__blockbar__#{$name}
+        border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-right: calc( var(--bar-radius) * #{$factor} )
+    &__tiny,
+    &.tiny
+      @extend .ok_dia__blockbar__capright__xxxsmall
+    @extend .ok_dia__blockbar__capright__regular
+
+  &__pill
+    @each $name, $factor in $sizes
+      &.#{$name},
+      &__#{$name}
+        @extend .ok_dia__bar__capleft__#{$name}
+        @extend .ok_dia__bar__capright__#{$name}
+    &__tiny,
+    &.tiny
+      @extend .ok_dia__blockbar__pill__xxxsmall
+    @extend .ok_dia__blockbar__pill__regular
+
+
+
+.elbow.bottom-left
+  margin-bottom: 4.5pt
+
+.elbow.top-left
+  margin-top: 4.5pt
+
+.form-1-3
+  > .row .row.frame
+    min-height: auto
+    > .bar.alt
+      min-height: $medium-space
+      max-height: $medium-space
+
+  > .row.header .row.frame
+    margin-bottom: 4.5pt
+
+  > .row.split
+    display: relative
+    margin: 0
+    padding: 0
+    min-height: 0
+    max-height: 0
+
+    > .block
+
+  > .row.body .row.frame
+    overflow: hidden
+    margin-top: 4.5pt
+    > .bar.alt
+      margin-top: auto
+
+
+/* Some helpers for FORM-1
+
+#columnA,
+#columnB
+  overflow-y: scroll
+
+  > .wrapper
+    height: calc( 100vh - 30px )
+
+#columnA > .wrapper > .content.flexcv,
+#columnB > .wrapper > .content.flexcv
+  overflow-y: scroll
+
+//#columnA > .wrapper > .content.flexcv > .content,
+//#columnB > .wrapper > .content.flexcv > .content
+
+.form-1-1.small > .content
+  margin: $medium-space auto $small-space auto
+  padding: 0 ( $pill-cap-small-width + $bar-inner-margin )
+
+.form-1-1.medium > .content
+  margin: $large-space auto $medium-space auto
+  padding: 0 ( $pill-cap-medium-width + $bar-inner-margin )
+
+
+$f13-1-header-height: calc( ( 100vh - #{$bar-min-v} - #{$bar-min-v} ) * #{$f13-head-ratio} )
+$f13-lvbar-width: 146.4pt
+$f13-header-elbow-length: 69pt
+$f13-body-elbow-length: 69pt
+
+
+.form-1-3 // Root
+
+  > .f13-1 // Header row (with h/v frame)
+    flex: .3
+    overflow: hidden
+    //min-height: $f13-1-header-height
+    //height: $f13-1-header-height
+
+    > .f13-1-1 // Header column+elbow / vertical frame
+
+    > .f13-1-2 // Header content and h-frame
+
+      > .f13-1-2-1 // Header content div
+        padding-bottom: 9pt
+        padding-left: $f13-body-elbow-length
+        overflow-y: scroll
+
+        > *
+          margin: 4.5pt
+
+        .title,
+        h1, h2, h3//, h4, h5, h6
+          margin: 0
+          text-align: right
+
+        .button-wrap
+          min-width: 225.9pt
+          right: 0px
+          bottom: 9%
+          position: absolute
+          width: auto
+
+      > .f13-1-2-2 // Header horizontal frame
+        > .bar
+          margin: 4.5pt
+
+  > .f13-2 // Body row (with h/v frame)
+    flex: .7
+    overflow: hidden
+
+    > .f13-2-1 // Body elbow+column / vertical frame
+      width: $f13-lvbar-width
+      > .elbow
+        > .bar
+          width: $f13-header-elbow-length
+          right: -$f13-header-elbow-length
+          > .block
+
+    > .f13-2-2 // Body content and h-frame
+
+      > .f13-2-2-1 // Header horizontal frame
+        > .bar
+          margin: 4.5pt
+
+      > .f13-2-2-2 // Body content div
+        padding-top: 9pt
+        padding-left: $f13-body-elbow-length
+        overflow-y: scroll
+        height: calc( 100% - 9pt - 2 * 4.5pt )
+
+        > *
+          margin: 4.5pt
+
+.ok-diagram .frame > *
+  margin: 4.5pt
+
+
+.form-4
+
+  > .content
+    height: 100%
+    height: 300px
+    overflow: hidden
+
+    .bar.vertical
+      margin-top: 75px
+      margin-bottom: 45px
+
+  > .header,
+  > .footer
+    height: 220px
+
+
+
+#terminal-003 >
+  .column-1,
+  .column-2,
+  .column > .wrapper
+    height: 100%
+
+    > .content.flexcv
+      height: 100%
+      overflow-y: scroll
+
+  .column-1
+    width: 78%
+  .column-2
+    width: 22%
+
+
+
+/* HTML adjustments
+@import style-html.sass
+
+
+.content > .wrapper > #hnav
+  .title
+    color: $tango-butter-1
+
+  a.reference
+    color: $tango-plum-1
+    display: inline
+
+.content > .wrapper > #hnav
+  p cite
+    display: inline
+    margin: auto 7px
+
+// Id: OK-SDK:app/ok-sdk/style.sass

@@ -1,0 +1,26 @@
+extends ../base
+//- Basic HTML page using server-side JSON data
+
+block page-settings
+  - body_attributes = {'class':'ok-diagram'}
+  - data_dir = "var/ok-sdk"
+  - data_default = "layout/forms"
+
+include ../lorem-ipsum-inc
+
+block main
+  - 
+    if (typeof data === "undefined") {
+      if (typeof formDataFile === "undefined") {
+        formDataFile = data_dir +'/'+ data_default
+      }
+    } else {
+      formDataFile = data_dir +'/'+ data +'.json'
+    }
+    let fs = require('fs')
+    let formData = JSON.parse(fs.readFileSync(formDataFile))
+
+  block main-data
+    - console.log("Unhandled data.pug", formData)
+
+//- Id: OK-SDK:app/ok-sdk/view/base/data.pug

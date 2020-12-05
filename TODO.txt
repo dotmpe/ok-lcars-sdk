@@ -1,7 +1,7 @@
 (A) 2018-08-06 1: Look at more complex elbow layouts, but after TODO-2 I guess. Also build a thick horizontal, thin vertical variant like used on many control surfaces (form 4 / layout 2.1)
 (B) 2018-09-29 7: Wrap documentation/app at Sitefile into LCARS style as well. Some tweaks needed to Sitefile hnav client-component.
 (B) 2018-09-29 8: Documentation for CSS classes and usage; layout principles, Sass, adaptive pages, etc. @docs
-(B) 2019-04-23 12: Merge YAML-OK metadata (style/nav etc) with layout templates <app/sdk-demo/layout/form-1.yaml> more dynamic re-usable pages, not sure about client/server-side and probably get Sitefile testing going again first
+(B) 2019-04-23 12: Merge YAML-OK metadata (style/nav etc) with layout templates <app/ok-sdk/layout/form-1.yaml> more dynamic re-usable pages, not sure about client/server-side and probably get Sitefile testing going again first
 (C) 2018-09-29 9: Styling should be more confined to specific elements, not change page's html/body/div... @bugs ie. check archive.is, web.archive.org. Solve with [TODO-2].
 (C) 2018-08-06 2: Rewrite to Sass, add adaptive classes. [TODO-8] First get some documentation system going
 (E) 2018-08-06 3: Make compatible with bootstrap, and for use with docutils documents

@@ -1,0 +1,62 @@
+mixin ok-sdk-base-form-1(o, color=null, size=null, header=null, footer=null)
+  //-
+    LCARS Monitor baseform1 with text body and leading/trailing pillbar
+
+  -
+    if (typeof o == "undefined") o = {}
+    let oDef = {
+      "title": "Form 1.1",
+      "color": "1-1",
+      "size": "medium",
+      "header": {
+        "lcap": {},
+        "rcap": {}
+      },
+      "footer": {}
+    }
+    o = lodash.defaultsDeep( {}, o, {
+      "title": title,
+      "color": color,
+      "size": size,
+      "header": header,
+      "footer": footer
+    }, oDef );
+
+  if 'class' in attributes
+    - attributes['class'] += ' '+size
+  else
+    - attributes['class'] = size
+
+  .wrapper.form-1-1.column.flexv.flexch&attributes(attributes)
+
+    if o.header
+      if !o.header.title
+        - o.header.title = null
+      if !o.header.lcap && o.header.lcap != null
+        - o.header.lcap = {}
+      if !o.header.rcap && o.header.rcap != null
+        - o.header.rcap = {}
+      +ok-sdk-pillbar(o.color, o.title, size, o.header.lcap, o.header.rcap, o.header.bar)&attributes({class:'f11-1 header'})
+
+    .f11-2.content.row.flexcv(style="overflow-y:scroll;")
+      if o
+        +ok-prev-next-form(o, '/forms?merge.data=')
+        if o['']
+          +ok-element(o)
+        //-for element in o['']
+        //-  - console.log(element)
+        //-  +ok-element-instance(element, "div")
+      else
+        if block
+          block
+        else
+          +ok-sdk-no-data(color)
+
+    if o.footer
+      if !o.footer.title
+        - o.footer.title = null
+      if !o.footer.lcap && o.footer.lcap != null
+        - o.footer.lcap = {}
+      if !o.footer.rcap && o.footer.rcap != null
+        - o.footer.rcap = {}
+      +ok-sdk-pillbar(color, o.footer.title, size, o.footer.lcap, o.footer.rcap, o.footer.bar)&attributes({class:'f11-3 footer'})

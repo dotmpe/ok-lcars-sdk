@@ -18,15 +18,15 @@ block main
          footer = { }
          footer.title = { text:context.sitefile.dateversion, class:"text-grey-5", align:"right" }
 
-      +lcarssdk-base-form-1('grey-4', 'small', header, footer)
+      +ok-sdk-base-form-1({}, 'grey-4', 'small', header, footer)
         .column.flexcv
-          +lcarssdk-base-form-1('grey-4', 'small', header, footer)
-            +lcarssdk-base-form-1('grey-4', 'small', header, footer)
+          +ok-sdk-base-form-1({}, 'grey-4', 'small', header, footer)
+            +ok-sdk-base-form-1({}, 'grey-4', 'small', header, footer)
               .column.flexcv
-                +lcarssdk-no-data('grey-5')
-                +lcarssdk-no-data('grey-2', 'No data: level 1')
-                +lcarssdk-no-data('grey-3', 'No data: level 2')
-                +lcarssdk-no-data('grey-4', 'No data: level 3')
+                +ok-sdk-no-data('grey-5')
+                +ok-sdk-no-data('grey-2', 'No data: level 1')
+                +ok-sdk-no-data('grey-3', 'No data: level 2')
+                +ok-sdk-no-data('grey-4', 'No data: level 3')
             +lorem-ipsum-paragraph(2)&attributes({class:'text-1-1 capital'})
           +lorem-ipsum-paragraph(2)&attributes({class:'text-1-1 capital'})
 

@@ -17,8 +17,9 @@ block main
          footer = { }
          footer.title = { text:context.sitefile.version, class:"text-grey-5", align:"right" }
 
-      +lcarssdk-base-form-1('grey-4', 'small', header, footer)
-        +lcarssdk-base-form-3(null, null, null, null, null, null, "OK DOCS INTRO")
+      +ok-sdk-base-form-1({}, 'grey-4', 'small', header, footer)
+        +ok-sdk-base-form-3({})
+
           p.text-2-2 Incoming message
           p.text-2-3 From: Berend
           p.text-2-3 To: Terminal OK-001

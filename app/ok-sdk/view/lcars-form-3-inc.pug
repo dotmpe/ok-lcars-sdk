@@ -1,0 +1,161 @@
+mixin ok-sdk-base-form-3(o, title="Form 1.3")
+  //-
+    The iconic double-elbow split-view LCARS layout:
+    Two vertically stacked frames with the characteristic double elbow.
+    One vertical varying-width column bar, and two decorative horizontal
+    bars. Splitting the viewscreen around 30% from the top.
+
+  -
+    if (typeof o == "undefined") o = {}
+    let oDef = {
+      "title": title,
+      //- Left-vertical bar
+      "lvbar": {
+        "width": "146.4pt"
+      },
+      "header": {
+        "lw": "146.4pt",
+        "column": [
+          {
+            "data-label": "LCARS",
+            "align": "right",
+            "class": "button bg-cat-1-1"//, "style": "height: 78pt"
+          }
+        ],
+        "elbow": {
+          "class": "bg-cat-2-2 flexcv default horizontal",
+          "length": "69pt"
+        },
+        "row": [
+          //{ "class": "bar bg-grey-5 flexch" },
+          //{ "class": "bar bg-cat-4-2" },
+          //{ "class": "bar alt bg-grey-5 flexch",
+          //  "style": `width:100%; max-width:${o.header.lw}` },
+          //{ "class": "bar bg-cat-4-3" },
+          //{ "class": "bar bg-grey-5 flexch" }
+          { "class": "bar bg-cat-2-1 flexch" }
+        ]
+      },
+      "body": {
+        "elbow": {
+          "class": "bg-cat-2-1 default horizontal",
+          "length": "69pt"
+        },
+        "row": [
+          { "class": "bar bg-cat-2-3 flexch" }
+        ],
+        "column": [
+          {
+            "data-label": "36",
+            "align": "right",
+            "class": "bar bg-cat-2-1 flexcv"
+          //  "class": "button bg-cat-2-3",
+          //  "data-label": "413",
+          //  "align": "right"
+          //}, {
+          //  "class": "button bg-grey-2 flexcv",
+          //  "data-label": "98-42712",
+          //  "align": "right"
+          }
+        ],
+        "default": {
+          "paragraphs": 12,
+          "header": { "class": "text-5-3", "_": "OK Form 3" },
+          "body": { "class": "text-1-1 capital" }
+        }
+      }
+    };
+    o = lodash.defaultsDeep( {}, o, oDef );
+
+  .form-1-3.pane.flexv&attributes(attributes)
+
+    // Header: the upper-section frame is the smaller part
+    .f13-1.header.flexcv.flexh
+
+      // Header Column
+      .f13-1-1.column.flexv(style=`width: ${o.lvbar.width}`)
+        for element in o.header.column
+          +ok-element-instance(element, "div")
+
+        .elbow.bottom-left&attributes(o.header.elbow)
+          .bar(style=`width: ${o.header.elbow.length}; right: -${o.header.elbow.length}`)
+            .block
+          
+      .f13-1-2.flexch.flexv
+        // Header Content
+        .f13-1-2-1.flexcv
+          //h1.text-1-1= o.title
+          .title.text-1-1= o.title
+          +lorem-ipsum-paragraph(1).text-1-1.capitalized
+          +lorem-ipsum-paragraph(3).text-1-1.capitalized
+          +lorem-ipsum-paragraph(2).text-1-1.capitalized
+
+          h4.capitalized.text&attributes(o.body.default.header) The end
+
+          //p
+          //  small.text-1-1 1234
+
+          //.flexh.flexcv
+          //  small.text-1-1 54321
+          //  .content
+          //    .oval.small.bg-cat-1-1
+          //    .oval.small.bg-cat-1-1
+          //  .content.flexcv
+          //    small.text.text-1-1  123455
+          //    small.text.text-1-1 1234556
+
+          //#ok-rndnum-scroll-folly.container.flexcv.flexh(style=`width:${o.header.lw}; margin-left: 1.5em`)
+          //.content.flexcv(style=`width:${o.header.lw}`)
+          //  .title.text-1-1= o.title
+
+          //  .wrapper.flexh.button-wrap
+          //    .button.pill.bg-grey-4(data-label="198-2")
+          //    .button.pill.bg-cat-1-2(data-label="11-47")
+            
+        // Header Bar Row: the cells right after the upper-section elbow
+        .f13-1-2-2.frame.flexh(style=`padding-left: ${o.header.elbow.length}`)
+          for element in o.header.row
+            +ok-element-instance(element, "div")
+
+    //-.f13-2.row.split
+    //-  .block.bg-cat-6-1(style=`min-height: 19; top: -7; left: calc( ${o.header.elbow.length} + ${o.lvbar.width} + 34 )`)
+    //-  .block.bg-grey-6( style=`min-height: 19; top: -7; left: calc( ${o.header.elbow.length} + ${o.lvbar.width} + 34 )`)
+
+    // Body: the lower-section frame around 3/4 or similar of the height
+    .f13-2.body.flexcv.flexh
+      // Body Button Column: The lower-section elbow and cells beneath
+      .f13-2-1.flexv(style=`width:${o.lvbar.width}`)
+        .elbow.top-left&attributes(o.body.elbow)
+          .bar(style=`width: ${o.header.elbow.length}; right: -${o.header.elbow.length}`)
+            .block
+
+        for element in o.body.column
+          +ok-element-instance(element, "div")
+
+      .f13-2-2.content.flexch
+        //- Body Bar Row: the cells right after the lower-section top-right elbow
+        .f13-2-2-1.frame.flexh(style=`padding-left: ${o.body.elbow.length}`)
+          for element in o.body.row
+            +ok-element-instance(element, "div")
+
+        // Body Content
+        .f13-2-2-2.content
+          if o
+            +ok-prev-next-form(o, '/forms?merge.data=')
+            if o['']
+              +ok-element(o)
+          else
+            if block
+              block
+            else
+              +ok-sdk-no-data(color)
+              h3.capitalized.text&attributes(o.body.default.header)= o.body.default.header._
+              p.capitalized.text-2-3.text
+                | A frame enclosing two content panes, with a characteristic split
+  
+              - let n = 0
+              while n < o.body.default.paragraphs
+                - n++; l = Math.round(Math.random() * 7)
+                +lorem-ipsum-paragraph(l).capitalized&attributes(o.body.default.body)
+
+              h4.capitalized.text&attributes(o.body.default.header) The end

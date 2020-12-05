@@ -1,0 +1,172 @@
++ok-sdk-base-form-0:
+  title: Intro 001
+  prev-url: /select
+  next: layout/step-2
+  color: 1-1
+  "":
+  - a:
+      class: "button bg-cat-1-1"
+      data-label: "disable"
+      href: javascript:document.getElementById('lcarssdk').disabled=true
+
+  - h1.title: Introduction
+  - h2.title.altcolor: Objective
+  - +ok-paragraph@color=2-3: |
+      The objective of the OK-SDK project is to explore web pages as a means to rebuild displays seen on the show. On this and the following pages instances of building blocks are introduced. Starting with the most basic ones and then moving on, from simple span and block content to complex layouts that include many different elements at once.
+  - p: |
+      Before showing much of any recognizable elements or layouts, this page illustrates and tests the most basic content parts, the text phrases and special elements that make up a web page. Some or all of these will make the body of the diagrams, and the intention is to investigate each of their appearances.
+  - p.text-1-3: |
+      A page must be able to include and layout text obviously. Such body starts in some corner, and flows horizontally or vertically until the characters fill one line. A margin is observed (also including "padding"), the line "breaks" and the "page" extends in one direction while new lines of characters are added.
+      Rows or columns of them. Aligned and/or justified along each of them in their flow direction. And aligned to a baseline perpendicular to their flow direction.
+  - p.text-1-2: |
+      A diagram is layed out quite differently, and web pages too have evolved text layouts significantly. A modern web page can be hardly recognizable as a linear document, and can lay an enourmous emphasis on graphical layout versus literal content. Such layouts used to be hard to achieve but have become increasingly more flexible and expressive.
+      Nowadays the layout model for text content described above is completely generalized and available as the "Flexbox" model. And for making tabular layouts there is the "Grid" model, that should be very helpful in (re)creating our diagrams.
+
+  - h2.altcolor: Text and context
+  - p.text@color=2-3:
+    - .text: "But first, web pages have their own particular elements and rules. This page will list all of the inline elements. "
+    - .text@color=1-2: "How important those are depends on the writer and the purpose of the document. "
+    - .text: |
+        However within the context of a web page the hyperlink holds a special place.
+        And aside from hypertext, this way we also meet our first piece of "chrome": the button element.
+    - .text@color=2-2: "This presents us with a design decision: "
+    - em.text@color=5-2: |
+        does the button correspond the text height; and is the button label therefor necessarily of a smaller size.
+    - .text@color=2-1: " Or "
+    - em.text@color=5-2: |
+        does instead the button label correspond to (the normal/"regular") text size, and does its padding and margin extend above and below the text.
+  - p.text@color=2-3:
+      - .text: |
+          As seen from the instances on this page, inline bars and buttons are a bit too small for touch interfaces. Larger sizes and more chrome would be needed to operate them without assistive devices, like a stylus or keyboard.
+
+  - h2: Page elements
+  - .text@color=2-1: |
+      Text comes as spans, usually in paragraphs.
+      However these sentences are all span instances embedded directly into the parent pane element.
+  - .regularcase.text: |
+       Also leaving out the "capitalized" text-transform, which together with the font face itself already are the first two recognizable elements of the show's diagrams.
+  - .text@color=2-3: |
+      There are a lot more inline elements, "although block and inline elements are no longer defined in HTML 5".
+  - a.text-1-2@href=#_ref1: "[1] "
+  - .text: "For example, there is "
+  - a.text@id=_a: "Anchor target phrasing, "
+  - a.text@href=#: "Anchor reference phrasing, "
+  - button.bar: "Button phrasing, "
+  - button.bar.text: "Button text phrasing, "
+  - del.text: "Deleted phrasing, "
+  - ins.text: "Inserted phrasing, "
+  - em.text: "Emphasized phrasing, "
+  - strong.text: "and Strong phrasing. "
+  - .text@color=2-3: |
+      Note the font face does not do any strong renderings.
+      More instances of in-line elements are given later on this page.
+
+  - p@color=2-3: |
+      The button element is styled like the button and bar classes. 
+      On the next page the sizes of this element are explored. The rest of this page deals with some further testing of the JSON document structure, and examples of all inline and some block elements. More block elements, in particular tables are to be added in a later version. The rest of this page is filler text, including the introduction of the Lorem Ipsum paragraph directive.
+
+  - p:
+    - span.text: |
+        Spans of text can be split up, and mixed with other elements.
+        Such as markup. Or hyperlinks.
+        Or even bars or buttons.
+    - "a.bar@data-label=Bar Label": null
+    - a.bar:
+        data-label: Another bar label
+    - "button.bar@data-label=Button Label": null
+    - button.bar:
+        data-label: Another button bar label
+    - span.text: |
+        Using the ok-bar directive has the same effect as using elements and classes directly such as the two labels before.
+    - +ok-bar.button@tagName=a: OK-Bar button with 'a' tag
+    - span.text: |
+        Using a directive may be more convenient as a shortcut.
+    - a.bar.button.@data-label=Label: {}
+    - a.bar:
+        class: button bg-cat-2-1
+        data-label: Button Label
+
+  - h1: Header level 1
+  - +lorem-ipsum-paragraph.text-1-1@num=3: null
+  - h2: Header level 2
+  - +lorem-ipsum-paragraph.text-1-3@num=2: null
+  - h3: Header level 3
+  - +lorem-ipsum-paragraph.text-1-2@num=2: null
+  - h4: Header level 4
+  - p: Level four corresponds to regular font size.
+  - +lorem-ipsum-paragraph.text-1-2@num=1: null
+  - h5: Header level 5
+  - p.text.small: These paragraphs are intentionally in regular case.
+  - +lorem-ipsum-paragraph.text-1-1.text.small.regularcase@num=3: null
+  - +lorem-ipsum-paragraph.text-1-1.text.small@num=2: null
+  - h6: Header level 6
+  - +lorem-ipsum-paragraph.text-1-2.text.xsmall@num=2: null
+  - +lorem-ipsum-paragraph.text-1-2.text.xxsmall@num=2: null
+  - +lorem-ipsum-paragraph.text-1-2.text.xxxsmall.tiny@num=2: null
+
+  - h3: Inline elements
+  - p: These elements are intentionally in regular case.
+  - p:
+    - abbr.regularcase:    "Example 'abbr' text. "
+    - acronym.regularcase: "Example 'acronym' text. "
+    - big.regularcase:     "Example 'big' text. "
+    - cite.regularcase:    "Example 'cite' text. "
+    - code.regularcase:    "Example 'code' text. "
+    - del.regularcase:     "Example 'del' text. "
+    - dfn.regularcase:     "Example 'dfn' text. "
+    - em.regularcase:      "Example 'em' text. "
+    - ins.regularcase:     "Example 'ins' text. "
+    - kbd.regularcase:     "Example 'kbd' text. "
+    - q.regularcase:       "Example 'q' text. "
+    - s.regularcase:       "Example 's' text. "
+    - samp.regularcase:    "Example 'samp' text. "
+    - small.regularcase:   "Example 'small' text. "
+    - strike.regularcase:  "Example 'strike' text. "
+    - strong.regularcase:  "Example 'strong' text. "
+    - sub.regularcase:     "Example 'sub' text. "
+    - sup.regularcase:     "Example 'sup' text. "
+    - tt.regularcase:      "Example 'tt' text. "
+    - var.regularcase:     "Example 'var' text. "
+    - b.regularcase:       "Example 'b' text. "
+    - u.regularcase:       "Example 'u' text. "
+    - i.regularcase:       "Example 'i' text. "
+
+  - h3: Special inline elements
+  - p:
+
+    - input.bar.text: "Form input element, "
+    - checkbox.bar.text: "Checkbox input element, "
+    - select.bar.text: "Select input element, "
+    - button.bar.text: "Button element, "
+
+  - h3: Block elements
+  - p:
+    - address.regularcase: "Example 'address' text"
+
+  - h3: Font size
+  - p: |
+      These are 4+6 additional font sizes (smaller+larger), besides the regular size.
+  - p:
+    - .text: "Regular text size. "
+    - .text.small: "Smaller text size. "
+    - .text.xsmall: "Even smaller text size. "
+    - .text.xxsmall: "Even smaller (2) text size. "
+    - .text.xxxsmall.tiny: "Even smaller (3) text size. "
+  - p:
+    - .text: "Regular text size. "
+    - .text.large: "Larger text size. "
+    - .text.xlarge: "Even larger text size. "
+    - .text.xxlarge: "Even larger (2) text size. "
+    - .text.xxxlarge: "Even larger (3) text size. "
+    - .text.xxxxlarge: "Even larger (4) text size. "
+    - .text.xxxxxlarge: "Even larger (5) text size. "
+
+  - h2: Appendix
+  - h3: Footnotes
+
+  - p.footnote@id=_ref1:
+    - .text.target: "[1]"
+    - a@href=https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements#Elements: HTML Inline elements at MDN web docs
+
+  - h2text: The End
+#  

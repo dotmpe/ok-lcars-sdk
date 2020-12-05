@@ -1,7 +1,7 @@
 (0.0.3-dev)
   - Almost working "scrolling numbers"-animation folly.
   - Slowly moving LCARS SDK CSS to OK Sass style.
-  - Now reading struct data from JSON into Pug template,
+  - Work for TODO-8, loading struct data from JSON into Pug.
     so getting ready to start docs and OK style-reference.
 
 0.0.2 [2019-04-24]

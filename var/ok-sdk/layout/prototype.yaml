@@ -95,8 +95,8 @@ forms:
       label: 'LCARS 0-a 1.1'
     content:
       <<: *element
-      # var/sdk-demo/content/forms.md
-      # var/sdk-demo/content/form-1.md
+      # var/ok-sdk/content/forms.md
+      # var/ok-sdk/content/form-1.md
     footer: &footer
       <<: *hbar
   
@@ -108,7 +108,7 @@ forms:
       title: 'LCARS 0-A 1.2'
     content:
       <<: *element
-      # var/sdk-demo/content/form-1.md
+      # var/ok-sdk/content/form-1.md
     footer: &footer
       <<: *pillbar
 

@@ -1,0 +1,25 @@
++ok-sdk-base-form-1:
+  title: Intro 003
+  prev: layout/step-2
+  next: layout/step-4
+
+  header:
+    lcap:
+      class: bg-cat-1-1
+    rcap:
+      class: bg-cat-1-1
+
+  "":
+  - a:
+      class: "button bg-cat-1-1"
+      data-label: "disable"
+      href: javascript:document.getElementById('lcarssdk').disabled=true
+  - h1.title: Step 003
+  - +lorem-ipsum-paragraph.text-1-1@num=3: null
+
+  footer:
+    lcap:
+      class: bg-cat-1-1
+    rcap:
+      class: bg-cat-1-1
+#

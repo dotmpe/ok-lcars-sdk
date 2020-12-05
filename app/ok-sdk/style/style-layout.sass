@@ -1,0 +1,32 @@
+// Flexbox model
+
+.flex
+  flex: 1
+
+.flexbox
+  display: flex
+
+
+.flexv
+  @extend .flexbox
+  flex-direction: column
+
+  > .flexcv
+    @extend .flex
+
+
+.flexh
+  @extend .flexbox
+  flex-direction: row
+
+  > .flexch
+    @extend .flex
+
+
+.pane
+  height: 100%
+  width: 100%
+  overflow: scroll
+
+
+// OK-SDK:app/ok-sdk/style/style-layout.sass

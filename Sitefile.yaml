@@ -1,9 +1,9 @@
 sitefile: 0.0.7-dev
 date: 2020-09-25
-datetime: 2020-09-25T02:12:40
-version: v0.0.1-20-g4faf200
-dateversion: 2020-09-25:v0.0.1:20:4faf200
-port: 4507
+datetime: 2020-11-28T02:57:22
+version: v0.0.2-13-g4f21809
+dateversion: v0.0.2-13-g4f21809:2020-11-28
+port: 4508
 config:
   body-class: ok-diagram
 downstream: [] # Grant sitefile derefs to these remote sites
@@ -11,7 +11,7 @@ upstream: [] # Grant CORS access from these hosts
 paths: # Additional router include paths
   routers_replace: false
   routers:
-  - 'sitefile:app/sdk-demo/router'
+  - 'sitefile:app/ok-sdk/router'
 
 routes: # Simple router instances
 
@@ -29,26 +29,27 @@ routes: # Simple router instances
   _doc: docutils.rst2html:doc/*.rst
   _doc_dev: docutils.rst2html:doc/dev/*.rst
 
-  # Setup okudagram views (sdk-demo "app"; no r.js only pain HTML+CSS links)
-  select: pug:app/sdk-demo/view/select.pug
-  base-form-1: pug:app/sdk-demo/view/base/form-1.pug
-  base-form-2: pug:app/sdk-demo/view/base/form-2.pug
-  base-form-3: pug:app/sdk-demo/view/base/form-3.pug
-  base-form-4: pug:app/sdk-demo/view/base/form-4.pug
+  # Setup okudagram views (ok-sdk "app"; no r.js only pain HTML+CSS links)
+  select: pug:app/ok-sdk/view/select.pug
+  forms: pug:app/ok-sdk/view/layout/forms.pug
+  base-form-1: redir:forms?data=base/form-1
+  base-form-2: redir:forms?data=base/form-2
+  base-form-3: redir:forms?data=base/form-3
+  base-form-4: redir:forms?data=base/form-4
 
   lcarssdk-src/: static:lib/lcars-sdk/
   lcarssdk/: static:lib/lcars-sdk/lcarssdk/
   interfaces/: static:lib/lcars-sdk/interfaces/
 
   # extra styling for LCARS SDK okudagram views
-  base.css: sass:app/sdk-demo/style.sass
-  lcarssdk-fonts.css: static:app/sdk-demo/lcarssdk-fonts.css
+  base.css: sass:app/ok-sdk/style/style.sass
+  lcarssdk-fonts.css: static:app/ok-sdk/style/lcarssdk-fonts.css
   fonts: static:lib/lcars-sdk/lcarssdk/fonts
 
   # correct case for one lib
   lcarssdk/addons/levelbar/levelbar.css: redir:lcarssdk/addons/levelBar/levelBar.css
 
-  # Secondary resource with oku docs view... also based on sdk-demo PUG tpl
+  # Secondary resource with oku docs view... also based on ok-sdk PUG tpl
   app/ok-docs/main: pug:app/ok-docs-v0/view/main.pug
   app/ok-docs/doc001: pug:app/ok-docs-v0/view/doc001.pug
   app/ok-docs/doc002: pug:app/ok-docs-v0/view/doc002.pug
@@ -81,19 +82,24 @@ routes: # Simple router instances
   app/ok-todo-v0.js: rjs.main:app/ok-todo-v0.json
 
   # TODO-12: develop basic terminal forms into layouts templates merged with metadata
-  ok-0-a-1: pug:app/sdk-demo/layout/form-1.pug
-
-  #ok-0-a-1.yaml: @app/sdk-demo/layout/form-1.yaml#/forms/form-0-a-1-1
-  #ok-0-a-1.json: :app/sdk-demo/layout/form-1.yaml
-  ok-0-a-1.json: static:var/sdk-demo/layout-form-1.json
+  #prototype.yaml: @var/ok-sdk/layout/prototype.yaml#/forms/form-0-a-1-1
+  #prototype.json: :var/ok-sdk/layout/prototype.yaml
 
 options:
-  local:
-    ok-0-a-1:
+  local: # Options per route instances
+    select:
+      merge:
+        stylesheets:
+        - url: "/lcarssdk/css/lcarssdk.css"
+          id: "lcarssdk"
+        - url: "/base.css"
+          id: "ok-sdk-css"
+    forms:
       route:
-        import-query: ['merge.formDataFile']
-      insert-local: ['require']
-  # FIXME: Custom settings per URL route
+        import-query: ['merge.data', 'merge.formDataFile']
+      merge:
+        stylesheets:
+          $ref: '#/options/local/select/merge/stylesheets'
   #  'todo':
   #     pug:
   #       merge:
@@ -105,7 +111,7 @@ options:
   #         clients:
   #           $ref: '#/defs/app/base/clients'
 
-  global: # Custom settings per router name
+  global: # Options per router instance
     docutils:
       $ref: '#/options/global/rst2html'
     rst2html:
@@ -118,13 +124,18 @@ options:
       stylesheets:
         $ref: '#/defs/stylesheets/default'
     pug:
+      insert-local: ['require', 'lodash', 'lorem-ipsum']
+      compile:
+        compileDebug: true # Give Pug filename/line info on exceptions
+        debug: false
+        pretty: false
       merge:
         meta:
           $ref: '#/defs/app/base/meta'
-        scripts:
-          $ref: '#/defs/scripts/lcarssdk'
+        scripts: []
+          #$ref: '#/defs/scripts/lcarssdk'
         stylesheets:
-          $ref: '#/defs/stylesheets/lcarssdk'
+          $ref: '#/defs/stylesheets/default'
         clients:
           $ref: '#/defs/app/base/clients'
 
@@ -152,12 +163,12 @@ defs: # Storage for custom structures here
       #- /lcarssdk/templates/button/button.js
       - /npm/packages/color-tween/dist/color-tween.min.js
   stylesheets:
-    default:
-      - url: /vendor/jquery-ui.css
-      - url: /vendor/jquery-terminal.css
-      - url: /vendor/bootstrap.css
-      - url: /vendor/bootstrap-theme.css
-      - url: /vendor/bootstrap-table.css
+    default: []
+      #- url: /vendor/jquery-ui.css
+      #- url: /vendor/jquery-terminal.css
+      #- url: /vendor/bootstrap.css
+      #- url: /vendor/bootstrap-theme.css
+      #- url: /vendor/bootstrap-table.css
     lcarssdk:
       - url: "/lcarssdk/css/lcarssdk.css"
       #- url: "/lcarssdk/addons/scrollbutton/scrollbutton.css"

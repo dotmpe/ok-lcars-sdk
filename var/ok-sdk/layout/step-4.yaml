@@ -1,0 +1,10 @@
++ok-sdk-base-form-2:
+  title: Intro 004
+  prev: layout/step-3
+  next: layout/step-5
+  "":
+  - a:
+      class: "button bg-cat-1-1"
+      data-label: "disable"
+      href: javascript:document.getElementById('lcarssdk').disabled=true
+#

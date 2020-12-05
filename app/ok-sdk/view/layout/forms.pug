@@ -1,0 +1,53 @@
+extends ../base/data
+//- Server-side HTML+JSON with ok-sdk functions 
+
+include ../lcars-inc
+
+block main-data
+  -
+    function okFormElementParse(s) {
+      let tagName, classes, attrRaw, attributes={};
+      if( s.match(/[@\.]/) ) {
+        attrRaw = s.split('@')
+        classes = attrRaw.shift().split('.')
+        tagName = classes.shift()
+        // TODO: use indexOf iso split
+        Object.assign(attributes, Object.fromEntries(
+          attrRaw.map(x => x.split('='))))
+        if( 'class' in attributes ) {
+          attributes['class'].extend(classes) // += classes.join(" ")
+        } else {
+          attributes['class'] = classes //.join(" ")
+        }
+      } else {
+        tagName = s
+      }
+      if( tagName.startsWith('+') )
+        attributes["dirName"] = tagName
+      else
+        attributes["tagName"] = tagName
+      return attributes
+    }
+
+    function okNewElementOptions(o, A, a) {
+      // Turn initial argument into proper object
+      if (o == null || typeof o == "undefined" ) o = { "": [] }
+      if( ( typeof o == "string" ) ||
+          ( typeof o == "object" && typeof o.length !== "undefined" ) )
+        o = { "": o }
+      // Merge-in attributes, special string->array step for class attr.
+      o = lodash.defaultsDeep({}, o, A || {}, a || {})
+      if( typeof o.class === "string" ) o.class = o.class.split(' ')
+      if (a && a.class) {
+        if( typeof a.class === "string" )
+          a.class = a.class.split(' ')
+        o.class = o.class.concat(a.class)
+      }
+      //
+      return o
+    }
+
+  //- Start render at root item
+  +ok-tpl-item(formData)
+
+//- Id: OK-SDK:app/ok-sdk/view/layout/forms.pug
