@@ -126,8 +126,6 @@ options:
     pug:
       insert-local: ['require', 'lodash', 'lorem-ipsum']
       compile:
-        compileDebug: true # Give Pug filename/line info on exceptions
-        debug: false
         pretty: false
       merge:
         meta:

@@ -24,23 +24,3 @@ mixin lorem-ipsum-paragraph(o, num=1)
   while i < attributes.num
     p&attributes(attributes)= lorem.generateParagraphs(1)
     - i += 1
-
-
-mixin lorem-ipsum-paragraph-simple(num=1)
-  if typeof num != "number"
-    if typeof num == "object"
-      - attributes = lodash.defaultsDeep({}, num, attributes)
-    
-  if typeof attributes.num != "number"
-    - attributes.num = 1
-
-  - console.log(attributes)
-
-  if !attributes.class
-    - attributes.class = 'text-1-1'
-
-  p&attributes(attributes)
-    - i = 0
-    while i < attributes.num
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-      - i += 1

@@ -1,5 +1,5 @@
 @TODO:1 See how far HTML/CSS concept can be applied to okudagrams, before much of anything else. See [Form 2.1 (4)]
-
+Build forms 1-4.
 
 Web pages will never be adequate platforms to render OK, but it is possible to prepare styles for a distinct but simple set of diagram elements that together can reproduce some common forms seen on the show.
 

@@ -5,20 +5,13 @@ $include: "var/ok-sdk/_parts.json"
   prev: layout/step-2
   next: layout/step-4
 
-  header:
-    lcap:
-      class: bg-cat-1-1
-    rcap:
-      class: bg-cat-1-1
+  buttons:
+  - $ref: '#/_parts/disable-lcarssdk-style'
 
   "":
-  - $ref: '#/_parts/disable-lcarssdk-style'
+  #- $ref: '#/_parts/disable-lcarssdk-style'
   - h1.title: Step 003
-  - +lorem-ipsum-paragraph.text-1-1@num=3: null
+  - +lorem-ipsum-paragraph.text-1-1@num=7: null
+  - +lorem-ipsum-paragraph.text-1-1@num=7: null
 
-  footer:
-    lcap:
-      class: bg-cat-1-1
-    rcap:
-      class: bg-cat-1-1
 #

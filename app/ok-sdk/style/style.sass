@@ -1,7 +1,7 @@
 @use "sass:map"
 
 /* Load fonts
-@import ./lcarssdk-fonts.css
+@import './lcarssdk-fonts.css'
 
 // Functions
 @function pow($number, $exponent)
@@ -42,13 +42,15 @@ $pill-cap-medium-width: $unit-medium
 //$f13-head-ratio: 0.32
 $f13-head-ratio: 0.31
 
+$size_names: tiny, xxxsmall, xxsmall, xsmall, small, medium, regular, large, xlarge, xxlarge, xxxlarge, xxxxlarge, xxxxxlarge
+
 $sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2), "small": 0.8, "regular": 1.0, "large": 1/0.75, "xlarge": pow(1/0.75, 2), "xxlarge": pow(1/0.75, 3), "xxxlarge": pow(1/0.75, 4), "xxxxlarge": pow(1/0.75, 5), "xxxxxlarge": pow(1/0.75, 6))
 
 /* Background and text colors (as SASS variables and text/bg classes)
-@import ./theme.sass
+@import './theme.sass'
 
 /* Flex v/h and pane
-@import style-layout.sass
+@import 'style-layout.sass'
 
 
 @mixin ok-dia__rootpane
@@ -61,9 +63,13 @@ $sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2),
 
   --bar-radius:    11pt
 
-  @extend .pane
+  @extend .rootpane
+
 
 @mixin ok-dia__bar
+  /* Inline "block" bar
+  &:before
+    content: "\00a0\00a0"
   border: 0
   padding: 1pt 5pt 0pt 2pt
   margin: 3pt 2pt
@@ -128,6 +134,10 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
   @each $name, $factor in $sizes
     --font-size-#{$name}: calc( var(--font-size) * #{$factor} )
     --line-height-#{$name}: calc( var(--line-height) * #{$factor} )
+  --font-size-medium: var(--font-size-regular)
+  --font-size-tiny: var(--font-size-xxxsmall)
+  --line-height-medium: var(--line-height-regular)
+  --line-height-tiny: var(--line-height-xxxsmall)
 
   background-color: black
   font-family: 'LCARS'
@@ -156,16 +166,12 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
 
   &__text,
   .text
-    @each $name, $factor in $sizes
-      &__#{$name},
+    @each $name in $size_names
+      &--#{$name},
       &.#{$name}
         font-size: var(--font-size-#{$name})
         line-height: var(--line-height-#{$name})
-
-    &.tiny
-      @extend .ok-diagram__text__xxxsmall
-
-    @extend .ok-diagram__text__regular
+    @extend .ok-diagram__text--regular
 
   .title
     text-transform: uppercase
@@ -186,18 +192,50 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
   .button:active
     filter: brightness(150%)
 
+  // Add shortcut classes for .bar, .cap
   .bar,
   .button,
   button,
   input
-    @extend .ok_dia__bar //ok-dia__bar
-
-    @each $name, $factor in $sizes
-      &__#{$name},
+    @extend .ok-dia__bar
+    @each $name in $size_names
       &.#{$name}
-        @extend .ok_dia__bar__#{$name}
+        @extend .ok-dia__bar--#{$name}
+    @extend .ok-dia__bar--regular
 
-    @extend .ok_dia__bar__regular
+  .cap.left
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__bar__capleft--#{$name}
+    @extend .ok-dia__bar__capleft--regular
+
+  .cap.right
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__bar__capright--#{$name}
+    @extend .ok-dia__bar__capright--regular
+
+
+  .bar-block
+    @extend .ok-dia__blockbar
+    @each $name in $size_names
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__blockbar--#{$name}
+    @extend .ok-dia__blockbar--regular
+
+  .cap-block.left
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__blockbar__capleft--#{$name}
+    @extend .ok-dia__blockbar__capleft--regular
+
+  .cap-block.right
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__blockbar__capright--#{$name}
+    @extend .ok-dia__blockbar__capright--regular
+
 
   button,
   input
@@ -277,19 +315,23 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
       right: 25px
 
 
-.ok_dia__bar
+.ok-dia__bar
 
   @each $name, $factor in $sizes
-    &__#{$name},
+    &--#{$name},
     &.#{$name}
       @include ok-dia__bar
       @include ok-dia__bar--size($name, $factor)
 
-  &__tiny,
-  &.tiny
-    @extend .ok_dia__bar__xxxsmall
+  &--medium,
+  &.medium
+    @extend .ok-dia__bar--regular
 
-  @extend .ok_dia__bar__regular
+  &--tiny,
+  &.tiny
+    @extend .ok-dia__bar--xxxsmall
+
+  @extend .ok-dia__bar--regular
 
   &[data-label]:before
     content: attr(data-label)
@@ -301,59 +343,59 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
 
   &__capleft
     @each $name, $factor in $sizes
-      &.#{$name},
-      &__#{$name}
-        @extend .ok_dia__bar__#{$name}
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__bar--#{$name}
         border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
         border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
         padding-left: calc( var(--bar-radius) * #{$factor} )
-    &__tiny,
+    &--medium,
+    &.medium
+      @extend .ok-dia__bar__capleft--regular
+    &--tiny,
     &.tiny
-      @extend .ok_dia__bar__capleft__xxxsmall
-    @extend .ok_dia__bar__capleft__regular
+      @extend .ok-dia__bar__capleft--xxxsmall
+    @extend .ok-dia__bar__capleft--regular
 
   &__capright
     @each $name, $factor in $sizes
-      &.#{$name},
-      &__#{$name}
-        @extend .ok_dia__bar__#{$name}
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__bar--#{$name}
         border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
         border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
         padding-right: calc( var(--bar-radius) * #{$factor} )
-    &__tiny,
+    &--medium,
+    &.medium
+      @extend .ok-dia__bar__capright--regular
+    &--tiny,
     &.tiny
-      @extend .ok_dia__bar__capright__xxxsmall
-    @extend .ok_dia__bar__capright__regular
+      @extend .ok-dia__bar__capright--xxxsmall
+    @extend .ok-dia__bar__capright--regular
 
   &__pill
-    @each $name, $factor in $sizes
-      &.#{$name},
-      &__#{$name}
-        @extend .ok_dia__bar__capleft__#{$name}
-        @extend .ok_dia__bar__capright__#{$name}
-    &__tiny,
-    &.tiny
-      @extend .ok_dia__bar__pill__xxxsmall
-    @extend .ok_dia__bar__pill__regular
+    @each $name in $size_names
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__bar__capleft--#{$name}
+        @extend .ok-dia__bar__capright--#{$name}
+    @extend .ok-dia__bar__pill--regular
 
 
-.ok_dia__blockbar:before
-  content: "\00a0\00a0"
-
-.ok_dia__blockbar:after
-  content: ""
-
-.ok_dia__blockbar
+.ok-dia__blockbar
 
   @each $name, $factor in $sizes
-    &__#{$name},
+    &--#{$name},
     &.#{$name}
       @include ok-dia__blockbar
       @include ok-dia__blockbar--size($name, $factor)
-  &__tiny,
+  &--medium,
+  &.medium
+    @extend .ok-dia__blockbar--regular
+  &--tiny,
   &.tiny
-    @extend .ok_dia__blockbar__xxxsmall
-  @extend .ok_dia__blockbar__regular
+    @extend .ok-dia__blockbar--xxxsmall
+  @extend .ok-dia__blockbar--regular
 
   &.em_bar
     width: 1em
@@ -366,42 +408,45 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
 
   &__capleft
     @each $name, $factor in $sizes
-      &.#{$name},
-      &__#{$name}
-        @extend .ok_dia__blockbar__#{$name}
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__blockbar--#{$name}
         border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
         border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
         padding-left: calc( var(--bar-radius) * #{$factor} )
         max-width: var(--bar-radius)
-    &__tiny,
+    &--medium,
+    &.medium
+      @extend .ok-dia__blockbar__capleft--regular
+    &--tiny,
     &.tiny
-      @extend .ok_dia__blockbar__capleft__xxxsmall
-    @extend .ok_dia__blockbar__capleft__regular
+      @extend .ok-dia__blockbar__capleft--xxxsmall
+    @extend .ok-dia__blockbar__capleft--regular
 
   &__capright
     @each $name, $factor in $sizes
-      &.#{$name},
-      &__#{$name}
-        @extend .ok_dia__blockbar__#{$name}
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__blockbar--#{$name}
         border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
         border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
         padding-right: calc( var(--bar-radius) * #{$factor} )
         max-width: var(--bar-radius)
-    &__tiny,
+    &--medium,
+    &.medium
+      @extend .ok-dia__blockbar__capright--regular
+    &--tiny,
     &.tiny
-      @extend .ok_dia__blockbar__capright__xxxsmall
-    @extend .ok_dia__blockbar__capright__regular
+      @extend .ok-dia__blockbar__capright--xxxsmall
+    @extend .ok-dia__blockbar__capright--regular
 
   &__pill
-    @each $name, $factor in $sizes
+    @each $name in $size_names
       &.#{$name},
-      &__#{$name}
-        @extend .ok_dia__bar__capleft__#{$name}
-        @extend .ok_dia__bar__capright__#{$name}
-    &__tiny,
-    &.tiny
-      @extend .ok_dia__blockbar__pill__xxxsmall
-    @extend .ok_dia__blockbar__pill__regular
+      &--#{$name}
+        @extend .ok-dia__bar__capleft--#{$name}
+        @extend .ok-dia__bar__capright--#{$name}
+    @extend .ok-dia__blockbar__pill--regular
 
 
 
@@ -458,7 +503,7 @@ $bar-align-v: ( "xxxsmall": -2.7pt, "xxsmall": 3pt, "xsmall": 3pt, "small": 3pt,
   margin: $medium-space auto $small-space auto
   padding: 0 ( $pill-cap-small-width + $bar-inner-margin )
 
-.form-1-1.medium > .content
+.form-1-1 > .content
   margin: $large-space auto $medium-space auto
   padding: 0 ( $pill-cap-medium-width + $bar-inner-margin )
 
@@ -478,6 +523,7 @@ $f13-body-elbow-length: 69pt
     //height: $f13-1-header-height
 
     > .f13-1-1 // Header column+elbow / vertical frame
+      --empty: null
 
     > .f13-1-2 // Header content and h-frame
 
@@ -516,6 +562,7 @@ $f13-body-elbow-length: 69pt
           width: $f13-header-elbow-length
           right: -$f13-header-elbow-length
           > .block
+            --empty: null
 
     > .f13-2-2 // Body content and h-frame
 

@@ -1,14 +1,11 @@
-+ok-sdk-base-form-0:
+$include: "var/ok-sdk/_parts.json"
++ok-sdk-form-0-1:
   title: Intro 001
   prev-url: /select
   next: layout/step-2
   color: 1-1
   "":
-  - a:
-      class: "button bg-cat-1-1"
-      data-label: "disable"
-      href: javascript:document.getElementById('lcarssdk').disabled=true
-
+  - $ref: '#/_parts/disable-lcarssdk-style'
   - h1.title: Introduction
   - h2.title.altcolor: Objective
   - +ok-paragraph@color=2-3: |
@@ -77,8 +74,8 @@
     - button.bar:
         data-label: Another button bar label
     - span.text: |
-        Using the ok-bar directive has the same effect as using elements and classes directly such as the two labels before.
-    - +ok-bar.button@tagName=a: OK-Bar button with 'a' tag
+        Using the ok-sdk-bar directive has the same effect as using elements and classes directly such as the two labels before.
+    - +ok-sdk-bar.button@tagName=a: OK-Bar button with 'a' tag
     - span.text: |
         Using a directive may be more convenient as a shortcut.
     - a.bar.button.@data-label=Label: {}

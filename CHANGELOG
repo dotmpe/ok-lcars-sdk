@@ -1,8 +1,10 @@
 (0.0.3-dev)
   - Almost working "scrolling numbers"-animation folly.
-  - Slowly moving LCARS SDK CSS to OK Sass style.
-  - Work for TODO-8, loading struct data from JSON into Pug.
+  - Hacking on LCARS SDK CSS vs OK Sass style.
+  - Work for TODO-8, loading struct data from YAML as JSON into Pug.
     so getting ready to start docs and OK style-reference.
+  - Upgraded Gruntfile linters (now JS, JSON, Pug, and Sass) and added yaml2json
+    task.
 
 0.0.2 [2019-04-24]
   - Added some metadata setups, tasks for further thought.

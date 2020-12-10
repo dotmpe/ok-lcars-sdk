@@ -1,8 +1,11 @@
 $include: "var/ok-sdk/_parts.json"
-+ok-sdk-base-form-3:
++ok-sdk-base-form-2:
   title: Intro 005
   prev: layout/step-4
-  next-url: /select
+  next: layout/step-6
   "":
   - $ref: '#/_parts/disable-lcarssdk-style'
+  - p: Form 2
+  - +lorem-ipsum-paragraph@num=7: null
+  - +lorem-ipsum-paragraph.text-2-2@num=7: null
 #

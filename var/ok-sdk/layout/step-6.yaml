@@ -1,0 +1,9 @@
+$include: "var/ok-sdk/_parts.json"
++ok-sdk-base-form-3:
+  title: Intro 006
+  prev: layout/step-5
+  next-url: /select
+  "":
+  - $ref: '#/_parts/disable-lcarssdk-style'
+  - p: Form 3
+#

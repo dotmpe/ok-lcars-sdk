@@ -1,0 +1,144 @@
+mixin ok-debug(o)
+  pre= JSON.stringify(o)
+
+mixin ok-proc-ref(element, doc)
+  //-
+    Lookup and combine part referenced by JSON path
+  -
+    let dataRef = element['$ref']
+    let sf = require('sitefile')
+    let p = dataRef.split('#')
+    // Load external data, or use current doc
+    let jsonf = p[0]
+    let c = null
+    if (jsonf != '') {
+      if (dataRef.startsWith('/')) {
+        dataFile = dataRef
+      } else {
+        dataFile = path.join(context.cwd, dataRef)
+      }
+      c = JSON.parse(fs.readFileSync(dataFile))
+    } else c = doc 
+    // Resolve simple JSON path reference
+    let spec = p[1]
+    p = spec.split('/')
+    if (p[0] == '') p.shift() // Skip empty root
+    let e = null
+    while (p.length) {
+      e = p.shift()
+      c = c[e]
+    }
+    // Merge referenced object into doc at element
+    lodash.merge(element, c)
+
+mixin ok-proc-include(element)
+  //-
+    Very simple JSON $include handler. Accepts bsolute paths or paths
+    relative to project root.
+  -
+    let dataFile = null
+    let path = require('path')
+    let dataRef = element['$include']
+
+    if (dataRef.startsWith('/')) {
+      dataFile = dataRef
+    } else {
+      dataFile = path.join(context.cwd, dataRef)
+    }
+    let include = JSON.parse(fs.readFileSync(dataFile))
+    lodash.merge(element, include)
+
+mixin ok-proc-import(element)
+  //-
+    Very simple JSON $import handler. Does not track source origin so
+    cannot do relative path resolving. 
+    TODO: Instead, pass basename in data-dir, or full path relative to project root.
+
+      //let name = path.basename(dataRef)
+
+mixin ok-element(o, defs=null)
+  -
+    if (arguments.length > 2) okSurplusArgs(arguments, 2, 'ok-element')
+    o = okNewElementOptions(o, defs, attributes)
+    okElementColored(o)
+    okElementSized(o)
+    let tagName = o.tagName
+    delete o.tagName
+    if( "undefined" !== typeof o[''] ) {
+      content = o['']
+      delete o['']
+    } else {
+      content = []
+    }
+
+  unless tagName
+    if o.class.indexOf('text') > -1
+      - tagName = "span"
+    else
+      - tagName = "div"
+
+  if block && "undefined" != typeof block()
+    if "undefined" != typeof content.length && content.length > 0
+      - console.error("Both block and data content", block(), content)
+  
+  if "string" === typeof(content)
+    #{tagName}&attributes(o)
+      = content
+  else
+    #{tagName}&attributes(o)
+      if !o['block-append']
+        block
+      if "undefined" != typeof content.length && content.length > 0
+        +ok-element-items(content, o.color, o.size)
+      unless !o['block-append']
+        block
+
+mixin ok-element-items(content, color, size)
+  for element in content
+    +ok-tpl-item(element)&attributes({ "color": color, "size": size })
+
+mixin ok-tpl-item(element)
+  - if (arguments.length > 1) okSurplusArgs(arguments, 1, 'ok-tpl-item')
+  - for( attr in element )
+    - if (attr.startsWith('$'))
+        +#{"ok-proc-"+attr.substr('1')}(element, formData)
+
+  - for( attr in element )
+    -
+      if (attr.startsWith('_')) continue
+      if (attr.startsWith('$')) continue
+      o = element[attr]
+      if( o === null ) o = {"": []}
+      else if( typeof o === "string" ) o = {"": o}
+      else if( typeof o.length !== "undefined" ) o = {"": o}
+      o = lodash.defaultsDeep({}, o, okFormElementParse(attr), attributes)
+      o.tagRule = attr
+
+    if o.dirName
+      +#{o.dirName.substr(1)}(o)
+        block
+    else
+      +ok-element(o)
+        block
+
+mixin ok-element-instance(o, tagName=null)
+  -
+    if (arguments.length > 2) okSurplusArgs(arguments, 2, 'ok-element-instance')
+    o = okNewElementOptions(o, null, attributes)
+    if( typeof tagName !== "string" ) tagName="div"
+    o["tagName"] = tagName
+
+  +ok-element(o)&attributes(attributes)
+    block
+
+mixin ok-text(o)
+  +ok-element-instance(o, "span").text&attributes(attributes)
+    block
+
+mixin ok-title(o)
+  +ok-element-instance(o, "h2").title&attributes(attributes)
+    block
+
+mixin ok-paragraph(o)
+  +ok-element-instance(o, "p").text&attributes(attributes)
+    block

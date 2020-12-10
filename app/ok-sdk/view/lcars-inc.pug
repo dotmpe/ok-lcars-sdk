@@ -1,22 +1,42 @@
-mixin ok-diagram(formData)
-  if typeof formData == "string"
-    .wrapper&attributes(attributes)= formData
-  else
-    .wrapper&attributes(attributes)
-      if "undefined" != typeof formData.length
-        for element in formData
-          - for( attr in element )
-            - el = okFormElementParse(attr)
-            +ok-tpl-item(el[0], element[attr])&attributes(el[1])
+include ok-json-html
 
-mixin ok-debug(o)
-  div= JSON.stringify(o)
 
-mixin ok-element(o)
+mixin ok-sdk-no-data(color, msg='No Data')
+  .flex
+    p.no-data-placeholder&attributes({class:'bg-'+color})= msg
+
+mixin ok-sdk-bar(o_)
+  if arguments.length > 1
+    - okSurplusArgs(arguments, 1, 'ok-sdk-bar')
+  - let o = okNewElementOptions(o_, {}, attributes)
+  if "string" == typeof(o[''])
+    - o["data-label"] = o['']
+    - delete o['']
+  +ok-element(o, {"class": "bar flex"})
+    block
+
+mixin ok-sdk-cap-left(o)
+  +ok-element(o, {"class": "cap left"})
+
+mixin ok-sdk-cap-right(o)
+  +ok-element(o, {"class": "cap right"})
+
+mixin ok-sdk-titlebar(o_)
+  if (arguments.length > 1)
+    - okSurplusArgs(arguments, 1, 'ok-sdk-titlebar')
   -
-    o = okNewElementOptions(o, null, attributes)
-    let tagName = o.tagName
-    delete o.tagName
+    let o = okNewElementOptions(o_, {
+        "title": {
+          "text": "Title",
+          "align": "right"
+        }
+      }, attributes)
+    o = lodash.defaultsDeep(o, {
+        "bar": { "color": o.color, "size": o.size },
+        "title": {
+          "color": o.color, "size": o.size,
+          "text": o.title } } )
+    let content
     if( "undefined" !== typeof o[''] ) {
       content = o['']
       delete o['']
@@ -24,159 +44,48 @@ mixin ok-element(o)
       content = []
     }
 
-  if o.class
-    if "string" === typeof(o.class)
-      - o.class = o.class.split(" ")
+  if o.title && o.title.align == 'left'
+    +ok-element(o.title).title.text
+      = o.title.text
+
+  if typeof content == "string"
+    +ok-element(o.bar).bar.flex
+      = content
   else
-    - o.class = []
+    +ok-element(o.bar).bar.flex
+    if typeof content.length !== "undefined" && content.length > 0
+      +ok-element-items(content, o.color, o.size)
 
-  unless o.color
-    - o.color = '1-1'
-  unless o.class.indexOf('colored') > -1
-    if o.class.indexOf('bar') > -1 || o.class.indexOf('bg') > -1
-      - o.class = o.class.concat(['colored', 'bg-cat-'+o.color])
-    else
-      - o.class = o.class.concat(['colored', 'text-'+o.color])
-  
-  unless tagName
-    if o.class.indexOf('text') > -1
-      - tagName = "span"
-    else
-      - tagName = "div"
-  
-  if "string" === typeof(content)
-    #{tagName}&attributes(o)= content
-  else
-    #{tagName}&attributes(o)
-      if "undefined" != typeof content.length
-        +ok-element-items(content, o.color)
+  if o.title && o.title.align == 'right'
+    +ok-element(o.title).title.text
+      = o.title.text
 
-mixin ok-element-items(content, color)
-  for element in content
-    +ok-tpl-item(element)&attributes({"color":color})
-
-mixin ok-proc-ref(element, doc)
-  //-
-    Lookup and combine part referenced by JSON path
+mixin ok-sdk-pillbar(o_)
   -
-    let dataRef = element['$ref']
-    let sf = require('sitefile')
-    let p = dataRef.split('#')
-    // Load external data, or use current doc
-    let jsonf = p[0]
-    let c = null
-    if (jsonf != '') {
-      if (dataRef.startsWith('/')) {
-        dataFile = dataRef
-      } else {
-        dataFile = path.join(context.cwd, dataRef)
-      }
-      c = JSON.parse(fs.readFileSync(dataFile))
-    } else c = doc 
-    // Resolve simple JSON path reference
-    let spec = p[1]
-    p = spec.split('/')
-    if (p[0] == '') p.shift() // Skip empty root
-    let e = null
-    while (p.length) {
-      e = p.shift()
-      c = c[e]
+    let o = okNewElementOptions( o_, {
+        "title": "PB",
+      }, attributes)
+    let defs = {
+        "lcap": { "color": o.color, "size": o.size },
+        "bar": { "color": o.color, "size": o.size },
+        "rcap": { "color": o.color, "size": o.size } }
+    if( null == o.title ) defs["bar"]["title"] = null
+    else defs["bar"]["title"] = { "text": o.title }
+    if( typeof o[""] != "undefined" ) {
+      defs["bar"][""] = o[""]
     }
-    // Merge referenced object into doc at element
-    lodash.merge(element, c)
+    lodash.defaultsDeep(o, defs)
 
-mixin ok-proc-include(element)
-  //-
-    Very simple JSON $include handler. Accepts bsolute paths or paths
-    relative to project root.
-  -
-    let dataFile = null
-    let path = require('path')
-    let dataRef = element['$include']
-
-    if (dataRef.startsWith('/')) {
-      dataFile = dataRef
-    } else {
-      dataFile = path.join(context.cwd, dataRef)
-    }
-    let include = JSON.parse(fs.readFileSync(dataFile))
-    lodash.merge(element, include)
-
-
-mixin ok-proc-import(element)
-  //-
-    Very simple JSON $import handler. Does not track source origin so
-    cannot do relative path resolving. 
-    TODO: Instead, pass basename in data-dir, or full path relative to project root.
-
-      //let name = path.basename(dataRef)
-
-mixin ok-tpl-item(element)
-  - for( attr in element )
-    - if (attr.startsWith('$'))
-        +#{"ok-proc-"+attr.substr('1')}(element, formData)
-
-  - for( attr in element )
-    -
-      if (attr.startsWith('_')) continue
-      if (attr.startsWith('$')) continue
-      o = element[attr]
-      if( o === null ) o = {"": []}
-      else if( typeof o === "string" ) o = {"": o}
-      else if( typeof o.length !== "undefined" ) o = {"": o}
-      o = lodash.defaultsDeep({}, o, okFormElementParse(attr), attributes)
-      o.tagRule = attr
-
-    if o.dirName
-      +#{o.dirName.substr(1)}(o)
-        block
-    else
-      +ok-element(o)
-        block
-
-mixin ok-element-instance(o, tagName=null)
-  if !o
-    - o = {"": []}
-  -
-    if( typeof o == "string" ) o = {"": o}
-    if( typeof tagName !== "string" ) tagName="div"
-    o["tagName"] = tagName
-
-  +ok-element(o)&attributes(attributes)
-    block
-
-mixin ok-text(o)
-  +ok-element-instance(o, "span").text&attributes(attributes)
-    block
-
-mixin ok-title(o)
-  +ok-element-instance(o, "h2").title&attributes(attributes)
-    block
-
-mixin ok-paragraph(o)
-  +ok-element-instance(o, "p").capitalized&attributes(attributes)
-    block
-
-mixin ok-column(o)
-  +ok-element(o)&attributes(attributes)
-    block
-
-mixin ok-bar(o)
-  if "string" == typeof(o)
-    - o = {"data-label": o}
-  else if "undefined" !== typeof(o[''])
-    - o["data-label"] = o['']
-    - delete o['']
-  +ok-element(o).bar&attributes(attributes)
-    block
-
-mixin ok-cap-left(formData)
-  .cap.left&attributes(attributes)= formData
-
-mixin ok-cap-right(formData)
-  .cap.right&attributes(attributes)= formData
+  .row.flexh&attributes(attributes)
+    if o.lcap
+      +ok-sdk-cap-left(o.lcap)
+    +ok-sdk-titlebar(o.bar)
+    if o.rcap
+      +ok-sdk-cap-right(o.rcap)
 
 mixin ok-prev-next-form(o, baseref="/forms/")
+
+  - let prev_href; let next_href
 
   if o.prev
     - prev_href = baseref + o.prev
@@ -194,6 +103,7 @@ mixin ok-prev-next-form(o, baseref="/forms/")
   if next_href
     a.button.bg-cat-1-1(data-label="NEXT", href=next_href)
 
+
 include lcars-form-1-inc
 include lcars-form-2-inc
 include lcars-form-3-inc
@@ -205,78 +115,4 @@ mixin ok-sdk-base-form-0(o)
     +ok-prev-next-form(o, '/forms?merge.data=')
 
     if "undefined" != typeof o[''].length
-      +ok-element-items(o[''], o.color)
-
-
-mixin ok-sdk-no-data(color, msg='No Data')
-  .flexcv
-    p.no-data-placeholder&attributes({class:'bg-'+color})= msg
-
-
-mixin ok-sdk-hbar(bar)
-
-  if !bar.class
-    - bar.class = "bg-cat-1-1"
-
-  if bar.label
-    div&attributes({class:"bar flexch "+bar.class, 'data-label':bar.label })
-  else if bar.altlabel
-    div&attributes({class:"bar flexch "+bar.class, 'data-altlabel':bar.altlabel })
-  else
-    div&attributes({class:"bar flexch "+bar.class})
-
-
-mixin ok-sdk-titlebar(title, bar)
-
-  if title && title.align == 'left'
-    div&attributes({class:"title text "+sizing+" "+title.class})= title.text
-    +ok-sdk-hbar(bar)
-
-  else
-    +ok-sdk-hbar(bar)
-    if title
-      div&attributes({class:"title text "+sizing+" "+title.class})= title.text
-
-
-mixin ok-pillbar(formData)
-  .row
-    +ok-cap-left()&attributes(attributes)
-    +ok-bar(formData)&attributes(attributes)
-    +ok-cap-right()&attributes(attributes)
-
-
-mixin ok-sdk-pillbar(o, color="1-1", title="PB", size='medium', lcap={}, rcap={}, bar={})
-  -
-    o = okNewElementOptions(o, {
-        "color": color || "1-1",
-        "data-title": title || "PB",
-        "data-size": size || "medium",
-        "lcap": lcap || {"data-size": size || "medium" },
-        "bar": bar || {"data-size": size || "medium" },
-        "rcap": rcap || {"data-size": size || "medium" }
-      }, attributes)
-
-  if !o.bar.class
-    - o.bar.class = "bg-cat"+o.color
-
-  span.ok_dia__bar__pill(class="bg-cat-"+o.color)&attributes(o)= o['']
-
-mixin old(o)
-  if o.rcap != null
-    if !o.rcap.class
-      - o.rcap.class = "bg-"+color
-  if o.lcap != null
-    if !o.lcap.class
-      - o.lcap.class = "bg-"+color
-  if o.title
-    if !o.title.class
-      - o.title.class = "text-"+color
-
-  .row.flexh&attributes(attributes)
-    if o.lcap
-      div&attributes({class:"cap "+o.size+" left "+o.lcap.class})
-
-    +ok-sdk-titlebar(o, o.color, title, bar)
-
-    if o.rcap
-      div&attributes({class:"cap "+o.size+" right "+o.rcap.class})
+      +ok-element-items(o[''], o.color, o.size)

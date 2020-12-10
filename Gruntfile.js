@@ -2,36 +2,48 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-sass-lint');
 	grunt.loadNpmTasks('grunt-puglint');
-	grunt.loadNpmTasks('grunt-json-validate');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-jsonlint');
+
+	grunt.loadTasks('tasks');
 
 	grunt.initConfig({
-		//jsonvalidate: {
-		//	target: {
-		//		files: [
-		//			{
-		//				//options: { },
-		//				schema: 'node_modules/package.json-schema/v1/schema.json',
-		//				//refs: [
-		//				//	'path/to/referenced/**/*.schema.json'
-		//				//],
-		//				src: 'package.json'
-		//			}
-		//		]
-		//	}
-		//},
-		puglint:{
-			src: ['app/**.pug']
+		puglint: {
+      files: [ 'app/**/*.pug' ]
 		},
 		sasslint: {
 			options: {
-				//configFile: 'config/.sass-lint.yml',
-				//formatter: 'junit',
-				//outputFile: 'report.xml'
+			  files: {
+			    // FIXME: old sasslint does not like new style interpolated vars
+			    ignore: "app/ok-sdk/style/style.sass"
+        },
+        rules: {
+          "placeholder-in-extend": 0
+        }
 			},
 			target: ['app/ok-sdk/\*.sass', 'app/ok-sdk/\*/\*.sass']
-		}
+		},
+    jshint: { files: ['Gruntfile.js'] },
+    jsonlint: {
+      default: {
+        src: ['package.json']
+      }
+    },
+    yaml2json: {
+      convert: {
+        files: [ {
+          expand: true,
+          cwd: 'var/ok-sdk/',
+          src: '**/*.yaml',
+          dest: 'var/ok-sdk/',
+          ext: '.json'
+        } ]
+      }
+    }
 	});
 
-	grunt.registerTask('default', ['sasslint','puglint']);
+	grunt.registerTask('lint', ['sasslint', 'puglint', 'jsonlint']);
+	grunt.registerTask('build', ['yaml2json']);
+	grunt.registerTask('default', ['lint', 'build']);
 	grunt.registerTask('test', 'default');
-}
+};

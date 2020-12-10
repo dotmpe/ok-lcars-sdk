@@ -29,22 +29,70 @@ block main-data
       return attributes
     }
 
-    function okNewElementOptions(o, A, a) {
+    function okNewElementOptions(o, defs, a) {
       // Turn initial argument into proper object
-      if (o == null || typeof o == "undefined" ) o = { "": [] }
+      let o1
+      if (o == null || typeof o == "undefined" ) o1 = { "": [] }
       if( ( typeof o == "string" ) ||
           ( typeof o == "object" && typeof o.length !== "undefined" ) )
-        o = { "": o }
+        o1 = { "": o }
+      else o1 = o
       // Merge-in attributes, special string->array step for class attr.
-      o = lodash.defaultsDeep({}, o, A || {}, a || {})
-      if( typeof o.class === "string" ) o.class = o.class.split(' ')
+      let o2 = lodash.defaultsDeep({}, o1, defs || {}, {
+          "color": "1-1", "size": "medium"
+        }, a || {})
+      if( typeof o2.class === "string" ) o2.class = o2.class.split(' ')
       if (a && a.class) {
         if( typeof a.class === "string" )
           a.class = a.class.split(' ')
-        o.class = o.class.concat(a.class)
+        o2.class = o2.class.concat(a.class)
       }
-      //
-      return o
+      if (typeof o2.class == "undefined") {
+        o2.class = []
+      }
+      //console.log('o', o, 'o1', o1, 'o2', o2)
+      return o2
+    }
+
+    let element_sizes = "tiny xxxsmall xxsmall xsmall small regular medium large xlarge xxlarge xxxlarge xxxxlarge xxxxxlarge".split(' ');
+    function okElementSized(o) {
+      for( _class of element_sizes ) {
+        if( o.class.indexOf(_class) > -1 ) return;
+      }
+      o.class = o.class.concat([o.size]);
+    }
+
+    function okElementColored(o) {
+      if( o.class.indexOf('colored') > -1 ) return;
+      if( o.class.indexOf('bar') > -1
+          || o.class.indexOf('cap') > -1
+          || o.class.indexOf('button') > -1
+          || o.class.indexOf('bg') > -1 )
+        o.class = o.class.concat(['colored', 'bg-cat-'+o.color]);
+      else
+        o.class = o.class.concat(['colored', 'text-'+o.color]);
+    }
+
+    function okSurplusArgs(args, start=1, id=null) {
+      if (id) msg = id+': Too many arguments: '
+      else msg = 'Too many arguments: '
+      for (var a=start; a < args.length; a++) {
+        console.error(msg+a+': '+args[a]);
+      }
+      if (strict) throw new Error(msg+(args.length-start));
+    }
+
+    function okButton(o, key, label, baseref="/forms/") {
+      if( o[key] ) href = baseref + o[key]
+      else if( o[key+'-url'] ) href = o[key+'-url']
+      return {"class": "button", "data-label": label, "href":href}
+    }
+
+    function okPrevNextButtons(o, baseref="/forms/") {
+      return [
+        { "a": okButton(o, "prev", "Prev", baseref)},
+        { "a": okButton(o, "next", "Next", baseref)}
+      ]
     }
 
   //- Start render at root item

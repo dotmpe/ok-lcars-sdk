@@ -5,7 +5,7 @@ Dev Docs
 
 Status
 ------
-- tasks/todo-1.md
+- tasks/todo-1.md Build forms 1-4.
 - TODO-2: rewrite SDK CSS to Sass, deprecate
 - TODO-3, TODO-9: play together with bootstrap, archive.is, web.archive.org
 - TODO-4: reusable components; Sf+Pug/Sass JSON/YAML initially
@@ -32,7 +32,7 @@ Tooling
 - ``package.y*ml`` [1__] for all project metadata (but don't forget ``package.json`` scripts)
 - Sitefile [2__] to serve pages as site at HTTP (containerized)
 - httrack to mirror static copy for <pages.github.com> (see ``mirror.sh``)
-- A ``yaml2json`` processor.
+- Grunt CLI.
 
 Directories
 -----------

@@ -21,17 +21,20 @@
   "bugs": {
     "url": "https://github.com/dotmpe/ok-lcars-sdk/issues"
   },
-  "homepage": "https://github.com/dotmpe/ok-lcars-sdk#readme",
+  "homepage": "https://dotmpe.github.com/ok-lcars-sdk",
   "devDependencies": {
     "grunt": "^1.0.3",
-    "grunt-json-validate": "^0.1.1",
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-jsonlint": "^2.1.3",
     "grunt-puglint": "^1.0.0",
     "grunt-sass-lint": "^0.2.4",
+    "js-yaml": "^3.14.1",
     "package.json-schema": "^0.2.0"
   },
   "dependencies": {
     "color-tween": "^0.1.1",
     "lorem-ipsum": "^2.0.3",
     "todotxt-parser": "^1.0.1"
-  }
+  },
+  "sasslintConfig": ".sass-lint.yml"
 }

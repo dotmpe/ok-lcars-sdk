@@ -22,4 +22,3 @@ A variant on the basic form 2 element with an offset, allowing to align two
 basic form-2 composites so that they share one row/column.
 
 Not sure yet if this has two or four content panes.
-

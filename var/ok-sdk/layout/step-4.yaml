@@ -1,9 +1,31 @@
 $include: "var/ok-sdk/_parts.json"
-
-+ok-sdk-base-form-2:
++ok-sdk-base-form-1:
   title: Intro 004
   prev: layout/step-3
   next: layout/step-5
-  "":
+  color: 2-3
+  buttons:
   - $ref: '#/_parts/disable-lcarssdk-style'
+
+  header:
+    lcap:
+      color: 8-4
+    bar:
+      color: 4-1
+    rcap:
+      color: 4-2
+
+  "":
+  # - $ref: '#/_parts/disable-lcarssdk-style'
+  - p: Form 1 with customized colors
+  - +lorem-ipsum-paragraph@num=7: null
+  - +lorem-ipsum-paragraph.text-2-2@num=7: null
+
+  footer:
+    lcap:
+      color: 8-6
+    bar:
+      color: 5-3
+    rcap:
+      color: 2-1
 #
