@@ -1,6 +1,6 @@
 $include: "var/ok-sdk/_parts.json"
 
-+ok-sdk-base-form-1:
++ok-sdk-form-1-inline:
   title: Intro 003
   prev: layout/step-2
   next: layout/step-4

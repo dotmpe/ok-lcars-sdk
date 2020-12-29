@@ -29,13 +29,19 @@
   overflow: scroll
   width: 100%
 
-  .pane > *
+  > *
     box-sizing: border-box
+    margin-right: 1rem
+
+  > *:last-child
+    margin-right: 0
+
 
 .rootpane
   @extend .pane
   height: 100vh
   margin: 0
   padding: 0
+
 
 // OK-SDK:app/ok-sdk/style/style-layout.sass

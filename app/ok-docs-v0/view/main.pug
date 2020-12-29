@@ -10,7 +10,7 @@ block main
 
     if main
       // We have a client instance
-      +ok-sdk-base-form-3(null, null, null, null, null, null, "DOCS 0.0")
+      +ok-sdk-form-3(null, null, null, null, null, null, "DOCS 0.0")
 
         #hnav.placeholder.text-1-1
           - 
@@ -21,7 +21,7 @@ block main
             footer.title.class = "text-grey-3"
             footer.lcap.class = "bg-grey-6"
 
-          +ok-sdk-base-form-1({}, 'grey-5', 'medium', header, footer)
+          +ok-sdk-form-1({}, 'grey-5', 'medium', header, footer)
 
             //.flexh
             p.text-1-1.ok-lcars-doc Loading...
@@ -74,7 +74,7 @@ block main
 
     else
 
-      +ok-sdk-base-form-3(null, null, null, null, null, null, "DOCS 0.0")
+      +ok-sdk-form-3(null, null, null, null, null, null, "DOCS 0.0")
         p.text-1-1 Hardcoded docs
         p.text-1-2
           | Need to further modularize these baseform and parameterize. In PUG

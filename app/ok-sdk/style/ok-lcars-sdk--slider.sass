@@ -1,0 +1,90 @@
+/* Range input element
+
+
+
+input[type="range"]
+  --length: 25rem
+  --width: 1.6rem
+  --track-border: 3pt
+  --slider-size: 3pt
+  --slider-percent: 10
+  --color-1: #{$tango-butter-1}
+
+  //@extend .ok-dia__bar
+  background-color: black
+  cursor: pointer
+  max-width: 100%
+  &:not(.vertical)
+    width: var(--length)
+  &.vertical
+    width: var(--width)
+    height: var(--length)
+
+/* Chrome does not want to share selector with any other class it seems,
+   so instead of extends-class we need to use mixins
+
+@mixin ok-dia__slider__track
+  border: var(--track-border) solid transparent
+  border-color: var(--color-1)
+  background: linear-gradient(to right, black, var(--color-1) calc(var(--slider-percent) * 1%), black 0)
+  height: var(--width)
+  width: var(--length)
+
+@mixin ok-dia__slider__track--v
+  border: var(--track-border) solid transparent
+  border-color: var(--color-1)
+  background: linear-gradient(to top, black, var(--color-1) calc(var(--slider-percent) * 1%), black 0)
+  height: var(--length)
+  width: var(--width)
+
+@mixin ok-dia__slider__thumb
+  background-color: var(--color-1)
+  height: var(--width)
+  width: var(--slider-size)
+  margin-top: calc( 0px - var(--track-border) )
+
+@mixin ok-dia__slider__thumb--v
+  background-color: var(--color-1)
+  height: var(--slider-size)
+  width: var(--width)
+  margin-right: calc( 0px - var(--track-border) )
+
+/* Apply styling for Chrome
+@supports (-webkit-appearance:none)
+  input[type="range"]
+    -webkit-appearance: none
+
+    &:not(.vertical)
+      &::-webkit-slider-runnable-track
+        @include ok-dia__slider__track
+      &::-webkit-slider-thumb
+        -webkit-appearance: none
+        @include ok-dia__slider__thumb
+
+    &.vertical
+      // FIXME: cant rid blue round thumb
+      -webkit-appearance: slider-vertical
+      &::-webkit-slider-runnable-track
+        @include ok-dia__slider__track--v
+      &::-webkit-slider-thumb
+        @include ok-dia__slider__thumb--v
+      //-webkit-transform: rotate(270deg)
+    
+/* Apply styling for Firefox
+@supports (-moz-appearance:none)
+  input[type="range"]
+    -moz-appearance: none
+    &:not(.vertical)
+      &::-moz-range-track
+        @include ok-dia__slider__track
+      &::-moz-range-thumb
+        @include ok-dia__slider__thumb
+        border-radius: 0
+        border-width: 0
+    &.vertical
+      &::-moz-range-track
+        @include ok-dia__slider__track--v
+      &::-moz-range-thumb
+        @include ok-dia__slider__thumb--v
+        border-radius: 0
+        border-width: 0

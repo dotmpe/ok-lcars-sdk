@@ -85,14 +85,20 @@ block main-data
     function okButton(o, key, label, baseref="/forms/") {
       if( o[key] ) href = baseref + o[key]
       else if( o[key+'-url'] ) href = o[key+'-url']
+      else return null;
       return {"class": "button", "data-label": label, "href":href}
     }
 
     function okPrevNextButtons(o, baseref="/forms/") {
-      return [
-        { "a": okButton(o, "prev", "Prev", baseref)},
-        { "a": okButton(o, "next", "Next", baseref)}
-      ]
+      let l = [];
+
+      let prevBtn = okButton(o, "prev", "Prev", baseref);
+      if (prevBtn != null) l.push({ "a": prevBtn });
+
+      let nextBtn = okButton(o, "next", "Next", baseref);
+      if (nextBtn != null) l.push({ "a": nextBtn });
+
+      return l;
     }
 
   //- Start render at root item

@@ -1,0 +1,58 @@
+
+.ok-dia__baseform-0
+  // Center baseform-0 on large displays
+  max-width: 1024px
+  margin: 0 auto
+
+  &--fullwidth,
+  &.fullwidth
+    // Allow to span full width
+    max-width: initial
+    margin: 0
+    padding: 0 1em
+
+    
+.ok-dia__baseform-1
+  > .content
+    margin: $large-space auto $medium-space auto
+    padding: 0 ( $pill-cap-medium-width + $bar-inner-margin )
+
+  &.small > .content
+    margin: $medium-space auto $small-space auto
+    padding: 0 ( $pill-cap-small-width + $bar-inner-margin )
+
+
+.ok-dia__baseform-2_1
+  > .pane
+    > .column:first-child
+      > *
+        text-align: right
+
+    > .column:nth-child(2)
+      > .row:first-child,
+      > .row:last-child
+        --padding-h: calc( var(--inner-bar-length) - 1rem + var(--bar-margin-h-regular) - 2*var(--bar-size) )
+        padding-left: var(--padding-h)
+        padding-right: var(--padding-h)
+
+      > .content
+        margin: $large-space auto $medium-space auto
+        padding: 0 ( $pill-cap-medium-width + $bar-inner-margin )
+    
+    > .column:nth-child(3)
+      > *
+        //width: var(--inner-bar-length)
+
+
+.ok-dia__baseform-1_3
+  .button-wrap
+    flex-wrap: wrap
+    margin-top: 0
+    padding-top: 3.8pt
+    width: 100%
+
+    .button
+      margin-bottom: 3.8pt
+      margin-left: 3.8pt
+
+

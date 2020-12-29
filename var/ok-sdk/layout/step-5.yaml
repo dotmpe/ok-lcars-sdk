@@ -1,11 +1,78 @@
 $include: "var/ok-sdk/_parts.json"
-+ok-sdk-base-form-2:
++ok-sdk-form-2-1:
   title: Intro 005
   prev: layout/step-4
   next: layout/step-6
   "":
   - $ref: '#/_parts/disable-lcarssdk-style'
   - p: Form 2
-  - +lorem-ipsum-paragraph@num=7: null
+
+  - '|': |
+      <div class="row">
+        <label for="font-size">Font size:</label>
+        <input id="font-size" type="range">
+        <input id="font-size-value" type="text" readonly>
+        <input id="font-size-orig" type="text" readonly>
+      </div>
+
+      <div class="row">
+        <label for="line-height">Bar radius:</label>
+        <input id="line-height" type="range">
+        <input id="line-height-value" type="text" readonly>
+        <input id="line-height-orig" type="text" readonly>
+      </div>
+
+      <div class="row">
+        <label for="bar-margin">Bar margin:</label>
+        <input id="bar-margin" type="range">
+        <input id="bar-margin-value" type="text" readonly>
+        <input id="bar-margin-orig" type="text" readonly>
+      </div>
+
+      <div class="row">
+        <label for="bar-size">Bar size:</label>
+        <input id="bar-size" type="range">
+        <input id="bar-size-value" type="text" readonly>
+        <input id="bar-size-orig" type="text" readonly>
+      </div>
+
+      <!--
+          <label for="bar-radius-v">Bar radius V:</label>
+          <input id="bar-radius-v" type="range" class="vertical" orient="vertical">
+      -->
+
+      <div class="row">
+        <label for="bar-radius">Bar radius:</label>
+        <input id="bar-radius" type="range">
+        <input id="bar-radius-value" type="text" readonly>
+        <input id="bar-radius-orig" type="text" readonly>
+      </div>
+
+  - $ref: '#/_parts/range-input'
+  - 'script':
+    - '|': |
+        $("document").ready(function() {
+          console.log("Ready");
+
+          initialize_ranges([
+            [ 'font-size',    0, 25, "pt", 0.5 ],
+            [ 'bar-margin',   0, 25, "pt" ],
+            [ 'bar-size',     0, 25, "pt" ],
+            [ 'bar-radius-v', 0, 25, "pt" ],
+            [ 'bar-radius',   0, 25, "pt" ]
+          ]);
+        });
+
+  # Dynamic content:
+  #- '%': console.log('Foo')
+  #- '|': "<script>"+ ... +"</script>"
+  #- script: window.alert('Foo')
+  - +lorem-ipsum-paragraph@num=4: null
+
+  - +ok-sdk-form-2-1:
+      "":
+      - p: Inner
+      - +lorem-ipsum-paragraph@num=4: null
+
   - +lorem-ipsum-paragraph.text-2-2@num=7: null
 #

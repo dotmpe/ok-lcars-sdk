@@ -1,6 +1,43 @@
 _parts:
+  range-input: &range-input
+    'script':
+    - '|': |
+          function initialize_range(id, min, max, unit="px", step=1) {
+            let el = $('#'+id)
+
+            el.attr('value', "15")
+            el.attr('step', "1")
+            el.attr('min', "0")
+            el.attr('max', "100")
+            el.css('--slider-percent', "15")
+
+            let root = $(':root')
+            //let val = root.css('--'+id)
+            //if (!val.endsWith(unit)) {
+            //  console.error("Invalid unit for", id);
+            //  return
+            //}
+            //el.attr('value', val.slice(0, 0-unit.length));
+
+            $('#'+id+'-orig').attr('value', root.css('--'+id))
+
+            el.on('input', function(e) {
+
+              let strval = String(e.target.value)
+              $(e.target).css('--slider-percent', strval)
+
+              strval = String( e.target.value * max / 100 )+unit
+              $('#'+id+'-value').attr('value', strval)
+              root.css('--'+id, strval)
+            });
+          }
+          function initialize_ranges(specs) {
+            for (spec in specs) {
+              initialize_range.apply(null, specs[spec]);
+            }
+          }
   disable-lcarssdk-style: &disable-lcarssdk-style
     a:
         class: "button bg-cat-1-1"
         data-label: "disable"
-        href: javascript:(function(){document.getElementById('lcarssdk').disabled=true;})()
+        href: javascript:(function(){document.getElementById('lcarssdk').disabled=!(document.getElementById('lcarssdk').disabled || false);})()

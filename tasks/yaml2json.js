@@ -38,7 +38,9 @@
 
       if (srcExt === '.yml' || srcExt === '.yaml') {
 
-        if (fs.statSync(f.src[0]).mtime < fs.statSync(f.dest).mtime) {
+        var stat = null;
+        try { stat = fs.statSync(f.dest); } catch { }
+        if ( stat != null && fs.statSync(f.src[0]).mtime < stat.mtime) {
           grunt.log.debug('File ' + f.dest.cyan + ' is newer than source.');
           next();
           return;

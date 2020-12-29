@@ -1,0 +1,710 @@
+// Functions
+@function pow($number, $exponent)
+  $value: 1
+  @if $exponent > 0
+    @for $i from 1 through $exponent
+      $value: $value * $number
+  @return $value
+
+// SCSS Variables
+$small-space:      3pt          //      =  4px
+$medium-space:  2* $small-space //  6pt =  8px
+$large-space:   3* $small-space //  9pt = 12px
+$xlarge-space:  4* $small-space // 12pt = 16px
+$xxlarge-space: 5* $small-space // 15pt = 20px
+
+$padding-small:        30pt             //
+$padding-medium:  1.5* $padding-small   // 45pt
+$padding-large:   1.5* $padding-medium  // 67.5pt
+$padding-xlarge:  1.5* $padding-large   // 101.25pt
+
+$unit-small: 11.3pt // 15px
+$unit-medium: 22.6pt // 30px
+$unit-large: 22.6pt // 30px
+
+$bar-inner-margin: 3.75pt // 5px
+
+$bar-min-v: $unit-medium
+$bar-min-h: $unit-medium
+
+$pill-cap-small-width: $unit-small
+$pill-cap-medium-width: $unit-medium
+
+//$f13-head-ratio: 0.25 // 1/4th of VH
+// TNG Canon: < 1/3th of VH
+//$f13-head-ratio: 0.32
+$f13-head-ratio: 0.31
+
+$sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2), "small": 0.8, "regular": 1.0, "large": 1/0.75, "xlarge": pow(1/0.75, 2), "xxlarge": pow(1/0.75, 3), "xxxlarge": pow(1/0.75, 4), "xxxxlarge": pow(1/0.75, 5), "xxxxxlarge": pow(1/0.75, 6))
+$size_names: tiny, xxxsmall, xxsmall, xsmall, small, medium, regular, large, xlarge, xxlarge, xxxlarge, xxxxlarge, xxxxxlarge
+$elbow_names: top-left, top-right, bottom-right, bottom-left
+$elbow_variants: default, vertical
+
+
+@mixin ok-dia__rootpane
+  font-size: var(--font-size)
+  line-height: var(--line-height)
+
+  @extend .rootpane
+
+
+@mixin ok-dia__gel
+
+  &[data-label]:before
+    content: attr(data-label)
+    color: black
+
+  &[data-alt-label]:after
+    content: attr(data-alt-label)
+    color: black
+
+
+@mixin ok-dia__span
+  /* Inline "block" span
+
+  border-width: 0
+  padding: 1pt 5pt 0pt 2pt
+  margin: 3pt 2pt
+  color: black
+  vertical-align: 3pt
+  font-size: calc( var(--font-size) * var(--font-factor) )
+  box-sizing: border-box
+  letter-spacing: normal
+  display: inline
+
+  // both layout forms behave unexpectedly on empty elements
+  &:before
+    content: "\00a0\00a0"
+
+@mixin ok-dia__span--size($name, $factor)
+      /* Inline "block" span size '#{$name}'
+      font-size: calc( var(--font-size-#{$name}) * var(--font-factor) )
+      line-height: calc( var(--line-height-#{$name}) * 0.75 )
+      vertical-align: calc( 3.4pt * #{$factor} )
+
+
+// TODO: see layout/step-2
+$bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": -.6pt, "regular": .6pt, "large": 2.5pt, "xlarge": 5pt, "xxlarge": 8.2pt, "xxxlarge": 12.5pt, "xxxxlarge": 19pt, "xxxxxlarge": 27pt, )
+
+
+@mixin ok-dia__bar
+  /* Inline "block" bar
+  @include ok-dia__span
+
+  display: inline-block
+  align-items: flex-start
+  padding: var(--bar-padding-v) var(--bar-padding-h)
+
+@mixin ok-dia__bar--size($name, $factor)
+      /* Inline "block" bar size '#{$name}'
+      height: calc( var(--bar-height) * #{$factor} )
+      min-width: calc( var(--bar-min-width) * #{$factor} )
+      margin: var(--bar-margin-v-#{$name}) var(--bar-margin-h-#{$name})
+      //vertical-align: var(--bar-align-v) * #{$factor} )
+      vertical-align: map.get($bar-v-align, $name)
+
+
+@mixin ok-dia__input
+  font-family: inherit
+  font-size: inherit
+
+
+@mixin ok-dia__button
+  /* Clickable span/bar
+  @include ok-dia__input
+
+  .frame &
+    min-height: 50px
+
+  .frame &:before
+    font-size: var(--label-size)
+    display: block
+    padding: 4px 8px
+    letter-spacing: -1px
+    line-height: 1.25
+    overflow: hidden
+
+  &:hover
+    filter: brightness(133%)
+
+  &:active
+    filter: brightness(150%)
+
+
+:root
+  // Regular font-size is 12pt/16px
+  --font-size:          20pt
+  --line-height:        24pt
+  // Scale of label font-size as ratio of regular font-size
+  --font-factor:        0.6
+  --label-size:         15pt
+
+  --bar-height:         17.7pt
+  --bar-radius:         calc( var(--bar-height) / 2 )
+  --bar-padding-h:      0.0pt
+  --bar-padding-v:      0.0pt
+  --bar-min-width:      2.8pt
+  //--bar-align-v:      3.5pt
+  --bar-margin:         3.0pt
+  --bar-margin-h:       var(--bar-margin)
+  --bar-margin-v:       var(--bar-margin)
+
+  --bar-size:           var(--bar-height)
+  --outer-radius:       92.5px
+  --inner-radius:       calc( var(--outer-radius) + var(--bar-size) - var(--bar-margin) )
+  --inner-bar-length:   var(--inner-radius)
+  --inner-bar-overlap:  5px
+
+  // Initialize all text-size variables
+  @each $name, $factor in $sizes
+    --font-size-#{$name}: calc( var(--font-size) * #{$factor} )
+    --line-height-#{$name}: calc( var(--line-height) * #{$factor} )
+    --bar-margin-v-#{$name}: calc( var(--bar-margin-v) * #{$factor} )
+    --bar-margin-h-#{$name}: calc( var(--bar-margin-h) * #{$factor} )
+
+  --font-size-medium: var(--font-size-regular)
+  --font-size-tiny: var(--font-size-xxxsmall)
+  --line-height-medium: var(--line-height-regular)
+  --line-height-tiny: var(--line-height-xxxsmall)
+
+
+/* ok-diagram: OK Diagram root content pane
+.ok-diagram
+  @include ok-dia__rootpane
+
+  background-color: black
+  font-family: 'LCARS'
+  font-weight: inherit
+  text-transform: inherit
+  letter-spacing: -.8pt
+  vertical-align: baseline
+  //white-space: nowrap
+  border-style: none
+  outline: none
+
+  .swiss911ultra
+    font-family: 'Swiss 911 Ultra Compressed BT'
+    letter-spacing: normal
+
+  .swiss911extra
+    font-family: 'Swiss 911 Extra Compressed BT'
+    letter-spacing: normal
+
+  *
+    text-transform: uppercase
+    font-family: inherit
+
+  .justified
+    text-align: justify
+    text-justify: inter-word
+
+  .regularcase
+    text-transform: initial
+
+  .title
+    text-transform: uppercase
+    color: white
+
+  .title.altcolor
+    color: $tango-butter-1
+
+  a:hover
+    text-decoration: none
+
+  input
+    @include ok-dia__input
+
+  hr
+    //- FIXME: use DOM for color inheritance? border-color: var(--color)
+    border-width: thick
+
+  // Build all text classes for each size
+  &__text,
+  .text
+    @each $name in $size_names
+      &--#{$name},
+      &.#{$name}
+        font-size: var(--font-size-#{$name})
+        line-height: var(--line-height-#{$name})
+    @extend .ok-diagram__text--regular
+
+  // Other classes are standalone BEM, but we'll add 'shortcut
+  // classes' here to the diagram-context a well.
+
+  .span
+    @extend .ok-dia__span
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__span--#{$name}
+    @extend .ok-dia__span--regular
+
+  .spancap.left
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__span__capleft--#{$name}
+    @extend .ok-dia__span__capleft--regular
+
+  .spancap.right
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__span__capright--#{$name}
+    @extend .ok-dia__span__capright--regular
+
+  .spanpill
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__span__pill--#{$name}
+    @extend .ok-dia__span__pill--regular
+
+
+  .bar
+    @extend .ok-dia__bar
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__bar--#{$name}
+
+    .top
+      @extend .ok-dia__bar__top
+
+    .bottom
+      @extend .ok-dia__bar__bottom
+
+  .cap.left
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__bar__capleft--#{$name}
+    @extend .ok-dia__bar__capleft--regular
+
+  .cap.right
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__bar__capright--#{$name}
+    @extend .ok-dia__bar__capright--regular
+
+  .pill
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__bar__pill--#{$name}
+    @extend .ok-dia__bar__pill--regular
+
+
+  .spanbutton,
+  button
+    @extend .ok-dia__inline-button
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__inline-button--#{$name}
+    @extend .ok-dia__inline-button--regular
+
+  .button
+    @extend .ok-dia__button
+    @each $name in $size_names
+      &.#{$name}
+        @extend .ok-dia__button--#{$name}
+    @extend .ok-dia__button--regular
+
+  .elbow
+    @each $variant in $elbow_variants
+      &.#{$variant}
+        // TODO:
+        //@each $size in $sizes
+        //  &.#{$size}
+        //  @each $name in $elbow_names
+        //    &.#{$name}
+        //      @extend
+        //      .ok-dia__elbow--#{$variant}--#{$name}--#{$size} 
+
+        @each $name in $elbow_names
+          &.#{$name}
+            //@extend .ok-dia__elbow--#{$variant}--#{$name}--regular
+            @extend .ok-dia__elbow--#{$variant}--#{$name}
+
+        @extend .ok-dia__elbow--#{$variant}
+
+    @extend .ok-dia__elbow--default
+
+  .f0,
+  .form-0
+    @extend .ok-dia__baseform-0
+
+  .f1,
+  .form-1
+    @extend .ok-dia__baseform-1
+
+  .f2_1,
+  .form-2_1
+    @extend .ok-dia__baseform-2_1
+
+  .f1_3,
+  .form-1_3
+    @extend .ok-dia__baseform-1_3
+
+
+.ok-diagram .frame > *
+  margin: 4.5pt
+
+/* ok-dia__span: an inline (sized to content-model) bar variant
+.ok-dia__span
+  @include ok-dia__gel
+
+  @each $name, $factor in $sizes
+    &--#{$name},
+    &.#{$name}
+      @include ok-dia__span
+      @include ok-dia__span--size($name, $factor)
+
+  &--medium,
+  &.medium
+    @extend .ok-dia__span--regular
+
+  &--tiny,
+  &.tiny
+    @extend .ok-dia__span--xxxsmall
+
+  @extend .ok-dia__span--regular
+
+  &__capleft
+    @each $name, $factor in $sizes
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__span--#{$name}
+        border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-left: calc( var(--bar-radius) * #{$factor} )
+    &--medium,
+    &.medium
+      @extend .ok-dia__span__capleft--regular
+    &--tiny,
+    &.tiny
+      @extend .ok-dia__span__capleft--xxxsmall
+    @extend .ok-dia__span__capleft--regular
+
+  &__capright
+    @each $name, $factor in $sizes
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__span--#{$name}
+        border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-right: calc( var(--bar-radius) * #{$factor} )
+    &--medium,
+    &.medium
+      @extend .ok-dia__span__capright--regular
+    &--tiny,
+    &.tiny
+      @extend .ok-dia__span__capright--xxxsmall
+    @extend .ok-dia__span__capright--regular
+
+  &__pill
+    @each $name in $size_names
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__span__capleft--#{$name}
+        @extend .ok-dia__span__capright--#{$name}
+    @extend .ok-dia__span__pill--regular
+
+
+/* ok-dia__bar: an block (sized to flexbox-model) bar variant
+.ok-dia__bar
+  @include ok-dia__gel
+
+  @each $name, $factor in $sizes
+    &--#{$name},
+    &.#{$name}
+      @include ok-dia__bar
+      @include ok-dia__bar--size($name, $factor)
+
+  &--medium,
+  &.medium
+    @extend .ok-dia__bar--regular
+
+  &--tiny,
+  &.tiny
+    @extend .ok-dia__bar--xxxsmall
+
+  @extend .ok-dia__bar--regular
+
+  &__capleft
+    @each $name, $factor in $sizes
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__bar--#{$name}
+        border-top-left-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-left-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-left: calc( var(--bar-radius) * #{$factor} )
+        max-width: var(--bar-radius)
+    &--medium,
+    &.medium
+      @extend .ok-dia__bar__capleft--regular
+    &--tiny,
+    &.tiny
+      @extend .ok-dia__bar__capleft--xxxsmall
+    @extend .ok-dia__bar__capleft--regular
+
+  &__capright
+    @each $name, $factor in $sizes
+      &--#{$name},
+      &.#{$name}
+        @extend .ok-dia__bar--#{$name}
+        border-top-right-radius: calc( var(--bar-radius) * #{$factor} )
+        border-bottom-right-radius: calc( var(--bar-radius) * #{$factor} )
+        padding-right: calc( var(--bar-radius) * #{$factor} )
+        max-width: var(--bar-radius)
+    &--medium,
+    &.medium
+      @extend .ok-dia__bar__capright--regular
+    &--tiny,
+    &.tiny
+      @extend .ok-dia__bar__capright--xxxsmall
+    @extend .ok-dia__bar__capright--regular
+
+  &__pill
+    @each $name in $size_names
+      &.#{$name},
+      &--#{$name}
+        @extend .ok-dia__bar__capleft--#{$name}
+        @extend .ok-dia__bar__capright--#{$name}
+        max-width: initial
+    @extend .ok-dia__bar__pill--regular
+
+  &__top
+    border-top-left-radius: $unit-medium
+    border-top-right-radius: $unit-medium
+
+  &__bottom
+    border-bottom-left-radius: $unit-medium
+    border-bottom-right-radius: $unit-medium
+
+  &__top,
+  &__bottom
+    &:before,
+    &:after
+      left: 25px
+      right: 25px
+
+  &.em_bar
+    width: 1em
+  &.duo_em_bar
+    width: 2em
+  &.quad_em_bar
+    width: 4em
+  &.oct_em_bar
+    width: 8em
+
+  &.row > *
+    margin-left: $bar-inner-margin
+
+
+/* A button derived from span
+.ok-dia__inline-button
+  @include ok-dia__gel
+  //@extend .ok-dia__span
+  @include ok-dia__button
+
+  @each $name, $factor in $sizes
+    &--#{$name},
+    &.#{$name}
+      @include ok-dia__span
+      @include ok-dia__span--size($name, $factor)
+  &--medium,
+  &.medium
+    @extend .ok-dia__span--regular
+  &--tiny,
+  &.tiny
+    @extend .ok-dia__span--xxxsmall
+  @extend .ok-dia__span--regular
+
+
+/* A button derived from bar
+.ok-dia__button
+  @include ok-dia__gel
+  @include ok-dia__button
+
+  @each $name, $factor in $sizes
+    &--#{$name},
+    &.#{$name}
+      @include ok-dia__bar
+      @include ok-dia__bar--size($name, $factor)
+  &--medium,
+  &.medium
+    @extend .ok-dia__bar--regular
+  &--tiny,
+  &.tiny
+    @extend .ok-dia__bar--xxxsmall
+  @extend .ok-dia__bar--regular
+
+
+/* Elbow classes; horizontal (default) and vertical variant; for each size
+.ok-dia__elbow
+  @extend .ok-dia__bar
+
+  @each $name, $factor in $sizes
+    &--#{$name},
+    &.#{$name}
+      @include ok-dia__bar
+      @include ok-dia__bar--size($name, $factor)
+      --bar-size: calc( var(--bar-height) * #{$factor} )
+
+  &--medium,
+  &.medium
+    @extend .ok-dia__elbow--regular
+
+  &--tiny,
+  &.tiny
+    @extend .ok-dia__elbow--xxxsmall
+
+  @extend .ok-dia__elbow--regular
+
+
+  &--default
+    @extend .ok-dia__elbow
+    position: relative
+    z-index: 1
+    min-width: var(--outer-radius)
+    min-height: var(--outer-radius)
+
+    &--tiny
+      --empty: true
+
+    > div:first-child // .bar
+      position: absolute
+      z-index: 1
+      background-color: inherit
+      border-color: inherit
+      min-width: calc( var(--inner-bar-length) + var(--inner-bar-overlap) - 2*var(--bar-size) )
+
+      > div
+        position: absolute
+        border-color: inherit
+        background-color: transparent
+        border-style: solid
+
+      > div:first-child // "block"
+        box-sizing: border-box
+        min-width: calc( var(--inner-radius) - var(--bar-size) )
+        min-height: calc( var(--inner-radius) - var(--bar-size) )
+        --bar-h: calc( 0px - var(--bar-size) + var(--inner-bar-overlap) - var(--bar-margin-h) )
+
+      > div:nth-child(2) // "triangle"
+        border-width: calc(var(--inner-radius) / 4)
+        min-height: 0
+        min-width: 0
+
+    // Top
+    &--top-left,
+    &--top-right
+      > div:first-child
+        top: 0
+        margin-top: 0
+        > div:first-child
+          top: 0
+        > div:nth-child(2)
+          top: calc( var(--bar-size) / 2 )
+
+    // Left
+    &--top-left,
+    &--bottom-left
+      text-align: right
+      > div:first-child
+        left: calc(100% - var(--inner-bar-overlap))
+        > div:first-child
+          left: var(--bar-h)
+        > div:nth-child(2)
+          left: calc( 0px - var(--bar-size) / 2 )
+
+    // Right
+    &--top-right,
+    &--bottom-right
+      text-align: left
+      > div:first-child
+        right: calc(100% - var(--inner-bar-overlap))
+        > div:first-child
+          right: var(--bar-h)
+        > div:nth-child(2)
+          right: calc( 0px - var(--bar-size) / 2 )
+
+    // Bottom
+    &--bottom-left,
+    &--bottom-right
+      > div:first-child
+        bottom: 0
+        margin-bottom: 0
+        > div:first-child
+          bottom: calc(100% - var(--bar-size))
+        > div:nth-child(2)
+          bottom: calc( var(--bar-size) / 2 )
+
+    // Corners
+
+    &--top-left
+      border-top-left-radius: var(--outer-radius)
+      > div:first-child
+        > div:first-child
+          border-width: var(--bar-size) 0 0 var(--bar-size)
+          border-top-left-radius: var(--inner-radius)
+        > div:nth-child(2)
+          border-right-color: transparent
+          border-bottom-color: transparent
+
+    &--top-right
+      border-top-right-radius: var(--outer-radius)
+      > div:first-child
+        > div:first-child
+          border-top-right-radius: var(--inner-radius)
+          border-width: var(--bar-size) var(--bar-size) 0 0
+        > div:nth-child(2)
+          border-left-color: transparent
+          border-bottom-color: transparent
+
+    &--bottom-left
+      border-bottom-left-radius: var(--outer-radius)
+      > div:first-child
+        > div:first-child
+          border-bottom-left-radius: var(--inner-radius)
+          border-width: 0 0 var(--bar-size) var(--bar-size)
+        > div:nth-child(2)
+          border-right-color: transparent
+          border-top-color: transparent
+
+    &--bottom-right
+      border-bottom-right-radius: var(--outer-radius)
+      > div:first-child
+        > div:first-child
+          border-bottom-right-radius: var(--inner-radius)
+          border-width: 0 var(--bar-size) var(--bar-size) 0
+        > div:nth-child(2)
+          border-left-color: transparent
+          border-top-color: transparent
+
+    &:before,
+    &:after
+      font-size: var(--label-size)
+      display: block
+      position: absolute
+      letter-spacing: -1px
+      line-height: 1.25
+      z-index: 2
+      background-color: transparent
+      background-clip: content-box
+      max-height: 100%
+      overflow: hidden
+
+    &:before
+      padding: 5px 7px
+      top: 0px
+      right: 10px
+
+    &:after
+      padding: 5px 7px 5px
+      bottom: 0px
+      right: 70px
+
+
+  &--vertical
+    &--top-left
+    &--top-right
+    &--bottom-left
+    &--bottom-right
+
+
+// Id: OK-SDK:app/ok-sdk/style/ok-lcars-sdk.sass

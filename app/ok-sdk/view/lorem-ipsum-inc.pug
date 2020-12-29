@@ -1,5 +1,7 @@
 
 mixin lorem-ipsum-paragraph(o, num=1)
+  // XXX: maybe mix in content
+  - if( "undefined" !== typeof o[''] ) { delete o['']; }
   - attributes = lodash.defaultsDeep({}, o, attributes)
 
   if !attributes.class

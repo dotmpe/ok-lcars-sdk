@@ -44,6 +44,8 @@ routes: # Simple router instances
   # extra styling for LCARS SDK okudagram views
   base.css: sass:app/ok-sdk/style/style.sass
   lcarssdk-fonts.css: static:app/ok-sdk/style/lcarssdk-fonts.css
+  fonts/Swiss_911_Extra_Compressed_BT.woff: static:public/media/fonts/Swiss_911_Extra_Compressed_BT.woff
+  fonts/Swiss_911_Ultra_Compressed_BT.woff: static:public/media/fonts/Swiss_911_Ultra_Compressed_BT.woff
   fonts: static:lib/lcars-sdk/lcarssdk/fonts
 
   # correct case for one lib
@@ -94,12 +96,22 @@ options:
           id: "lcarssdk"
         - url: "/base.css"
           id: "ok-sdk-css"
+          disabled: true
+        scripts:
+          #$ref: '#/defs/scripts/default'
+          $ref: '#/defs/scripts/lcarssdk'
     forms:
       route:
         import-query: ['merge.data', 'merge.formDataFile']
       merge:
         stylesheets:
-          $ref: '#/options/local/select/merge/stylesheets'
+        - url: "/lcarssdk/css/lcarssdk.css"
+          id: "lcarssdk"
+          disabled: true
+        - url: "/base.css"
+          id: "ok-sdk-css"
+        scripts:
+          $ref: '#/options/local/select/merge/scripts'
   #  'todo':
   #     pug:
   #       merge:
@@ -159,7 +171,7 @@ defs: # Storage for custom structures here
       #- /lcarssdk/templates/dialog/dialog.js
       #- /lcarssdk/templates/framing/framing.js
       #- /lcarssdk/templates/button/button.js
-      - /npm/packages/color-tween/dist/color-tween.min.js
+      #- /npm/packages/color-tween/dist/color-tween.min.js
   stylesheets:
     default: []
       #- url: /vendor/jquery-ui.css

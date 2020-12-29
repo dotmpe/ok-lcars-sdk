@@ -36,7 +36,6 @@ test ! -e $sf_dir/.git ||
 set -x
 docker run \
   -d --name sf-ok-lcars-sdk-dev \
-  --hostname $hostname \
   -h $hostname -e SITEFILE_HOST=$hostname \
   -p 7011:7011 -e SITEFILE_PORT=7011 \
   -e src_update=$src_update \

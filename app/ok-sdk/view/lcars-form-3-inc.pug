@@ -1,4 +1,4 @@
-mixin ok-sdk-base-form-3(o, title="Form 1.3")
+mixin ok-sdk-form-3(o, title="Form 1.3")
   //-
     The iconic double-elbow split-view LCARS layout:
     Two vertically stacked frames with the characteristic double elbow.
@@ -67,30 +67,31 @@ mixin ok-sdk-base-form-3(o, title="Form 1.3")
     };
     o = lodash.defaultsDeep( {}, o, oDef );
 
-  .form-1-3.pane.flexv&attributes(attributes)
+  .form-1_3.pane.flexv&attributes(attributes)
 
     // Header: the upper-section frame is the smaller part
     .f13-1.header.flexcv.flexh
 
       // Header Column
-      .f13-1-1.column.flexv(style=`width: ${o.lvbar.width}`)
+      .f13-1-1.frame.column.flexv(style=`width: ${o.lvbar.width}`)
         for element in o.header.column
           +ok-element-instance(element, "div")
 
         .elbow.bottom-left&attributes(o.header.elbow)
           .bar(style=`width: ${o.header.elbow.length}; right: -${o.header.elbow.length}`)
             .block
-          
+            .triangle
+
       .f13-1-2.flexch.flexv
         // Header Content
         .f13-1-2-1.flexcv
           //h1.text-1-1= o.title
           .title.text-1-1= o.title
-          +lorem-ipsum-paragraph(1).text-1-1.capitalized
-          +lorem-ipsum-paragraph(3).text-1-1.capitalized
-          +lorem-ipsum-paragraph(2).text-1-1.capitalized
+          +lorem-ipsum-paragraph(1).text-1-1
+          +lorem-ipsum-paragraph(3).text-1-1
+          +lorem-ipsum-paragraph(2).text-1-1
 
-          h4.capitalized.text&attributes(o.body.default.header) The end
+          h4.text&attributes(o.body.default.header) The end
 
           //p
           //  small.text-1-1 1234
@@ -111,7 +112,7 @@ mixin ok-sdk-base-form-3(o, title="Form 1.3")
           //  .wrapper.flexh.button-wrap
           //    .button.pill.bg-grey-4(data-label="198-2")
           //    .button.pill.bg-cat-1-2(data-label="11-47")
-            
+
         // Header Bar Row: the cells right after the upper-section elbow
         .f13-1-2-2.frame.flexh(style=`padding-left: ${o.header.elbow.length}`)
           for element in o.header.row
@@ -124,10 +125,11 @@ mixin ok-sdk-base-form-3(o, title="Form 1.3")
     // Body: the lower-section frame around 3/4 or similar of the height
     .f13-2.body.flexcv.flexh
       // Body Button Column: The lower-section elbow and cells beneath
-      .f13-2-1.flexv(style=`width:${o.lvbar.width}`)
+      .f13-2-1.frame.flexv(style=`width:${o.lvbar.width}`)
         .elbow.top-left&attributes(o.body.elbow)
           .bar(style=`width: ${o.header.elbow.length}; right: -${o.header.elbow.length}`)
             .block
+            .triangle
 
         for element in o.body.column
           +ok-element-instance(element, "div")
@@ -149,13 +151,13 @@ mixin ok-sdk-base-form-3(o, title="Form 1.3")
               block
             else
               +ok-sdk-no-data(color)
-              h3.capitalized.text&attributes(o.body.default.header)= o.body.default.header._
-              p.capitalized.text-2-3.text
+              h3.text&attributes(o.body.default.header)= o.body.default.header._
+              p.text-2-3.text
                 | A frame enclosing two content panes, with a characteristic split
-  
+
               - let n = 0
               while n < o.body.default.paragraphs
                 - n++; l = Math.round(Math.random() * 7)
-                +lorem-ipsum-paragraph(l).capitalized&attributes(o.body.default.body)
+                +lorem-ipsum-paragraph(l)&attributes(o.body.default.body)
 
-              h4.capitalized.text&attributes(o.body.default.header) The end
+              h4.text&attributes(o.body.default.header) The end

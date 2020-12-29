@@ -1,5 +1,5 @@
 $include: "var/ok-sdk/_parts.json"
-+ok-sdk-form-0-1:
++ok-sdk-contentpane:
   title: Intro 001
   prev-url: /select
   next: layout/step-2
@@ -41,7 +41,7 @@ $include: "var/ok-sdk/_parts.json"
       Text comes as spans, usually in paragraphs.
       However these sentences are all span instances embedded directly into the parent pane element.
   - .regularcase.text: |
-       Also leaving out the "capitalized" text-transform, which together with the font face itself already are the first two recognizable elements of the show's diagrams.
+       Also leaving out the "uppercase" text-transform, which together with the font face itself already are the first two recognizable elements of the show's diagrams.
   - .text@color=2-3: |
       There are a lot more inline elements, "although block and inline elements are no longer defined in HTML 5".
   - a.text-1-2@href=#_ref1: "[1] "
@@ -139,6 +139,21 @@ $include: "var/ok-sdk/_parts.json"
   - h3: Block elements
   - p:
     - address.regularcase: "Example 'address' text"
+
+  - h3: Font face
+  - p.text-1-1: The quick fox jumps over the lazy brown dog
+  - p.swiss911extra.text-1-1: The quick fox jumps over the lazy brown dog
+  - p.swiss911ultra.text-1-1: The quick fox jumps over the lazy brown dog
+  - p.swiss911ultra.text-1-1:
+    - .text: "The "
+    - .text.text-2-2.swiss911extra: "quick"
+    - .text: " fox jumps over the "
+    - .text.text-1-2.swiss911extra: "lazy"
+    - .text: " brown dog."
+
+  - +lorem-ipsum-paragraph.text-1-1@num=3: null
+  - +lorem-ipsum-paragraph.swiss911extra.text-1-1@num=3: null
+  - +lorem-ipsum-paragraph.swiss911ultra.text-1-1@num=3: null
 
   - h3: Font size
   - p: |

@@ -57,8 +57,8 @@ mixin ok-sdk-titlebar(o_)
       +ok-element-items(content, o.color, o.size)
 
   if o.title && o.title.align == 'right'
+    - o.title[""] = o.title.text
     +ok-element(o.title).title.text
-      = o.title.text
 
 mixin ok-sdk-pillbar(o_)
   -
@@ -104,12 +104,19 @@ mixin ok-prev-next-form(o, baseref="/forms/")
     a.button.bg-cat-1-1(data-label="NEXT", href=next_href)
 
 
+//- Two-pillbar "dialog"
 include lcars-form-1-inc
+//- Bars all or partly around
 include lcars-form-2-inc
+//- 30%-split screen
 include lcars-form-3-inc
+//- Z/S-forms
+include lcars-form-4-inc
 
-mixin ok-sdk-base-form-0(o)
-  .pane
+//- Just a content-pane for JSON documents
+mixin ok-sdk-contentpane(o)
+  - Object.assign(attributes, {'class':o.class})
+  .pane.f0&attributes(attributes)
     if o.title
       span.title=o.title
     +ok-prev-next-form(o, '/forms?merge.data=')

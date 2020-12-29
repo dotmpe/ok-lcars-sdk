@@ -1,34 +1,37 @@
-mixin ok-sdk-base-form-2(o, color, size='medium', lbar, rbar, tbar, bbar)
+mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
+  //-
+    LCARS frame - A simple contentpane bordered by a LCARS bars and elbows, with broad vertical and thin horizontal frame
 
   - vbarw = 150.6
-
-  // A simple contentpane bordered by a LCARS frame of bars and elbows, 
-  // with broad vertical and thin horizontal frame
 
   if !color
     - color = "cat-1-1"
 
-  .pane.column.flexv.flexch&attributes(attributes)
+  .form-2_1.pane.column.flexv.flexch&attributes(attributes)
+    .pane.flexh.flexcv
 
-    // Body
-    .wrapper.flexh.flexcv
-
-      // Body Button Column
-      .wrapper.column.flexv(style=`width:${vbarw}pt`)
-        .elbow.top-left.bg-cat-1-1.default.horizontal(data-label="36", align="right")
-          .bar(style="width: 209px; right: -204px")
+      .column.frame.flexv
+        .elbow.top-left.bg-cat-1-1.default(data-label="36")
+          .bar
             .block
-
-        .button.bg-grey-3(data-label="555-1", align="right")
+            .triangle
+        .button.medium.bg-cat-5-3(data-label="LCARS")
         .button.bg-cat-2-3.flexcv(data-Label="98 12312", align="right")
+        .elbow.bottom-left.bg-cat-5-3.flexcv.default
+          .bar
+            .block
+            .triangle
 
-      // Body Bar Row
       .column.flexch.flexv
-        .row.frame.flexh(style="padding-left:209px; padding-right:209px")
+        .row.frame.flexh
           .bar.bg-cat-1-3.flexch
 
-        // Body Content
-        .wrapper.content.flexcv
+        .column
+          .title.text-1-1(align="right") LCARS FORM 2.1
+          .flexh.button-wrap
+            p.text-1-1.text Form 2: A frame enclosing a single content pane
+            
+        .content.pane.flexcv
           if o
             +ok-prev-next-form(o, '/forms?merge.data=')
             if o['']
@@ -39,36 +42,22 @@ mixin ok-sdk-base-form-2(o, color, size='medium', lbar, rbar, tbar, bbar)
             else
               +ok-sdk-no-data(color)
 
-      .wrapper.column.flexv(style=`width:${vbarw}pt`)
-        .elbow.top-right.bg-cat-1-2.default.horizontal(data-label="36", align="right")
-          .bar(style="width: 209px; left: -204px")
-            .block
+        .row.frame.flexh
+          .bar.bg-cat-2-2
+          .bar.bg-cat-2-1.flexch
+          .bar.bg-cat-2-3
 
-        .button.bg-cat-5-2(data-label="413", align="left")
-        .button.bg-cat-2-1.flexcv(data-Label="98 12312", align="left")
+      .column.frame.flexv
+        .elbow.top-right.bg-cat-1-2.default(data-label="11", align="right")
+          .bar
+            .block
+            .triangle
 
-    .row.header.flexh
-      .column.flexv(style=`width:${vbarw}pt`)
-        .button.bg-cat-5-3(data-label="LCARS")
-        .elbow.bottom-left.bg-cat-5-3.flexcv.large.horizontal
-          .bar.large(style="width: 209px; right: -204px")
+        .button.bg-cat-5-2(data-label="413")
+        .button.bg-cat-2-1.flexcv(data-Label="96 213")
+        .elbow.bottom-right.bg-cat-4-1.flexcv.default
+          .bar
             .block
-          
-      .wrapper.flexch.flexv
-        //- Footer Content
-        .wrapper.content.flexcv
-          .title.text-1-1(align="right") LCARS BASIC FORM 1.2
-          .wrapper.flexh.button-wrap
-            p.text-1-1.text A frame enclosing a single content pane
-            
-        //- Header Bar Row
-        .row.frame.flexh(style="padding-left: 204px; padding-right: 204px")
-          .bar.large.bg-cat-2-2
-          .bar.large.bg-cat-2-1.flexch
-          .bar.large.bg-cat-2-3
-        
-      .column.flexv(style=`width:${vbarw}pt`)
-        .button.bg-cat-1-3(data-label="LCARS")
-        .elbow.bottom-right.bg-cat-4-1.flexcv.large.horizontal
-          .bar(style="width: 209px; left: -204px")
-            .block
+            .triangle
+
+//-

@@ -1,0 +1,18 @@
+.noscroll
+  /* Make scrollbars disappear in Chrome and supporting browsers
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb
+    width: 0
+    height: 0
+
+  /* And in Firefox
+  scrollbar-width: none
+
+@supports (scrollbar-width:none)
+  html
+    scrollbar-width: none
+
+.ok-diagram,
+.ok-diagram *
+  @extend .noscroll

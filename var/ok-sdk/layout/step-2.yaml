@@ -1,5 +1,5 @@
 $include: "var/ok-sdk/_parts.json"
-+ok-sdk-base-form-0:
++ok-sdk-contentpane.fullwidth:
   title: Intro 002
   prev: layout/step-1
   next: layout/step-3
@@ -17,84 +17,75 @@ $include: "var/ok-sdk/_parts.json"
       These are all the text sizes again, paired with inline "pill" bars of identical height. The height of each particular size bar is made to correspond to the height of the font-face. 
       These where tedious but simple to do.
 
-  - +ok-paragraph.text@size=tiny@color=2-2:
-    - .text: "XXX-Small/Tiny: "
-    - ok-dia__pill.text: B-TN
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-TN"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xxsmall@color=2-2:
-    - .text: "XX-Small: "
-    - ok-dia__pill: B-2XSM
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-2XSM"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xsmall@color=2-2:
-    - .text: "X-Small: "
-    - ok-dia__pill: B-XSM
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-XSM"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=small@color=2-2:
-    - .text: "Small: "
-    - ok-dia__pill: B-SM
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-SM"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
+  - hr.border-1-1:
+  - p: "Spans: "
+
+  - +ok-paragraph@size=tiny@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "Tiny"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-TN"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xxsmall@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "XX-Small"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-2XSM"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xsmall@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "X-Small"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-XSM"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=small@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "Small"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-SM"
+    - span.bg.ok-dia__span__capright:
   - +ok-paragraph@color=2-2:
-    - .text: "Regular: "
-    - ok-dia__pill: B-MED
-    - span.bg.ok-dia__bar__pill: B-MED
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-MED"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=large@color=2-2:
-    - .text: "Large: "
-    - ok-dia__pill.large: B-LRG
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-LRG"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xlarge@color=2-2:
-    - .text: "X-Large: "
-    - ok-dia__pill: B-XLRG
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-XLRG"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xxlarge@color=2-2:
-    - .text: "XX-Large: "
-    - ok-dia__pill: B-2XLRG
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-2XLRG"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xxxlarge@color=2-2:
-    - .text: "XXX-Large: "
-    - ok-dia__pill: B-3XLRG
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-3XLRG"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xxxxlarge@color=2-2:
-    - .text: "XXXX-Large: "
-    - ok-dia__pill: B-4XLRG
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-4XLRG"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
-  - +ok-paragraph.text@size=xxxxxlarge@color=2-2:
-    - .text: "XXXXX-Large: "
-    - ok-dia__pill: B-5XLRG
-    - span.bg.ok-dia__bar__capleft:
-    - .text: "B-5XLRG"
-    - span.bg.ok-dia__bar:
-    - span.bg.ok-dia__bar__capright:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "Regular"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-MED"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=large@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "Large"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-LRG"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xlarge@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "X-Large"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-XLRG"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xxlarge@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "XX-Large"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-2XLRG"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xxxlarge@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "XXX-Large"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-3XLRG"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xxxxlarge@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "XXXX-Large"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-4XLRG"
+    - span.bg.ok-dia__span__capright:
+  - +ok-paragraph@size=xxxxxlarge@color=2-2:
+    - span.bg.ok-dia__span__capleft:
+    - .text: "XXXXX-Large"
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span: "SP-5XLRG"
+    - span.bg.ok-dia__span__capright:
 
   - p@color=2-3: |
       To make bars not dependent on character size, the blockbar subclass uses the inline-box display mode.
@@ -104,172 +95,331 @@ $include: "var/ok-sdk/_parts.json"
       Bot quirks are remedied by adding some invisible content by CSS.
       Still, some alignment issues here. Probably need to look at bounding box a bit.
 
-  - +ok-paragraph.text@size=tiny@color=2-2:
-    - ok-dia__pill.text: PB-TN
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "Tiny/XXX-Small: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xxsmall@color=2-2:
-    - ok-dia__pill.text: PB-2XSM
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "XX-Small: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xsmall@color=2-2:
-    - ok-dia__pill: PB-XSM
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "X-Small: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text.small@color=2-2:
-    - ok-dia__pill: PB-SM
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "Small: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph@color=2-2:
-    - ok-dia__pill: PB-MED
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "Regular: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=large@color=2-2:
-    - ok-dia__pill: PB-LRG
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "Large: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xlarge@color=2-2:
-    - ok-dia__pill: PB-XLRG
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "X-Large: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xxlarge@color=2-2:
-    - ok-dia__pill: PB-2XLRG
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "XX-Large: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xxxlarge@color=2-2:
-    - ok-dia__pill: PB-3XLRG
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "XXX-Large: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xxxxlarge@color=2-2:
-    - ok-dia__pill: PB-4XLRG
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "XXXX-Large: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
-  - +ok-paragraph.text@size=xxxxxlarge@color=2-2:
-    - ok-dia__pill: PB-5XLRG
-    - span.ok-dia__blockbar__pill.bg:
-    - span.ok-dia__blockbar__capleft.bg:
-    - .text: "XXXXX-Large: "
-    - span.ok-dia__blockbar.bg:
-    - span.ok-dia__blockbar__capright.bg:
+  - hr.border-1-1:
+  - p: "Spans and bars: "
 
+  - +ok-paragraph@size=tiny@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-TN
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-TN
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "TN: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xxsmall@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-2XSM
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-2XSM
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "2XSM: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xsmall@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-XSM
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-XSM
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "XSM: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=small@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-SM
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-SM
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "SM: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-MED
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-MED
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "MED: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+
+  - +ok-paragraph@size=large@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-LRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-LRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "LRG: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xlarge@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "XLRG: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-2XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-2XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "2XLRG: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xxxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-3XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-3XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "3XLRG: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xxxxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-4XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-4XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "4XLRG: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph@size=xxxxxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg: PB-5XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-5XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - .text: "5XLRG: "
+    - span.ok-dia__bar.bg:
+    - span.ok-dia__bar__capright.bg:
+
+  - hr.border-1-1:
   - p: |
       Time to use flexbox.
 
-  - +ok-paragraph.text.flexbox.tiny@color=2-2:
-    - span.ok-dia__blockbar__pill--xxxsmall.bg.flex:
-    - span.ok-dia__blockbar__capleft--xxxsmall.bg.flex:
+  - +ok-paragraph.text.flexbox@size=xxxsmall@color=2-2:
+    - span.ok-dia__span__pill--xxxsmall.bg.flex:
+    - span.ok-dia__bar__pill--xxxsmall.bg.flex:
+    - span.ok-dia__bar__capleft--xxxsmall.bg:
       #- .text.xxxsmall.tiny: "Tiny/XXX-Small: "
-    - span.ok-dia__blockbar--xxxsmall.bg.flex:
-    - span.ok-dia__blockbar__capright--xxxsmall.bg.flex:
-
+    - span.ok-dia__bar--xxxsmall.bg.flex:
+    - span.ok-dia__bar__capright--xxxsmall.bg:
   - +ok-paragraph.text.flexbox.xxsmall@color=2-2:
-    - span.ok-dia__blockbar__pill--xxsmall.bg.flex:
-    - span.ok-dia__blockbar__capleft--xxsmall.bg.flex:
+    - span.ok-dia__span__pill--xxsmall.bg.flex:
+    - span.ok-dia__bar__pill--xxsmall.bg.flex:
+    - span.ok-dia__bar__capleft--xxsmall.bg.flex:
       #- .text.xxsmall: "XX-Small: "
-    - span.ok-dia__blockbar--xxsmall.bg.flex:
-    - span.ok-dia__blockbar__capright--xxsmall.bg.flex:
-
+    - span.ok-dia__bar--xxsmall.bg.flex:
+    - span.ok-dia__bar__capright--xxsmall.bg.flex:
   - +ok-paragraph.text.flexbox.xsmall@color=2-2:
-    - span.ok-dia__blockbar__pill--xsmall.bg.flex:
-    - span.ok-dia__blockbar__capleft--xsmall.bg.flex:
+    - span.ok-dia__span__pill--xsmall.bg.flex:
+    - span.ok-dia__bar__pill--xsmall.bg.flex:
+    - span.ok-dia__bar__capleft--xsmall.bg.flex:
       #- .text.xsmall: "X-Small: "
-    - span.ok-dia__blockbar--xsmall.bg.flex:
-    - span.ok-dia__blockbar__capright--xsmall.bg.flex:
+    - span.ok-dia__bar--xsmall.bg.flex:
+    - span.ok-dia__bar__capright--xsmall.bg.flex:
   - +ok-paragraph.text.flexbox.small@color=2-2:
-    - span.ok-dia__blockbar__pill--small.bg.flex:
-    - span.ok-dia__blockbar__capleft--small.bg.flex:
+    - span.ok-dia__span__pill--small.bg.flex:
+    - span.ok-dia__bar__pill--small.bg.flex:
+    - span.ok-dia__bar__capleft--small.bg.flex:
       #- .text.small: "Small: "
-    - span.ok-dia__blockbar--small.bg.flex:
-    - span.ok-dia__blockbar__capright--small.bg.flex:
+    - span.ok-dia__bar--small.bg.flex:
+    - span.ok-dia__bar__capright--small.bg.flex:
+
   - +ok-paragraph.text.flexbox.regular@color=2-2:
-    - span.ok-dia__blockbar__pill--regular.bg.flex:
-    - span.ok-dia__blockbar__capleft--regular.bg.flex:
+    - span.ok-dia__span__pill--regular.bg.flex:
+    - span.ok-dia__bar__pill--regular.bg.flex:
+    - span.ok-dia__bar__capleft--regular.bg.flex:
       #- .text: "Regular: "
-    - span.ok-dia__blockbar--regular.bg.flex:
-    - span.ok-dia__blockbar__capright--regular.bg.flex:
+    - span.ok-dia__bar--regular.bg.flex:
+    - span.ok-dia__bar__capright--regular.bg.flex:
+
   - +ok-paragraph.text.flexbox.large@color=2-2:
-    - span.ok-dia__blockbar__pill--large.bg.flex:
-    - span.ok-dia__blockbar__capleft--large.bg.flex:
+    - span.ok-dia__span__pill--large.bg.flex:
+    - span.ok-dia__bar__pill--large.bg.flex:
+    - span.ok-dia__bar__capleft--large.bg.flex:
       #- .text.large: "Large: "
-    - span.ok-dia__blockbar--large.bg.flex:
-    - span.ok-dia__blockbar__capright--large.bg.flex:
+    - span.ok-dia__bar--large.bg.flex:
+    - span.ok-dia__bar__capright--large.bg.flex:
   - +ok-paragraph.text.flexbox.xlarge@color=2-2:
-    - span.ok-dia__blockbar__pill--xlarge.bg.flex:
-    - span.ok-dia__blockbar__capleft--xlarge.bg.flex:
+    - span.ok-dia__span__pill--xlarge.bg.flex:
+    - span.ok-dia__bar__pill--xlarge.bg.flex:
+    - span.ok-dia__bar__capleft--xlarge.bg.flex:
       #- .text.xlarge: "X-Large: "
-    - span.ok-dia__blockbar--xlarge.bg.flex:
-    - span.ok-dia__blockbar__capright--xlarge.bg.flex:
+    - span.ok-dia__bar--xlarge.bg.flex:
+    - span.ok-dia__bar__capright--xlarge.bg.flex:
   - +ok-paragraph.text.flexbox.xxlarge@color=2-2:
-    - span.ok-dia__blockbar__pill--xxlarge.bg.flex:
-    - span.ok-dia__blockbar__capleft--xxlarge.bg.flex:
+    - span.ok-dia__span__pill--xxlarge.bg.flex:
+    - span.ok-dia__bar__pill--xxlarge.bg.flex:
+    - span.ok-dia__bar__capleft--xxlarge.bg.flex:
       #- .text.xxlarge: "XX-Large: "
-    - span.ok-dia__blockbar--xxlarge.bg.flex:
-    - span.ok-dia__blockbar__capright--xxlarge.bg.flex:
+    - span.ok-dia__bar--xxlarge.bg.flex:
+    - span.ok-dia__bar__capright--xxlarge.bg.flex:
   - +ok-paragraph.text.flexbox.xxxlarge@color=2-2:
-    - span.ok-dia__blockbar__pill--xxxlarge.bg.flex:
-    - span.ok-dia__blockbar__capleft--xxxlarge.bg.flex:
+    - span.ok-dia__span__pill--xxxlarge.bg.flex:
+    - span.ok-dia__bar__pill--xxxlarge.bg.flex:
+    - span.ok-dia__bar__capleft--xxxlarge.bg.flex:
       #- .text.xxxlarge: "XXX-Large: "
-    - span.ok-dia__blockbar--xxxlarge.bg.flex:
-    - span.ok-dia__blockbar__capright--xxxlarge.bg.flex:
+    - span.ok-dia__bar--xxxlarge.bg.flex:
+    - span.ok-dia__bar__capright--xxxlarge.bg.flex:
   - +ok-paragraph.text.flexbox.xxxxlarge@color=2-2:
-    - span.ok-dia__blockbar__pill--xxxxlarge.bg.flex:
-    - span.ok-dia__blockbar__capleft--xxxxlarge.bg.flex:
+    - span.ok-dia__span__pill--xxxxlarge.bg.flex:
+    - span.ok-dia__bar__pill--xxxxlarge.bg.flex:
+    - span.ok-dia__bar__capleft--xxxxlarge.bg.flex:
       #- .text.xxxxlarge: "XXXX-Large: "
-    - span.ok-dia__blockbar--xxxxlarge.bg.flex:
-    - span.ok-dia__blockbar__capright--xxxxlarge.bg.flex:
+    - span.ok-dia__bar--xxxxlarge.bg.flex:
+    - span.ok-dia__bar__capright--xxxxlarge.bg.flex:
   - +ok-paragraph.text.flexbox.xxxxxlarge@color=2-2:
-    - span.ok-dia__blockbar__pill--xxxxxlarge.bg.flex:
-    - span.ok-dia__blockbar__capleft--xxxxxlarge.bg.flex:
+    - span.ok-dia__span__pill--xxxxxlarge.bg.flex:
+    - span.ok-dia__bar__pill--xxxxxlarge.bg.flex:
+    - span.ok-dia__bar__capleft--xxxxxlarge.bg.flex:
       #- .text.xxxxxlarge: "XXXXX-Large: "
-    - span.ok-dia__blockbar--xxxxxlarge.bg.flex:
-    - span.ok-dia__blockbar__capright--xxxxxlarge.bg.flex:
+    - span.ok-dia__bar--xxxxxlarge.bg.flex:
+    - span.ok-dia__bar__capright--xxxxxlarge.bg.flex:
+
+  - +ok-paragraph.text.flexbox@size=xxxsmall@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-TN
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-TN
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: TN
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xxsmall@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-2XSM
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-2XSM
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: 2XSM
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xsmall@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-XSM
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-XSM
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: XSM
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=small@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-SM
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-SM
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: SM
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=medium@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-MED
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-MED
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: MED
+    - span.ok-dia__bar__capright.bg:
+
+  - +ok-paragraph.text.flexbox@size=large@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-LRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-LRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: LRG
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xlarge@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: XLRG
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-2XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-2XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: 2XLRG
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xxxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-3XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg.flex: PB-3XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: 3XLRG
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xxxxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-4XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-4XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: 4XLRG
+    - span.ok-dia__bar__capright.bg:
+  - +ok-paragraph.text.flexbox@size=xxxxxlarge@color=2-2:
+    - span.ok-dia__span__pill.bg.flex: PB-5XLRG
+    - span.ok-dia__span__pill.bg:
+    - span.ok-dia__bar__pill.bg: PB-5XLRG
+    - span.ok-dia__bar__pill.bg:
+    - span.ok-dia__bar__capleft.bg:
+    - span.ok-dia__bar.bg.flex:
+    - .text: 5XLRG
+    - span.ok-dia__bar__capright.bg:
+
+  - hr.border-8-4:
+  - .text: Spans from Tiny to 5X-Large
 
   - +ok-paragraph@color=2-3:
-    - span.bg.oct_em_bar.ok-dia__blockbar.tiny:
-    - span.bg.oct_em_bar.ok-dia__blockbar.xxsmall:
-    - span.bg.oct_em_bar.ok-dia__blockbar.xsmall:
-    - span.bg.oct_em_bar.ok-dia__blockbar.small:
-    - span.bg.quad_em_bar.ok-dia__blockbar:
-    - span.bg.quad_em_bar.ok-dia__blockbar.large:
-    - span.bg.quad_em_bar.ok-dia__blockbar.xlarge:
-    - span.bg.duo_em_bar.ok-dia__blockbar.xxlarge:
-    - span.bg.duo_em_bar.ok-dia__blockbar.xxxlarge:
-    - span.bg.em_bar.ok-dia__blockbar.xxxxlarge:
-    - span.bg.em_bar.ok-dia__blockbar.xxxxxlarge:
+    - span.bg.ok-dia__span.tiny:
+    - span.bg.ok-dia__span.xxsmall:
+    - span.bg.ok-dia__span.xsmall:
+    - span.bg.ok-dia__span.small:
+    - span.bg.ok-dia__span:
+    - span.bg.ok-dia__span.large:
+    - span.bg.ok-dia__span.xlarge:
+    - span.bg.ok-dia__span.xxlarge:
+    - span.bg.ok-dia__span.xxxlarge:
+    - span.bg.ok-dia__span.xxxxlarge:
+    - span.bg.ok-dia__span.xxxxxlarge:
+
+  - hr.border-8-4:
+  - .text: Bars from Tiny to 5X-Large
 
   - +ok-paragraph@color=2-3:
-    - .text: Repeat examples
+    - span.bg.em_bar.ok-dia__bar.tiny:
+    - span.bg.em_bar.ok-dia__bar.xxsmall:
+    - span.bg.em_bar.ok-dia__bar.xsmall:
+    - span.bg.em_bar.ok-dia__bar.small:
+    - span.bg.em_bar.ok-dia__bar:
+    - span.bg.em_bar.ok-dia__bar.large:
+    - span.bg.em_bar.ok-dia__bar.xlarge:
+    - span.bg.em_bar.ok-dia__bar.xxlarge:
+    - span.bg.em_bar.ok-dia__bar.xxxlarge:
+    - span.bg.em_bar.ok-dia__bar.xxxxlarge:
+    - span.bg.em_bar.ok-dia__bar.xxxxxlarge:
+
+  - hr.border-8-6:
+
+  - +ok-paragraph@color=2-3:
+    - .text: Pillbar examples
     - .text: Pillbar with no title
     - +ok-sdk-pillbar: {"title": null}
     - .text: Pillbar with no rcap
@@ -285,9 +435,14 @@ $include: "var/ok-sdk/_parts.json"
   #- .bar.bg-cat-1-1:
   #    style: "width: 1em"
   #    "": []
+
+  - hr.border-8-6:
        
   - +lorem-ipsum-paragraph.text-2-1@num=2: null
   - +lorem-ipsum-paragraph.text-2-1@num=3:
 
+  - hr.border-2-1:
+       
   - h2: The End
+  - hr.border-1-1:
 #

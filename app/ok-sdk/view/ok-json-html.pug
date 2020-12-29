@@ -99,15 +99,24 @@ mixin ok-element-items(content, color, size)
 
 mixin ok-tpl-item(element)
   - if (arguments.length > 1) okSurplusArgs(arguments, 1, 'ok-tpl-item')
+
   - for( attr in element )
+    - if (attr == '|')
+      != element[attr]
+      - delete element[attr]
+
+    - if (attr == '%')
+      - eval(element[attr])
+      - delete element[attr]
+
     - if (attr.startsWith('$'))
-        +#{"ok-proc-"+attr.substr('1')}(element, formData)
+        +#{"ok-proc-"+attr.substr(1)}(element, formData)
 
   - for( attr in element )
     -
       if (attr.startsWith('_')) continue
       if (attr.startsWith('$')) continue
-      o = element[attr]
+      let o = element[attr]
       if( o === null ) o = {"": []}
       else if( typeof o === "string" ) o = {"": o}
       else if( typeof o.length !== "undefined" ) o = {"": o}
