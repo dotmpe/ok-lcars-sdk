@@ -19,7 +19,9 @@ _parts:
             //}
             //el.attr('value', val.slice(0, 0-unit.length));
 
-            $('#'+id+'-orig').attr('value', root.css('--'+id))
+            //$('#'+id+'-orig').attr('value', root.css('--'+id))
+            //$('#'+id+'-orig').attr('value', root.get(0).style.getPropertyValue('--'+id))
+            $('#'+id+'-orig').attr('value', getComputedStyle(root.get(0)).getPropertyValue('--'+id))
 
             el.on('input', function(e) {
 

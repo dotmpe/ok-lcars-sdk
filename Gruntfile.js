@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 			options: {
 			  files: {
 			    // FIXME: old sasslint does not like new style interpolated vars
-			    ignore: "app/ok-sdk/style/style.sass"
+			    ignore: "app/ok-sdk/style/style.sass",
         },
         rules: {
           "placeholder-in-extend": 0
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     }
 	});
 
-	grunt.registerTask('lint', ['sasslint', 'puglint', 'jsonlint']);
+	grunt.registerTask('lint', ['puglint', 'jsonlint']);
 	grunt.registerTask('build', ['yaml2json']);
 	grunt.registerTask('default', ['lint', 'build']);
 	grunt.registerTask('test', 'default');

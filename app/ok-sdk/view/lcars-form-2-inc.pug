@@ -2,12 +2,17 @@ mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
   //-
     LCARS frame - A simple contentpane bordered by a LCARS bars and elbows, with broad vertical and thin horizontal frame
 
+  -
+    o = okNewElementOptions(o, {
+          "title": "F-2.1"
+        }, attributes);
+
   - vbarw = 150.6
 
   if !color
     - color = "cat-1-1"
 
-  .form-2_1.pane.column.flexv.flexch&attributes(attributes)
+  .form-2_1.pane.column.flexv.flexch(class=o['class'])
     .pane.flexh.flexcv
 
       .column.frame.flexv

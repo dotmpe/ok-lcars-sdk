@@ -101,14 +101,18 @@ mixin ok-tpl-item(element)
   - if (arguments.length > 1) okSurplusArgs(arguments, 1, 'ok-tpl-item')
 
   - for( attr in element )
+
+    //- Literal content
     - if (attr == '|')
       != element[attr]
       - delete element[attr]
 
+    //- Inline script?
     - if (attr == '%')
       - eval(element[attr])
       - delete element[attr]
 
+    //- JSON directives
     - if (attr.startsWith('$'))
         +#{"ok-proc-"+attr.substr(1)}(element, formData)
 

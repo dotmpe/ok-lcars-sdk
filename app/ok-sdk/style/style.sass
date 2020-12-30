@@ -32,6 +32,12 @@ input:focus
   > .column:first-child
     text-align: right
 
+.layout-step-5
+  > .pane
+    > .column:not(.frame)
+      .row.frame:first-child
+        margin-bottom: 0.9em
+
 
 // TODO: move to ok-lcars-sdk baseforms
 
@@ -176,7 +182,14 @@ $f13-body-elbow-length: 69pt
     display: inline
     margin: auto 7px
 
+.form-field > *:first-child
+  float: left
+  width: 5em
+  margin-right: 5px
+  text-align: right
 
-
+.form-field > input[type="text"]
+  border: none
+  background-color: black
 
 // Id: OK-SDK:app/ok-sdk/style.sass

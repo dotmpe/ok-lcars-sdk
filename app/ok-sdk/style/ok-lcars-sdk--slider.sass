@@ -3,21 +3,20 @@
 
 
 input[type="range"]
-  --length: 25rem
-  --width: 1.6rem
-  --track-border: 3pt
-  --slider-size: 3pt
+  --length: 13rem
+  --track-border: calc( var(--font-size) * 0.15 )
+  --slider-size: calc( var(--font-size) * 0.15 )
   --slider-percent: 10
   --color-1: #{$tango-butter-1}
 
-  //@extend .ok-dia__bar
+  @extend .ok-dia__bar
   background-color: black
   cursor: pointer
   max-width: 100%
   &:not(.vertical)
     width: var(--length)
   &.vertical
-    width: var(--width)
+    width: calc( var(--bar-height) * var(--size-factor) )
     height: var(--length)
 
 /* Chrome does not want to share selector with any other class it seems,
@@ -27,7 +26,7 @@ input[type="range"]
   border: var(--track-border) solid transparent
   border-color: var(--color-1)
   background: linear-gradient(to right, black, var(--color-1) calc(var(--slider-percent) * 1%), black 0)
-  height: var(--width)
+  height: calc( var(--bar-height) * var(--size-factor) )
   width: var(--length)
 
 @mixin ok-dia__slider__track--v

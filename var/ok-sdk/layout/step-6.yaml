@@ -1,5 +1,5 @@
 $include: "var/ok-sdk/_parts.json"
-+ok-sdk-form-3:
++ok-sdk-form-3.layout-step-6:
   title: Intro 006
   prev: layout/step-5
   next-url: /select

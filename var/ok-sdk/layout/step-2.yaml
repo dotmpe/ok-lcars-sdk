@@ -1,5 +1,5 @@
 $include: "var/ok-sdk/_parts.json"
-+ok-sdk-contentpane.fullwidth:
++ok-sdk-contentpane.layout-step-2.fullwidth:
   title: Intro 002
   prev: layout/step-1
   next: layout/step-3

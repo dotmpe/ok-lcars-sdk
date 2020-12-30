@@ -43,7 +43,7 @@ $elbow_variants: default, vertical
 
 @mixin ok-dia__rootpane
   font-size: var(--font-size)
-  line-height: var(--line-height)
+  //line-height: var(--line-height)
 
   @extend .rootpane
 
@@ -79,7 +79,7 @@ $elbow_variants: default, vertical
 @mixin ok-dia__span--size($name, $factor)
       /* Inline "block" span size '#{$name}'
       font-size: calc( var(--font-size-#{$name}) * var(--font-factor) )
-      line-height: calc( var(--line-height-#{$name}) * 0.75 )
+      //line-height: calc( var(--line-height-#{$name}) * 0.75 )
       vertical-align: calc( 3.4pt * #{$factor} )
 
 
@@ -97,11 +97,13 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
 @mixin ok-dia__bar--size($name, $factor)
       /* Inline "block" bar size '#{$name}'
-      height: calc( var(--bar-height) * #{$factor} )
-      min-width: calc( var(--bar-min-width) * #{$factor} )
+      --size-factor: #{$factor}
+      //height: calc( var(--bar-height) * #{$factor} )
+      //min-width: calc( var(--bar-min-width) * #{$factor} )
       margin: var(--bar-margin-v-#{$name}) var(--bar-margin-h-#{$name})
       //vertical-align: var(--bar-align-v) * #{$factor} )
       vertical-align: map.get($bar-v-align, $name)
+      font-size: calc( var(--font-size-#{$name}) * var(--font-factor) )
 
 
 @mixin ok-dia__input
@@ -134,18 +136,21 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 :root
   // Regular font-size is 12pt/16px
   --font-size:          20pt
-  --line-height:        24pt
+  //--line-height:        calc( var(--font-size) * 1.2 )
   // Scale of label font-size as ratio of regular font-size
   --font-factor:        0.6
   --label-size:         15pt
 
   --bar-height:         17.7pt
+  --bar-height:         calc( var(--font-size) * 1.1299 )
   --bar-radius:         calc( var(--bar-height) / 2 )
+
   --bar-padding-h:      0.0pt
   --bar-padding-v:      0.0pt
   --bar-min-width:      2.8pt
   //--bar-align-v:      3.5pt
   --bar-margin:         3.0pt
+  --bar-margin:         calc( var(--font-size) * 0.15 )
   --bar-margin-h:       var(--bar-margin)
   --bar-margin-v:       var(--bar-margin)
 
@@ -153,12 +158,12 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
   --outer-radius:       92.5px
   --inner-radius:       calc( var(--outer-radius) + var(--bar-size) - var(--bar-margin) )
   --inner-bar-length:   var(--inner-radius)
-  --inner-bar-overlap:  5px
+  --inner-bar-overlap:  7px
 
   // Initialize all text-size variables
   @each $name, $factor in $sizes
     --font-size-#{$name}: calc( var(--font-size) * #{$factor} )
-    --line-height-#{$name}: calc( var(--line-height) * #{$factor} )
+    //--line-height-#{$name}: calc( var(--line-height) * #{$factor} )
     --bar-margin-v-#{$name}: calc( var(--bar-margin-v) * #{$factor} )
     --bar-margin-h-#{$name}: calc( var(--bar-margin-h) * #{$factor} )
 
@@ -225,7 +230,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       &--#{$name},
       &.#{$name}
         font-size: var(--font-size-#{$name})
-        line-height: var(--line-height-#{$name})
+        //line-height: var(--line-height-#{$name})
     @extend .ok-diagram__text--regular
 
   // Other classes are standalone BEM, but we'll add 'shortcut
@@ -408,20 +413,20 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 .ok-dia__bar
   @include ok-dia__gel
 
+  --size-factor: 1
+  height: calc( var(--bar-height) * var(--size-factor) )
+
   @each $name, $factor in $sizes
     &--#{$name},
     &.#{$name}
       @include ok-dia__bar
       @include ok-dia__bar--size($name, $factor)
-
   &--medium,
   &.medium
     @extend .ok-dia__bar--regular
-
   &--tiny,
   &.tiny
     @extend .ok-dia__bar--xxxsmall
-
   @extend .ok-dia__bar--regular
 
   &__capleft
@@ -600,6 +605,8 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
           top: 0
         > div:nth-child(2)
           top: calc( var(--bar-size) / 2 )
+      &:before
+        bottom: 0
 
     // Left
     &--top-left,
@@ -611,6 +618,8 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
           left: var(--bar-h)
         > div:nth-child(2)
           left: calc( 0px - var(--bar-size) / 2 )
+      &:before
+        right: 0
 
     // Right
     &--top-right,
@@ -622,6 +631,8 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
           right: var(--bar-h)
         > div:nth-child(2)
           right: calc( 0px - var(--bar-size) / 2 )
+      &:before
+        left: 0
 
     // Bottom
     &--bottom-left,
@@ -633,6 +644,8 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
           bottom: calc(100% - var(--bar-size))
         > div:nth-child(2)
           bottom: calc( var(--bar-size) / 2 )
+      &:before
+        top: 0
 
     // Corners
 
@@ -691,8 +704,6 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
     &:before
       padding: 5px 7px
-      top: 0px
-      right: 10px
 
     &:after
       padding: 5px 7px 5px
