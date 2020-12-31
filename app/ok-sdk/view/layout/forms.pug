@@ -3,6 +3,19 @@ extends ../base/data
 
 include ../lcars-inc
 
+block head-extra
+  -
+    if (typeof data !== "undefined") {
+      formScssFile = data_dir +'/'+ data +'.sass'
+      let fs = require('fs')
+      if (fs.existsSync(formScssFile)) {
+        formCssFile = data_dir +'/'+ data +'.css'
+      }
+    }
+
+  if formCssFile
+    link(rel="stylesheet", type="text/css", href=formCssFile)
+
 block main-data
   -
     function okFormElementParse(s) {

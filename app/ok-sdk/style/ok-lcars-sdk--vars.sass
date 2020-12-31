@@ -1,0 +1,90 @@
+// Functions
+@function pow($number, $exponent)
+  $value: 1
+  @if $exponent > 0
+    @for $i from 1 through $exponent
+      $value: $value * $number
+  @return $value
+
+// SCSS Variables
+$small-space:      3pt          //      =  4px
+$medium-space:  2* $small-space //  6pt =  8px
+$large-space:   3* $small-space //  9pt = 12px
+$xlarge-space:  4* $small-space // 12pt = 16px
+$xxlarge-space: 5* $small-space // 15pt = 20px
+
+$padding-small:        30pt             //
+$padding-medium:  1.5* $padding-small   // 45pt
+$padding-large:   1.5* $padding-medium  // 67.5pt
+$padding-xlarge:  1.5* $padding-large   // 101.25pt
+
+$unit-small: 11.3pt // 15px
+$unit-medium: 22.6pt // 30px
+$unit-large: 22.6pt // 30px
+
+$bar-min-v: $unit-medium
+$bar-min-h: $unit-medium
+
+$pill-cap-small-width: $unit-small
+$pill-cap-medium-width: $unit-medium
+
+$inner-bar-overlap: 7px
+
+//$f13-head-ratio: 0.25 // 1/4th of VH
+// TNG Canon: < 1/3th of VH
+//$f13-head-ratio: 0.32
+$f13-head-ratio: 0.31
+
+$sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2), "small": 0.8, "regular": 1.0, "large": 1/0.75, "xlarge": pow(1/0.75, 2), "xxlarge": pow(1/0.75, 3), "xxxlarge": pow(1/0.75, 4), "xxxxlarge": pow(1/0.75, 5), "xxxxxlarge": pow(1/0.75, 6))
+$size_names: tiny, xxxsmall, xxsmall, xsmall, small, medium, regular, large, xlarge, xxlarge, xxxlarge, xxxxlarge, xxxxxlarge
+$elbow_names: top-left, top-right, bottom-right, bottom-left
+$elbow_variants: default, vertical
+
+
+@mixin varsroot
+
+  // Regular font-size is 12pt/16px
+  --font-size:          20pt
+  //--line-height:        calc( var(--font-size) * 1.2 )
+  // Scale of label font-size as ratio of regular font-size
+  --font-factor:        0.6
+  --label-size:         15pt
+
+  //--bar-size:           17.7pt
+  --bar-size:           var(--bar-height)
+  --bar-height:         calc( var(--font-size) * 1.1299 )
+  --bar-radius:         calc( var(--bar-height) / 2 )
+  --bar-length:         calc( var(--font-size) * 1.1299 )
+  --bar-min-width:      0px
+
+  --bar-margin:         3.0pt
+  --bar-padding-h:      0.0pt
+  --bar-padding-v:      0.0pt
+  --bar-margin:         calc( var(--font-size) * 0.15 )
+  --bar-margin-h:       var(--bar-margin)
+  --bar-margin-v:       var(--bar-margin)
+  // 5px
+  --bar-inner-margin:   3.75pt
+  --inner-bar-length:   0px
+
+  --column-width:       130px
+
+  --radius-width-ratio: 1.0
+  --outer-radius:       calc( var(--column-width) * var(--radius-width-ratio) )
+  --inner-radius:       calc( var(--outer-radius) + var(--bar-height) - var(--bar-margin) )
+
+  --content-padding:    calc( var(--outer-radius)/2 - var(--bar-height) )
+
+  // Initialize all text-size variables
+  @each $name, $factor in $sizes
+    --font-size-#{$name}: calc( var(--font-size) * #{$factor} )
+    //--line-height-#{$name}: calc( var(--line-height) * #{$factor} )
+    --bar-margin-v-#{$name}: calc( var(--bar-margin-v) * #{$factor} )
+    --bar-margin-h-#{$name}: calc( var(--bar-margin-h) * #{$factor} )
+  --font-size-medium: var(--font-size-regular)
+  --font-size-tiny: var(--font-size-xxxsmall)
+  --line-height-medium: var(--line-height-regular)
+  --line-height-tiny: var(--line-height-xxxsmall)
+
+:root
+  @include varsroot

@@ -11,38 +11,50 @@
     margin: 0
     padding: 0 1em
 
+
     
 .ok-dia__baseform-1
   > .content
     margin: $large-space auto $medium-space auto
-    padding: 0 ( $pill-cap-medium-width + $bar-inner-margin )
+    padding: 0 var(--content-padding)
 
   &.small > .content
     margin: $medium-space auto $small-space auto
-    padding: 0 ( $pill-cap-small-width + $bar-inner-margin )
+
+  .column.frame
+    min-width: var(--bar-min-width)
 
 
 .ok-dia__baseform-2_1
   > .pane
+    overflow: hidden
+
     > .column:first-child
       > *
         text-align: right
 
-    > .column:nth-child(2)
+    > .column:not(.frame)
       > .row:first-child,
       > .row:last-child
-        --padding-h: calc( var(--inner-bar-length) - 1rem + var(--bar-margin-h-regular) - 2*var(--bar-size) )
+        --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) )
         padding-left: var(--padding-h)
         padding-right: var(--padding-h)
 
+      // Account for radius of frame and non-content elements
+      > .row.frame:first-child
+        margin-bottom: calc( var(--content-padding) / 2 )
+      > .row.frame:last-child
+        margin-top: calc( var(--content-padding) / 2 )
+      > :not(.frame)
+        margin-left: calc( var(--content-padding) / 2 )
+        margin-right: calc( var(--content-padding) / 2 )
+
       > .content
         margin: $large-space auto $medium-space auto
-        padding: 0 ( $pill-cap-medium-width + $bar-inner-margin )
-    
-    > .column:nth-child(3)
-      > *
-        //width: var(--inner-bar-length)
+        padding: 0 var(--content-padding)
 
+    > .column.frame
+      min-width: var(--column-width)
 
 .ok-dia__baseform-1_3
   .button-wrap

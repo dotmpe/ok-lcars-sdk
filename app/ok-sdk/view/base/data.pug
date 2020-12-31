@@ -12,7 +12,7 @@ block main
   - 
     if (typeof data === "undefined") {
       if (typeof formDataFile === "undefined") {
-        formDataFile = data_dir +'/'+ data_default
+        formDataFile = data_dir +'/'+ data_default +'.json'
       }
     } else {
       formDataFile = data_dir +'/'+ data +'.json'

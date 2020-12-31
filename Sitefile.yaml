@@ -87,6 +87,8 @@ routes: # Simple router instances
   #prototype.yaml: @var/ok-sdk/layout/prototype.yaml#/forms/form-0-a-1-1
   #prototype.json: :var/ok-sdk/layout/prototype.yaml
 
+  'r:var/ok-sdk/layout/(.*).css': sass:var/ok-sdk/layout/
+
 options:
   local: # Options per route instances
     select:

@@ -11,43 +11,61 @@ $include: "var/ok-sdk/_parts.json"
     - label@for=font-size: "Font size: "
     - input@id=font-size@type=range:
     - input@id=font-size-value@type=text@size=5@readonly=true:
-    - input@id=font-size-orig@type=text@size=5@readonly=true:
+    - span@id=font-size-orig:
 
   #- .row.form-field:
   #  - label@for=line-height: "Line height: "
   #  - input@id=line-height@type=range:
   #  - input@id=line-height-value@type=text@size=5@readonly=true:
-  #  - input@id=line-height-orig@type=text@size=5@readonly=true:
+  #  - input@id=line-height-orig@type=text@size=32@readonly=true:
 
   - .row.form-field:
     - label@for=font-factor: "Font factor: "
     - input@id=font-factor@type=range:
     - input@id=font-factor-value@type=text@size=5@readonly=true:
-    - input@id=font-factor-orig@type=text@size=5@readonly=true:
+    - span@id=font-factor-orig:
+
+  - .row.form-field:
+    - label@for=column-width: "Col width: "
+    - input@id=column-width@type=range:
+    - input@id=column-width-value@type=text@size=5@readonly=true:
+    - span@id=column-width-orig:
+
+  - .row.form-field:
+    - label@for=content-padding: "Cnt padd: "
+    - input@id=content-padding@type=range:
+    - input@id=content-padding-value@type=text@size=5@readonly=true:
+    - span@id=content-padding-orig:
+
+  - .row.form-field:
+    - label@for=radius-width-ratio: "Radius ratio: "
+    - input@id=radius-width-ratio@type=range:
+    - input@id=radius-width-ratio-value@type=text@size=5@readonly=true:
+    - span@id=radius-width-ratio-orig:
 
   - .row.form-field:
     - label@for=bar-margin: "Bar margin: "
     - input@id=bar-margin@type=range:
     - input@id=bar-margin-value@type=text@size=5@readonly=true:
-    - input@id=bar-margin-orig@type=text@size=5@readonly=true:
+    - span@id=bar-margin-orig:
 
   - .row.form-field:
-    - label@for=bar-size: "Bar size: "
-    - input@id=bar-size@type=range:
-    - input@id=bar-size-value@type=text@size=5@readonly=true:
-    - input@id=bar-size-orig@type=text@size=5@readonly=true:
+    - label@for=inner-bar-length: "Inner bar: "
+    - input@id=inner-bar-length@type=range:
+    - input@id=inner-bar-length-value@type=text@size=5@readonly=true:
+    - span@id=inner-bar-length-orig:
 
   - .row.form-field:
     - label@for=bar-height: "Bar height: "
     - input@id=bar-height@type=range:
     - input@id=bar-height-value@type=text@size=5@readonly=true:
-    - input@id=bar-height-orig@type=text@size=5@readonly=true:
+    - span@id=bar-height-orig:
 
   - .row.form-field:
     - label@for=outer-radius: "Outer radius: "
     - input@id=outer-radius@type=range:
     - input@id=outer-radius-value@type=text@size=5@readonly=true:
-    - input@id=outer-radius-orig@type=text@size=5@readonly=true:
+    - span@id=outer-radius-orig:
 
   - $ref: '#/_parts/range-input'
   - 'script':
@@ -57,8 +75,11 @@ $include: "var/ok-sdk/_parts.json"
             [ 'font-size',    0, 40, "pt", 0.5 ],
             [ 'line-height',  0, 55, "pt", 0.5 ],
             [ 'font-factor',  0, 2,  "",   0.01 ],
+            [ 'column-width', 0, 500, "px" ],
+            [ 'content-padding', 0, 500, "px" ],
+            [ 'radius-width-ratio', 0, 5, "", 0.01 ],
             [ 'bar-margin',   0, 20, "pt" ],
-            [ 'bar-size',     0, 25, "pt" ],
+            [ 'inner-bar-length',  0, 50, "pt" ],
             [ 'outer-radius', 0, 400, "px" ],
             [ 'bar-radius',   0, 25, "pt" ],
             [ 'bar-height',   0, 125, "pt" ]
@@ -67,16 +88,16 @@ $include: "var/ok-sdk/_parts.json"
           console.log("Ready");
         });
 
-  # Dynamic content:
-  #- '%': console.log('Foo')
-  #- '|': "<script>"+ ... +"</script>"
-  #- script: window.alert('Foo')
-  - +lorem-ipsum-paragraph@num=4: null
-
-  - +ok-sdk-form-2-1:
+  - +ok-sdk-form-2-1@id=rootpane:
       "":
       - p: Inner
       - +lorem-ipsum-paragraph@num=4: null
 
   - +lorem-ipsum-paragraph.text-2-2@num=7: null
+
+  # Dynamic content:
+  #- '%': console.log('Foo')
+  #- '|': "<script>"+ ... +"</script>"
+  #- script: window.alert('Foo')
+  #
 #

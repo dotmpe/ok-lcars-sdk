@@ -12,7 +12,7 @@ mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
   if !color
     - color = "cat-1-1"
 
-  .form-2_1.pane.column.flexv.flexch(class=o['class'])
+  .form-2_1.pane.column.flexv.flexch&attributes(lodash.pick(o, ['class', 'id']))
     .pane.flexh.flexcv
 
       .column.frame.flexv
@@ -40,6 +40,7 @@ mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
           if o
             +ok-prev-next-form(o, '/forms?merge.data=')
             if o['']
+              - if ('id' in o) delete o['id']
               +ok-element(o)
           else
             if block

@@ -2,6 +2,16 @@ _parts:
   range-input: &range-input
     'script':
     - '|': |
+          let rootid = 'rootpane'
+          function update_all() {
+            for (spec in specs) {
+              update_value(rootid, specs[spec][0]);
+            }
+          }
+          function update_value(id) {
+            let root = $('#'+rootid)
+            $('#'+id+'-orig').text(getComputedStyle(root.get(0)).getPropertyValue('--'+id))
+          }
           function initialize_range(id, min, max, unit="px", step=1) {
             let el = $('#'+id)
 
@@ -11,29 +21,28 @@ _parts:
             el.attr('max', "100")
             el.css('--slider-percent', "15")
 
-            let root = $(':root')
+            let root = $('#'+rootid)
             //let val = root.css('--'+id)
             //if (!val.endsWith(unit)) {
             //  console.error("Invalid unit for", id);
             //  return
             //}
             //el.attr('value', val.slice(0, 0-unit.length));
-
-            //$('#'+id+'-orig').attr('value', root.css('--'+id))
-            //$('#'+id+'-orig').attr('value', root.get(0).style.getPropertyValue('--'+id))
-            $('#'+id+'-orig').attr('value', getComputedStyle(root.get(0)).getPropertyValue('--'+id))
+            update_value(id);
 
             el.on('input', function(e) {
-
               let strval = String(e.target.value)
               $(e.target).css('--slider-percent', strval)
 
               strval = String( e.target.value * max / 100 )+unit
               $('#'+id+'-value').attr('value', strval)
               root.css('--'+id, strval)
+
+              update_all(id);
             });
           }
-          function initialize_ranges(specs) {
+          function initialize_ranges(_specs) {
+            specs = _specs
             for (spec in specs) {
               initialize_range.apply(null, specs[spec]);
             }

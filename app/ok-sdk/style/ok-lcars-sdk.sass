@@ -1,44 +1,4 @@
-// Functions
-@function pow($number, $exponent)
-  $value: 1
-  @if $exponent > 0
-    @for $i from 1 through $exponent
-      $value: $value * $number
-  @return $value
-
-// SCSS Variables
-$small-space:      3pt          //      =  4px
-$medium-space:  2* $small-space //  6pt =  8px
-$large-space:   3* $small-space //  9pt = 12px
-$xlarge-space:  4* $small-space // 12pt = 16px
-$xxlarge-space: 5* $small-space // 15pt = 20px
-
-$padding-small:        30pt             //
-$padding-medium:  1.5* $padding-small   // 45pt
-$padding-large:   1.5* $padding-medium  // 67.5pt
-$padding-xlarge:  1.5* $padding-large   // 101.25pt
-
-$unit-small: 11.3pt // 15px
-$unit-medium: 22.6pt // 30px
-$unit-large: 22.6pt // 30px
-
-$bar-inner-margin: 3.75pt // 5px
-
-$bar-min-v: $unit-medium
-$bar-min-h: $unit-medium
-
-$pill-cap-small-width: $unit-small
-$pill-cap-medium-width: $unit-medium
-
-//$f13-head-ratio: 0.25 // 1/4th of VH
-// TNG Canon: < 1/3th of VH
-//$f13-head-ratio: 0.32
-$f13-head-ratio: 0.31
-
-$sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2), "small": 0.8, "regular": 1.0, "large": 1/0.75, "xlarge": pow(1/0.75, 2), "xxlarge": pow(1/0.75, 3), "xxxlarge": pow(1/0.75, 4), "xxxxlarge": pow(1/0.75, 5), "xxxxxlarge": pow(1/0.75, 6))
-$size_names: tiny, xxxsmall, xxsmall, xsmall, small, medium, regular, large, xlarge, xxlarge, xxxlarge, xxxxlarge, xxxxxlarge
-$elbow_names: top-left, top-right, bottom-right, bottom-left
-$elbow_variants: default, vertical
+@import ok-lcars-sdk--vars
 
 
 @mixin ok-dia__rootpane
@@ -99,7 +59,6 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       /* Inline "block" bar size '#{$name}'
       --size-factor: #{$factor}
       //height: calc( var(--bar-height) * #{$factor} )
-      //min-width: calc( var(--bar-min-width) * #{$factor} )
       margin: var(--bar-margin-v-#{$name}) var(--bar-margin-h-#{$name})
       //vertical-align: var(--bar-align-v) * #{$factor} )
       vertical-align: map.get($bar-v-align, $name)
@@ -131,46 +90,6 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
   &:active
     filter: brightness(150%)
-
-
-:root
-  // Regular font-size is 12pt/16px
-  --font-size:          20pt
-  //--line-height:        calc( var(--font-size) * 1.2 )
-  // Scale of label font-size as ratio of regular font-size
-  --font-factor:        0.6
-  --label-size:         15pt
-
-  --bar-height:         17.7pt
-  --bar-height:         calc( var(--font-size) * 1.1299 )
-  --bar-radius:         calc( var(--bar-height) / 2 )
-
-  --bar-padding-h:      0.0pt
-  --bar-padding-v:      0.0pt
-  --bar-min-width:      2.8pt
-  //--bar-align-v:      3.5pt
-  --bar-margin:         3.0pt
-  --bar-margin:         calc( var(--font-size) * 0.15 )
-  --bar-margin-h:       var(--bar-margin)
-  --bar-margin-v:       var(--bar-margin)
-
-  --bar-size:           var(--bar-height)
-  --outer-radius:       92.5px
-  --inner-radius:       calc( var(--outer-radius) + var(--bar-size) - var(--bar-margin) )
-  --inner-bar-length:   var(--inner-radius)
-  --inner-bar-overlap:  7px
-
-  // Initialize all text-size variables
-  @each $name, $factor in $sizes
-    --font-size-#{$name}: calc( var(--font-size) * #{$factor} )
-    //--line-height-#{$name}: calc( var(--line-height) * #{$factor} )
-    --bar-margin-v-#{$name}: calc( var(--bar-margin-v) * #{$factor} )
-    --bar-margin-h-#{$name}: calc( var(--bar-margin-h) * #{$factor} )
-
-  --font-size-medium: var(--font-size-regular)
-  --font-size-tiny: var(--font-size-xxxsmall)
-  --line-height-medium: var(--line-height-regular)
-  --line-height-tiny: var(--line-height-xxxsmall)
 
 
 /* ok-diagram: OK Diagram root content pane
@@ -496,8 +415,8 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
   &.oct_em_bar
     width: 8em
 
-  &.row > *
-    margin-left: $bar-inner-margin
+  .row > &
+    margin-left: var(--bar-inner-margin)
 
 
 /* A button derived from span
@@ -541,31 +460,25 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
 /* Elbow classes; horizontal (default) and vertical variant; for each size
 .ok-dia__elbow
-  @extend .ok-dia__bar
-
   @each $name, $factor in $sizes
     &--#{$name},
     &.#{$name}
       @include ok-dia__bar
       @include ok-dia__bar--size($name, $factor)
       --bar-size: calc( var(--bar-height) * #{$factor} )
-
   &--medium,
   &.medium
     @extend .ok-dia__elbow--regular
-
   &--tiny,
   &.tiny
     @extend .ok-dia__elbow--xxxsmall
-
   @extend .ok-dia__elbow--regular
-
 
   &--default
     @extend .ok-dia__elbow
     position: relative
     z-index: 1
-    min-width: var(--outer-radius)
+    min-width: var(--column-width)
     min-height: var(--outer-radius)
 
     &--tiny
@@ -576,7 +489,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       z-index: 1
       background-color: inherit
       border-color: inherit
-      min-width: calc( var(--inner-bar-length) + var(--inner-bar-overlap) - 2*var(--bar-size) )
+      min-width: calc( var(--inner-radius) + var(--inner-bar-length) )
 
       > div
         position: absolute
@@ -588,10 +501,10 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
         box-sizing: border-box
         min-width: calc( var(--inner-radius) - var(--bar-size) )
         min-height: calc( var(--inner-radius) - var(--bar-size) )
-        --bar-h: calc( 0px - var(--bar-size) + var(--inner-bar-overlap) - var(--bar-margin-h) )
+        --bar-h: calc( 0px - var(--bar-size) + #{$inner-bar-overlap} )
 
       > div:nth-child(2) // "triangle"
-        border-width: calc(var(--inner-radius) / 4)
+        border-width: calc(var(--inner-radius) / 3.5)
         min-height: 0
         min-width: 0
 
@@ -604,7 +517,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
         > div:first-child
           top: 0
         > div:nth-child(2)
-          top: calc( var(--bar-size) / 2 )
+          top: calc( var(--bar-size) )
       &:before
         bottom: 0
 
@@ -613,11 +526,11 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
     &--bottom-left
       text-align: right
       > div:first-child
-        left: calc(100% - var(--inner-bar-overlap))
+        left: calc(100% - #{$inner-bar-overlap} - var(--bar-margin) )
         > div:first-child
           left: var(--bar-h)
         > div:nth-child(2)
-          left: calc( 0px - var(--bar-size) / 2 )
+          left: calc( 0px - var(--bar-size) )
       &:before
         right: 0
 
@@ -626,11 +539,11 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
     &--bottom-right
       text-align: left
       > div:first-child
-        right: calc(100% - var(--inner-bar-overlap))
+        right: calc(100% - #{$inner-bar-overlap} - var(--bar-margin) )
         > div:first-child
           right: var(--bar-h)
         > div:nth-child(2)
-          right: calc( 0px - var(--bar-size) / 2 )
+          right: calc( 0px - var(--bar-size) )
       &:before
         left: 0
 
@@ -643,7 +556,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
         > div:first-child
           bottom: calc(100% - var(--bar-size))
         > div:nth-child(2)
-          bottom: calc( var(--bar-size) / 2 )
+          bottom: calc( var(--bar-size) )
       &:before
         top: 0
 
@@ -654,7 +567,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       > div:first-child
         > div:first-child
           border-width: var(--bar-size) 0 0 var(--bar-size)
-          border-top-left-radius: var(--inner-radius)
+          border-top-left-radius: 100%
         > div:nth-child(2)
           border-right-color: transparent
           border-bottom-color: transparent
@@ -663,7 +576,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       border-top-right-radius: var(--outer-radius)
       > div:first-child
         > div:first-child
-          border-top-right-radius: var(--inner-radius)
+          border-top-right-radius: 100%
           border-width: var(--bar-size) var(--bar-size) 0 0
         > div:nth-child(2)
           border-left-color: transparent
@@ -673,7 +586,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       border-bottom-left-radius: var(--outer-radius)
       > div:first-child
         > div:first-child
-          border-bottom-left-radius: var(--inner-radius)
+          border-bottom-left-radius: 100%
           border-width: 0 0 var(--bar-size) var(--bar-size)
         > div:nth-child(2)
           border-right-color: transparent
@@ -683,7 +596,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       border-bottom-right-radius: var(--outer-radius)
       > div:first-child
         > div:first-child
-          border-bottom-right-radius: var(--inner-radius)
+          border-bottom-right-radius: 100%
           border-width: 0 var(--bar-size) var(--bar-size) 0
         > div:nth-child(2)
           border-left-color: transparent
