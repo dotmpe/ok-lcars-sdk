@@ -11,6 +11,7 @@
   repositories:
     github: git@github.com:dotmpe/ok-lcars-sdk.git
     dotmpe.origin: git-repos/ok-lcars-sdk.git
+    t460s.25-5-bare: /srv/scm-git-25-5-t460s-mpe/ok-lcars-sdk.git
 
   urls:
     license-info: https://opensource.org/licenses/MIT
@@ -31,8 +32,8 @@
     - V_DOC_LIST=package-versioned.list verbosity=7 git-versioning check
     - htd vcflow summary
     status:
-    - 'echo "OK! LCARS SDK: $(vc status) $(git describe --always)"'
-    - 'echo "LCARS SDK: $(vc status lib/lcars-sdk) $(cd lib/lcars-sdk/ && git describe --always)"'
+    - 'echo "OK! LCARS SDK: \$(vc status) \$(git describe --always)"'
+    - 'echo "LCARS SDK: \$(vc status lib/lcars-sdk) \$(cd lib/lcars-sdk/ && git describe --always)"'
     - htd vcflow summary
     install:
     - npm install
