@@ -21,10 +21,10 @@ mixin ok-sdk-form-1-inline(o)
       +ok-sdk-pillbar(o.header).header
 
     .pane.content.row.flex
-      if o['']
+      if o[''] && o[''].length
         +ok-element({'': o['']}, o.content || {})
       else
-        +ok-sdk-no-data(o.color)
+        +ok-sdk-placeholder(o.color)
 
     if o.footer
       +ok-sdk-pillbar(o.footer).footer

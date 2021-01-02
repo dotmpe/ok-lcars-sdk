@@ -50,7 +50,7 @@ $include: "var/ok-sdk/_parts.json"
     - span@id=bar-margin-orig:
 
   - .row.form-field:
-    - label@for=inner-bar-length: "Inner bar: "
+    - label@for=inner-bar-length: "Inner bar L: "
     - input@id=inner-bar-length@type=range:
     - input@id=inner-bar-length-value@type=text@size=5@readonly=true:
     - span@id=inner-bar-length-orig:
@@ -73,15 +73,13 @@ $include: "var/ok-sdk/_parts.json"
         $("document").ready(function() {
           initialize_ranges([
             [ 'font-size',    0, 40, "pt", 0.5 ],
-            [ 'line-height',  0, 55, "pt", 0.5 ],
             [ 'font-factor',  0, 2,  "",   0.01 ],
             [ 'column-width', 0, 500, "px" ],
             [ 'content-padding', 0, 500, "px" ],
             [ 'radius-width-ratio', 0, 5, "", 0.01 ],
             [ 'bar-margin',   0, 20, "pt" ],
-            [ 'inner-bar-length',  0, 50, "pt" ],
+            [ 'inner-bar-length',  0, 80, "px" ],
             [ 'outer-radius', 0, 400, "px" ],
-            [ 'bar-radius',   0, 25, "pt" ],
             [ 'bar-height',   0, 125, "pt" ]
           ]);
 

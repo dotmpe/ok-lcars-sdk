@@ -1,4 +1,4 @@
-mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
+mixin ok-sdk-form-2-1(o)
   //-
     LCARS frame - A simple contentpane bordered by a LCARS bars and elbows, with broad vertical and thin horizontal frame
 
@@ -6,11 +6,18 @@ mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
     o = okNewElementOptions(o, {
           "title": "F-2.1"
         }, attributes);
-
-  - vbarw = 150.6
-
-  if !color
-    - color = "cat-1-1"
+    o = lodash.defaultsDeep(o, {
+        "top": { "title": o.title, "color": o.color, "size": o.size },
+        "content": {
+          "header": {},
+          "footer": {},
+          "color": o.color,
+          "size": o.size },
+        "bottom": { title: null, "color": o.color, "size": o.size },
+        "left": { "color": o.color, "size": o.size },
+        "right": { "color": o.color, "size": o.size },
+        "buttons": []
+      })
 
   .form-2_1.pane.column.flexv.flexch&attributes(lodash.pick(o, ['class', 'id']))
     .pane.flexh.flexcv
@@ -31,22 +38,20 @@ mixin ok-sdk-form-2-1(o, color, size='medium', lbar, rbar, tbar, bbar)
         .row.frame.flexh
           .bar.bg-cat-1-3.flexch
 
+        // TODO: JSON header block
         .column
           .title.text-1-1(align="right") LCARS FORM 2.1
           .flexh.button-wrap
             p.text-1-1.text Form 2: A frame enclosing a single content pane
             
         .content.pane.flexcv
-          if o
-            +ok-prev-next-form(o, '/forms?merge.data=')
-            if o['']
-              - if ('id' in o) delete o['id']
-              +ok-element(o)
+          +ok-prev-next-form(o, '/forms?merge.data=')
+          if block && typeof block() != "undefined"
+            block
+          else if o[''] && o[''].length
+            +ok-element({'': o['']}, o.content || {})
           else
-            if block
-              block
-            else
-              +ok-sdk-no-data(color)
+            +ok-sdk-placeholder(o.color)
 
         .row.frame.flexh
           .bar.bg-cat-2-2

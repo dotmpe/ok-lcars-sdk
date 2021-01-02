@@ -1,6 +1,19 @@
 mixin ok-sdk-form-4(o, title="Form 1.4")
+  //-
+      Z/S forms
 
-  #main.form-4.wrapper.column
+  -
+    o = okNewElementOptions(o || {}, {
+          "title": title || "BF-4"
+        }, attributes);
+    o = lodash.defaultsDeep( {}, o, {
+        "first": {
+          "content": { "color": o.color, "size": o.size },
+        }
+      } );
+
+  //-.form-4.pane.flexv&attributes(attributes)
+  .form-4.wrapper.column&attributes(attributes)
 
       .row.flexh.header
         .button.endcap.bottom-left.large.bg-cat-1-1
@@ -14,7 +27,15 @@ mixin ok-sdk-form-4(o, title="Form 1.4")
           .cap
 
       .row.flexcv.flexch.content
-        .bar.flexcv
+        +ok-prev-next-form(o, '/forms?merge.data=')
+        if block && typeof block() != "undefined"
+          block
+        else if o[''] && o[''].length > 0 && o[''][0].length
+          +ok-element({'': o[''][0]}, o.first.content || {})
+        else
+          +ok-sdk-placeholder(o.color)
+
+        .flexcv
 
           p.text-2-3
             | Ooops... how are we going to restrict or align columns *and*
@@ -26,6 +47,7 @@ mixin ok-sdk-form-4(o, title="Form 1.4")
 
         .bar.vertical.bg-cat-1-1
         .bar.flexcv
+
           +lorem-ipsum-paragraph(1)&attributes({class:'text-2-2 capital'})
           +lorem-ipsum-paragraph(1)&attributes({class:'text-2-1 capital'})
 

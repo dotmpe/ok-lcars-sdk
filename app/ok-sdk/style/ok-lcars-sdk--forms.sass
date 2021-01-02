@@ -15,7 +15,6 @@
     
 .ok-dia__baseform-1
   > .content
-    margin: $large-space auto $medium-space auto
     padding: 0 var(--content-padding)
 
   &.small > .content
@@ -34,6 +33,7 @@
         text-align: right
 
     > .column:not(.frame)
+      // Account for elbow inner bar
       > .row:first-child,
       > .row:last-child
         --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) )
@@ -56,15 +56,119 @@
     > .column.frame
       min-width: var(--column-width)
 
+
 .ok-dia__baseform-1_3
-  .button-wrap
-    flex-wrap: wrap
-    margin-top: 0
-    padding-top: 3.8pt
-    width: 100%
+  .f13-1-1.frame > *,
+  .f13-2-1.frame > *
+    min-width: var(--column-width)
 
-    .button
-      margin-bottom: 3.8pt
-      margin-left: 3.8pt
+  .f13-1-2-2.frame,
+  .f13-2-2-1.frame
+    // Account for elbow inner bar
+    --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) )
+    padding-left: var(--padding-h)
 
+  > .row .row.frame
+    min-height: auto
+    > .bar.alt
+      min-height: $medium-space
+      max-height: $medium-space
+
+  > .row.split
+    display: relative
+    margin: 0
+    padding: 0
+    min-height: 0
+    max-height: 0
+
+    > .block
+      --empty: null
+
+  > .row.body .row.frame
+    overflow: hidden
+    //margin-top: 4.5pt
+    > .bar.alt
+      margin-top: auto
+
+  > .f13-1 // Header row (with h/v frame)
+    flex: .3
+    overflow: hidden
+
+    > .f13-1-2 // Header content and h-frame
+
+      > .f13-1-2-1 // Header content div
+        padding: 0 var(--content-padding)
+        padding-bottom: calc( var(--content-padding) / 2 )
+        overflow-y: scroll
+
+        .title,
+        h1, h2, h3//, h4, h5, h6
+          margin: 0
+          text-align: right
+
+        .button-wrap
+          min-width: 225.9pt
+          right: 0px
+          bottom: 9%
+          position: absolute
+          width: auto
+
+      > .f13-1-2-2 // Header horizontal frame
+
+  > .f13-2 // Body row (with h/v frame)
+    flex: .7
+    overflow: hidden
+
+    > .f13-2-2 // Body content and h-frame
+      > .f13-2-2-1 // Header horizontal frame
+      > .f13-2-2-2 // Body content div
+        padding: 0 var(--content-padding)
+        padding-top: 9pt
+        padding-top: calc( var(--content-padding) / 2 )
+        overflow-y: scroll
+        height: calc( 100% - 2 * var(--bar-height) )
+
+        > *
+          margin: 4.5pt
+
+
+.ok-dia__baseform-4
+  > .content
+    height: 100%
+    height: 300px
+    overflow: hidden
+    padding: 0 var(--content-padding)
+
+    .bar.vertical
+      margin-top: 75px
+      margin-bottom: 45px
+
+  > .header,
+  > .footer
+    height: 220px
+
+
+.ok-diagram
+
+  .frame > *
+    margin: 4.5pt
+
+  .f0,
+  .form-0
+    @extend .ok-dia__baseform-0
+
+  .f1,
+  .form-1
+    @extend .ok-dia__baseform-1
+
+  .f2_1,
+  .form-2_1
+    @extend .ok-dia__baseform-2_1
+
+  .f1_3,
+  .form-1_3
+    @extend .ok-dia__baseform-1_3
+
+  .form-4
+    @extend .ok-dia__baseform-4
 

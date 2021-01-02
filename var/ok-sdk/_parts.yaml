@@ -15,19 +15,26 @@ _parts:
           function initialize_range(id, min, max, unit="px", step=1) {
             let el = $('#'+id)
 
-            el.attr('value', "15")
-            el.attr('step', "1")
+            el.attr('step', ".5")
             el.attr('min', "0")
             el.attr('max', "100")
-            el.css('--slider-percent', "15")
 
             let root = $('#'+rootid)
-            //let val = root.css('--'+id)
-            //if (!val.endsWith(unit)) {
-            //  console.error("Invalid unit for", id);
-            //  return
-            //}
-            //el.attr('value', val.slice(0, 0-unit.length));
+            let val = root.css('--'+id)
+            if (val.match(new RegExp('^ *[0-9]+'+unit+'$'))) {
+              let v = val.slice(0, 0-unit.length);
+              let pct = parseInt(v) * 100 / max;
+              el.css('--slider-percent', String(pct))
+            } else if (val.match(new RegExp('^ *[0-9][\.0-9]*'+unit+'$'))) {
+              let v = val.slice(0, 0-unit.length);
+              let pct = parseFloat(v) * 100 / max;
+              el.css('--slider-percent', String(pct))
+            } else {
+              console.log("No match on current", id, val)
+              el.css('--slider-percent', "0")
+            }
+
+            // Get current value into orig field
             update_value(id);
 
             el.on('input', function(e) {
@@ -50,5 +57,5 @@ _parts:
   disable-lcarssdk-style: &disable-lcarssdk-style
     a:
         class: "button bg-cat-1-1"
-        data-label: "disable"
+        data-label: "toggle"
         href: javascript:(function(){document.getElementById('lcarssdk').disabled=!(document.getElementById('lcarssdk').disabled || false);})()

@@ -1,9 +1,9 @@
 include ok-json-html
 
 
-mixin ok-sdk-no-data(color, msg='No Data')
+mixin ok-sdk-placeholder(color, msg='No Data')
   .flex
-    p.no-data-placeholder&attributes({class:'bg-'+color})= msg
+    p.no-data.placeholder.span&attributes({class:'bg-cat-'+color})= msg
 
 mixin ok-sdk-bar(o_)
   if arguments.length > 1

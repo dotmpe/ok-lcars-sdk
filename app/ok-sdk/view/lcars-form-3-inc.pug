@@ -6,13 +6,11 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
     bars. Splitting the viewscreen around 30% from the top.
 
   -
-    if (typeof o == "undefined") o = {}
+    o = okNewElementOptions(o || {}, {
+          "title": title || "BF-3"
+        }, attributes);
     let oDef = {
       "title": title,
-      //- Left-vertical bar
-      "lvbar": {
-        "width": "146.4pt"
-      },
       "header": {
         "lw": "146.4pt",
         "column": [
@@ -23,9 +21,9 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
           }
         ],
         "elbow": {
-          "class": "bg-cat-2-2 flexcv default horizontal",
-          "length": "69pt"
+          "class": "bg-cat-2-2 flexcv default",
         },
+        "content": { "color": o.color, "size": o.size },
         "row": [
           //{ "class": "bar bg-grey-5 flexch" },
           //{ "class": "bar bg-cat-4-2" },
@@ -38,8 +36,7 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
       },
       "body": {
         "elbow": {
-          "class": "bg-cat-2-1 default horizontal",
-          "length": "69pt"
+          "class": "bg-cat-2-1 default",
         },
         "row": [
           { "class": "bar bg-cat-2-3 flexch" }
@@ -58,6 +55,7 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
           //  "align": "right"
           }
         ],
+        "content": { "color": o.color, "size": o.size },
         "default": {
           "paragraphs": 12,
           "header": { "class": "text-5-3", "_": "OK Form 3" },
@@ -73,25 +71,20 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
     .f13-1.header.flexcv.flexh
 
       // Header Column
-      .f13-1-1.frame.column.flexv(style=`width: ${o.lvbar.width}`)
+      .f13-1-1.frame.column.flexv
         for element in o.header.column
           +ok-element-instance(element, "div")
 
         .elbow.bottom-left&attributes(o.header.elbow)
-          .bar(style=`width: ${o.header.elbow.length}; right: -${o.header.elbow.length}`)
+          .bar
             .block
             .triangle
 
       .f13-1-2.flexch.flexv
         // Header Content
         .f13-1-2-1.flexcv
-          //h1.text-1-1= o.title
-          .title.text-1-1= o.title
-          +lorem-ipsum-paragraph(1).text-1-1
-          +lorem-ipsum-paragraph(3).text-1-1
-          +lorem-ipsum-paragraph(2).text-1-1
-
-          h4.text&attributes(o.body.default.header) The end
+          if o[''] && o[''].length > 0 && o[''][0].length
+            +ok-element({'': o[''][0]}, o.header.content || {})
 
           //p
           //  small.text-1-1 1234
@@ -113,8 +106,9 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
           //    .button.pill.bg-grey-4(data-label="198-2")
           //    .button.pill.bg-cat-1-2(data-label="11-47")
 
+
         // Header Bar Row: the cells right after the upper-section elbow
-        .f13-1-2-2.frame.flexh(style=`padding-left: ${o.header.elbow.length}`)
+        .f13-1-2-2.frame.flexh
           for element in o.header.row
             +ok-element-instance(element, "div")
 
@@ -125,9 +119,9 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
     // Body: the lower-section frame around 3/4 or similar of the height
     .f13-2.body.flexcv.flexh
       // Body Button Column: The lower-section elbow and cells beneath
-      .f13-2-1.frame.flexv(style=`width:${o.lvbar.width}`)
+      .f13-2-1.frame.flexv
         .elbow.top-left&attributes(o.body.elbow)
-          .bar(style=`width: ${o.header.elbow.length}; right: -${o.header.elbow.length}`)
+          .bar
             .block
             .triangle
 
@@ -136,28 +130,27 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
 
       .f13-2-2.content.flexch
         //- Body Bar Row: the cells right after the lower-section top-right elbow
-        .f13-2-2-1.frame.flexh(style=`padding-left: ${o.body.elbow.length}`)
+        .f13-2-2-1.frame.flexh
           for element in o.body.row
             +ok-element-instance(element, "div")
 
         // Body Content
         .f13-2-2-2.content
-          if o
-            +ok-prev-next-form(o, '/forms?merge.data=')
-            if o['']
-              +ok-element(o)
+          +ok-prev-next-form(o, '/forms?merge.data=')
+          if block && typeof block() != "undefined"
+            block
+          else if o[''] && o[''].length > 1 && o[''][1].length
+            +ok-element({'': o[''][1]}, o.body.content || {})
           else
-            if block
-              block
-            else
-              +ok-sdk-no-data(color)
-              h3.text&attributes(o.body.default.header)= o.body.default.header._
-              p.text-2-3.text
-                | A frame enclosing two content panes, with a characteristic split
+            +ok-sdk-placeholder(o.color)
 
-              - let n = 0
-              while n < o.body.default.paragraphs
-                - n++; l = Math.round(Math.random() * 7)
-                +lorem-ipsum-paragraph(l)&attributes(o.body.default.body)
+            h3.text&attributes(o.body.default.header)= o.body.default.header._
+            p.text-2-3.text
+              | A frame enclosing two content panes, with a characteristic split
 
-              h4.text&attributes(o.body.default.header) The end
+            - let n = 0
+            while n < o.body.default.paragraphs
+              - n++; l = Math.round(Math.random() * 7)
+              +lorem-ipsum-paragraph(l)&attributes(o.body.default.body)
+
+            h4.text&attributes(o.body.default.header) The end
