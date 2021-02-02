@@ -65,7 +65,7 @@
   .f13-1-2-2.frame,
   .f13-2-2-1.frame
     // Account for elbow inner bar
-    --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) )
+    --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) - var(--bar-margin) - 4pt  )
     padding-left: var(--padding-h)
 
   > .row .row.frame
@@ -91,7 +91,7 @@
       margin-top: auto
 
   > .f13-1 // Header row (with h/v frame)
-    flex: .3
+    flex: .31
     overflow: hidden
 
     > .f13-1-2 // Header content and h-frame
@@ -116,7 +116,7 @@
       > .f13-1-2-2 // Header horizontal frame
 
   > .f13-2 // Body row (with h/v frame)
-    flex: .7
+    flex: .69
     overflow: hidden
 
     > .f13-2-2 // Body content and h-frame

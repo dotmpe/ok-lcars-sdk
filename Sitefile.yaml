@@ -89,6 +89,8 @@ routes: # Simple router instances
 
   'r:var/ok-sdk/layout/(.*).css': sass:var/ok-sdk/layout/
 
+  media/image: static:public/media/image
+
 options:
   local: # Options per route instances
     select:

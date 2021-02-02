@@ -100,7 +100,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
   font-family: 'LCARS'
   font-weight: inherit
   text-transform: inherit
-  letter-spacing: -.8pt
+  letter-spacing: -0.8pt
   vertical-align: baseline
   //white-space: nowrap
   border-style: none
@@ -441,6 +441,10 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
 /* Elbow classes; horizontal (default) and vertical variant; for each size
 .ok-dia__elbow
+  position: relative
+  // Because elbow box may overlay content and even though transparent
+  // still catch mouse events
+  z-index: -100
   @each $name, $factor in $sizes
     &--#{$name},
     &.#{$name}
@@ -457,8 +461,6 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
   &--default
     @extend .ok-dia__elbow
-    position: relative
-    z-index: 1
     min-width: var(--column-width)
     min-height: var(--outer-radius)
 

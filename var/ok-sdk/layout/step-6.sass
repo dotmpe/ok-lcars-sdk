@@ -1,9 +1,149 @@
+@import '../../../app/ok-sdk/style/palette/TNG-2366'
+$TNG-pale-brown: #e5cea3
+$TNG-med-brown: #bc9519
+$TNG-pale-aubergine: #be8e8f
+
 :root
-
-  --radius-width-ratio: 0.4
-  --column-width:       146.4pt
-  --inner-bar-length:   30pt
-  --bar-height:         6pt
-
+  //--inner-bar-length:   0pt
+  //--bar-height:         20pt
   //.content
   //  --bar-height:       17.75pt
+
+//body
+//  background-image: url("/media/image/bg.jpg")
+
+.oval.small
+  width: 35px
+  height: 20px
+  border-radius: 100%
+
+.f13-1-2-1
+  h1.title
+    margin: 5pt 0 !important
+    font-size: 42pt
+    color: $TNG-2366-yellow-1
+    letter-spacing: -2pt
+    white-space: nowrap
+  > div
+    > .numbers
+      margin-left: 68pt
+      line-height: 24pt
+      > .text,
+      > .text > .oval
+        display: inline-block
+      > :nth-child(1)
+        width: 70pt
+      > :nth-child(2)
+        width: 150pt
+      > :nth-child(3)
+        width: 52pt
+      > :nth-child(4)
+        width: 143pt
+      > :nth-child(5)
+        width: 62pt
+      > :nth-child(6)
+        width: 130pt
+      > :nth-child(7)
+        width: 120pt
+
+    > :nth-child(2) > .text
+      color: $TNG-pale-brown
+      > .oval
+        background-color: $TNG-pale-brown
+    > :nth-child(3) > .text
+      color: $TNG-2366-blue-1
+      > .oval
+        background-color: $TNG-2366-blue-1
+    > :nth-child(4) > .text
+      color: $TNG-2366-yellow-1
+      > .oval
+        background-color: $TNG-2366-yellow-1
+    > :nth-child(5) > .text
+      color: $TNG-2366-brown-1
+      > .oval
+        background-color: $TNG-2366-brown-1
+    > :nth-child(6) > .text
+      color: $TNG-pale-aubergine
+      > .oval
+        background-color: $TNG-pale-aubergine
+    > :nth-child(7) > .text
+      color: $TNG-2366-blue-2
+      > .oval
+        background-color: $TNG-2366-blue-2
+
+.f13-1-1.frame
+  > .button
+    min-height: 78pt
+    background-color: $TNG-2366-blue-2
+  > .elbow
+    margin-top: 0
+    background-color: $TNG-pale-brown
+    > div:first-child
+      border-color: $TNG-pale-brown
+    > div:nth-child(2)
+      display: none
+
+.f13-1-2-2.frame
+  > .bar
+    background-color: $TNG-2366-blue-1
+
+.f13-2-2-1.frame
+  > .bar
+    background-color: $TNG-2366-blue-2
+
+.f13-2-1.frame
+  > .elbow
+    margin-bottom: 0
+    min-height: 191pt
+    background-color: $TNG-pale-brown
+    > div:first-child
+      border-color: $TNG-pale-brown
+    > div:nth-child(2)
+      display: none
+  > .bar
+    margin-bottom: 0
+    max-height: 46pt
+  > .bar:nth-child(2)
+    background-color: $TNG-2366-blue-2
+  > .bar:nth-child(3)
+    background-color: $TNG-med-brown
+  > .bar:nth-child(4)
+    background-color: $TNG-2366-blue-1
+  > .bar:last-child
+    background-color: $TNG-pale-brown
+    min-height: initial
+    max-height: initial
+    height: auto
+
+@media (max-width: 622px)
+  .f13-1-2-1 > div > .numbers > :nth-child(2)
+          display: none
+
+@media (max-width: 691px)
+  .f13-1-2-1 > div > .numbers > :nth-child(3)
+          display: none
+
+@media (max-width: 882px)
+  .f13-1-2-1 > div > .numbers > :nth-child(4)
+          display: none
+
+@media (max-width: 965px)
+  .f13-1-2-1 > div > .numbers > :nth-child(5)
+          display: none
+
+@media (max-width: 1137px)
+  .f13-1-2-1 > div > .numbers > :nth-child(6)
+          display: none
+
+@media (max-width: 1297px)
+  .f13-1-2-1 > div > .numbers > :nth-child(7)
+          display: none
+
+@media (max-width: 1439px)
+  .f13-1-2-1 > div > .numbers > :nth-child(8)
+          display: none
+
+.f13-2-2-2.content
+  margin-left: 68pt
+
+//

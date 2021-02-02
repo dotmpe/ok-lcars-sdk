@@ -4,9 +4,71 @@ $include: "var/ok-sdk/_parts.json"
   prev: layout/step-5
   next: layout/step-7
   "":
-  - []
+  - - h1.title: Sensor 247-059
+    - .numbers:
+       - .text: alpha
+       - .text: "91 7497297492791 471 97"
+       - .text:
+         - span.oval.small:
+       - .text: "1974971 97491 794792"
+       - .text: "71 917"
+       - .text: "9817197974917298"
+       - .text: "757576577"
+       - .text: "9287491719842987"
+    - .numbers:
+       - .text: beta
+       - .text: "71 917 97971 974971"
+       - .text:
+         - span.oval.small:
+       - .text: "71947917947197"
+       - .text: "1891"
+       - .text: "87197492794729"
+       - .text: "981947"
+       - .text: "17984792794719"
+    - .numbers:
+       - .text: delta
+       - .text: "2774862864862869179"
+       - .text:
+         - span.oval.small:
+       - .text: "i28797497197974917"
+       - .text: "87197"
+       - .text: "761974927984729"
+       - .text: "1874872"
+       - .text: "92974919174"
+    - .numbers:
+       - .text: gamma
+       - .text: "9817924791742"
+       - .text:
+         - span.oval.small:
+       - .text: "27476287628762876"
+       - .text: "6722"
+       - .text: "76826248626862"
+       - .text: "9817927"
+       - .text: "298749792722984"
+    - .numbers:
+       - .text: moana
+       - .text: "362436352436362436"
+       - .text:
+         - span.oval.small:
+       - .text: "362436362436362436"
+       - .text: "3624"
+       - .text: "362436362438"
+       - .text: "362436"
+       - .text: " 8929479279472"
+    - .numbers:
+       - .text: thelma
+       - .text: "91749729749279147197"
+       - .text:
+         - span.oval.small:
+       - .text: "197497197491 794792"
+       - .text: "71917"
+       - .text: "9817197974917298"
+       - .text: "757576577"
+       - .text: "9287491719842987"
   - - $ref: '#/_parts/disable-lcarssdk-style'
-    - p: Form 3
+    - p: Form 3.
+    - p: The current form is a copy from the 2369 "Sensor 247-059" display showing the rogue Borg vessel location. There are nice high quality photos of this piece from an auction, but the piece did not get any prominent screen time. In the second "Descent" episode this graph is used on the bridge "Science I" station while the Enterprise-D under command of Beverly Crusher is looking for an orbit to beam up the crew while avoiding the rogue borg vessel. In the close-up of the science terminal an similar but different animated layout is overlayed. The kodalith graph can be seen installed in wide shots covering the aft stations. The science II station graph is unchanged for the two episodes, but in the first "Descent" show Picard and Riker are shown standing by the "Science I" station as it shows a static kodalith "Borg Subspace Conduit" graph with rotary polarized animation.
+
     - +lorem-ipsum-paragraph.text-2-2@num=7: null
 
 #

@@ -44,7 +44,7 @@ $elbow_variants: default, vertical
 @mixin varsroot
 
   // Regular font-size is 12pt/16px
-  --font-size:          20pt
+  --font-size:          16.0pt
   //--line-height:        calc( var(--font-size) * 1.2 )
   // Scale of label font-size as ratio of regular font-size
   --font-factor:        0.6
@@ -60,18 +60,19 @@ $elbow_variants: default, vertical
   --bar-margin:         3.0pt
   --bar-padding-h:      0.0pt
   --bar-padding-v:      0.0pt
-  --bar-margin:         calc( var(--font-size) * 0.15 )
+  --bar-margin:         6pt
+  //calc( var(--font-size) * 0.15 )
   --bar-margin-h:       var(--bar-margin)
   --bar-margin-v:       var(--bar-margin)
   // 5px
   --bar-inner-margin:   3.75pt
   --inner-bar-length:   0px
 
-  --column-width:       130px
+  --column-width:       142pt
 
-  --radius-width-ratio: 1.0
+  --radius-width-ratio: 0.36
   --outer-radius:       calc( var(--column-width) * var(--radius-width-ratio) )
-  --inner-radius:       calc( var(--outer-radius) + var(--bar-height) - var(--bar-margin) )
+  --inner-radius:       calc( var(--outer-radius) + var(--bar-height) )
 
   --content-padding:    calc( var(--outer-radius)/2 - var(--bar-height) )
 
