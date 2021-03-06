@@ -43,6 +43,7 @@ routes: # Simple router instances
 
   # extra styling for LCARS SDK okudagram views
   base.css: sass:app/ok-sdk/style/style.sass
+  base-theme.css: sass:app/ok-sdk/style/theme.sass
   lcarssdk-fonts.css: static:app/ok-sdk/style/lcarssdk-fonts.css
   fonts/Swiss_911_Extra_Compressed_BT.woff: static:public/media/fonts/Swiss_911_Extra_Compressed_BT.woff
   fonts/Swiss_911_Ultra_Compressed_BT.woff: static:public/media/fonts/Swiss_911_Ultra_Compressed_BT.woff
@@ -98,6 +99,8 @@ options:
         stylesheets:
         - url: "/lcarssdk/css/lcarssdk.css"
           id: "lcarssdk"
+        - url: "/base-theme.css"
+          id: "ok-sdk-theme"
         - url: "/base.css"
           id: "ok-sdk-css"
           disabled: true
