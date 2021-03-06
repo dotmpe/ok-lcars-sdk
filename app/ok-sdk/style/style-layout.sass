@@ -23,6 +23,11 @@
     @extend .flex
 
 
+// Scrollable content and standard margin
+
+$pane-element-margin-right: .6rem
+$pane-element-margin-left: .2rem
+
 .pane
   box-sizing: border-box
   height: 100%
@@ -31,9 +36,8 @@
 
   > *
     box-sizing: border-box
-    margin-right: .6rem
-    margin-left: .2rem
-
+    margin-right: $pane-element-margin-right
+    margin-left: $pane-element-margin-left
 
 .rootpane
   @extend .pane

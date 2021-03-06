@@ -28,7 +28,7 @@ $bar-min-h: $unit-medium
 $pill-cap-small-width: $unit-small
 $pill-cap-medium-width: $unit-medium
 
-$inner-bar-overlap: 7px
+$inner-bar-overlap: 0px
 
 //$f13-head-ratio: 0.25 // 1/4th of VH
 // TNG Canon: < 1/3th of VH
@@ -39,7 +39,6 @@ $sizes: ("xxxsmall": pow(0.8, 4), "xxsmall": pow(0.8, 3), "xsmall": pow(0.8, 2),
 $size_names: tiny, xxxsmall, xxsmall, xsmall, small, medium, regular, large, xlarge, xxlarge, xxxlarge, xxxxlarge, xxxxxlarge
 $elbow_names: top-left, top-right, bottom-right, bottom-left
 $elbow_variants: default, vertical
-
 
 @mixin varsroot
 
@@ -60,7 +59,6 @@ $elbow_variants: default, vertical
   --bar-margin:         3.0pt
   --bar-padding-h:      0.0pt
   --bar-padding-v:      0.0pt
-  --bar-margin:         6pt
   //calc( var(--font-size) * 0.15 )
   --bar-margin-h:       var(--bar-margin)
   --bar-margin-v:       var(--bar-margin)

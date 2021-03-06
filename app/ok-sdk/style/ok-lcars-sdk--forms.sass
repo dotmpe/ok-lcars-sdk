@@ -36,7 +36,7 @@
       // Account for elbow inner bar
       > .row:first-child,
       > .row:last-child
-        --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) )
+        --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) - #{$pane-element-margin-left} - #{$pane-element-margin-right} )
         padding-left: var(--padding-h)
         padding-right: var(--padding-h)
 
@@ -64,8 +64,7 @@
 
   .f13-1-2-2.frame,
   .f13-2-2-1.frame
-    // Account for elbow inner bar
-    --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) - var(--bar-margin) - 4pt  )
+    --padding-h: calc( var(--inner-radius) + var(--inner-bar-length) )
     padding-left: var(--padding-h)
 
   > .row .row.frame
@@ -149,9 +148,10 @@
 
 
 .ok-diagram
-
   .frame > *
-    margin: 4.5pt
+    //margin: 4.5pt
+    //margin: 3pt 2pt
+
 
   .f0,
   .form-0

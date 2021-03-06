@@ -59,7 +59,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
       /* Inline "block" bar size '#{$name}'
       --size-factor: #{$factor}
       //height: calc( var(--bar-height) * #{$factor} )
-      margin: var(--bar-margin-v-#{$name}) var(--bar-margin-h-#{$name})
+      //margin: var(--bar-margin-v-#{$name}) var(--bar-margin-h-#{$name})
       //vertical-align: var(--bar-align-v) * #{$factor} )
       vertical-align: map.get($bar-v-align, $name)
       font-size: calc( var(--font-size-#{$name}) * var(--font-factor) )
@@ -461,13 +461,14 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
 
   &--default
     @extend .ok-dia__elbow
-    min-width: var(--column-width)
+    //min-width: var(--column-width)
     min-height: var(--outer-radius)
 
     &--tiny
       --empty: true
 
-    > div:first-child // .bar
+    > div:first-child
+      /* .bar
       position: absolute
       z-index: 1
       background-color: inherit
@@ -480,16 +481,20 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
         background-color: transparent
         border-style: solid
 
-      > div:first-child // "block"
-        box-sizing: border-box
+      > div:first-child
+        /* "block" = inside border arc
+        box-sizing: border-box // size includes padding/border
         min-width: calc( var(--inner-radius) - var(--bar-size) )
         min-height: calc( var(--inner-radius) - var(--bar-size) )
         --bar-h: calc( 0px - var(--bar-size) + #{$inner-bar-overlap} )
 
-      > div:nth-child(2) // "triangle"
-        border-width: calc(var(--inner-radius) / 3.5)
+      > div:nth-child(2)
+        /* "triangle"
+        border-width: calc(var(--inner-radius) / 3.9)
         min-height: 0
         min-width: 0
+        /* hide by default, use when bar-height is smaller than inner-radius
+        display: none
 
     // Top
     &--top-left,
@@ -509,7 +514,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
     &--bottom-left
       text-align: right
       > div:first-child
-        left: calc(100% - #{$inner-bar-overlap} - var(--bar-margin) )
+        margin-left: 0
         > div:first-child
           left: var(--bar-h)
         > div:nth-child(2)
@@ -522,7 +527,8 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
     &--bottom-right
       text-align: left
       > div:first-child
-        right: calc(100% - #{$inner-bar-overlap} - var(--bar-margin) )
+        margin-right: 0
+        right: 100%
         > div:first-child
           right: var(--bar-h)
         > div:nth-child(2)

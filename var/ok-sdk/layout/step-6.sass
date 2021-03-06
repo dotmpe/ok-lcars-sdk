@@ -4,7 +4,7 @@ $TNG-med-brown: #bc9519
 $TNG-pale-aubergine: #be8e8f
 
 :root
-  //--inner-bar-length:   0pt
+  --inner-bar-length:   8pt
   //--bar-height:         20pt
   //.content
   //  --bar-height:       17.75pt
@@ -78,9 +78,8 @@ $TNG-pale-aubergine: #be8e8f
   > .elbow
     margin-top: 0
     background-color: $TNG-pale-brown
-    > div:first-child
-      border-color: $TNG-pale-brown
-    > div:nth-child(2)
+    border-color: $TNG-pale-brown
+    > .bar > div:nth-child(2)
       display: none
 
 .f13-1-2-2.frame
@@ -96,9 +95,8 @@ $TNG-pale-aubergine: #be8e8f
     margin-bottom: 0
     min-height: 191pt
     background-color: $TNG-pale-brown
-    > div:first-child
-      border-color: $TNG-pale-brown
-    > div:nth-child(2)
+    border-color: $TNG-pale-brown
+    > .bar > div:nth-child(2)
       display: none
   > .bar
     margin-bottom: 0
@@ -115,34 +113,37 @@ $TNG-pale-aubergine: #be8e8f
     max-height: initial
     height: auto
 
+/* Hide header numbers for smaller screen widths
+
 @media (max-width: 622px)
   .f13-1-2-1 > div > .numbers > :nth-child(2)
-          display: none
+    display: none
 
 @media (max-width: 691px)
   .f13-1-2-1 > div > .numbers > :nth-child(3)
-          display: none
+    display: none
 
 @media (max-width: 882px)
   .f13-1-2-1 > div > .numbers > :nth-child(4)
-          display: none
+    display: none
 
 @media (max-width: 965px)
   .f13-1-2-1 > div > .numbers > :nth-child(5)
-          display: none
+    display: none
 
 @media (max-width: 1137px)
   .f13-1-2-1 > div > .numbers > :nth-child(6)
-          display: none
+    display: none
 
 @media (max-width: 1297px)
   .f13-1-2-1 > div > .numbers > :nth-child(7)
-          display: none
+    display: none
 
 @media (max-width: 1439px)
   .f13-1-2-1 > div > .numbers > :nth-child(8)
-          display: none
+    display: none
 
+/* Add margin to content to line up with header
 .f13-2-2-2.content
   margin-left: 68pt
 
