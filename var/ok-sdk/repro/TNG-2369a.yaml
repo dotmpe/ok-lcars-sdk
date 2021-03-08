@@ -79,9 +79,17 @@ $include: "var/ok-sdk/_parts.json"
           href: |
             javascript:(function(){
               b=document.getElementsByTagName('body')[0];
-              console.log(b, b.getAttribute('class'));
               if(b.getAttribute('class')=='ok-diagram repro-image') { b.setAttribute('class','ok-diagram'); }
               else { b.setAttribute('class','ok-diagram repro-image'); };
+            })()
+      - a:
+          class: "button bg-cat-1-1"
+          data-label: "opacity"
+          href: |
+            javascript:(function(){
+              e=document.getElementsByClassName('form-1_3')[0];
+              if(!e.getAttribute('style')) { e.setAttribute('style', 'opacity: 0.4'); }
+              else { e.setAttribute('style',''); }
             })()
 
     - +lorem-ipsum-paragraph.text-2-2@num=7: null
