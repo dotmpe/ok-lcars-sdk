@@ -2,7 +2,7 @@
 
 OK! LCARS SDK |badges|
 ======================
-:version: 0.0.3 `release notes`_
+:version: 0.0.4-dev `release notes`_
 
 An investigation and demonstration creating `okudagrams` for WebView (Android)
 and anything that can do modern HTML/CSS rendering.

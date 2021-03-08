@@ -1,4 +1,4 @@
-Version 0.0.3
+Version 0.0.4-dev
 
 The LCARS SDK project has a lot of elements already. I'd like to build a few layouts, but I wasn't sure about the JS API. And I did not want to write HTML directly. Also I was not entirely happy with the CSS setup. So I started with Pug and Sass to explore the setup.
 

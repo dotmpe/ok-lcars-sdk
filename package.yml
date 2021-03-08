@@ -3,7 +3,7 @@
 - type: application/vnd.org.wtwta.project
   main: ok-lcars-sdk
   id: ok-lcars-sdk
-  version: 0.0.3 # ok-lcars-sdk
+  version: 0.0.4-dev # ok-lcars-sdk
   vendor: dotmpe
   distribution: public
   license: MIT
