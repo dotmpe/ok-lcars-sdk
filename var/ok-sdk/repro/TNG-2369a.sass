@@ -8,9 +8,10 @@ $TNG-pale-aubergine: #be8e8f
   //--bar-height:         20pt
   //.content
   //  --bar-height:       17.75pt
+  --content-padding:    calc( var(--outer-radius)/2.0 - var(--bar-height) )
 
-//body
-//  background-image: url("/media/image/bg.jpg")
+body.repro-image
+  background-image: url("/media/image/bg.jpg")
 
 .oval.small
   width: 35px
@@ -26,7 +27,7 @@ $TNG-pale-aubergine: #be8e8f
     white-space: nowrap
   > div
     > .numbers
-      margin-left: 68pt
+      margin-left: 74pt
       line-height: 24pt
       > .text,
       > .text > .oval
@@ -145,6 +146,6 @@ $TNG-pale-aubergine: #be8e8f
 
 /* Add margin to content to line up with header
 .f13-2-2-2.content
-  margin-left: 68pt
+  margin-left: 66pt
 
 //

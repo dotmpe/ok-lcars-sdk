@@ -89,6 +89,7 @@ routes: # Simple router instances
   #prototype.json: :var/ok-sdk/layout/prototype.yaml
 
   'r:var/ok-sdk/layout/(.*).css': sass:var/ok-sdk/layout/
+  'r:var/ok-sdk/repro/(.*).css': sass:var/ok-sdk/repro/
 
   media/image: static:public/media/image
 
