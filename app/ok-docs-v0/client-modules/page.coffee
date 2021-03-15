@@ -12,7 +12,6 @@ define 'ok-docs-v0/client-modules/page', [
 
   console.log 'OK! Docs v0 cm:page'
 
-
   class OkDocsPage extends Component
 
     constructor: ( @app, @container=$('body'), @options = {} ) ->

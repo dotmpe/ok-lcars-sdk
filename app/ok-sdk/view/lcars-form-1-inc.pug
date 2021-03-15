@@ -21,7 +21,9 @@ mixin ok-sdk-form-1-inline(o)
       +ok-sdk-pillbar(o.header).header
 
     .pane.content.row.flex
-      if o[''] && o[''].length
+      if block && typeof block() != "undefined"
+        block
+      else if o[''] && o[''].length > 1 && o[''][1].length
         +ok-element({'': o['']}, o.content || {})
       else
         +ok-sdk-placeholder(o.color)

@@ -54,10 +54,6 @@ routes: # Simple router instances
 
   # Secondary resource with oku docs view... also based on ok-sdk PUG tpl
   app/ok-docs/main: pug:app/ok-docs-v0/view/main.pug
-  app/ok-docs/doc001: pug:app/ok-docs-v0/view/doc001.pug
-  app/ok-docs/doc002: pug:app/ok-docs-v0/view/doc002.pug
-  app/ok-docs/doc003: pug:app/ok-docs-v0/view/doc003.pug
-  ok-docs: pug:app/ok-docs-v0/view/main.pug
 
   todo.json: todo.json:./TODO.txt
   todo.txt: todo.txt:./TODO.txt
@@ -120,14 +116,12 @@ options:
           id: "ok-sdk-css"
         scripts:
           $ref: '#/options/local/select/merge/scripts'
-    'ok-docs':
+    'app/ok-docs/main':
       merge:
         stylesheets:
           $ref: '#/options/local/forms/merge/stylesheets'
         clients:
           $ref: '#/defs/app/base/clients'
-    'app/ok-docs/main':
-      $ref: '#/options/local/ok-docs'
   #  'todo':
   #     pug:
   #       merge:
