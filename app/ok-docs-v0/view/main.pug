@@ -6,6 +6,7 @@ block head
 block prologue
 block header
 block main
+  +ok-forms-data-functions()
   .wrapper.row.flexh
 
     if main
@@ -21,7 +22,7 @@ block main
             footer.title.class = "text-grey-3"
             footer.lcap.class = "bg-grey-6"
 
-          +ok-sdk-form-1({}, 'grey-5', 'medium', header, footer)
+          +ok-sdk-form-1-inline({}, 'grey-5', 'medium', header, footer)
 
             //.flexh
             p.text-1-1.ok-lcars-doc Loading...

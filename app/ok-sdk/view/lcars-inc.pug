@@ -7,8 +7,8 @@ mixin ok-sdk-placeholder(color, msg='No Data')
 
 mixin ok-sdk-bar(o_)
   if arguments.length > 1
-    - okSurplusArgs(arguments, 1, 'ok-sdk-bar')
-  - let o = okNewElementOptions(o_, {}, attributes)
+    - ok.SurplusArgs(arguments, 1, 'ok-sdk-bar')
+  - let o = ok.NewElementOptions(o_, {}, attributes)
   if "string" == typeof(o[''])
     - o["data-label"] = o['']
     - delete o['']
@@ -23,9 +23,9 @@ mixin ok-sdk-cap-right(o)
 
 mixin ok-sdk-titlebar(o_)
   if (arguments.length > 1)
-    - okSurplusArgs(arguments, 1, 'ok-sdk-titlebar')
+    - ok.SurplusArgs(arguments, 1, 'ok-sdk-titlebar')
   -
-    let o = okNewElementOptions(o_, {
+    let o = ok.NewElementOptions(o_, {
         "title": {
           "text": "Title",
           "align": "right"
@@ -62,7 +62,7 @@ mixin ok-sdk-titlebar(o_)
 
 mixin ok-sdk-pillbar(o_)
   -
-    let o = okNewElementOptions( o_, {
+    let o = ok.NewElementOptions( o_, {
         "title": "PB",
       }, attributes)
     let defs = {

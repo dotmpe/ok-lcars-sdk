@@ -3,7 +3,7 @@ mixin ok-sdk-form-1-inline(o)
     LCARS Monitor baseform1 with text body and leading/trailing pillbar
 
   -
-    o = okNewElementOptions(o, {
+    o = ok.NewElementOptions(o, {
           "title": "BF-1"
         }, attributes);
     o = lodash.defaultsDeep(o, {
@@ -13,7 +13,7 @@ mixin ok-sdk-form-1-inline(o)
         "buttons": []
       })
     o.buttons = o.buttons.concat(
-        okPrevNextButtons(o, '/forms?merge.data='))
+        ok.PrevNextButtons(o, '/forms?merge.data='))
     o.footer[''] = o.buttons
 
   .form-1.pane.flexv.flex(class=o['class'])

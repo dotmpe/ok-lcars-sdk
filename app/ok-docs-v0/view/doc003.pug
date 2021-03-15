@@ -6,6 +6,8 @@ block head
 block prologue
 block header
 block main
+  +ok-forms-data-functions()
+
   #terminal-003.wrapper.row.flexv
     .column.column-1
 
@@ -19,7 +21,7 @@ block main
          footer.title = {
          text:context.sitefile.datetime.toISOString(), class:"text-grey-5", align:"right" }
 
-      +ok-sdk-form-1({}, 'grey-4', 'small', header, footer)
+      +ok-sdk-form-1-inline({}, 'grey-4', 'small', header, footer)
         +ok-sdk-form-3({}, "XYZ")
           +lorem-ipsum-paragraph(num=1)&attributes({class:'text-1-1 capital'})
           h3.text-2-3 Exercitation
@@ -39,4 +41,4 @@ block main
          footer = { }
          footer.title = { text:context.sitefile.version, class:"text-grey-5", align:"left" }
 
-      +ok-sdk-form-1({}, 'grey-4', 'small', header, footer)
+      +ok-sdk-form-1-inline({}, 'grey-4', 'small', header, footer)

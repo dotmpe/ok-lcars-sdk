@@ -3,7 +3,7 @@ mixin ok-sdk-form-4(o, title="Form 1.4")
       Z/S forms
 
   -
-    o = okNewElementOptions(o || {}, {
+    o = ok.NewElementOptions(o || {}, {
           "title": title || "BF-4"
         }, attributes);
     o = lodash.defaultsDeep( {}, o, {

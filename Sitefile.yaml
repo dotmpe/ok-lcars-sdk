@@ -120,16 +120,19 @@ options:
           id: "ok-sdk-css"
         scripts:
           $ref: '#/options/local/select/merge/scripts'
+    'ok-docs':
+      merge:
+        stylesheets:
+          $ref: '#/options/local/forms/merge/stylesheets'
+        clients:
+          $ref: '#/defs/app/base/clients'
+    'app/ok-docs/main':
+      $ref: '#/options/local/ok-docs'
   #  'todo':
   #     pug:
   #       merge:
   #         clients:
   #           $ref: '#/defs/app/todo/clients'
-  #  'ok-docs':
-  #     pug:
-  #       merge:
-  #         clients:
-  #           $ref: '#/defs/app/base/clients'
 
   global: # Options per router instance
     docutils:

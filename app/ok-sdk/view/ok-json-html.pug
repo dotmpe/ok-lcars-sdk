@@ -58,10 +58,10 @@ mixin ok-proc-import(element)
 
 mixin ok-element(o, defs=null)
   -
-    if (arguments.length > 2) okSurplusArgs(arguments, 2, 'ok-element')
-    o = okNewElementOptions(o, defs, attributes)
-    okElementColored(o)
-    okElementSized(o)
+    if (arguments.length > 2) ok.SurplusArgs(arguments, 2, 'ok-element')
+    o = ok.NewElementOptions(o, defs, attributes)
+    ok.ElementColored(o)
+    ok.ElementSized(o)
     let tagName = o.tagName
     delete o.tagName
     if( "undefined" !== typeof o[''] ) {
@@ -98,7 +98,7 @@ mixin ok-element-items(content, color, size)
     +ok-tpl-item(element)&attributes({ "color": color, "size": size })
 
 mixin ok-tpl-item(element)
-  - if (arguments.length > 1) okSurplusArgs(arguments, 1, 'ok-tpl-item')
+  - if (arguments.length > 1) ok.SurplusArgs(arguments, 1, 'ok-tpl-item')
 
   - for( attr in element )
 
@@ -124,7 +124,7 @@ mixin ok-tpl-item(element)
       if( o === null ) o = {"": []}
       else if( typeof o === "string" ) o = {"": o}
       else if( typeof o.length !== "undefined" ) o = {"": o}
-      o = lodash.defaultsDeep({}, o, okFormElementParse(attr), attributes)
+      o = lodash.defaultsDeep({}, o, ok.FormElementParse(attr), attributes)
       o.tagRule = attr
 
     if o.dirName
@@ -136,8 +136,8 @@ mixin ok-tpl-item(element)
 
 mixin ok-element-instance(o, tagName=null)
   -
-    if (arguments.length > 2) okSurplusArgs(arguments, 2, 'ok-element-instance')
-    o = okNewElementOptions(o, null, attributes)
+    if (arguments.length > 2) ok.SurplusArgs(arguments, 2, 'ok-element-instance')
+    o = ok.NewElementOptions(o, null, attributes)
     if( typeof tagName !== "string" ) tagName="div"
     o["tagName"] = tagName
 

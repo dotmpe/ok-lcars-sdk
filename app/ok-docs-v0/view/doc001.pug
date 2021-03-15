@@ -6,6 +6,8 @@ block head
 block prologue
 block header
 block main
+  +ok-forms-data-functions()
+
   .wrapper.row.flexv
     .row.flexcv.flexch
       -
@@ -17,7 +19,7 @@ block main
          footer = { }
          footer.title = { text:context.sitefile.version, class:"text-grey-5", align:"right" }
 
-      +ok-sdk-form-1({}, 'grey-4', 'small', header, footer)
+      +ok-sdk-form-1-inline({}, 'grey-4', 'small', header, footer)
         +ok-sdk-form-3({})
 
           p.text-2-2 Incoming message

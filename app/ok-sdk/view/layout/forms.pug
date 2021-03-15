@@ -2,6 +2,7 @@ extends ../base/data
 //- Server-side HTML+JSON with ok-sdk functions 
 
 include ../lcars-inc
+include ../forms-data-inc
 
 block head-extra
   -
@@ -17,101 +18,7 @@ block head-extra
     link(rel="stylesheet", type="text/css", href=formCssFile)
 
 block main-data
-  -
-    function okFormElementParse(s) {
-      let tagName, classes, attrRaw, attributes={};
-      if( s.match(/[@\.]/) ) {
-        attrRaw = s.split('@')
-        classes = attrRaw.shift().split('.')
-        tagName = classes.shift()
-        // TODO: use indexOf iso split
-        Object.assign(attributes, Object.fromEntries(
-          attrRaw.map(x => x.split('='))))
-        if( 'class' in attributes ) {
-          attributes['class'].extend(classes) // += classes.join(" ")
-        } else {
-          attributes['class'] = classes //.join(" ")
-        }
-      } else {
-        tagName = s
-      }
-      if( tagName.startsWith('+') )
-        attributes["dirName"] = tagName
-      else
-        attributes["tagName"] = tagName
-      return attributes
-    }
-
-    function okNewElementOptions(o, defs, a) {
-      // Turn initial argument into proper object
-      let o1
-      if (o == null || typeof o == "undefined" ) o1 = { "": [] }
-      if( ( typeof o == "string" ) ||
-          ( typeof o == "object" && typeof o.length !== "undefined" ) )
-        o1 = { "": o }
-      else o1 = o
-      // Merge-in attributes, special string->array step for class attr.
-      let o2 = lodash.defaultsDeep({}, o1, defs || {}, {
-          "color": "1-1", "size": "medium"
-        }, a || {})
-      if( typeof o2.class === "string" ) o2.class = o2.class.split(' ')
-      if (a && a.class) {
-        if( typeof a.class === "string" )
-          a.class = a.class.split(' ')
-        o2.class = o2.class.concat(a.class)
-      }
-      if (typeof o2.class == "undefined") {
-        o2.class = []
-      }
-      return o2
-    }
-
-    let element_sizes = "tiny xxxsmall xxsmall xsmall small regular medium large xlarge xxlarge xxxlarge xxxxlarge xxxxxlarge".split(' ');
-    function okElementSized(o) {
-      for( _class of element_sizes ) {
-        if( o.class.indexOf(_class) > -1 ) return;
-      }
-      o.class = o.class.concat([o.size]);
-    }
-
-    function okElementColored(o) {
-      if( o.class.indexOf('colored') > -1 ) return;
-      if( o.class.indexOf('bar') > -1
-          || o.class.indexOf('cap') > -1
-          || o.class.indexOf('button') > -1
-          || o.class.indexOf('bg') > -1 )
-        o.class = o.class.concat(['colored', 'bg-cat-'+o.color]);
-      else
-        o.class = o.class.concat(['colored', 'text-'+o.color]);
-    }
-
-    function okSurplusArgs(args, start=1, id=null) {
-      if (id) msg = id+': Too many arguments: '
-      else msg = 'Too many arguments: '
-      for (var a=start; a < args.length; a++) {
-        console.error(msg+a+': '+args[a]);
-      }
-      if (strict) throw new Error(msg+(args.length-start));
-    }
-
-    function okButton(o, key, label, baseref="/forms/") {
-      if( o[key] ) href = baseref + o[key]
-      else if( o[key+'-url'] ) href = o[key+'-url']
-      else return null;
-      return {"class": "button", "data-label": label, "href":href}
-    }
-
-    function okPrevNextButtons(o, baseref="/forms/") {
-      let l = [];
-
-      let prevBtn = okButton(o, "prev", "Prev", baseref);
-      if (prevBtn != null) l.push({ "a": prevBtn });
-
-      let nextBtn = okButton(o, "next", "Next", baseref);
-      if (nextBtn != null) l.push({ "a": nextBtn });
-
-      return l;
-    }
+  +ok-forms-data-functions()
 
   //- Start render at root item
   +ok-tpl-item(formData)
