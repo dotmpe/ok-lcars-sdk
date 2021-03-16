@@ -10,12 +10,25 @@ block main
   .wrapper.row.flexh
 
     if main
-      // We have a client instance
-      +ok-sdk-form-3()
-        //(null, null, null, null, null, null, "DOCS 0.0")
-
+      +ok-sdk-form-3({"title": "DOCS 0.0"})
         #hnav.placeholder.text-1-1
-          - 
+          p.text-1-1 Hardcoded docs
+          p.text-1-2
+            | Need to further modularize these baseform and parameterize. In PUG
+            | terms that means mixin definitions and calls (positional arguments,
+            | one content-block), or build and extending base-templates (mutiple
+            | blocks).
+            | Ofcourse some metadata driven approach would be the ultimate prize.
+          p.text-1-3
+            span.text-white Form 1.3
+            |
+            | should be split up into two content-panes, one with a title and some button block floating right, the other for
+            | main content. And a minimal way to drive the two elbows; ie. two
+            | sequences of label/link/color and some other attributes.
+
+          a.button.pill.bg-cat-4-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
+
+          -
             let form_1_opts = {'color':'8-5'}
             form_1_opts.header = { bar:{ title:{ text: "LCARS OFFLINE", align: "right" }}, lcap: {} }
             form_1_opts.header.bar.title.class = "text-grey-4"
@@ -72,26 +85,6 @@ block main
             //  a.button.bg-cat-1-1.pill(data-label="1-1")
             //  a.button.bg-cat-1-1-10.pill(data-label="1-1-10")
             //  a.button.bg-cat-1-1-20.pill(data-label="1-1-20")
-
-    else
-
-      +ok-sdk-form-3(null, null, null, null, null, null, "DOCS 0.0")
-        p.text-1-1 Hardcoded docs
-        p.text-1-2
-          | Need to further modularize these baseform and parameterize. In PUG
-          | terms that means mixin definitions and calls (positional arguments,
-          | one content-block), or build and extending base-templates (mutiple
-          | blocks).
-          | Ofcourse some metadata driven approach would be the ultimate prize. 
-        p.text-1-3
-          span.text-white Form 1.3
-          |
-          | should be split up into two content-panes, 
-          | one with a title and some button block floating right, the other for
-          | main content. And a minimal way to drive the two elbows; ie. two
-          | sequences of label/link/color and some other attributes.
-
-        a.button.pill.bg-cat-4-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
 
 block document
 block footer

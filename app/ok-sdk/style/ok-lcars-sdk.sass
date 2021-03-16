@@ -18,6 +18,11 @@
     content: attr(data-alt-label)
     color: black
 
+  .frame.flexh &
+    // XXX: large but at least for form 1.3?
+    margin-left: 6pt
+    margin-right: 6pt
+
   .frame.flexv &
     margin-top: 3pt
     margin-bottom: 3pt
@@ -503,7 +508,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
     // Top
     &--top-left,
     &--top-right
-      margin-bottom: 2pt
+      margin-bottom: 4pt
       > div:first-child
         top: 0
         margin-top: 0
@@ -544,7 +549,7 @@ $bar-v-align: ( "xxxsmall": -2.6pt, "xxsmall": -2pt, "xsmall": -1.4pt, "small": 
     // Bottom
     &--bottom-left,
     &--bottom-right
-      margin-top: 2pt
+      margin-top: 4pt
       > div:first-child
         bottom: 0
         margin-bottom: 0

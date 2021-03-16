@@ -1,8 +1,7 @@
 $include: "var/ok-sdk/_parts.json"
 +ok-sdk-form-3.repro-2369a:
   title: Intro 006
-  prev: layout/step-5
-  next: layout/step-7
+  color: tng-2366-brown-2
   "":
   - - h1.title: Sensor 247-059
     - .numbers:
@@ -66,15 +65,15 @@ $include: "var/ok-sdk/_parts.json"
        - .text: "757576577"
        - .text: "9287491719842987"
   - - $ref: '#/_parts/disable-lcarssdk-style'
-    - p: Form 3.
-    - p: |
+    - p.text.colored.text-tng-2366-yellow-1: Form 3.
+    - p.text.colored.text-tng-2366-yellow-2: |
         The current form is a copy from the 2369 "Sensor 247-059" display showing the rogue Borg vessel location. There are nice high quality photos of this piece from an auction, but the piece did not get any prominent screen time. In the second "Descent" episode this graph is used on the bridge "Science I" station while the Enterprise-D under command of Beverly Crusher is looking for an orbit to beam up the crew while avoiding the rogue borg vessel. In the close-up of the science terminal a similar but different animated layout is overlayed on top of the static image. The kodalith however can be seen installed in a few short wide shots including the aft stations. As a side note: The science II station graph is unchanged for the two episodes. In the first "Descent" show when Picard and Riker are standing by the "Science I" station it shows a static kodalith "Borg Subspace Conduit" graph with polamotion (a rotating disk and polarized film). From the looks of the backside of this panel from the auction photo's, it appears it may have polarized film pieces as well and had polamation animated segments but they are never shown on screen.
     - p:
-      - .text: |
+      - .text.colored.text-tng-2366-blue-2: |
           The split of this layout was measured to be just over 31% from the top on the source image, and this form has a flex of 0.31 and 0.69 for the top and bottom part respectively.
           To compare this layout with the original, resize to 1440x1080px and click to show the background image:
       - a:
-          class: "button bg-cat-1-1"
+          class: "button colored bg-cat-tng-2366-brown-1"
           data-label: "background"
           href: |
             javascript:(function(){
@@ -83,7 +82,7 @@ $include: "var/ok-sdk/_parts.json"
               else { b.setAttribute('class','ok-diagram repro-image'); };
             })()
       - a:
-          class: "button bg-cat-1-1"
+          class: "button"
           data-label: "opacity"
           href: |
             javascript:(function(){
@@ -92,6 +91,6 @@ $include: "var/ok-sdk/_parts.json"
               else { e.setAttribute('style',''); }
             })()
 
-    - +lorem-ipsum-paragraph.text-2-2@num=7: null
+    - +lorem-ipsum-paragraph.text-tng-2366-brown-2@num=7: null
 
 #

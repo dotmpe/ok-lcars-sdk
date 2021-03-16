@@ -23,7 +23,7 @@ mixin ok-sdk-form-1-inline(o)
     .pane.content.row.flex
       if block && typeof block() != "undefined"
         block
-      else if o[''] && o[''].length > 1 && o[''][1].length
+      else if o[''] && o[''].length
         +ok-element({'': o['']}, o.content || {})
       else
         +ok-sdk-placeholder(o.color)

@@ -144,20 +144,22 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
         // Body Content
         .f13-2-2-2.content
           +ok-prev-next-form(o, '/forms?merge.data=')
-          if block && typeof block() != "undefined"
-            block
-          else if o[''] && o[''].length > 1 && o[''][1].length
+          if o[''] && o[''].length > 1 && o[''][1].length
             +ok-element({'': o[''][1]}, o.body.content || {})
           else
-            +ok-sdk-placeholder(o.color)
+            block
 
-            h3.text&attributes(o.body.default.header)= o.body.default.header._
-            p.text-2-3.text
-              | A frame enclosing two content panes, with a characteristic split
+  // FIXME: default content. above if/else it not working OK. Should use 'o'-data defaults.
 
-            - let n = 0
-            while n < o.body.default.paragraphs
-              - n++; l = Math.round(Math.random() * 7)
-              +lorem-ipsum-paragraph(l)&attributes(o.body.default.body)
+  //          +ok-sdk-placeholder(o.color)
 
-            h4.text&attributes(o.body.default.header) The end
+  //          h3.text&attributes(o.body.default.header)= o.body.default.header._
+  //          p.text-2-3.text
+  //            | A frame enclosing two content panes, with a characteristic split
+
+  //          - let n = 0
+  //          while n < o.body.default.paragraphs
+  //            - n++; l = Math.round(Math.random() * 7)
+  //            +lorem-ipsum-paragraph(l)&attributes(o.body.default.body)
+
+  //          h4.text&attributes(o.body.default.header) The end
