@@ -76,7 +76,7 @@ mixin ok-sdk-pillbar(o_)
     }
     lodash.defaultsDeep(o, defs)
 
-  .row.flexh&attributes(attributes)
+  .row.frame.flexh&attributes(attributes)
     if o.lcap
       +ok-sdk-cap-left(o.lcap)
     +ok-sdk-titlebar(o.bar)

@@ -1,4 +1,19 @@
 
+// Pillbar horizontal
+.row.frame.flexh
+  .text.title
+    margin-top: 3pt
+    margin-bottom: 3pt
+
+  .text.title[align="right"]
+    margin-left: 0pt
+    margin-right: 3pt
+
+  .text.title[align="left"]
+    margin-left: 3pt
+    margin-right: 0pt
+
+
 .ok-dia__baseform-0
   // Center baseform-0 on large displays
   max-width: 1024px
@@ -12,7 +27,6 @@
     padding: 0 1em
 
 
-    
 .ok-dia__baseform-1
   > .content
     padding: 0 var(--content-padding)
@@ -150,12 +164,8 @@
     height: 220px
 
 
+// Add above classes to ok-diagram
 .ok-diagram
-  .frame > *
-    //margin: 4.5pt
-    //margin: 3pt 2pt
-
-
   .f0,
   .form-0
     @extend .ok-dia__baseform-0
@@ -175,3 +185,4 @@
   .form-4
     @extend .ok-dia__baseform-4
 
+//

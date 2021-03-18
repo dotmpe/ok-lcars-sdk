@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-hostname=$(hostname)
+hostname=$(hostname -s)
 
 # dev
 : ${port:=7011}
@@ -12,4 +12,4 @@ set -xe
 httrack http://$hostname:$port -O mirror "+*.$hostname/*"
 
 rsync -avzui --delete \
-  ./mirror/${hostname}_$port/ ../dotmpe.github.io/ok-lcars-sdk
+  ./mirror/${hostname}_$port/ ~/project/dotmpe.github.io/ok-lcars-sdk
