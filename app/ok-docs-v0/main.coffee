@@ -1,7 +1,7 @@
 define 'ok-docs-v0/main', [
 
   'cs!app'
-#  'cs!./app'
+  'cs!./app'
   #'cs!sitefile'
 
 #  '/lcarssdk/js/webviewinfo.js'

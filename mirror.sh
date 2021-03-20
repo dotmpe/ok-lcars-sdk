@@ -2,7 +2,7 @@
 hostname=$(hostname -s)
 
 # dev
-: ${port:=7011}
+: ${port:=4058}
 
 # ht pm2 'sf-ok-lcars-sdk'
 #port=4507

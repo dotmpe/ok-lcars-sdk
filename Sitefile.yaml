@@ -3,7 +3,7 @@ date: 2020-09-25
 datetime: 2020-11-28T02:57:22
 version: v0.0.2-13-g4f21809
 dateversion: v0.0.2-13-g4f21809:2020-11-28
-port: 4508
+# FIXME: port: 4508
 config:
   body-class: ok-diagram
 downstream: [] # Grant sitefile derefs to these remote sites
@@ -47,7 +47,10 @@ routes: # Simple router instances
   lcarssdk-fonts.css: static:app/ok-sdk/style/lcarssdk-fonts.css
   fonts/Swiss_911_Extra_Compressed_BT.woff: static:public/media/fonts/Swiss_911_Extra_Compressed_BT.woff
   fonts/Swiss_911_Ultra_Compressed_BT.woff: static:public/media/fonts/Swiss_911_Ultra_Compressed_BT.woff
+  fonts/LCARSGTJ3.ttf: static:public/media/fonts/LCARSGTJ3.ttf
   fonts: static:lib/lcars-sdk/lcarssdk/fonts
+
+  ok-docs.css: sass:app/ok-docs-v0/style.sass
 
   # correct case for one lib
   lcarssdk/addons/levelbar/levelbar.css: redir:lcarssdk/addons/levelBar/levelBar.css

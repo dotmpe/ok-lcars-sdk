@@ -2,6 +2,8 @@ define 'ok-docs-v0/mixin.okudagram-follies', [
 
   'jquery'
 
+  "css!/ok-docs.css"
+
 ], ( $ ) ->
 
 
@@ -90,7 +92,7 @@ define 'ok-docs-v0/mixin.okudagram-follies', [
       @ok_rndnum_scroll.append  @cols[i]
 
     add_rndnum_scroll_row: ( ci, mindigits=1, maxdigits=8, color='text-1-1' )->
-      if @cols[ci].find('small.text').length > 4
+      if @cols[ci].find('small.text').length > 5
         @cols[ci].empty()
       rndnum = ''
       while rndnum.length < mindigits

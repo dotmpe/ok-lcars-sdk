@@ -26,6 +26,7 @@ ssh-keyscan github.com > srv/known_hosts
 . ./lib.sh
 
 volumes=
+port=4508
 sf_sh_volumes
 #volumes="$volumes --volume $(pwd -P)/srv/src:/src"
 #volumes="$volumes --volume $(pwd -P)/srv/home:/home/treebox"
@@ -33,11 +34,13 @@ sf_dir=/srv/project-local/node-sitefile
 test ! -e $sf_dir/.git ||
   volumes="$volumes --volume $sf_dir/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh:ro"
 
+volumes="$volumes --volume /srv/scm-git-25-5-t460s-mpe/:/srv/scm-git-25-5-t460s-mpe/"
+
 set -x
 docker run \
   -d --name sf-ok-lcars-sdk-dev \
   -h $hostname -e SITEFILE_HOST=$hostname \
-  -p 7011:7011 -e SITEFILE_PORT=7011 \
+  -p $port:$port -e SITEFILE_PORT=$port \
   -e src_update=$src_update \
   $volumes \
   --volume $(realpath $gh_keyfile):/home/treebox/.ssh/$kbn \

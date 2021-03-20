@@ -2,6 +2,32 @@ $include: "var/ok-sdk/_parts.json"
 +ok-sdk-form-3.repro-2369a:
   title: Intro 006
   color: tng-2366-brown-2
+  header:
+    column:
+    - data-label: 11-4077
+      align: right
+      class: button bg-cat-1-1
+      style: "padding-top: 52pt"
+    elbow:
+      data-label: 2422670
+    row:
+    - class: bar bg-cat-2-3 flexch
+  body:
+    row:
+    - class: bar bg-cat-2-3 flexch
+    - class: bar bg-tng-2366-brown-1 flexch
+    column:
+    - data-label: 488-5951
+      align: right
+      class: bar flexcv
+    - data-label: 40273
+      align: right
+      class: bar flexcv
+    - data-label: 7676-18834
+      align: right
+      class: bar flexcv
+    - align: right
+      class: bar flexcv
   "":
   - - h1.title: Sensor 247-059
     - .numbers:

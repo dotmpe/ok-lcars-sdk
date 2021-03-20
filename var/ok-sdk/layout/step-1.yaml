@@ -67,12 +67,16 @@ $include: "var/ok-sdk/_parts.json"
         Spans of text can be split up, and mixed with other elements.
         Such as markup. Or hyperlinks.
         Or even bars or buttons.
-    - "a.bar@data-label=Bar Label": null
+    - span.text: "A "
+    - "a.bar@data-label=Bar": null
+    - span.text: "label . Another "
     - a.bar:
-        data-label: Another bar label
+        data-label: Bar
     - "button.bar@data-label=Button Label": null
+    - span.text: " label. Another "
     - button.bar:
-        data-label: Another button bar label
+        data-label: button bar
+    - span.text: " label."
     - span.text: |
         Using the ok-sdk-bar directive has the same effect as using elements and classes directly such as the two labels before.
     - +ok-sdk-bar.button@tagName=a: OK-Bar button with 'a' tag
@@ -141,9 +145,18 @@ $include: "var/ok-sdk/_parts.json"
     - address.regularcase: "Example 'address' text"
 
   - h3: Font face
-  - p.text-1-1: The quick fox jumps over the lazy brown dog
-  - p.swiss911extra.text-1-1: The quick fox jumps over the lazy brown dog
-  - p.swiss911ultra.text-1-1: The quick fox jumps over the lazy brown dog
+  - p.text-1-1: |
+      All of the font-faces are in ``lcarssdk-fonts.css`` and there are SASS classes as well. Below starts with the `LCARS` font, then `LCARS mono`,
+      `Swiss 911 Extra Compressed BT`,
+      `Swiss 911 Ultra Compressed BT`
+      and
+      `LCARSGTJ3`.
+
+  - p.text-1-1:               The quick fox jumps over the lazy brown dog ~!@#$%^&*+-_:"'|\/,.?<>{}[]
+  - p.lcarsmono.text-1-1:     The quick fox jumps over the lazy brown dog ~!@#$%^&*+-_:"'|\/,.?<>{}[] (mono)
+  - p.swiss911extra.text-1-1: The quick fox jumps over the lazy brown dog ~!@#$%^&*+-_:"'|\/,.?<>{}[] (911 ECBT)
+  - p.swiss911ultra.text-1-1: The quick fox jumps over the lazy brown dog ~!@#$%^&*+-_:"'|\/,.?<>{}[] (911 UCBT)
+  - p.lcarsgtj3.text-1-1:     The quick fox jumps over the lazy brown dog ~!@#$%^&*+-_:"'|\/,.?<>{}[] (lcarsgtj3)
   - p.swiss911ultra.text-1-1:
     - .text: "The "
     - .text.text-2-2.swiss911extra: "quick"

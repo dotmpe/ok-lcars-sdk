@@ -9,7 +9,19 @@ block main
   +ok-forms-data-functions()
 
   if main
-    +ok-sdk-form-3({"title": "DOCS 0.0"})
+    -
+      ok_docs_v0_main = {
+        title: "DOCS 0.0",
+        "": [ [ {
+          ".container.flexcv.flexh": { id: "ok-rndnum-scroll-folly" }
+        }, {
+          "h1.title": "Dev Docs",
+        }, {
+          "h2.title.altcolor": "Initial Development"
+        } ] ]
+      }
+
+    +ok-sdk-form-3(ok_docs_v0_main)
       #hnav.placeholder.text-1-1
         p.text-1-1 Hardcoded docs
         p.text-1-2
@@ -26,6 +38,8 @@ block main
           | sequences of label/link/color and some other attributes.
 
         a.button.pill.bg-cat-4-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
+        a.button.pill.xlarge.bg-cat-6-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
+        a.button.pill.xxlarge.bg-cat-2-1(data-label="Back to DEV", style="min-width:60px; width:260px", title="Back to dev", href="/doc/dev/main")
 
         -
           let form_1_opts = {'color':'8-5'}

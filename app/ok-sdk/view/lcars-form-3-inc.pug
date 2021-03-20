@@ -12,56 +12,23 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
     let oDef = {
       "title": title,
       "header": {
-        "lw": "146.4pt",
-        "column": [
-          {
-            "data-label": "LCARS",
-            "align": "right",
-            "class": "button bg-cat-1-1"//, "style": "height: 78pt"
-          }
-        ],
+        "column": [],
         "elbow": {
           "class": "bg-cat-2-2 flexcv default",
         },
         "content": { "color": o.color, "size": o.size },
         "row": [
-          //{ "class": "bar bg-grey-5 flexch" },
-          //{ "class": "bar bg-cat-4-2" },
-          //{ "class": "bar alt bg-grey-5 flexch",
-          //  "style": `width:100%; max-width:${o.header.lw}` },
-          //{ "class": "bar bg-cat-4-3" },
-          //{ "class": "bar bg-grey-5 flexch" }
-          { "class": "bar bg-cat-2-1 flexch" }
+          { "class": "bar bg-grey-5 flexch" },
         ]
       },
       "body": {
         "elbow": {
-          "class": "bg-cat-2-1 default",
+          "class": "bg-cat-2-1 default flexcv",
         },
         "row": [
-          { "class": "bar bg-cat-2-3 flexch" }
+          { "class": "bar bg-cat-2-3 flexch" },
         ],
-        "column": [
-          {
-            "data-label": "488-5951",
-            "align": "right",
-            "class": "bar bg-cat-1-1 flexcv"
-          },
-          {
-            "data-label": "40273",
-            "align": "right",
-            "class": "bar bg-cat-1-1 flexcv"
-          },
-          {
-            "data-label": "7676-18834",
-            "align": "right",
-            "class": "bar bg-cat-2-1 flexcv"
-          },
-          {
-            "align": "right",
-            "class": "bar bg-cat-1-1 flexcv"
-          }
-        ],
+        "column": [],
         "content": { "color": o.color, "size": o.size },
         "default": {
           "paragraphs": 12,
@@ -93,35 +60,16 @@ mixin ok-sdk-form-3(o, title="Form 1.3")
           if o[''] && o[''].length > 0 && o[''][0].length
             +ok-element({'': o[''][0]}, o.header.content || {})
 
-          //p
-          //  small.text-1-1 1234
-
-          //.flexh.flexcv
-          //  small.text-1-1 54321
-          //  .content
-          //    .oval.small.bg-cat-1-1
-          //    .oval.small.bg-cat-1-1
-          //  .content.flexcv
-          //    small.text.text-1-1  123455
-          //    small.text.text-1-1 1234556
-
-          //#ok-rndnum-scroll-folly.container.flexcv.flexh(style=`width:${o.header.lw}; margin-left: 1.5em`)
-          //.content.flexcv(style=`width:${o.header.lw}`)
-          //  .title.text-1-1= o.title
-
-          //  .wrapper.flexh.button-wrap
-          //    .button.pill.bg-grey-4(data-label="198-2")
-          //    .button.pill.bg-cat-1-2(data-label="11-47")
-
-
         // Header Bar Row: the cells right after the upper-section elbow
         .f13-1-2-2.frame.flexh
           for element in o.header.row
             +ok-element-instance(element, "div")
 
-    //-.f13-2.row.split
-    //-  .block.bg-cat-6-1(style=`min-height: 19; top: -7; left: calc( ${o.header.elbow.length} + ${o.lvbar.width} + 34 )`)
-    //-  .block.bg-grey-6( style=`min-height: 19; top: -7; left: calc( ${o.header.elbow.length} + ${o.lvbar.width} + 34 )`)
+    //.f13-2.row.split
+    //  - length = 100
+    //  - width = 100
+    //  .block.bg-cat-6-1(style=`min-height: 19; top: -7; left: calc( ${length} + ${width} + 34 )`)
+    //  .block.bg-grey-6( style=`min-height: 19; top: -7; left: calc( ${length} + ${width} + 34 )`)
 
     // Body: the lower-section frame around 3/4 or similar of the height
     .f13-2.body.flexcv.flexh
