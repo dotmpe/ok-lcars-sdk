@@ -24,7 +24,7 @@ jobs:
            do
              if shellcheck -x -s bash $sh
              then echo "OK $sh"
-             else echo "FAILED"; exit 1
+             else echo "FAILED $sh"; exit 1
              fi
            done
          shell: bash

@@ -1,4 +1,6 @@
 #!/bin/sh
+# shellcheck disable=SC2086
+# SC2086: 'volumes' is unquoted intentionally
 set -e
 
 # dev mode (ro); mount local source, XXX: also use latest sitefile entry.sh iso. built-in
@@ -11,8 +13,8 @@ sf_version=0.0.7-dev
 src_update=0
 
 site_src=github.com/dotmpe/ok-lcars-sdk
-site_repo=git@$site_src.git
-site_ver=r0.0
+#site_repo=git@$site_src.git
+#site_ver=r0.0
 
 gh_keyfile=~/.ssh/id_rsa
 kbn=id_rsa
@@ -43,11 +45,11 @@ docker run \
   -p $port:$port -e SITEFILE_PORT=$port \
   -e src_update=$src_update \
   $volumes \
-  --volume $(realpath $gh_keyfile):/home/treebox/.ssh/$kbn \
-  --volume $(realpath ./srv/known_hosts):/home/treebox/.ssh/known_hosts \
-  --volume $(pwd -P):/src/$site_src:ro \
+  --volume "$(realpath $gh_keyfile)":/home/treebox/.ssh/$kbn \
+  --volume "$(realpath ./srv/known_hosts)":/home/treebox/.ssh/known_hosts \
+  --volume "$(pwd -P)":/src/$site_src:ro \
   dotmpe/node-sitefile:$sf_version \
   \
   "$site_src"
 
-#
+# Id:

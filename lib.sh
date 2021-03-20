@@ -1,5 +1,6 @@
 #!/bin/sh
-
+# shellcheck disable=SC2034
+# SC2034: Variable 'volumes' is used globally
 
 sf_sh_volumes()
 {
@@ -17,3 +18,5 @@ wait_for_container()
     break
   done
 }
+
+#

@@ -31,3 +31,5 @@ docker run \
 set +x
 wait_for_container sf-ok-lcars-sdk
 echo "Sitefile server running"
+
+#
