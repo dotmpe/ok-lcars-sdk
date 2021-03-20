@@ -20,7 +20,7 @@ gh_keyfile=~/.ssh/id_rsa
 kbn=id_rsa
 
 hostname=$(hostname)
-hostnamef=$(hostname -f)
+#hostnamef=$(hostname -f)
 
 mkdir -p srv
 ssh-keyscan github.com > srv/known_hosts
