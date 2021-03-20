@@ -19,7 +19,7 @@ site_src=github.com/dotmpe/ok-lcars-sdk
 gh_keyfile=~/.ssh/id_rsa
 kbn=id_rsa
 
-hostname=$(hostname)
+hostname="$(hostname)"
 #hostnamef=$(hostname -f)
 
 mkdir -p srv
@@ -41,8 +41,8 @@ volumes="$volumes --volume /srv/scm-git-25-5-t460s-mpe/:/srv/scm-git-25-5-t460s-
 set -x
 docker run \
   -d --name sf-ok-lcars-sdk-dev \
-  -h $hostname -e SITEFILE_HOST=$hostname \
-  -p $port:$port -e SITEFILE_PORT=$port \
+  -h "$hostname" -e SITEFILE_HOST="$hostname" \
+  -p "$port:$port" -e SITEFILE_PORT="$port" \
   -e src_update=$src_update \
   $volumes \
   --volume "$(realpath $gh_keyfile)":/home/treebox/.ssh/$kbn \
