@@ -1,9 +1,9 @@
 #!/bin/sh
-
+# shellcheck disable=SC2034
+# SC2034: Variable 'volumes' is used globally
 
 sf_sh_volumes()
 {
-  # shellcheck disable=SC2034  # Variable is used globally
   volumes=
   test ! -e /etc/localtime ||
     volumes=" --volume $(realpath /etc/localtime):/etc/localtime:ro"
