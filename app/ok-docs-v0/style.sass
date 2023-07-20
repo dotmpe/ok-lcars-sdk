@@ -1,6 +1,6 @@
 #ok-rndnum-scroll-folly
   float: left
-  margin-left: 80pt
+  margin-left: var(--content-padding)
 
   > div.flexcv
     width: 4em
@@ -12,3 +12,49 @@
       float: left
       clear: left
       margin-bottom: 6pt
+
+// Make h1/h2 titles 'inline-block's so JS can measure text extent.
+// This does allow the titles to flow into one line, but only if there is no
+// content inserted by folly script
+.f13-1-2-1
+  > div
+    text-align: right
+  .title
+    display: inline-block
+  h1.title
+    font-size: 60pt
+  h2.title
+    font-size: 40pt
+
+  > div
+    > div.buttons
+      cursor: pointer
+      text-align: left
+      float: right
+      padding: 1em 0
+      line-height: 1em
+
+// These are no longer needed as OkudagramFollies_1 determines col/rows
+// dynamically and fills the whole available width/height.
+// but there is no on-resize handling yet, and that is nice too..
+
+//@media (max-width: 1045px)
+//  .f13-1-2-1 > div > #ok-rndnum-scroll-folly > div.column2
+//    display: none
+//
+//@media (max-width: 1147px)
+//  .f13-1-2-1 > div > #ok-rndnum-scroll-folly > div.column3
+//    display: none
+//
+//@media (max-width: 1248px)
+//  .f13-1-2-1 > div > #ok-rndnum-scroll-folly > div.column4
+//    display: none
+//
+//@media (max-width: 1349px)
+//  .f13-1-2-1 > div > #ok-rndnum-scroll-folly > div.column5
+//    display: none
+//
+//@media (max-width: 1451px)
+//  .f13-1-2-1 > div > #ok-rndnum-scroll-folly > div.column6
+//    display: none
+//

@@ -4,6 +4,7 @@ define 'ok-docs-v0/mixins', [
   #'cs!sitefile/mixin.du-page',
   #'cs!sitefile/mixin.last-modified',
   'cs!sitefile/mixin.hyper-nav',
+  'cs!ok-docs-v0/nav',
   'cs!ok-docs-v0/mixin.okudagram-follies'
 
 ], (
@@ -11,6 +12,7 @@ define 'ok-docs-v0/mixins', [
   #{ DocutilsPage },
   #{ DocumentLastModified },
   { HNavDocument },
+  { OkDocsNav },
   { OkudagramFollies_1 }
 ) ->
 
@@ -19,4 +21,5 @@ define 'ok-docs-v0/mixins', [
     #klass.include DocumentLastModified
     #klass.include DocumentBreadcrumb
     klass.include HNavDocument
+    klass.include OkDocsNav
     klass.include OkudagramFollies_1

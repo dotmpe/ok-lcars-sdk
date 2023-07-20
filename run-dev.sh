@@ -16,14 +16,16 @@ site_src=github.com/dotmpe/ok-lcars-sdk
 #site_repo=git@$site_src.git
 #site_ver=r0.0
 
-gh_keyfile=~/.ssh/id_rsa
-kbn=id_rsa
+: "${gh_keyfile:=$HOME/.ssh/id_rsa}"
+kbn=$(basename "$gh_keyfile")
 
 hostname="$(hostname)"
 #hostnamef=$(hostname -f)
 
-mkdir -p srv
-ssh-keyscan github.com > srv/known_hosts
+test -e srv/known_hosts || {
+  mkdir -vp ./srv/
+  ssh-keyscan github.com > srv/known_hosts
+}
 
 . ./lib.sh
 
@@ -32,12 +34,16 @@ port=4508
 sf_sh_volumes
 #volumes="$volumes --volume $(pwd -P)/srv/src:/src"
 #volumes="$volumes --volume $(pwd -P)/srv/home:/home/treebox"
+
+# During dev of sitefile entry point script use dev instead of builtin version
 sf_dir=/srv/project-local/node-sitefile
 test ! -e $sf_dir/.git ||
   volumes="$volumes --volume $sf_dir/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh:ro"
 
+# XXX:
 volumes="$volumes --volume /srv/scm-git-25-5-t460s-mpe/:/srv/scm-git-25-5-t460s-mpe/"
 
+docker rm -f sf-ok-lcars-sdk-dev || true
 set -x
 docker run \
   -d --name sf-ok-lcars-sdk-dev \
@@ -51,5 +57,8 @@ docker run \
   dotmpe/node-sitefile:$sf_version \
   \
   "$site_src"
+
+sleep 1
+docker logs -f sf-ok-lcars-sdk-dev
 
 # Id:

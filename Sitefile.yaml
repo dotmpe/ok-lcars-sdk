@@ -1,3 +1,10 @@
+
+# IMPORTANT: Sitefile is a personal and highly experimental server tool,
+# implemented in Node.JS. It is easily extended (read "readily runs any script
+# it finds") and has little to no user input validation. 
+# For safety it is best to only run on an isolated host such as a container,
+# and never use it as a production server.
+
 sitefile: 0.0.7-dev
 date: 2020-09-25
 datetime: 2020-11-28T02:57:22
@@ -103,7 +110,7 @@ options:
           id: "ok-sdk-theme"
         - url: "/base.css"
           id: "ok-sdk-css"
-          disabled: true
+          #disabled: true
         scripts:
           #$ref: '#/defs/scripts/default'
           $ref: '#/defs/scripts/lcarssdk'

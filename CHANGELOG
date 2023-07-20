@@ -1,5 +1,6 @@
 (0.0.4-dev)
   - TODO: restore "scrolling numbers"-animation folly.
+  - FIXME: was hacking on animation stuff, but require.js is currently broken at some WWW ref. See `event-signal`
 
 0.0.3
   - Further structured new Sass styling, moving away from LCARS SDK CSS.

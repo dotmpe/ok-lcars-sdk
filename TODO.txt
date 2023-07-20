@@ -3,6 +3,7 @@
 (B) 2018-09-29 8: Documentation for CSS classes and usage; layout principles, Sass, adaptive pages, etc. @docs
 (C) 2018-09-29 9: Styling should be more confined to specific elements, not change page's html/body/div... @bugs ie. check archive.is, web.archive.org. Solve with [TODO-2].
 (C) 2018-08-06 2: Rewrite to Sass, add adaptive classes. [TODO-8] First get some documentation system going
+(C) 2022-02-17 16: Introduce new @Sass class for blocks/pills. 
 (D) 2018-08-06 4: Build reusable components, based on Sass/script, maybe see about webelements at some point
 (E) 2018-08-06 3: Make compatible with bootstrap, and for use with docutils documents
 (E) 2020-11-27 13: Get latest (4.0.0) SDK version working with Sitefile, have another look at JS API
@@ -10,5 +11,5 @@
 (F) 2018-09-29 6: Cannot run repo with sitefile directly <run.sh> setup submodules for non-dev @bugs @DevOps <.gitmodules>
 (F) 2019-04-23 12: Merge YAML-OK metadata (style/nav etc) with templates. Initial work done, better custom Sf context would help.
 (F) 2020-11-27 14: See about YAML/JSON linter (``grunt test``) @DevOps
-(F) 2020-11-27 15: See about Sass sourceMap.
-# vim:nowrap:ft=todo.txt:
+(F) 2020-11-27 15: See about Sass sourceMap. @Sass
+# Id: +Ok-Sass/0.0.4-dev TODO.txt?seq-next=17           ex:nowrap:ft=todo.txt:

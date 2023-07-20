@@ -1,3 +1,5 @@
+# Use some client modules shipped with Node-Sitefile to setup a client
+# that loads our OK app
 define 'ok-docs-v0/app', [
 
   'cs!app'
@@ -8,7 +10,8 @@ define 'ok-docs-v0/app', [
   'cs!sf-v0/meta/nav'
   'cs!sf-v0/component/client-modules'
 
-], ( App, EventSignal, Component, { Page }, Nav, NavMeta, ClientModules ) ->
+], ( App, EventSignal, Component, { Page }, Nav, NavMeta,
+ClientModules ) ->
 
   console.log 'OK! Docs v0 app', App
   
@@ -19,10 +22,10 @@ define 'ok-docs-v0/app', [
 
   class OkDocsApp extends Component
     constructor: ->
+      super()
       @events = new EventSignal()
       for app of App.init
         App.init[app]()
-      super()
 
     run: -> # XXX:
       console.log 'Starting ok-docs-v0 nav..'

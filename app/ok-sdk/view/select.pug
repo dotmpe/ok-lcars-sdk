@@ -3,23 +3,24 @@ extends base
 mixin ok-sdk-select()
 
   #select.wrapper.row
-    //.column.flexv.flexch(style="max-width:10%")
-    .column.flexv.flexch
+    .column.left.flexv.flexch
       .bar.bg-grey-4.top.medium(data-label="1.1")
       .bar.bg-cat-2-2.flexcv(data-label="1.2")
       .bar.bg-grey-4.bottom.medium(data-altlabel="1.5")
 
-    .column.flexv.flexch(style="min-width:50%;")
-      .bar.medium.bg-grey-4.top(data-label="Main")
-      .column(style="overflow-y:scroll;")
+    .column.main.flexv.flexch
+      .bar.medium.bg-cat-tng-2369a-pale-brown.top(data-label="Main")
+      .column
         .column(style="")
           .row
             .button.nobutton.left.bg-cat-1-1(data-label="MI OKU",align="right")
-            .title.flexch.text-2-3 AN
+            .title.flexch.text-2-3.text-right OK!
             .button.nobutton.flexch.bg-cat-2-1(data-label="AN PRO",align="right")
           .row
             .button.nobutton.left.bg-cat-1-1(data-label="DE OKU",align="right")
-            .title.flexch.text-5-3 LCARS
+            .title.flexch
+              span.text-2-3 AN&nbsp;
+              span.text-5-3 LCARS
             .button.nobutton.flexch.bg-cat-2-1(data-label="DC FON",align="right")
           .row
             .button.nobutton.left.bg-cat-1-1(data-label="GE ROD",align="right")
@@ -37,32 +38,32 @@ mixin ok-sdk-select()
             a.button.bg-cat-1-1(data-label="2369a", style="min-width:60px",
             href="forms?merge.data=repro/TNG-2369a")
           .row
-            .button.nobutton.flexch.bg-cat-2-3(data-label="Original")
-            a.button.bg-cat-5-1(data-label="1", style="min-width:60px", title="TNG Film Layout", href="interfaces/hardcode/index.html")
-            a.button.bg-cat-5-1(data-label="2", style="min-width:60px", title="Dynamic Color Scheme", href="interfaces/color-generator/index.html")
-            a.button.bg-cat-5-3(data-label="3", style="min-width:60px", title="Complete Visual Guide", href="interfaces/visual-guide/index.html")
+            .button.nobutton.flexch.bg-cat-8-5(data-label="Original")
+            a.button.bg-cat-6-1(data-label="1", style="min-width:60px", title="TNG Film Layout", href="interfaces/hardcode/index.html")
+            a.button.bg-cat-6-2(data-label="2", style="min-width:60px", title="Dynamic Color Scheme", href="interfaces/color-generator/index.html")
+            a.button.bg-cat-6-3(data-label="3", style="min-width:60px", title="Complete Visual Guide", href="interfaces/visual-guide/index.html")
             .button.nobutton.flexch.bg-cat-4-2
               .bar.small.bg-black(style="margin:5px; width:20px; float:right")
             a.button.bg-cat-4-1(data-label="WEB-1", style="min-width:60px", href="http://web.archive.org/web/20181120182819/http://lcarssdk.org/")
             a.button.bg-cat-4-1(data-label="WEB-2", style="min-width:60px", href="https://dotmpe.github.io/ok-lcars-sdk")
           .row
-            .button.nobutton.flexch.bg-cat-2-2(data-label="Base Form")
-            a.button.bg-cat-5-1(data-label="1.1", style="min-width:60px", href="forms?merge.data=base/form-1")
-            a.button.bg-cat-5-2(data-label="1.2", style="min-width:60px", href="forms?merge.data=base/form-2")
+            .button.nobutton.flexch.bg-cat-2-3(data-label="Base Form")
+            a.button.bg-cat-8-4(data-label="1.1", style="min-width:60px", href="forms?merge.data=base/form-1")
+            a.button.bg-cat-8-5(data-label="1.2", style="min-width:60px", href="forms?merge.data=base/form-2")
             a.button.bg-cat-5-3(data-label="1.3", style="min-width:60px", href="forms?merge.data=base/form-3")
-            a.button.bg-cat-5-1(data-label="2.1", style="min-width:60px", href="forms?merge.data=base/form-4")
+            a.button.bg-cat-8-6(data-label="2.1", style="min-width:60px", href="forms?merge.data=base/form-4")
           .row
             a.button.flexch.bg-grey-6.left(data-label="SRC", style="min-width:70px", href="https://github.com/dotmpe/ok-lcars-sdk")
-            a.button.flexch.bg-grey-6(data-label="DOC", style="min-width:70px", href="/doc/dev")
+            a.button.flexch.bg-grey-5(data-label="DOC", style="min-width:70px", href="/app/ok-docs/main#ReadMe")
             a.button.flexch.bg-grey-6(data-label="DEV", style="min-width:70px", href="/app/ok-docs/main#doc/dev/main")
-            .title.flexch.text-grey-4.semver 0.0.4-dev
-            a.button.bg-grey-2(data-label="VIA", style="min-width:60px", href="https://github.com/Aricwithana/LCARS-SDK")
+            .title.flexch.text-grey-6.semver 0.0.4-dev
+            a.button.bg-grey-4(data-label="VIA", style="min-width:60px", href="https://github.com/Aricwithana/LCARS-SDK")
               .oval.small.bg-black(style="margin:5px; float:right")
 
-      .bar.medium.bg-grey-5.bottom
+      .bar.medium.bg-grey-4.bottom
         .bar.small.bg-black(style="margin:5px; width:20px")
 
-    .column.flexv.flexch
+    .column.right.flexv.flexch
       .bar.bg-grey-4.top.medium(data-label="3.1")
       .bar.bg-cat-2-1.flexcv(data-label="3.2.1")
       .row.flexv

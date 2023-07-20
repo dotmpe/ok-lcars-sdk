@@ -28,9 +28,36 @@
 input:focus
   outline: none
 
-#select
-  > .column:first-child
+#select.wrapper.row
+  > .column.left
     text-align: right
+
+  > .column.main
+    min-width: 42em
+  
+    > .bar:first-child
+      min-height: 8em
+
+    > .bar:last-child
+      min-height: 14em
+
+  > .column.left,
+  > .column.right
+
+   @media (max-width: 41.999em)
+     display: none
+
+   @media (min-width: 42em)
+     > *
+       display: none
+
+// XXX: scrolling
+
+//(style="overflow-y:scroll;")
+   //@media (min-width: 1250px)
+   //  //max-width: 10%
+   //  > *
+   //    display: none
 
 
 // TODO: move to ok-lcars-sdk baseforms

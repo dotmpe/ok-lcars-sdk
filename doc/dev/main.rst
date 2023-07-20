@@ -3,6 +3,10 @@
 Dev Docs
 ========
 
+:top: ReadMe__
+
+.. __: /ReadMe.rst
+
 Status
 ------
 - tasks/todo-1.md Build forms 1-4.
@@ -16,10 +20,21 @@ Status
   Probably want something for Sass too. Like insert globals or vars.
   tasks/todo-12.md
 
-- 2018-12-12 @Draft var/ok-sdk/content/forms
-  Draft for OK styleguide
+- 2018-12-12 forms @Draft <var/ok-sdk/content/forms>
+  Draft for OK styleguide?
+
   [TODO-8] Docs: place for style reference
   only have `visual guide`_ now.
+
+Issues
+-------
+[TODO-16]
+  The current CSS classes experiment with a `ok-dia:span` and `ok-dia:bar` class,
+  but need another S/M/L sizing scheme for pill buttons, and other margin rules as well that are unrelated to text height/baseline/extent. But resemble a table more closely.
+
+  Probably `ok-dia:block` medium equals `ok-dia:bar` XL or XXL.
+  Look at text to find matching size.
+  Probably want to match that with intra-line spacing for span/bar.
 
 Setup
 -----
@@ -34,6 +49,9 @@ Tooling
 - httrack to mirror static copy for <pages.github.com> (see ``mirror.sh``)
 - Grunt CLI.
 
+.. __: https://github.com/dotmpe/script-mpe/blob/dev/package.rst
+.. __: https://github.com/dotmpe/node-sitefile
+
 Directories
 -----------
 ::
@@ -43,8 +61,5 @@ Directories
   └── dev        Where this document is, not much to it
   lib            Third party
   └── lcars-sdk  Original webview LCARS SDK
-
-.. __: https://github.com/dotmpe/script-mpe/blob/dev/package.rst
-.. __: https://github.com/dotmpe/node-sitefile
 
 .. Id: OK-SDK:doc/dev/main.rst

@@ -1,3 +1,6 @@
+###
+Boilerplate context for all web Apps in OK-LCARS-SDK.
+###
 define 'app', [
   
   'jquery'

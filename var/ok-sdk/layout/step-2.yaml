@@ -10,11 +10,18 @@ $include: "var/ok-sdk/_parts.json"
   - h1.title: Step 002
   - h2.title.altcolor: Bars
   - p@color=2-3: |
-      The first element to introduce are the bar and its variant pillbar.
-      There are different display modes for elements to achieve a colored rectangle, and add a label.
+      The first element to introduce are the bar and its variant pillbar. Bars of varying sizes are ofcourse part of the most basic visual elements in OK diagrams. Together with "elbows" and "caps".
+
+      Here only the bar and its relation to regular text is explored.
+      There are different display modes available to render bar elements, ie. to achieve a colored rectangle and add a label.
+
       The last page already showed the simplest form, a specially designed inline span. Here follow the pillbar variant, and other subforms that together can be used to create complex bars in between with regular inline text.
+
+  - p@color=1-1: |
+      Because of the direct relation of `ok-dia:span` to regular text, a regular "pill" size would correspond to a ok-dia:span size of at least XL. Clearly a different sizing is required for pill buttons, but it does establish a clear scheme of bar size directly related to text size.
+
   - p@color=2-3: |
-      These are all the text sizes again, paired with inline "pill" bars of identical height. The height of each particular size bar is made to correspond to the height of the font-face. 
+      These are all the text sizes again, paired with inline "pill" bars of identical height. The height of each particular size `ok-dia:span` bar is made to correspond to the height of the font-face. 
       These where tedious but simple to do.
 
   - hr.border-1-1:
