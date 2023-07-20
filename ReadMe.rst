@@ -25,9 +25,15 @@ advantages over other methods of LCARS generation.
 The ultimate goal would be some sort of multi-screen app, where a multihead or
 even multihost system would run dedicated displays on different monitors.
 However, the focus for this project is on fooling around, and playing with (a)
-certain type(s) of LCARS rendering.
+certain type(s) of LCARS rendering...
 
-I don't have a lot of time for this project, but
+I don't have a lot of time for this project, so updates are scarce and the
+plan/timeline is highly hypothetical. But I do try to make every version work
+completely, and add something interesting.
+
+The last published version is on the `master` branch. For a completely up-to-date development snapshot have a look at the current release branch: `r0.0 <https://github.com/dotmpe/ok-lcars-sdk/tree/r0.0>`_.
+
+To check when the example site was last updated, see `the sub-folder in my dotmpe.github.io <https://github.com/dotmpe/dotmpe.github.io/tree/master/ok-lcars-sdk>`_ repo.
 
 
 Contents
@@ -61,6 +67,7 @@ To do this you need
 
 - a running `docker` install, that can mount some specific local paths
 - for dev, an SSH key authorized with a GitHub account
+- for dev, a GIT checkout with submodules (run ``git submodule update --init``)
 
 Now the container is recreated using either::
 
@@ -86,7 +93,7 @@ Plan
   - Sitefile client integration
   - Setup for different require.js apps.
 
-0.1 [someday...]
+0.1 (someday...)
   - Pug+Sass based toolkit used with Sitefile, later with standalone/other tools.
   - LCARS SDK docs & reference, style guide etc. [TODO-8]
     If possible with format1, else with full Pug data struct in JSON/YAML.

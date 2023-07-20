@@ -35,10 +35,20 @@ sf_sh_volumes
 #volumes="$volumes --volume $(pwd -P)/srv/src:/src"
 #volumes="$volumes --volume $(pwd -P)/srv/home:/home/treebox"
 
-# During dev of sitefile entry point script use dev instead of builtin version
+# During dev of sitefile, this is quicker than redoing a build of the entire
+# container image and required for pre-release test
 sf_dir=/srv/project-local/node-sitefile
-test ! -e $sf_dir/.git ||
+test ! -e $sf_dir/.git || {
+  # XXX: at some point, dev at these files may have happened.
+
   volumes="$volumes --volume $sf_dir/tools/docker/ubuntu/entry.sh:/usr/local/share/sitefile/entry.sh:ro"
+
+  dev_files=cdn.json
+  for devfile in ${dev_files:?}
+  do
+    volumes="$volumes --volume $sf_dir/$devfile:/opt/dotmpe/node-sitefile/$devfile:ro"
+  done
+}
 
 # XXX:
 volumes="$volumes --volume /srv/scm-git-25-5-t460s-mpe/:/srv/scm-git-25-5-t460s-mpe/"
