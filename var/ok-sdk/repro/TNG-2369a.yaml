@@ -91,6 +91,10 @@ $include: "var/ok-sdk/_parts.json"
        - .text: "757576577"
        - .text: "9287491719842987"
   - - $ref: '#/_parts/disable-lcarssdk-style'
+    - a:
+        class: button bg-cat-1-1
+        data-label: Main menu
+        href: /main
     - p.text.colored.text-tng-2366-yellow-1: Form 3.
     - p.text.colored.text-tng-2366-yellow-2: |
         The current form is a copy from the 2369 "Sensor 247-059" display showing the rogue Borg vessel location. There are nice high quality photos of this piece from an auction, but the piece did not get any prominent screen time. In the second "Descent" episode this graph is used on the bridge "Science I" station while the Enterprise-D under command of Beverly Crusher is looking for an orbit to beam up the crew while avoiding the rogue borg vessel. In the close-up of the science terminal a similar but different animated layout is overlayed on top of the static image. The kodalith however can be seen installed in a few short wide shots including the aft stations. As a side note: The science II station graph is unchanged for the two episodes. In the first "Descent" show when Picard and Riker are standing by the "Science I" station it shows a static kodalith "Borg Subspace Conduit" graph with polamotion (a rotating disk and polarized film). From the looks of the backside of this panel from the auction photo's, it appears it may have polarized film pieces as well and had polamation animated segments but they are never shown on screen.

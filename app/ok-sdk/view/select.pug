@@ -38,20 +38,28 @@ mixin ok-sdk-select()
             a.button.bg-cat-1-1(data-label="2369a", style="min-width:60px",
             href="forms?merge.data=repro/TNG-2369a")
           .row
-            .button.nobutton.flexch.bg-cat-8-5(data-label="Original")
-            a.button.bg-cat-6-1(data-label="1", style="min-width:60px", title="TNG Film Layout", href="interfaces/hardcode/index.html")
-            a.button.bg-cat-6-2(data-label="2", style="min-width:60px", title="Dynamic Color Scheme", href="interfaces/color-generator/index.html")
-            a.button.bg-cat-6-3(data-label="3", style="min-width:60px", title="Complete Visual Guide", href="interfaces/visual-guide/index.html")
-            .button.nobutton.flexch.bg-cat-4-2
-              .bar.small.bg-black(style="margin:5px; width:20px; float:right")
-            a.button.bg-cat-4-1(data-label="WEB-1", style="min-width:60px", href="http://web.archive.org/web/20181120182819/http://lcarssdk.org/")
-            a.button.bg-cat-4-1(data-label="WEB-2", style="min-width:60px", href="https://dotmpe.github.io/ok-lcars-sdk")
-          .row
             .button.nobutton.flexch.bg-cat-2-3(data-label="Base Form")
             a.button.bg-cat-8-4(data-label="1.1", style="min-width:60px", href="forms?merge.data=base/form-1")
             a.button.bg-cat-8-5(data-label="1.2", style="min-width:60px", href="forms?merge.data=base/form-2")
             a.button.bg-cat-5-3(data-label="1.3", style="min-width:60px", href="forms?merge.data=base/form-3")
             a.button.bg-cat-8-6(data-label="2.1", style="min-width:60px", href="forms?merge.data=base/form-4")
+            .button.nobutton(style="min-width:60px")
+          .row
+            .button.nobutton.flexch.bg-cat-2-2(data-label="Complex Form")
+            a.button.bg-cat-2-1(data-label="c-1", style="min-width:60px", href="forms?merge.data=base/form-complex-1")
+            a.button.bg-cat-2-1(data-label="c-2", style="min-width:60px", href="forms?merge.data=base/form-complex-2")
+            .button.nobutton(style="min-width:60px")
+            .button.nobutton(style="min-width:60px")
+            .button.nobutton(style="min-width:60px")
+          .row
+            .button.nobutton.flexch.bg-cat-8-5(data-label="Original", style="flex: 2")
+            a.button.bg-cat-6-1(data-label="1", style="flex: 1; min-width:60px", title="TNG Film Layout", href="interfaces/hardcode/index.html")
+            a.button.bg-cat-6-2(data-label="2", style="flex: 1; min-width:60px", title="Dynamic Color Scheme", href="interfaces/color-generator/index.html")
+            a.button.bg-cat-6-3(data-label="3", style="flex: 1; min-width:60px", title="Complete Visual Guide", href="interfaces/visual-guide/index.html")
+            .button.nobutton.flexch.bg-cat-4-2(style="flex: 3")
+              .bar.small.bg-black(style="margin:5px; width:20px; float:right")
+            a.button.bg-cat-4-1(data-label="WEB-1", style="flex: 1; min-width:60px", href="http://web.archive.org/web/20181120182819/http://lcarssdk.org/")
+            a.button.bg-cat-4-1(data-label="WEB-2", style="flex: 1; min-width:60px", href="https://dotmpe.github.io/ok-lcars-sdk")
           .row
             a.button.flexch.bg-grey-6.left(data-label="SRC", style="min-width:70px", href="https://github.com/dotmpe/ok-lcars-sdk")
             a.button.flexch.bg-grey-5(data-label="DOC", style="min-width:70px", href="/app/ok-docs/main#ReadMe")

@@ -1,0 +1,39 @@
+$include: "var/ok-sdk/_parts.json"
+
+# FIXME: want access to flex CSS property somehow, but cant get this working
+
+#.form-1-complex-1.pane.flexh:
++ok-sdk-contentpane.form-1-complex-1.fullwidth.pane.flexh:
+
+  - +ok-sdk-form-1-inline@title=OK-001@color=4-2:
+    - +ok-sdk-form-3:
+      - - +ok-sdk-form-1-inline:
+          - div: Header split
+      - - +ok-sdk-form-1-inline:
+          - div: Main content split
+
+  - +ok-sdk-form-1-inline:
+      title: OK-CTL
+      style: "flex: 1"
+      color: 6-1
+      "":
+      - +ok-sdk-form-2-1: null
+      - +ok-sdk-form-1-inline:
+        - +ok-sdk-form-1-inline:
+          - +ok-sdk-form-1-inline:
+            - +ok-sdk-form-1-inline:
+              - +ok-sdk-form-1-inline:
+                - +ok-sdk-form-1-inline:
+                  - +ok-sdk-form-1-inline:
+                    - +ok-sdk-form-1-inline:
+                      - +ok-sdk-form-1-inline: null
+
+  # FIXME: this doesnt go well beside 1.1-inline type? somehow..
+  
+  #- .pane.flexv:
+  #  - +ok-sdk-form-3: null
+
+  #  - - div: Header split
+  #  - - div: Main content split
+
+#

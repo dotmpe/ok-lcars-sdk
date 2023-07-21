@@ -59,10 +59,12 @@ Or just jump to Quickstart_ to try and see what it does.
 Quickstart
 ----------
 I'm sorry but there isn't a currently recommended command *in particular*. If
-there is any feedback on GitHub I could tailor one. But until then, currently,
-you may try using an (aging) ``dotmpe/node-sitefile`` docker image in either a
-production or development setup (what I personally use).
+there is any feedback on GitHub I could try tailor one, but remember this is
+running on Sitefile which is a highly experimental personal project as well
+and some underlying tools (such as `rst2html`) may be custom(ized) as well.
 
+Currently, you may try using an (aging) ``dotmpe/node-sitefile`` docker image
+in either a production or development setup (what I personally use).
 To do this you need
 
 - a running `docker` install, that can mount some specific local paths
@@ -71,18 +73,19 @@ To do this you need
 
 Now the container is recreated using either::
 
-  # Checkout latest version of this project inside Sf container
+  # Checkout latest 'production' version of this project inside Sf container
   ./run.sh
 
-  # Mount local checkout into Sf container
+  # Mount local checkout into Sf container, but may require sitefile dev setup as well
   gh_keyfile=<path to SSH key for GH account> ./run-dev.sh
 
-which should produce a server on ``<local hostname>:7010``
+and that should produce a server on ``<local hostname>:7010``
 or ``<local hostname>:4508`` for dev respectively.
 
-There are no further management scripts for this container. To remove it
-manually use::
+There are no further management scripts for this container. To check for running
+or stopped containers, and to remove manually use::
 
+  docker ps -a
   docker rm -f sf-ok-lcars-sdk{,-dev}
 
 
@@ -99,7 +102,7 @@ Plan
     If possible with format1, else with full Pug data struct in JSON/YAML.
   - The most basic animated follies: scrolling numbers, polarized fade, button blink/fade.
 
-0.x
+0.x (misc.)
   - TODO-3: bootstrap
   - TODO-6: ``run.sh``
   - Standalone generator with CLI and only essential NPM deps.

@@ -57,5 +57,5 @@ _parts:
   disable-lcarssdk-style: &disable-lcarssdk-style
     a:
         class: "button bg-cat-1-1"
-        data-label: "toggle"
+        data-label: "Toggle LCARS-SDK"
         href: javascript:(function(){document.getElementById('lcarssdk').disabled=!(document.getElementById('lcarssdk').disabled || false);})()

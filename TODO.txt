@@ -12,4 +12,7 @@
 (F) 2019-04-23 12: Merge YAML-OK metadata (style/nav etc) with templates. Initial work done, better custom Sf context would help.
 (F) 2020-11-27 14: See about YAML/JSON linter (``grunt test``) @DevOps
 (F) 2020-11-27 15: See about Sass sourceMap. @Sass
+(-) 2023-07-21 18: Rebuilding some canon panel layouts may help to fine tune style rules, and as well may be to differentiate effects and styles like for particular era. 
+(-) 2023-07-21 17: rebuild some set of the show's on-screen animations, for now randomize to use as "complete follies"; but want to include actual or simulated events (later) as well
+
 # Id: +Ok-Sass/0.0.4-dev TODO.txt?seq-next=17           ex:nowrap:ft=todo.txt:

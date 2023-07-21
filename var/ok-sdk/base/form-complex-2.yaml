@@ -1,0 +1,22 @@
+$include: "var/ok-sdk/_parts.json"
++ok-sdk-contentpane.form-1-complex-1.fullwidth.pane.flexh:
+- .pane.flexv:
+  - +ok-sdk-form-3:
+
+- .pane.flexv:
+  - +ok-sdk-form-3:
+  - +ok-sdk-form-3:
+    - - div: Fooling around... and around
+    - - +lorem-ipsum-paragraph.text-8-5@num=1: null
+      - +lorem-ipsum-paragraph.text-8-6@num=5: null
+
+- .pane.flexv:
+  - +ok-sdk-form-3:
+  - +ok-sdk-form-3:
+  - +ok-sdk-form-3:
+
+#- .pane.flexv:
+#
+#  - +ok-sdk-form-2-1: null
+
+#

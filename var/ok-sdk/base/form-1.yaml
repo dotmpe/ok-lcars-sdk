@@ -1,1 +1,10 @@
-+ok-sdk-form-1-inline: []
+$include: "var/ok-sdk/_parts.json"
++ok-sdk-form-1-inline:
+  - h1.title: Form 1.1
+  - $ref: '#/_parts/disable-lcarssdk-style'
+  - a:
+        class: button bg-cat-1-1
+        data-label: Main menu
+        href: /main
+  - +lorem-ipsum-paragraph.text-8-5@num=3: null
+  - +lorem-ipsum-paragraph.text-8-6@num=15: null
